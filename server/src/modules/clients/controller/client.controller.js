@@ -143,6 +143,11 @@ export const updateUser = async (req, res) => {
       }
     }
 
+    if (req.body.birth_date) {
+      const newBirthDate = new Date(req.body.birth_date);
+      req.body.age = calculateAge(newBirthDate);
+    }
+
     Object.assign(clientToUpdate, req.body);
     await clientToUpdate.save();
     res
