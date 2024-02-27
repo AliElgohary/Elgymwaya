@@ -1,6 +1,17 @@
-body {
-  height: 100vh;
-  width: 100vw;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.fixed-row-bottom { position: fixed; bottom: 0;}
 
+div {
+  font-family: sans-serif;
+  color: #343a40;
+  font-size: 24px;
+  height: 100vh;
+  text-align: center;
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: 400px 1fr 250px;
+  grid-template-rows: 80px 1fr;
+}
