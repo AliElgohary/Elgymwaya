@@ -13,6 +13,3 @@ initConnection().then(() => {
   });
 });
 
-// server.listen(6000, () => {
-//   console.log(`Elgymaweya app listening at http://localhost:${6000}`);
-// });
