@@ -15,6 +15,8 @@ import {
   resetPassword,
   signIn,
   signUp,
+  subscriptionfin,
+  subscriptionint,
   updateUser,
   updateUserPicture,
 } from "./controller/client.controller.js";
@@ -59,5 +61,9 @@ clientRoutes.put(
 
 // Update User Picture - Auth required
 clientRoutes.patch("/client/updatepicture/:id", auth, updateUserPicture);
+//////////////////////////////////////////////////////////////////////
 
+//Subscribtion routes
+clientRoutes.post("/client/subscribe", auth, subscriptionint);
+clientRoutes.post("/client/subscribefin", subscriptionfin);
 export default clientRoutes;

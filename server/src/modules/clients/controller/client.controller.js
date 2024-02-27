@@ -2,6 +2,9 @@ import clientModel from "../../../../Database/models/client.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { sendPasswordResetMail } from "../../../services/sendEmail.js";
+import planModel from "../../../../Database/models/plan.model.js";
+import axios from "axios";
+import transactionModel from "../../../../Database/models/transaction.model.js";
 
 // Sign Up a New Client
 export const signUp = async (req, res) => {
@@ -238,8 +241,197 @@ export const resetPassword = async (req, res) => {
     }
   });
 };
-////////////////////////////////////////////////////////////////////////////////////
-// Helper function to calculate age
+
+////////////////////////////////////////
+// payment and subscribion functions
+// step 1
+async function authenticateWithPaymob() {
+  try {
+    const response = await axios.post(
+      "https://accept.paymob.com/api/auth/tokens",
+      {
+        "api_key": process.env.paymob_api_key,
+      }
+    );
+    return response.data.token;
+  } catch (error) {
+    console.error("Authentication with Paymob failed:", error);
+    throw error;
+  }
+}
+
+// step 2
+async function createPaymentOrder(authToken, orderAmount, currency = "EGP") {
+  try {
+    const response = await axios.post(
+      "https://accept.paymob.com/api/ecommerce/orders",
+      {
+        auth_token: authToken,
+        delivery_needed: "false",
+        amount_cents: orderAmount,
+        currency,
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Creating payment order failed:", error);
+    throw error;
+  }
+}
+
+// step 3
+async function generatePaymentKey(
+  authToken,
+  orderId,
+  clientId,
+  planId,
+  subscriptionMonths,
+  subscriptionFees
+) {
+  try {
+    const requestPayload = {
+      auth_token: authToken,
+      amount_cents: subscriptionFees,
+      expiration: 3600, // 1 hour
+      order_id: orderId,
+      metadata: {
+        clientId: clientId.toString(),
+        planId: planId.toString(),
+        subscriptionMonths: subscriptionMonths.toString(),
+      },
+      billing_data: {
+        apartment: "NA",
+        email: "sononamexx@gmail.com",
+        floor: "NA",
+        first_name: "Ahmed",
+        street: "NA",
+        building: "NA",
+        phone_number: "+201028910997",
+        shipping_method: "NA",
+        postal_code: "NA",
+        city: "NA",
+        country: "NA",
+        last_name: "Samy",
+        state: "NA",
+      },
+      currency: "EGP",
+      integration_id: 4524399,
+    };
+
+    console.log("Sending request to Paymob with payload:", requestPayload);
+
+    // Send the request with the payload
+    const response = await axios.post(
+      "https://accept.paymob.com/api/acceptance/payment_keys",
+      requestPayload
+    );
+
+    // Extract the payment key from the response
+    const paymentKey = response.data.token;
+
+    console.log("Received payment key:", paymentKey);
+
+    const newTransaction = new transactionModel({
+      plan_id: planId,
+      client_id: clientId,
+      order_id: orderId,
+      subscriptionMonths: subscriptionMonths,
+    });
+
+    await newTransaction.save();
+
+    return paymentKey;
+  } catch (error) {
+    console.error("Generating payment key failed:", error);
+    throw error;
+  }
+}
+
+// step 4
+export const subscriptionint = async (req, res) => {
+  try {
+    const { clientId, planId, subscriptionMonths } = req.body;
+
+    const client = await clientModel.findById(clientId);
+    const plan = await planModel.findById(planId);
+    const subscriptionFees = plan.fee * subscriptionMonths;
+    const authToken = await authenticateWithPaymob();
+    const orderAmount = subscriptionFees * 100; // Convert to cents
+    const order = await createPaymentOrder(authToken, orderAmount);
+    const paymentKey = await generatePaymentKey(
+      authToken,
+      order.id,
+      clientId,
+      planId,
+      subscriptionMonths,
+      orderAmount
+    );
+    const paymentPageUrl = `https://accept.paymob.com/api/acceptance/iframes/828226?payment_token=${paymentKey}`;
+    res.json({ url: paymentPageUrl });
+  } catch (error) {
+    console.error("Error during subscription process:", error);
+    res.status(500).send("Error processing subscription");
+  }
+};
+
+// step 5
+export const subscriptionfin = async (req, res) => {
+  try {
+    console.log(req.body);
+    const {
+      obj: {
+        success,
+        order: { id: orderId },
+      },
+      type,
+    } = req.body;
+
+    if (!success) {
+      // Find the transaction by the order ID
+      const transaction = await transactionModel.findOne({
+        order_id: orderId,
+      });
+
+      if (!transaction) {
+        return res.status(404).send("Transaction not found");
+      }
+
+      const { client_id, plan_id, subscriptionMonths } = transaction;
+
+      const client = await clientModel.findById(client_id);
+      const plan = await planModel.findById(plan_id);
+
+      if (client && plan) {
+        const subscriptionStartDate = new Date();
+        const subscriptionEndDate = calculateSubscriptionEndDate(
+          subscriptionStartDate,
+          subscriptionMonths
+        );
+
+        client.plan_id = plan_id;
+        client.subscription_date = subscriptionStartDate;
+        client.subscription_months = subscriptionMonths;
+        client.subscription_end_date = subscriptionEndDate;
+
+        await client.save();
+
+        console.log("Client details after subscription update:", client);
+        res.status(200).json({ message: "Subscription successful", client });
+      } else {
+        res.status(404).send("Client or Plan not found");
+      }
+    } else {
+      res.status(400).send("Payment failed");
+    }
+  } catch (error) {
+    console.error("Error processing Paymob callback:", error);
+    res.status(500).send("Server error processing payment");
+  }
+};
+
+////////////////////////////////////////
+
+// Helper functions for calculatations
 function calculateAge(birthDate) {
   const today = new Date();
   let age = today.getFullYear() - birthDate.getFullYear();
@@ -248,4 +440,10 @@ function calculateAge(birthDate) {
     age--;
   }
   return age;
+}
+
+function calculateSubscriptionEndDate(startDate, months) {
+  const endDate = new Date(startDate);
+  endDate.setMonth(endDate.getMonth() + months);
+  return endDate;
 }
