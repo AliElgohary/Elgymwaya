@@ -9,4 +9,6 @@ server.use(cors());
 server.use(express.json());
 initConnection();
 
-server.listen(3000);
+server.listen(6000, () => {
+  console.log(`Elgymaweya app listening at http://localhost:${6000}`);
+});

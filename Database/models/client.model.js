@@ -1,11 +1,15 @@
 import mongoose from "mongoose";
 
-let usersSchema = new mongoose.Schema({
+let clientSchema = new mongoose.Schema({
+  full_name: String,
   email: String,
   password: String,
   Cpassword: String,
   phone_number: String,
-  role: { type: String, enum: ["client", "coach", "manager", "owner"] },
+  birth_date: Date,
+  age: Number,
+  role: { type: String, default: "client" },
+  profile_picture: String,
   height: Number,
   weight: Number,
   plan_id: { type: mongoose.Schema.Types.ObjectId, ref: "Plan" },
@@ -15,6 +19,6 @@ let usersSchema = new mongoose.Schema({
   coach_id: { type: mongoose.Schema.Types.ObjectId, ref: "Coach" },
 });
 
-const userModel = mongoose.model("User", usersSchema);
+const clientModel = mongoose.model("Client", clientSchema);
 
-export default userModel;
+export default clientModel;
