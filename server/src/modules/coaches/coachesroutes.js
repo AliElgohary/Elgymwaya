@@ -2,7 +2,7 @@ import express from "express";
 
 import { auth } from "../../middleware/auth.js";
 import { upload } from "../../middleware/images.js";
-
+import { validation } from "../../middleware/validation.js";
 import { addCoach, deleteCoach, getAllcoaches, getcoachById } from "./controller/coaches.controller.js";
 import { UpdatingCoachSchema, addingCoachSchema } from "./coaches.validation.js";
 const coachRoutes = express.Router();
@@ -12,7 +12,7 @@ coachRoutes.post(
   "/coach/add",
   upload,
   auth,
-  //validation(addingCoachSchema),
+  validation(addingCoachSchema),
   addCoach
 );
 
@@ -21,7 +21,7 @@ coachRoutes.patch(
   "/coach/update",
   upload,
   auth,
-  //validation(UpdatingCoachSchema),
+  validation(UpdatingCoachSchema),
   addCoach
 );
 
