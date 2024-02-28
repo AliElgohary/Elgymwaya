@@ -5,6 +5,7 @@ import cors from "cors";
 import clientRoutes from "./src/modules/clients/client.routes.js";
 import planRoutes from "./src/modules/plans/plan.routes.js";
 import coachRoutes from "./src/modules/coaches/coachesroutes.js";
+import transactionRoutes from "./src/modules/transactions/transaction.routes.js";
 
 const server = express();
 server.use(cors());
@@ -13,6 +14,7 @@ server.use(express.json());
 server.use(clientRoutes);
 server.use(planRoutes);
 server.use(coachRoutes);
+server.use(transactionRoutes);
 
 initConnection().then(() => {
   server.listen(6000, () => {

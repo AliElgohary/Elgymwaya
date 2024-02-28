@@ -11,6 +11,10 @@ let transactionSchema = new mongoose.Schema({
     enum: ["Pending", "Successful", "Rejected"],
   },
   amount: Number,
+  transactionDateAndTime: {   
+    type:Date,
+    required: [false, "adding transaction date"]
+}
 });
 
 const transactionModel = mongoose.model("Transaction", transactionSchema);

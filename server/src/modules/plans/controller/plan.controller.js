@@ -97,7 +97,7 @@ export const updatePlan = async (req, res) => {
 
     let updatedplan = await planModel.findByIdAndUpdate(
       plan._id,
-      { title, description, fee, profile_picture },
+      { title, description, fee, profile_picture:req.file.path },
       { new: true }
     );
     res.json({ message: "Updated", updatedplan });
