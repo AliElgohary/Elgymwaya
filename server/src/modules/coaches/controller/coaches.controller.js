@@ -161,3 +161,63 @@ function calculateAge(birthDate) {
   }
   return age;
 }
+
+export const getAllcoaches = async (req, res) => {
+  try {
+    const user = await clientModel.findById(req.userID);
+    if (!user) {
+      return res.status(404).send("User not found.");
+    }
+    const isAuthorized = user.role === "manager" || user.role === "owner" ||user.role === "owner";
+    if (!isAuthorized) {
+      return res
+        .status(403)
+        .send("Unauthorized: Only managers, owners and clients can get all Coaches.");
+    }
+    const coaches = await coachModel.find();
+    res.json({ message: "Get all coaches", coaches });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+}
+
+export const getcoachById = async (req, res) => {
+  const user = await clientModel.findById(req.userID);
+  if (!user) {
+    return res.status(404).send("User not found.");
+  }
+  const isAuthorized = user.role === "manager" || user.role === "owner" ||user.role === "client";
+  if (!isAuthorized) {
+    return res
+      .status(403)
+      .send("Unauthorized: Only managers , owners and clients can get specific Coach.");
+  }
+
+  let coach  = await coachModel.findById(req.params.id);
+  if (coach) {
+    res.json({ message: "coach is:", coach });
+  } else {
+    res.json({ message: "coach not found" });
+  }
+};
+
+export const deleteCoach = async (req, res) => {
+  const user = await clientModel.findById(req.userID);
+  if (!user) {
+    return res.status(404).send("User not found.");
+  }
+  const isAuthorized = user.role === "manager" || user.role === "owner";
+  if (!isAuthorized) {
+    return res
+      .status(403)
+      .send("Unauthorized: Only managers and owners can delete Coach.");
+  }
+
+  let coach  = await coachModel.findByIdAndDelete(req.params.id);
+  if (coach) {
+    res.json({ message: "Coach Deleted", coach });
+  } else {
+    res.json({ message: "Coach not found" });
+  }
+};
