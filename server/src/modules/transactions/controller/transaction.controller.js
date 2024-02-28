@@ -74,3 +74,38 @@ export const getAllTransactions = async (req, res) => {
       res.json({ message: "Transaction not found" });
     }
   };
+
+
+export const updateTransaction = async (req, res) => {
+    const user = await clientModel.findById(req.userID);
+    if (!user) {
+      return res.status(404).send("User not found.");
+    }
+    const isAuthorized = user.role === "manager" || user.role === "owner";
+    if (!isAuthorized) {
+      return res.status(403).send("Unauthorized: Only managers and owners can update transactions.");
+    }
+
+    const { plan_id, client_id, order_id, amount, subscriptionMonths, payment_status } = req.body;
+
+    const transactionDateAndTime = new Date();
+    const updatedTransaction = await transactionModel.findByIdAndUpdate(
+      req.params.id,
+      {
+        plan_id,
+        client_id,
+        order_id,
+        subscriptionMonths,
+        payment_status,
+        amount,
+        transactionDateAndTime
+      },
+      { new: true }
+    );
+
+    if (!updatedTransaction) {
+      return res.json({ message: "Transaction not found." });
+    }
+
+    res.json({ message: "Transaction updated successfully", updatedTransaction });
+};

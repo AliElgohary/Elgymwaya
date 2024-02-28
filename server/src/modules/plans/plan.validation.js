@@ -11,9 +11,9 @@ export const addSchema = {
 
   export const updateSchema = {
     body: Joi.object({
-        title: Joi.string().min(3).max(50).required(),
-        description: Joi.string().min(3).max(50).required(),
-        fee: Joi.number().required(),
+        title: Joi.string().min(3).max(50),
+        description: Joi.string().min(3).max(50),
+        fee: Joi.number(),
         profile_picture: Joi.string().allow("", null),
     }),
   };
