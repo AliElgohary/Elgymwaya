@@ -1,16 +1,15 @@
-section {
-  background-color: #e9ecef;
-  padding: 40px;
-
-  /* How elements that don't fit into container appear */
-  overflow: scroll;
-
+.nav-links {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  justify-content: space-between;
+  height: 100%;
 }
 
-
-section {
-  padding-top: 24px;
+.email {
+  background-color: #adb5bd;
+  height: 96px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
