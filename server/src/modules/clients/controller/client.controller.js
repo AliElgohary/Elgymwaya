@@ -6,6 +6,7 @@ import planModel from "../../../../Database/models/plan.model.js";
 import axios from "axios";
 import transactionModel from "../../../../Database/models/transaction.model.js";
 import crypto from "crypto";
+import coachModel from "../../../../Database/models/coach.model.js";
 
 // Sign Up a New Client
 export const signUp = async (req, res) => {
@@ -118,28 +119,20 @@ export const changePassword = async (req, res) => {
   }
 };
 
-// Update Client Data (Manager, Owner, or Self Only)
+// Update Client Data (Self Only)
 export const updateUser = async (req, res) => {
   try {
-    const clientToUpdate = await clientModel.findById(req.params.id);
-    const requestingUser = await clientModel.findById(req.userID);
+    const clientToUpdate = await clientModel.findById(req.userID);
 
-    // Check if requestingUser exists and if they are a manager, owner, or the same client
-    const isAuthorized =
-      requestingUser &&
-      (requestingUser.role === "manager" ||
-        requestingUser.role === "owner" ||
-        requestingUser._id.toString() === req.params.id);
-
-    if (!isAuthorized) {
-      return res.status(403).send("Unauthorized");
+    if (!clientToUpdate) {
+      return res.status(404).send("User not found.");
     }
 
     // Check if the email is being updated and if it's already used by another user
     if (req.body.email && req.body.email !== clientToUpdate.email) {
       const emailExists = await clientModel.findOne({
         email: req.body.email,
-        _id: { $ne: clientToUpdate._id }, // Exclude the current user from the search
+        _id: { $ne: req.userID }, // Exclude the current user from the search
       });
 
       if (emailExists) {
@@ -149,39 +142,35 @@ export const updateUser = async (req, res) => {
 
     if (req.body.birth_date) {
       const newBirthDate = new Date(req.body.birth_date);
+
       req.body.age = calculateAge(newBirthDate);
     }
 
+    // Update user data with the provided request body
     Object.assign(clientToUpdate, req.body);
     await clientToUpdate.save();
+
     res
       .status(200)
-      .json({ message: "Client updated successfully", clientToUpdate });
+      .json({ message: "User updated successfully", client: clientToUpdate });
   } catch (error) {
-    res.status(500).send("Error in updating client");
+    console.error("Error in updating user:", error);
+    res.status(500).send("Error in updating user");
   }
 };
 
-// Update Client Picture (Manager, Owner, or Self Only)
+// Update Client Picture (Self Only)
 export const updateUserPicture = async (req, res) => {
   try {
-    const clientToUpdate = await clientModel.findById(req.params.id);
-    const requestingUser = await clientModel.findById(req.userID);
+    const clientToUpdate = await clientModel.findById(req.userID);
 
-    // Check authorization logic here (manager, owner, or self)
-    const isAuthorized =
-      requestingUser &&
-      (requestingUser.role === "manager" ||
-        requestingUser.role === "owner" ||
-        requestingUser._id.toString() === req.params.id);
-
-    if (!isAuthorized) {
-      return res.status(403).send("Unauthorized");
+    if (!clientToUpdate) {
+      return res.status(404).send("User not found.");
     }
-
-    // Assuming the file's new path is required
     if (req.file) {
-      clientToUpdate.profile_picture = req.file.path; // Or any transformation if needed
+      clientToUpdate.profile_picture = req.file.path;
+    } else {
+      return res.status(400).send("No profile picture provided.");
     }
 
     await clientToUpdate.save();
@@ -241,6 +230,124 @@ export const resetPassword = async (req, res) => {
       res.status(500).send("Error in resetting password");
     }
   });
+};
+
+// Set Coach
+export const setCoach = async (req, res) => {
+  try {
+    // Use req.userID to ensure a user is updating their own profile
+    const clientToUpdate = await clientModel
+      .findById(req.userID)
+      .populate("plan_id");
+
+    if (!clientToUpdate) {
+      return res.status(404).send("User not found.");
+    }
+
+    // Check if the client has an active subscription
+    const today = new Date();
+    const hasActiveSubscription = clientToUpdate.subscription_end_date > today;
+
+    if (!hasActiveSubscription) {
+      return res.status(403).send("You do not have an active subscription.");
+    }
+
+    // Check if the client's plan is "basic"
+    if (
+      clientToUpdate.plan_id &&
+      clientToUpdate.plan_id.title.toLowerCase() === "basic"
+    ) {
+      return res
+        .status(403)
+        .send("Clients with 'basic' plan cannot set a coach.");
+    }
+
+    // Extract the coachId from the request body
+    const { coachId } = req.body;
+    if (!coachId) {
+      return res.status(400).send("No coach ID provided.");
+    }
+
+    // Verify that the provided coachId belongs to an actual coach
+    const coachExists = await coachModel.findById(coachId);
+    if (!coachExists) {
+      return res.status(404).send("Coach not found.");
+    }
+
+    // Update the client's coach_id field with the provided coachId
+    clientToUpdate.coach_id = coachId;
+    await clientToUpdate.save();
+
+    // Add client's ID to the coach's client_ids array if not already present
+    const isClientAlreadyAssigned = coachExists.client_ids.some((clientId) =>
+      clientId.equals(clientToUpdate._id)
+    );
+    if (!isClientAlreadyAssigned) {
+      coachExists.client_ids.push(clientToUpdate._id);
+      await coachExists.save();
+    }
+
+    res.status(200).json({
+      message: "Coach set successfully",
+      client: clientToUpdate,
+    });
+  } catch (error) {
+    console.error("Error in setting coach:", error);
+    res.status(500).send("Error in setting coach");
+  }
+};
+
+// Change Coach
+export const changeCoach = async (req, res) => {
+  try {
+    const clientToUpdate = await clientModel.findById(req.userID);
+
+    if (!clientToUpdate) {
+      return res.status(404).send("Client not found.");
+    }
+
+    // Extract the new coachId from the request body (can be null if removing coach)
+    const { coachId } = req.body;
+
+    // If the client already has a coach, remove the client from the old coach's client_ids
+    if (clientToUpdate.coach_id) {
+      const oldCoach = await coachModel.findById(clientToUpdate.coach_id);
+      if (oldCoach) {
+        oldCoach.client_ids.pull(clientToUpdate._id); // Removes the client's ID from the old coach's array
+        await oldCoach.save();
+      }
+    }
+
+    // If a new coachId is provided, assign the new coach and add the client's ID to the new coach's client_ids
+    if (coachId) {
+      const newCoach = await coachModel.findById(coachId);
+      if (!newCoach) {
+        return res.status(404).send("New coach not found.");
+      }
+
+      // Add client's ID to the new coach's client_ids array if not already present
+      if (!newCoach.client_ids.includes(clientToUpdate._id)) {
+        newCoach.client_ids.push(clientToUpdate._id);
+        await newCoach.save();
+      }
+
+      // Update the client's coach_id field with the new coachId
+      clientToUpdate.coach_id = coachId;
+    } else {
+      // If no new coachId is provided, remove the coach_id field from the client
+      clientToUpdate.coach_id = null;
+    }
+
+    await clientToUpdate.save();
+
+    res.status(200).json({
+      message: "Coach changed successfully",
+      client: clientToUpdate,
+    });
+  } catch (error) {
+    console.error("Error in changing coach:", error);
+    res.status(500).send("Error in changing coach");
+  }
 };
 
 ////////////////////////////////////////

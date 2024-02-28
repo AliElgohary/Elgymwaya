@@ -1,0 +1,1282 @@
+{
+	"info": {
+		"_postman_id": "f035a289-0194-40e4-9a2e-f0bf7536f4e6",
+		"name": "El Gymaweya",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32422144"
+	},
+	"item": [
+		{
+			"name": "Client Requests",
+			"item": [
+				{
+					"name": "Sign up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "full_name",
+									"value": "Ahmed Sami",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Test@2012",
+									"type": "text"
+								},
+								{
+									"key": "Cpassword",
+									"value": "Test@2012",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "01100014333",
+									"type": "text"
+								},
+								{
+									"key": "birth_date",
+									"value": "1997-08-23",
+									"type": "text"
+								},
+								{
+									"key": "height",
+									"value": "182",
+									"type": "text"
+								},
+								{
+									"key": "weight",
+									"value": "130",
+									"type": "text"
+								},
+								{
+									"key": "profile_picture",
+									"type": "file",
+									"src": "/C:/Users/ahmad/Desktop/iti-logo.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:6000/client/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"client",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sign up",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "full_name",
+											"value": "Ahmed Sami",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "test@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Test@2012",
+											"type": "text"
+										},
+										{
+											"key": "Cpassword",
+											"value": "Test@2012",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "01100014333",
+											"type": "text"
+										},
+										{
+											"key": "birth_date",
+											"value": "1997-08-23",
+											"type": "text"
+										},
+										{
+											"key": "height",
+											"value": "182",
+											"type": "text"
+										},
+										{
+											"key": "weight",
+											"value": "130",
+											"type": "text"
+										},
+										{
+											"key": "profile_picture",
+											"type": "file",
+											"src": "/C:/Users/ahmad/Desktop/iti-logo.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:6000/client/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"client",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "467"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d3-GfQD2DJrByeOOJSaAllpOoxroOI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 09:44:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Client created successfully\",\n    \"newClient\": {\n        \"full_name\": \"Ahmed Sami\",\n        \"email\": \"test@gmail.com\",\n        \"password\": \"$2b$10$onj5tYTTslTrlt01VIGDzOciSLc7S9EHQNyzKXiKmG1kfy1bBi00q\",\n        \"phone_number\": \"01100014333\",\n        \"birth_date\": \"1997-08-23T00:00:00.000Z\",\n        \"age\": 26,\n        \"role\": \"client\",\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709026984/ElGymaweya/profile_picture-1709027094553.png\",\n        \"height\": 182,\n        \"weight\": 130,\n        \"_id\": \"65ddaf185ce4de5d9bb1e617\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Sign in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"test@test.com\",\r\n  \"password\": \"Test@20122\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/client/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"client",
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sign in",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"test@gmail.com\",\r\n  \"password\": \"Test@2012\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6000/client/signin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"client",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "218"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"da-tQ74w3HMcWR/eNKxYoQmQxgX6wc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 09:53:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Welcome To El Gymaweya\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTAyNzU4MywiZXhwIjoxNzA5MDMxMTgzfQ.3ySGl0Vg14xRjBai8eQJdMZDZJDwaeXUrk4nBTEKe0o\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTAyNzU4MywiZXhwIjoxNzA5MDMxMTgzfQ.3ySGl0Vg14xRjBai8eQJdMZDZJDwaeXUrk4nBTEKe0o",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"oldPassword\": \"Test@2012\",  \r\n  \"newPassword\": \"Test@20122\",\r\n  \"CNewPassword\": \"Test@20122\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/client/changepassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"client",
+								"changepassword"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Change Password",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTAyNzU4MywiZXhwIjoxNzA5MDMxMTgzfQ.3ySGl0Vg14xRjBai8eQJdMZDZJDwaeXUrk4nBTEKe0o",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"oldPassword\": \"Test@2012\",  \r\n  \"newPassword\": \"Test@20122\",\r\n  \"CNewPassword\": \"Test@20122\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6000/client/changepassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"client",
+										"changepassword"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b-5y+HK1+FqBauPIsoNAsFjnPR9eI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 10:05:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Password reset successfully"
+						}
+					]
+				},
+				{
+					"name": "Update Data",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTExOTI5MCwiZXhwIjoxNzA5MTIyODkwfQ.WVHhHgvBQEaSQTyYgw-Nq5YQTpfefUuZ4UdEs9GdKXQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"full_name\": \"Ahmed Samyy\",\r\n  \"email\": \"test@test.com\",\r\n  \"height\": 175,\r\n  \"weight\": 70,\r\n  \"birth_date\": \"1990-01-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/client/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"client",
+								"update"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTExOTI5MCwiZXhwIjoxNzA5MTIyODkwfQ.WVHhHgvBQEaSQTyYgw-Nq5YQTpfefUuZ4UdEs9GdKXQ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"full_name\": \"Ahmed Samyy\",\r\n  \"email\": \"test@test.com\",\r\n  \"height\": 175,\r\n  \"weight\": 70,\r\n  \"birth_date\": \"1990-01-01\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6000/client/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"client",
+										"update"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "621"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"26d-wcYle9jg3XV+4ilFP+KDQDVbrbo\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 11:23:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User updated successfully\",\n    \"client\": {\n        \"_id\": \"65ddaf185ce4de5d9bb1e617\",\n        \"full_name\": \"Ahmed Samyy\",\n        \"email\": \"test@test.com\",\n        \"password\": \"$2b$12$Bv/.B5Bl8bT.gx7V2tJIcu4RIUivWHvR0mFfUSSc/CHRx.IbDtgh2\",\n        \"phone_number\": \"01100014333\",\n        \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n        \"age\": 34,\n        \"role\": \"manager\",\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709026984/ElGymaweya/profile_picture-1709027094553.png\",\n        \"height\": 175,\n        \"weight\": 70,\n        \"__v\": 0,\n        \"plan_id\": \"65de0dfa8de816bb867d0881\",\n        \"subscription_date\": \"2024-02-28T10:05:40.960Z\",\n        \"subscription_end_date\": \"2024-08-28T09:05:40.960Z\",\n        \"subscription_months\": 6\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Profile Picture",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTExOTI5MCwiZXhwIjoxNzA5MTIyODkwfQ.WVHhHgvBQEaSQTyYgw-Nq5YQTpfefUuZ4UdEs9GdKXQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profile_picture",
+									"type": "file",
+									"src": "/C:/Users/ahmad/Pictures/Screenshots/Screenshot 2024-02-09 100318.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:6000/client/updatepicture",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"client",
+								"updatepicture"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update ProfilePicture",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTExOTI5MCwiZXhwIjoxNzA5MTIyODkwfQ.WVHhHgvBQEaSQTyYgw-Nq5YQTpfefUuZ4UdEs9GdKXQ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "profile_picture",
+											"type": "file",
+											"src": "/C:/Users/ahmad/Pictures/Screenshots/Screenshot 2024-02-09 100318.png"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6000/client/updatepicture",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"client",
+										"updatepicture"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "639"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"27f-+iRPg62h6kxzSD63/Or25C4YhIM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 11:29:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Profile picture updated successfully\",\n    \"clientToUpdate\": {\n        \"_id\": \"65ddaf185ce4de5d9bb1e617\",\n        \"full_name\": \"Ahmed Samyy\",\n        \"email\": \"test@test.com\",\n        \"password\": \"$2b$12$Bv/.B5Bl8bT.gx7V2tJIcu4RIUivWHvR0mFfUSSc/CHRx.IbDtgh2\",\n        \"phone_number\": \"01100014333\",\n        \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n        \"age\": 34,\n        \"role\": \"client\",\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709119680/ElGymaweya/profile_picture-1709119791880.png\",\n        \"height\": 175,\n        \"weight\": 70,\n        \"__v\": 0,\n        \"plan_id\": \"65de0dfa8de816bb867d0881\",\n        \"subscription_date\": \"2024-02-28T10:05:40.960Z\",\n        \"subscription_end_date\": \"2024-08-28T09:05:40.960Z\",\n        \"subscription_months\": 6\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Plan Subscribe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTExNDYyOCwiZXhwIjoxNzA5MTE4MjI4fQ.ebojBn91CY6DSE10S7j6qzRL1IegMwGnqjYDlcJIPWY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"clientId\": \"65ddaf185ce4de5d9bb1e617\",\r\n  \"planId\": \"65de0dfa8de816bb867d0881\",\r\n  \"subscriptionMonths\": 6\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/client/subscribe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"client",
+								"subscribe"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Subscribe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTA2MjYyNSwiZXhwIjoxNzA5MDY2MjI1fQ.svbw1aHrtdlk3zT2HqWObMFS5PPCMpD5tNUDVoqvmVk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"clientId\": \"65ddaf185ce4de5d9bb1e617\",\r\n  \"planId\": \"65de0dfa8de816bb867d0881\",\r\n  \"subscriptionMonths\": 6\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6000/client/subscribe",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"client",
+										"subscribe"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1100"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44c-bwOPwRdUpPICQuUu2Gx1JB/rA0Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 20:09:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"url\": \"https://accept.paymob.com/api/acceptance/iframes/828226?payment_token=ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5WDJsa0lqb3hOelU0TXpZd0xDSmhiVzkxYm5SZlkyVnVkSE1pT2pZd01EQXdMQ0pqZFhKeVpXNWplU0k2SWtWSFVDSXNJbWx1ZEdWbmNtRjBhVzl1WDJsa0lqbzBOVEkwTXprNUxDSnZjbVJsY2w5cFpDSTZNVGc0T1Rjek9UTTFMQ0ppYVd4c2FXNW5YMlJoZEdFaU9uc2labWx5YzNSZmJtRnRaU0k2SWtGb2JXVmtJaXdpYkdGemRGOXVZVzFsSWpvaVUyRnRlU0lzSW5OMGNtVmxkQ0k2SWs1Qklpd2lZblZwYkdScGJtY2lPaUpPUVNJc0ltWnNiMjl5SWpvaVRrRWlMQ0poY0dGeWRHMWxiblFpT2lKT1FTSXNJbU5wZEhraU9pSk9RU0lzSW5OMFlYUmxJam9pVGtFaUxDSmpiM1Z1ZEhKNUlqb2lUa0VpTENKbGJXRnBiQ0k2SW5OdmJtOXVZVzFsZUhoQVoyMWhhV3d1WTI5dElpd2ljR2h2Ym1WZmJuVnRZbVZ5SWpvaUt6SXdNVEF5T0RreE1EazVOeUlzSW5CdmMzUmhiRjlqYjJSbElqb2lUa0VpTENKbGVIUnlZVjlrWlhOamNtbHdkR2x2YmlJNklrNUJJbjBzSW14dlkydGZiM0prWlhKZmQyaGxibDl3WVdsa0lqcG1ZV3h6WlN3aVpYaDBjbUVpT250OUxDSnphVzVuYkdWZmNHRjViV1Z1ZEY5aGRIUmxiWEIwSWpwbVlXeHpaU3dpWlhod0lqb3hOekE1TURZNE1ETXpMQ0p3Yld0ZmFYQWlPaUl4TURJdU5qSXVPVGN1TWpNMUluMC40UnJYaXNxVXo5QTA1S2MzZWRubUZ6bURCTlppMkdvWkNlTTNyci1kX0RpQmFycFFWakROQVVuejI4ZlVpeGtTeEhtU1FvNEp5eDJJOHNHT2UyQVBKQQ==\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Set Coach",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTEyMTc0NSwiZXhwIjoxNzA5MTI1MzQ1fQ.9RJ3sw2ya3t4Hmme5ZxCYFuHSWrNBaz5MuD7wGaXu8M",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"coachId\": \"65df2215f038cfa29731ea27\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/client/setcoach",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"client",
+								"setcoach"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Set Coach",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTEyMTc0NSwiZXhwIjoxNzA5MTI1MzQ1fQ.9RJ3sw2ya3t4Hmme5ZxCYFuHSWrNBaz5MuD7wGaXu8M",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"coachId\": \"65df2215f038cfa29731ea27\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6000/client/setcoach",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"client",
+										"setcoach"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "849"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"351-LLi1ko4jf/pVGJeSgfepxbNke3k\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 12:13:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Coach updated successfully\",\n    \"client\": {\n        \"_id\": \"65ddaf185ce4de5d9bb1e617\",\n        \"full_name\": \"Ahmed Samyy\",\n        \"email\": \"test@test.com\",\n        \"password\": \"$2b$12$Bv/.B5Bl8bT.gx7V2tJIcu4RIUivWHvR0mFfUSSc/CHRx.IbDtgh2\",\n        \"phone_number\": \"01100014333\",\n        \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n        \"age\": 34,\n        \"role\": \"manager\",\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709119680/ElGymaweya/profile_picture-1709119791880.png\",\n        \"height\": 175,\n        \"weight\": 70,\n        \"__v\": 0,\n        \"plan_id\": {\n            \"_id\": \"65df1af262b108c9492f7b58\",\n            \"title\": \"Plus\",\n            \"description\": \"Plus\",\n            \"fee\": 200,\n            \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709051275/ElGymaweya/profile_picture-1709051385598.png\",\n            \"__v\": 0\n        },\n        \"subscription_date\": \"2024-02-28T10:05:40.960Z\",\n        \"subscription_end_date\": \"2024-08-28T09:05:40.960Z\",\n        \"subscription_months\": 6,\n        \"coach_id\": \"65df2215f038cfa29731ea27\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Change/Remove Coach",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTEyMTc0NSwiZXhwIjoxNzA5MTI1MzQ1fQ.9RJ3sw2ya3t4Hmme5ZxCYFuHSWrNBaz5MuD7wGaXu8M",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"coachId\": \"65df260a41ccbbf65416919b\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/client/changecoach",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"client",
+								"changecoach"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Set Coach",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTEyMTc0NSwiZXhwIjoxNzA5MTI1MzQ1fQ.9RJ3sw2ya3t4Hmme5ZxCYFuHSWrNBaz5MuD7wGaXu8M",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"coachId\": \"65df2215f038cfa29731ea27\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6000/client/setcoach",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"client",
+										"setcoach"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "849"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"351-LLi1ko4jf/pVGJeSgfepxbNke3k\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 12:13:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Coach updated successfully\",\n    \"client\": {\n        \"_id\": \"65ddaf185ce4de5d9bb1e617\",\n        \"full_name\": \"Ahmed Samyy\",\n        \"email\": \"test@test.com\",\n        \"password\": \"$2b$12$Bv/.B5Bl8bT.gx7V2tJIcu4RIUivWHvR0mFfUSSc/CHRx.IbDtgh2\",\n        \"phone_number\": \"01100014333\",\n        \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n        \"age\": 34,\n        \"role\": \"manager\",\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709119680/ElGymaweya/profile_picture-1709119791880.png\",\n        \"height\": 175,\n        \"weight\": 70,\n        \"__v\": 0,\n        \"plan_id\": {\n            \"_id\": \"65df1af262b108c9492f7b58\",\n            \"title\": \"Plus\",\n            \"description\": \"Plus\",\n            \"fee\": 200,\n            \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709051275/ElGymaweya/profile_picture-1709051385598.png\",\n            \"__v\": 0\n        },\n        \"subscription_date\": \"2024-02-28T10:05:40.960Z\",\n        \"subscription_end_date\": \"2024-08-28T09:05:40.960Z\",\n        \"subscription_months\": 6,\n        \"coach_id\": \"65df2215f038cfa29731ea27\"\n    }\n}"
+						},
+						{
+							"name": "Change/Remove Coach",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTEyMTc0NSwiZXhwIjoxNzA5MTI1MzQ1fQ.9RJ3sw2ya3t4Hmme5ZxCYFuHSWrNBaz5MuD7wGaXu8M",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"coachId\": \"65df260a41ccbbf65416919b\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6000/client/changecoach",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"client",
+										"changecoach"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "660"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"294-xupYCBkfC67tBW0jg6nY7kkEouk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 12:25:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Coach changed successfully\",\n    \"client\": {\n        \"_id\": \"65ddaf185ce4de5d9bb1e617\",\n        \"full_name\": \"Ahmed Samyy\",\n        \"email\": \"test@test.com\",\n        \"password\": \"$2b$12$Bv/.B5Bl8bT.gx7V2tJIcu4RIUivWHvR0mFfUSSc/CHRx.IbDtgh2\",\n        \"phone_number\": \"01100014333\",\n        \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n        \"age\": 34,\n        \"role\": \"manager\",\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709119680/ElGymaweya/profile_picture-1709119791880.png\",\n        \"height\": 175,\n        \"weight\": 70,\n        \"__v\": 0,\n        \"plan_id\": \"65df1af262b108c9492f7b58\",\n        \"subscription_date\": \"2024-02-28T10:05:40.960Z\",\n        \"subscription_end_date\": \"2024-08-28T09:05:40.960Z\",\n        \"subscription_months\": 6,\n        \"coach_id\": \"65df260a41ccbbf65416919b\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Plan Requests",
+			"item": [
+				{
+					"name": "Add Plan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTA1MTMzNiwiZXhwIjoxNzA5MDU0OTM2fQ.-UArSetKuMwU6PEy4XoRAUxNDg7orW8LocT_Aunj-YY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Basic",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Basic",
+									"type": "text"
+								},
+								{
+									"key": "fee",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "profile_picture",
+									"type": "file",
+									"src": "/C:/Users/ahmad/Desktop/iti-logo.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:6000/plan/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"plan",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Coach Requests",
+			"item": [
+				{
+					"name": "Add Coach",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTEyMTc0NSwiZXhwIjoxNzA5MTI1MzQ1fQ.9RJ3sw2ya3t4Hmme5ZxCYFuHSWrNBaz5MuD7wGaXu8M",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "full_name",
+									"value": "Ahmed Samy",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "coach@coach.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Test@2012",
+									"type": "text"
+								},
+								{
+									"key": "Cpassword",
+									"value": "Test@2012",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "01100000000",
+									"type": "text"
+								},
+								{
+									"key": "birth_date",
+									"value": "1990-01-01",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "5000",
+									"type": "text"
+								},
+								{
+									"key": "working_days",
+									"value": "[{\"day\":\"Monday\",\"start_time\":\"09:00\",\"end_time\":\"17:00\"},{\"day\":\"Tuesday\",\"start_time\":\"09:00\",\"end_time\":\"17:00\"}]\n",
+									"type": "text"
+								},
+								{
+									"key": "profile_picture",
+									"type": "file",
+									"src": "/C:/Users/ahmad/Pictures/Screenshots/Screenshot 2024-02-09 100340.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:6000/coach/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"coach",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "AddCoach",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTEyMTc0NSwiZXhwIjoxNzA5MTI1MzQ1fQ.9RJ3sw2ya3t4Hmme5ZxCYFuHSWrNBaz5MuD7wGaXu8M",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "full_name",
+											"value": "Ahmed Samy",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "coach@coach.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Test@2012",
+											"type": "text"
+										},
+										{
+											"key": "Cpassword",
+											"value": "Test@2012",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "01100000000",
+											"type": "text"
+										},
+										{
+											"key": "birth_date",
+											"value": "1990-01-01",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "5000",
+											"type": "text"
+										},
+										{
+											"key": "working_days",
+											"value": "[{\"day\":\"Monday\",\"start_time\":\"09:00\",\"end_time\":\"17:00\"},{\"day\":\"Tuesday\",\"start_time\":\"09:00\",\"end_time\":\"17:00\"}]\n",
+											"type": "text"
+										},
+										{
+											"key": "profile_picture",
+											"type": "file",
+											"src": "/C:/Users/ahmad/Pictures/Screenshots/Screenshot 2024-02-09 100340.png"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6000/coach/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"coach",
+										"add"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "588"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24c-LkwUWObJcibEYXEw64li5ePdUdw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 12:07:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Coach added successfully\",\n    \"coach\": {\n        \"full_name\": \"Ahmed Samy\",\n        \"email\": \"coach@coach.com\",\n        \"phone_number\": \"01100000000\",\n        \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n        \"age\": 34,\n        \"role\": \"coach\",\n        \"salary\": 5000,\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709121956/ElGymaweya/profile_picture-1709122067083.png\",\n        \"client_ids\": [],\n        \"working_days\": [\n            {\n                \"day\": \"Monday\",\n                \"start_time\": \"09:00\",\n                \"end_time\": \"17:00\",\n                \"_id\": \"65df2215f038cfa29731ea28\"\n            },\n            {\n                \"day\": \"Tuesday\",\n                \"start_time\": \"09:00\",\n                \"end_time\": \"17:00\",\n                \"_id\": \"65df2215f038cfa29731ea29\"\n            }\n        ],\n        \"_id\": \"65df2215f038cfa29731ea27\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

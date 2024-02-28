@@ -49,7 +49,6 @@ export const updateUserSchema = {
   body: Joi.object({
     full_name: Joi.string().min(3).max(50),
     email: Joi.string().email(),
-    role: Joi.string(),
     height: Joi.number().positive(),
     weight: Joi.number().positive(),
     birth_date: Joi.date().less("now"),
