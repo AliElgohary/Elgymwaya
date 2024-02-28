@@ -379,6 +379,23 @@ export const getAllClients = async (req, res) => {
   }
 };
 
+// Get Client By ID
+export const getClientById = async (req, res) => {
+  try {
+    const client = await clientModel
+      .findById(req.params.id, "-password -Cpassword")
+      .populate("coach_id", "full_name");
+
+    if (!client) {
+      return res.status(404).send("User not found.");
+    }
+
+    res.json(client);
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    res.status(500).send("Error fetching user");
+  }
+};
 ////////////////////////////////////////
 // payment and subscribion functions
 // step 1

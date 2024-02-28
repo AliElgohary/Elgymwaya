@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f035a289-0194-40e4-9a2e-f0bf7536f4e6",
+		"_postman_id": "7ba7fd33-516a-4b9c-9753-c60d96dcf92c",
 		"name": "El Gymaweya",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "32422144"
@@ -379,6 +379,202 @@
 								{
 									"key": "Date",
 									"value": "Tue, 27 Feb 2024 10:05:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Password reset successfully"
+						}
+					]
+				},
+				{
+					"name": "Forget Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"sononamex@gmail.com\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/client/forgetpassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"client",
+								"forgetpassword"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Forget Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"sononamex@gmail.com\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6000/client/forgetpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"client",
+										"forgetpassword"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "25"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"19-KvA92TV1wwY22w3dh43k89UKdSk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 16:53:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Password reset email sent"
+						}
+					]
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"newPassword\": \"Test@20122\",\r\n  \"CNewPassword\": \"Test@20122\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/client/resetpassword/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZDViMWFhNTQxOWEzNjZjNGNlYiIsImlhdCI6MTcwOTEzOTIzMSwiZXhwIjoxNzA5MTQyODMxfQ.lnZrZasZsciikWTqs6BDgxObp9U15Lewe4oWlvzaKkw",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"client",
+								"resetpassword",
+								"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZDViMWFhNTQxOWEzNjZjNGNlYiIsImlhdCI6MTcwOTEzOTIzMSwiZXhwIjoxNzA5MTQyODMxfQ.lnZrZasZsciikWTqs6BDgxObp9U15Lewe4oWlvzaKkw"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Reset Password",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"Test@20122\",\r\n  \"CNewPassword\": \"Test@20122\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6000/client/resetpassword/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZDViMWFhNTQxOWEzNjZjNGNlYiIsImlhdCI6MTcwOTEzOTIzMSwiZXhwIjoxNzA5MTQyODMxfQ.lnZrZasZsciikWTqs6BDgxObp9U15Lewe4oWlvzaKkw",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"client",
+										"resetpassword",
+										"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZDViMWFhNTQxOWEzNjZjNGNlYiIsImlhdCI6MTcwOTEzOTIzMSwiZXhwIjoxNzA5MTQyODMxfQ.lnZrZasZsciikWTqs6BDgxObp9U15Lewe4oWlvzaKkw"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b-5y+HK1+FqBauPIsoNAsFjnPR9eI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 16:56:38 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1018,62 +1214,174 @@
 							"body": "{\n    \"message\": \"Coach changed successfully\",\n    \"client\": {\n        \"_id\": \"65ddaf185ce4de5d9bb1e617\",\n        \"full_name\": \"Ahmed Samyy\",\n        \"email\": \"test@test.com\",\n        \"password\": \"$2b$12$Bv/.B5Bl8bT.gx7V2tJIcu4RIUivWHvR0mFfUSSc/CHRx.IbDtgh2\",\n        \"phone_number\": \"01100014333\",\n        \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n        \"age\": 34,\n        \"role\": \"manager\",\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709119680/ElGymaweya/profile_picture-1709119791880.png\",\n        \"height\": 175,\n        \"weight\": 70,\n        \"__v\": 0,\n        \"plan_id\": \"65df1af262b108c9492f7b58\",\n        \"subscription_date\": \"2024-02-28T10:05:40.960Z\",\n        \"subscription_end_date\": \"2024-08-28T09:05:40.960Z\",\n        \"subscription_months\": 6,\n        \"coach_id\": \"65df260a41ccbbf65416919b\"\n    }\n}"
 						}
 					]
-				}
-			]
-		},
-		{
-			"name": "Plan Requests",
-			"item": [
+				},
 				{
-					"name": "Add Plan",
+					"name": "Get All Clients",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTA1MTMzNiwiZXhwIjoxNzA5MDU0OTM2fQ.-UArSetKuMwU6PEy4XoRAUxNDg7orW8LocT_Aunj-YY",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTEzODY4OCwiZXhwIjoxNzA5MTQyMjg4fQ.t-NNQHbIlVqXOkujH03P8I3_ldUnyGF1_bQr_xFXQcw",
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "title",
-									"value": "Basic",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "Basic",
-									"type": "text"
-								},
-								{
-									"key": "fee",
-									"value": "100",
-									"type": "text"
-								},
-								{
-									"key": "profile_picture",
-									"type": "file",
-									"src": "/C:/Users/ahmad/Desktop/iti-logo.png"
-								}
-							]
-						},
 						"url": {
-							"raw": "http://localhost:6000/plan/add",
+							"raw": "http://localhost:6000/client",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "6000",
 							"path": [
-								"plan",
-								"add"
+								"client"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get All Clients",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTEzODY4OCwiZXhwIjoxNzA5MTQyMjg4fQ.t-NNQHbIlVqXOkujH03P8I3_ldUnyGF1_bQr_xFXQcw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:6000/client",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"client"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "861"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35d-WKZOfyR2t46DQKLwmxjALlfDg8w\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 16:45:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"65ddad5b1aa5419a366c4ceb\",\n        \"full_name\": \"Ahmed Sami\",\n        \"email\": \"sononamex@gmail.com\",\n        \"phone_number\": \"01100014322\",\n        \"birth_date\": \"1997-08-23T00:00:00.000Z\",\n        \"age\": 26,\n        \"role\": \"client\",\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709026540/ElGymaweya/profile_picture-1709026649859.png\",\n        \"height\": 182,\n        \"weight\": 130,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"65ddaf185ce4de5d9bb1e617\",\n        \"full_name\": \"Ahmed Samyy\",\n        \"email\": \"test@test.com\",\n        \"phone_number\": \"01100014333\",\n        \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n        \"age\": 34,\n        \"role\": \"manager\",\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709119680/ElGymaweya/profile_picture-1709119791880.png\",\n        \"height\": 175,\n        \"weight\": 70,\n        \"__v\": 0,\n        \"plan_id\": \"65df1af262b108c9492f7b58\",\n        \"subscription_date\": \"2024-02-28T10:05:40.960Z\",\n        \"subscription_end_date\": \"2024-08-28T09:05:40.960Z\",\n        \"subscription_months\": 6,\n        \"coach_id\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Client By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6000/client/65ddad5b1aa5419a366c4ceb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"client",
+								"65ddad5b1aa5419a366c4ceb"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Client By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:6000/client/65ddad5b1aa5419a366c4ceb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"client",
+										"65ddad5b1aa5419a366c4ceb"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "344"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"158-4I3ssYmcHpxVo9B4ULqS+o+hVXk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 16:48:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"65ddad5b1aa5419a366c4ceb\",\n    \"full_name\": \"Ahmed Sami\",\n    \"email\": \"sononamex@gmail.com\",\n    \"phone_number\": \"01100014322\",\n    \"birth_date\": \"1997-08-23T00:00:00.000Z\",\n    \"age\": 26,\n    \"role\": \"client\",\n    \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709026540/ElGymaweya/profile_picture-1709026649859.png\",\n    \"height\": 182,\n    \"weight\": 130,\n    \"__v\": 0\n}"
+						}
+					]
 				}
 			]
 		},
@@ -1101,7 +1409,7 @@
 								},
 								{
 									"key": "email",
-									"value": "coach@coach.com",
+									"value": "coach@coachh.com",
 									"type": "text"
 								},
 								{
@@ -1156,7 +1464,7 @@
 					},
 					"response": [
 						{
-							"name": "AddCoach",
+							"name": "Add Coach",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -1176,7 +1484,7 @@
 										},
 										{
 											"key": "email",
-											"value": "coach@coach.com",
+											"value": "coach@coachh.com",
 											"type": "text"
 										},
 										{
@@ -1214,12 +1522,7 @@
 											"type": "file",
 											"src": "/C:/Users/ahmad/Pictures/Screenshots/Screenshot 2024-02-09 100340.png"
 										}
-									],
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+									]
 								},
 								"url": {
 									"raw": "http://localhost:6000/coach/add",
@@ -1252,15 +1555,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "588"
+									"value": "663"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"24c-LkwUWObJcibEYXEw64li5ePdUdw\""
+									"value": "W/\"297-T2MC/IEeFVxPqFdbUyvMsLIRCzE\""
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 28 Feb 2024 12:07:49 GMT"
+									"value": "Wed, 28 Feb 2024 13:01:34 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1272,7 +1575,1301 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"Coach added successfully\",\n    \"coach\": {\n        \"full_name\": \"Ahmed Samy\",\n        \"email\": \"coach@coach.com\",\n        \"phone_number\": \"01100000000\",\n        \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n        \"age\": 34,\n        \"role\": \"coach\",\n        \"salary\": 5000,\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709121956/ElGymaweya/profile_picture-1709122067083.png\",\n        \"client_ids\": [],\n        \"working_days\": [\n            {\n                \"day\": \"Monday\",\n                \"start_time\": \"09:00\",\n                \"end_time\": \"17:00\",\n                \"_id\": \"65df2215f038cfa29731ea28\"\n            },\n            {\n                \"day\": \"Tuesday\",\n                \"start_time\": \"09:00\",\n                \"end_time\": \"17:00\",\n                \"_id\": \"65df2215f038cfa29731ea29\"\n            }\n        ],\n        \"_id\": \"65df2215f038cfa29731ea27\",\n        \"__v\": 0\n    }\n}"
+							"body": "{\n    \"message\": \"Coach added successfully\",\n    \"coach\": {\n        \"full_name\": \"Ahmed Samy\",\n        \"email\": \"coach@coachh.com\",\n        \"password\": \"$2b$10$xyVpNgHIGi7iHlDPGLgfH.YUPsTDje7x/JrsshV4ia/Z6nfUaEZEO\",\n        \"phone_number\": \"01100000000\",\n        \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n        \"age\": 34,\n        \"role\": \"coach\",\n        \"salary\": 5000,\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709125181/ElGymaweya/profile_picture-1709125291844.png\",\n        \"client_ids\": [],\n        \"working_days\": [\n            {\n                \"day\": \"Monday\",\n                \"start_time\": \"09:00\",\n                \"end_time\": \"17:00\",\n                \"_id\": \"65df2eaed0ed3a4b12f570fd\"\n            },\n            {\n                \"day\": \"Tuesday\",\n                \"start_time\": \"09:00\",\n                \"end_time\": \"17:00\",\n                \"_id\": \"65df2eaed0ed3a4b12f570fe\"\n            }\n        ],\n        \"_id\": \"65df2eaed0ed3a4b12f570fc\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Coaches",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0OTk2OSwiZXhwIjoxNzA5MTUzNTY5fQ.jNCKmqmo3KiK3tY1ad5c7p27XEm-gPepo92Th0zi_-s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:6000/coach",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"coach"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all coaches",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0OTk2OSwiZXhwIjoxNzA5MTUzNTY5fQ.jNCKmqmo3KiK3tY1ad5c7p27XEm-gPepo92Th0zi_-s",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:6000/coach",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"coach"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1742"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6ce-0RedB5FfSsiLxc8v5B9ja2kURCY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 19:59:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Get all coaches\",\n    \"coaches\": [\n        {\n            \"_id\": \"65df2215f038cfa29731ea27\",\n            \"full_name\": \"Ahmed Samy\",\n            \"email\": \"coach@coach.com\",\n            \"phone_number\": \"01100000000\",\n            \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n            \"age\": 34,\n            \"role\": \"coach\",\n            \"salary\": 5000,\n            \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709121956/ElGymaweya/profile_picture-1709122067083.png\",\n            \"client_ids\": [],\n            \"working_days\": [\n                {\n                    \"day\": \"Monday\",\n                    \"start_time\": \"09:00\",\n                    \"end_time\": \"17:00\",\n                    \"_id\": \"65df2215f038cfa29731ea28\"\n                },\n                {\n                    \"day\": \"Tuesday\",\n                    \"start_time\": \"09:00\",\n                    \"end_time\": \"17:00\",\n                    \"_id\": \"65df2215f038cfa29731ea29\"\n                }\n            ],\n            \"__v\": 2\n        },\n        {\n            \"_id\": \"65df260a41ccbbf65416919b\",\n            \"full_name\": \"Ahmed Samy\",\n            \"email\": \"coach@coach.com\",\n            \"phone_number\": \"01100000000\",\n            \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n            \"age\": 34,\n            \"role\": \"coach\",\n            \"salary\": 5000,\n            \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709122969/ElGymaweya/profile_picture-1709123080334.png\",\n            \"client_ids\": [],\n            \"working_days\": [\n                {\n                    \"day\": \"Monday\",\n                    \"start_time\": \"09:00\",\n                    \"end_time\": \"17:00\",\n                    \"_id\": \"65df260a41ccbbf65416919c\"\n                },\n                {\n                    \"day\": \"Tuesday\",\n                    \"start_time\": \"09:00\",\n                    \"end_time\": \"17:00\",\n                    \"_id\": \"65df260a41ccbbf65416919d\"\n                }\n            ],\n            \"__v\": 2\n        },\n        {\n            \"_id\": \"65df2eaed0ed3a4b12f570fc\",\n            \"full_name\": \"Ahmed Samy\",\n            \"email\": \"coach@coachh.com\",\n            \"password\": \"$2b$10$xyVpNgHIGi7iHlDPGLgfH.YUPsTDje7x/JrsshV4ia/Z6nfUaEZEO\",\n            \"phone_number\": \"01100000000\",\n            \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n            \"age\": 34,\n            \"role\": \"coach\",\n            \"salary\": 5000,\n            \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709125181/ElGymaweya/profile_picture-1709125291844.png\",\n            \"client_ids\": [],\n            \"working_days\": [\n                {\n                    \"day\": \"Monday\",\n                    \"start_time\": \"09:00\",\n                    \"end_time\": \"17:00\",\n                    \"_id\": \"65df2eaed0ed3a4b12f570fd\"\n                },\n                {\n                    \"day\": \"Tuesday\",\n                    \"start_time\": \"09:00\",\n                    \"end_time\": \"17:00\",\n                    \"_id\": \"65df2eaed0ed3a4b12f570fe\"\n                }\n            ],\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Coach By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0OTk2OSwiZXhwIjoxNzA5MTUzNTY5fQ.jNCKmqmo3KiK3tY1ad5c7p27XEm-gPepo92Th0zi_-s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:6000/coach/65df2eaed0ed3a4b12f570fc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"coach",
+								"65df2eaed0ed3a4b12f570fc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get coach by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0OTk2OSwiZXhwIjoxNzA5MTUzNTY5fQ.jNCKmqmo3KiK3tY1ad5c7p27XEm-gPepo92Th0zi_-s",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:6000/coach/65df2eaed0ed3a4b12f570fc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"coach",
+										"65df2eaed0ed3a4b12f570fc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "648"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"288-EizaKS+wGpf2FxvPhmMdZ3cmLP8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 20:01:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"coach is:\",\n    \"coach\": {\n        \"_id\": \"65df2eaed0ed3a4b12f570fc\",\n        \"full_name\": \"Ahmed Samy\",\n        \"email\": \"coach@coachh.com\",\n        \"password\": \"$2b$10$xyVpNgHIGi7iHlDPGLgfH.YUPsTDje7x/JrsshV4ia/Z6nfUaEZEO\",\n        \"phone_number\": \"01100000000\",\n        \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n        \"age\": 34,\n        \"role\": \"coach\",\n        \"salary\": 5000,\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709125181/ElGymaweya/profile_picture-1709125291844.png\",\n        \"client_ids\": [],\n        \"working_days\": [\n            {\n                \"day\": \"Monday\",\n                \"start_time\": \"09:00\",\n                \"end_time\": \"17:00\",\n                \"_id\": \"65df2eaed0ed3a4b12f570fd\"\n            },\n            {\n                \"day\": \"Tuesday\",\n                \"start_time\": \"09:00\",\n                \"end_time\": \"17:00\",\n                \"_id\": \"65df2eaed0ed3a4b12f570fe\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Coach",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0OTk2OSwiZXhwIjoxNzA5MTUzNTY5fQ.jNCKmqmo3KiK3tY1ad5c7p27XEm-gPepo92Th0zi_-s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/coach/65df2eaed0ed3a4b12f570fc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"coach",
+								"65df2eaed0ed3a4b12f570fc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete coach",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0OTk2OSwiZXhwIjoxNzA5MTUzNTY5fQ.jNCKmqmo3KiK3tY1ad5c7p27XEm-gPepo92Th0zi_-s",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6000/coach/65df2eaed0ed3a4b12f570fc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"coach",
+										"65df2eaed0ed3a4b12f570fc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "652"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28c-LpA8uIR/0t1XiIH7Auzx28AEK5U\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 20:04:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Coach Deleted\",\n    \"coach\": {\n        \"_id\": \"65df2eaed0ed3a4b12f570fc\",\n        \"full_name\": \"Ahmed Samy\",\n        \"email\": \"coach@coachh.com\",\n        \"password\": \"$2b$10$xyVpNgHIGi7iHlDPGLgfH.YUPsTDje7x/JrsshV4ia/Z6nfUaEZEO\",\n        \"phone_number\": \"01100000000\",\n        \"birth_date\": \"1990-01-01T00:00:00.000Z\",\n        \"age\": 34,\n        \"role\": \"coach\",\n        \"salary\": 5000,\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709125181/ElGymaweya/profile_picture-1709125291844.png\",\n        \"client_ids\": [],\n        \"working_days\": [\n            {\n                \"day\": \"Monday\",\n                \"start_time\": \"09:00\",\n                \"end_time\": \"17:00\",\n                \"_id\": \"65df2eaed0ed3a4b12f570fd\"\n            },\n            {\n                \"day\": \"Tuesday\",\n                \"start_time\": \"09:00\",\n                \"end_time\": \"17:00\",\n                \"_id\": \"65df2eaed0ed3a4b12f570fe\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Plan Requests",
+			"item": [
+				{
+					"name": "Add plan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0MDU3MiwiZXhwIjoxNzA5MTQ0MTcyfQ.DpP3PdGZQ-zPxzAO9LDF2M3xOfIu7yejbwY4KRf3haY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Basic",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Basic",
+									"type": "text"
+								},
+								{
+									"key": "fee",
+									"value": "200",
+									"type": "text"
+								},
+								{
+									"key": "profile_picture",
+									"type": "file",
+									"src": "/C:/Users/ahmad/Desktop/iti-logo.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:6000/plan/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"plan",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add plan",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0MDU3MiwiZXhwIjoxNzA5MTQ0MTcyfQ.DpP3PdGZQ-zPxzAO9LDF2M3xOfIu7yejbwY4KRf3haY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Basic",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Basic",
+											"type": "text"
+										},
+										{
+											"key": "fee",
+											"value": "200",
+											"type": "text"
+										},
+										{
+											"key": "profile_picture",
+											"type": "file",
+											"src": "/C:/Users/ahmad/Desktop/iti-logo.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:6000/plan/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"plan",
+										"add"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "262"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"106-veRS5AR2ubRj6qV6Ph8Pv1GJszI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 17:27:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Plan added successfully\",\n    \"plan\": {\n        \"title\": \"Basic\",\n        \"description\": \"Basic\",\n        \"fee\": 200,\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709141137/ElGymaweya/profile_picture-1709141248515.png\",\n        \"_id\": \"65df6d015e7842c0e967f077\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Plan",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0MDU3MiwiZXhwIjoxNzA5MTQ0MTcyfQ.DpP3PdGZQ-zPxzAO9LDF2M3xOfIu7yejbwY4KRf3haY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Basic",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Basic2",
+									"type": "text"
+								},
+								{
+									"key": "fee",
+									"value": "200",
+									"type": "text"
+								},
+								{
+									"key": "profile_picture",
+									"type": "file",
+									"src": "/C:/Users/ahmad/Desktop/iti-logo.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:6000/plan/65df2ebb570dfe7f7c9490eb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"plan",
+								"65df2ebb570dfe7f7c9490eb"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Plan",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0MDU3MiwiZXhwIjoxNzA5MTQ0MTcyfQ.DpP3PdGZQ-zPxzAO9LDF2M3xOfIu7yejbwY4KRf3haY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Basic",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Basic2",
+											"type": "text"
+										},
+										{
+											"key": "fee",
+											"value": "200",
+											"type": "text"
+										},
+										{
+											"key": "profile_picture",
+											"type": "file",
+											"src": "/C:/Users/ahmad/Desktop/iti-logo.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:6000/plan/65df2ebb570dfe7f7c9490eb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"plan",
+										"65df2ebb570dfe7f7c9490eb"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "254"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fe-Djk0SNy79LP2OOGc/Kj5JyNhLEo\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 17:17:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Updated\",\n    \"updatedplan\": {\n        \"_id\": \"65df2ebb570dfe7f7c9490eb\",\n        \"title\": \"Basic\",\n        \"description\": \"Basic2\",\n        \"fee\": 200,\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709140525/ElGymaweya/profile_picture-1709140636372.png\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Plans",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6000/plan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"plan"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Plans",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:6000/plan",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"plan"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "690"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b2-OK0j70dRFWJTHmBxJtcIUc7EAgY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 17:24:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Get all Plans\",\n    \"plans\": [\n        {\n            \"_id\": \"65de0dfa8de816bb867d0881\",\n            \"title\": \"Basic\",\n            \"description\": \"Basic\",\n            \"fee\": 100,\n            \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709051275/ElGymaweya/profile_picture-1709051385598.png\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"65df1af262b108c9492f7b58\",\n            \"title\": \"Plus\",\n            \"description\": \"Plus\",\n            \"fee\": 200,\n            \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709051275/ElGymaweya/profile_picture-1709051385598.png\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"65df2ebb570dfe7f7c9490eb\",\n            \"title\": \"Basic\",\n            \"description\": \"Basic2\",\n            \"fee\": 200,\n            \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709140525/ElGymaweya/profile_picture-1709140636372.png\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Plan By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6000/plan/65df2ebb570dfe7f7c9490eb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"plan",
+								"65df2ebb570dfe7f7c9490eb"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Plan By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:6000/plan/65df2ebb570dfe7f7c9490eb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"plan",
+										"65df2ebb570dfe7f7c9490eb"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "248"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f8-qT1GPYGbYT+g/QNT5hSs/8bY2gM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 17:28:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Plan is:\",\n    \"plan\": {\n        \"_id\": \"65df2ebb570dfe7f7c9490eb\",\n        \"title\": \"Basic\",\n        \"description\": \"Basic2\",\n        \"fee\": 200,\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709140525/ElGymaweya/profile_picture-1709140636372.png\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Plan",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0MDU3MiwiZXhwIjoxNzA5MTQ0MTcyfQ.DpP3PdGZQ-zPxzAO9LDF2M3xOfIu7yejbwY4KRf3haY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:6000/plan/65df6d015e7842c0e967f077",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"plan",
+								"65df6d015e7842c0e967f077"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Plan",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0MDU3MiwiZXhwIjoxNzA5MTQ0MTcyfQ.DpP3PdGZQ-zPxzAO9LDF2M3xOfIu7yejbwY4KRf3haY",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:6000/plan/65df6d015e7842c0e967f077",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"plan",
+										"65df6d015e7842c0e967f077"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "251"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fb-Y4w2sy3URJkwER+H1u5dorU92zQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 17:30:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"plan Deleted\",\n    \"plan\": {\n        \"_id\": \"65df6d015e7842c0e967f077\",\n        \"title\": \"Basic\",\n        \"description\": \"Basic\",\n        \"fee\": 200,\n        \"profile_picture\": \"https://res.cloudinary.com/dlljqtquk/image/upload/v1709141137/ElGymaweya/profile_picture-1709141248515.png\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "Add Transacton",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0OTc0MSwiZXhwIjoxNzA5MTUzMzQxfQ.kBqfy17JA5x7qyvMwzp5EjwnoU1zeXj-Yx9CeKaoO9A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"plan_id\": \"65df2cb7159391cf78979fac\",\r\n    \"client_id\": \"65ddaf185ce4de5d9bb1e617\",\r\n    \"order_id\":406548,\r\n    \"amount\":30,\r\n    \"subscriptionMonths\":5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/transaction",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Transacton",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0OTc0MSwiZXhwIjoxNzA5MTUzMzQxfQ.kBqfy17JA5x7qyvMwzp5EjwnoU1zeXj-Yx9CeKaoO9A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"plan_id\": \"65df2cb7159391cf78979fac\",\r\n    \"client_id\": \"65ddaf185ce4de5d9bb1e617\",\r\n    \"order_id\":406548,\r\n    \"amount\":30,\r\n    \"subscriptionMonths\":5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6000/transaction",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"transaction"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "309"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"135-59ziloAulXJ5I0qj7hLLYjckCMM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 19:49:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Transaction added successfully\",\n    \"transaction\": {\n        \"plan_id\": \"65df2cb7159391cf78979fac\",\n        \"client_id\": \"65ddaf185ce4de5d9bb1e617\",\n        \"order_id\": 406548,\n        \"subscriptionMonths\": 5,\n        \"payment_status\": \"Pending\",\n        \"amount\": 30,\n        \"transactionDateAndTime\": \"2024-02-28T19:49:37.533Z\",\n        \"_id\": \"65df8e51ec1a61759237b021\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6000/transaction",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Transactions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:6000/transaction",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"transaction"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "987"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3db-eRBY4KTJNaqcwWC8Fa4Lyjo1ApI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 19:50:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Get all transactions\",\n    \"trans\": [\n        {\n            \"_id\": \"65df051186b47db163a6d1b4\",\n            \"plan_id\": \"65de0dfa8de816bb867d0881\",\n            \"client_id\": \"65ddaf185ce4de5d9bb1e617\",\n            \"order_id\": 189078306,\n            \"subscriptionMonths\": 6,\n            \"payment_status\": \"Successful\",\n            \"amount\": 600,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"65df53fd4d00c995075bffdc\",\n            \"plan_id\": \"65df2cb7159391cf78979fac\",\n            \"client_id\": \"65ddaf185ce4de5d9bb1e617\",\n            \"order_id\": 20,\n            \"subscriptionMonths\": 6,\n            \"payment_status\": \"Pending\",\n            \"__v\": 0,\n            \"transactionDateAndTime\": \"2024-02-28T16:38:18.321Z\"\n        },\n        {\n            \"_id\": \"65df60ee154dce3fa75da25f\",\n            \"plan_id\": \"65df2cb7159391cf78979fac\",\n            \"client_id\": \"65ddaf185ce4de5d9bb1e617\",\n            \"order_id\": 406548,\n            \"subscriptionMonths\": 5,\n            \"payment_status\": \"Pending\",\n            \"amount\": 30,\n            \"transactionDateAndTime\": \"2024-02-28T16:35:58.276Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"65df8e51ec1a61759237b021\",\n            \"plan_id\": \"65df2cb7159391cf78979fac\",\n            \"client_id\": \"65ddaf185ce4de5d9bb1e617\",\n            \"order_id\": 406548,\n            \"subscriptionMonths\": 5,\n            \"payment_status\": \"Pending\",\n            \"amount\": 30,\n            \"transactionDateAndTime\": \"2024-02-28T19:49:37.533Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Transactions By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6000/transaction/65df051186b47db163a6d1b4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"transaction",
+								"65df051186b47db163a6d1b4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Transactions By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:6000/transaction/65df051186b47db163a6d1b4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"transaction",
+										"65df051186b47db163a6d1b4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "242"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f2-Hw/8H1Cf2uYO2uHisGcfUiuz5kM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 19:51:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"transation is:\",\n    \"trans\": {\n        \"_id\": \"65df051186b47db163a6d1b4\",\n        \"plan_id\": \"65de0dfa8de816bb867d0881\",\n        \"client_id\": \"65ddaf185ce4de5d9bb1e617\",\n        \"order_id\": 189078306,\n        \"subscriptionMonths\": 6,\n        \"payment_status\": \"Successful\",\n        \"amount\": 600,\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Transaction",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0OTk2OSwiZXhwIjoxNzA5MTUzNTY5fQ.jNCKmqmo3KiK3tY1ad5c7p27XEm-gPepo92Th0zi_-s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:6000/transaction/65df53fd4d00c995075bffdc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"transaction",
+								"65df53fd4d00c995075bffdc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Transacrtion",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0OTk2OSwiZXhwIjoxNzA5MTUzNTY5fQ.jNCKmqmo3KiK3tY1ad5c7p27XEm-gPepo92Th0zi_-s",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:6000/transaction/65df53fd4d00c995075bffdc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"transaction",
+										"65df53fd4d00c995075bffdc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "276"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"114-GVxNhj83IG+hssgJEydVs9kwlqg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 19:53:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Transaction Deleted\",\n    \"trans\": {\n        \"_id\": \"65df53fd4d00c995075bffdc\",\n        \"plan_id\": \"65df2cb7159391cf78979fac\",\n        \"client_id\": \"65ddaf185ce4de5d9bb1e617\",\n        \"order_id\": 20,\n        \"subscriptionMonths\": 6,\n        \"payment_status\": \"Pending\",\n        \"__v\": 0,\n        \"transactionDateAndTime\": \"2024-02-28T16:38:18.321Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Transaction",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0OTk2OSwiZXhwIjoxNzA5MTUzNTY5fQ.jNCKmqmo3KiK3tY1ad5c7p27XEm-gPepo92Th0zi_-s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n       \"plan_id\": \"65df2cb7159391cf78979fac\",\r\n    \"client_id\": \"65ddaf185ce4de5d9bb1e617\",\r\n    \"order_id\":20,\r\n    \"subscriptionMonths\":6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/transaction/65df051186b47db163a6d1b4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"transaction",
+								"65df051186b47db163a6d1b4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update transaction",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGRhZjE4NWNlNGRlNWQ5YmIxZTYxNyIsImlhdCI6MTcwOTE0OTk2OSwiZXhwIjoxNzA5MTUzNTY5fQ.jNCKmqmo3KiK3tY1ad5c7p27XEm-gPepo92Th0zi_-s",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n       \"plan_id\": \"65df2cb7159391cf78979fac\",\r\n    \"client_id\": \"65ddaf185ce4de5d9bb1e617\",\r\n    \"order_id\":20,\r\n    \"subscriptionMonths\":6\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6000/transaction/65df051186b47db163a6d1b4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"transaction",
+										"65df051186b47db163a6d1b4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "318"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"13e-JRH+5CkMFzqRFd0XtmGenOZ1je8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Feb 2024 19:54:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Transaction updated successfully\",\n    \"updatedTransaction\": {\n        \"_id\": \"65df051186b47db163a6d1b4\",\n        \"plan_id\": \"65df2cb7159391cf78979fac\",\n        \"client_id\": \"65ddaf185ce4de5d9bb1e617\",\n        \"order_id\": 20,\n        \"subscriptionMonths\": 6,\n        \"payment_status\": \"Successful\",\n        \"amount\": 600,\n        \"__v\": 0,\n        \"transactionDateAndTime\": \"2024-02-28T19:54:19.175Z\"\n    }\n}"
 						}
 					]
 				}

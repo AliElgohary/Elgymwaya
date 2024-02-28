@@ -4,7 +4,7 @@ import initConnection from "./Database/initConnection.js";
 import cors from "cors";
 import clientRoutes from "./src/modules/clients/client.routes.js";
 import planRoutes from "./src/modules/plans/plan.routes.js";
-import coachRoutes from "./src/modules/coaches/coachesroutes.js";
+import coachRoutes from "./src/modules/coaches/coaches.routes.js";
 import transactionRoutes from "./src/modules/transactions/transaction.routes.js";
 
 const server = express();
