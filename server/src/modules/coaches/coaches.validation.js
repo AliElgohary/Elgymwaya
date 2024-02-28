@@ -1,8 +1,8 @@
-import Joi, { array } from "joi";
+import Joi from "joi";
 
 const passwordPattern =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!$@#%&*])[A-Za-z\d!$@#%&*]{8,20}$/;
-  
+
 const timeRegex = /^(?:2[0-3]|[01][0-9]):[0-5][0-9]$/;
 
 export const addingCoachSchema = {
@@ -18,8 +18,8 @@ export const addingCoachSchema = {
       salary:Joi.number().positive().required(),
       client_ids:Joi.string().hex().min(24).max(24).required(),
       working_days:Joi.array(),
-      start_time: Joi.string.pattern(new RegExp(timeRegex)),
-      end_time: Joi.string.pattern(new RegExp(timeRegex))
+      //start_time: Joi.string().pattern(new RegExp(timeRegex)),
+      //end_time: Joi.string().pattern(new RegExp(timeRegex))
     }),
   };
 
@@ -37,7 +37,7 @@ export const addingCoachSchema = {
       salary:Joi.number().positive(),
       client_ids:Joi.string().hex().min(24).max(24),
       working_days:Joi.array(),
-      start_time: Joi.string.pattern(new RegExp(timeRegex)),
-      end_time: Joi.string.pattern(new RegExp(timeRegex))
+      //start_time: Joi.string.pattern(new RegExp(timeRegex)),
+      //end_time: Joi.string.pattern(new RegExp(timeRegex))
     }),
   };

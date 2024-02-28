@@ -4,6 +4,7 @@ import { auth } from "../../middleware/auth.js";
 import { upload } from "../../middleware/images.js";
 
 import { addCoach, deleteCoach, getAllcoaches, getcoachById } from "./controller/coaches.controller.js";
+import { UpdatingCoachSchema, addingCoachSchema } from "./coaches.validation.js";
 const coachRoutes = express.Router();
 
 // Add Coach - Validation - auth required
@@ -11,7 +12,7 @@ coachRoutes.post(
   "/coach/add",
   upload,
   auth,
-  //  validation(signUpSchema),
+  //validation(addingCoachSchema),
   addCoach
 );
 
@@ -20,7 +21,7 @@ coachRoutes.patch(
   "/coach/update",
   upload,
   auth,
-  //  validation(signUpSchema),
+  //validation(UpdatingCoachSchema),
   addCoach
 );
 
