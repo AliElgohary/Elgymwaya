@@ -13,6 +13,7 @@ import {
   changeCoach,
   changePassword,
   forgetPassword,
+  getAllClients,
   resetPassword,
   setCoach,
   signIn,
@@ -75,3 +76,6 @@ clientRoutes.patch("/client/setcoach", auth, setCoach);
 
 // Update Coach
 clientRoutes.patch("/client/changecoach", auth, changeCoach);
+
+// Get All Clients - auth
+clientRoutes.get("/client", auth, getAllClients);

@@ -71,6 +71,86 @@ export const addCoach = async (req, res) => {
   }
 };
 
+// Update Coach Data (Manager and Owner Only)
+export const updateCoach = async (req, res) => {
+  try {
+    const user = await clientModel.findById(req.userID);
+    if (!user) {
+      return res.status(404).send("User not found.");
+    }
+
+    // Check if the user's role is either manager or owner
+    const isAuthorized = user.role === "manager" || user.role === "owner";
+    if (!isAuthorized) {
+      return res
+        .status(403)
+        .send("Unauthorized: Only managers and owners can update coach data.");
+    }
+
+    const coachToUpdate = await coachModel.findById(req.params.coachId);
+    if (!coachToUpdate) {
+      return res.status(404).send("Coach not found.");
+    }
+
+    let workingDays = coachToUpdate.working_days;
+    if (req.body.working_days) {
+      try {
+        workingDays = JSON.parse(req.body.working_days);
+      } catch (error) {
+        return res.status(400).send("Invalid format for working_days.");
+      }
+    }
+
+    const {
+      full_name,
+      email,
+      phone_number,
+      birth_date,
+      salary,
+      password,
+      Cpassword,
+    } = req.body;
+
+    if (password && Cpassword) {
+      if (password !== Cpassword) {
+        return res.status(400).send("Passwords do not match");
+      }
+      const hashedPassword = await bcrypt.hash(password, 10);
+      coachToUpdate.password = hashedPassword;
+    }
+
+    // Check if the new email is already registered
+    if (email && email !== coachToUpdate.email) {
+      const foundUserEmail = await coachModel.findOne({ email: email });
+      if (foundUserEmail) {
+        return res
+          .status(400)
+          .send("Email already registered to another coach");
+      }
+      coachToUpdate.email = email;
+    }
+
+    // Update other fields
+    if (full_name) coachToUpdate.full_name = full_name;
+    if (phone_number) coachToUpdate.phone_number = phone_number;
+    if (birth_date) {
+      coachToUpdate.birth_date = birth_date;
+      coachToUpdate.age = calculateAge(new Date(birth_date));
+    }
+    if (salary) coachToUpdate.salary = salary;
+    if (req.file) coachToUpdate.profile_picture = req.file.path;
+    coachToUpdate.working_days = workingDays;
+
+    await coachToUpdate.save();
+    res
+      .status(200)
+      .json({ message: "Coach updated successfully", coach: coachToUpdate });
+  } catch (error) {
+    console.error("Error in updating coach:", error);
+    res.status(500).send("Error in updating coach: " + error.message);
+  }
+};
+
 // Helper function to calculate age from birth date
 function calculateAge(birthDate) {
   const today = new Date();
