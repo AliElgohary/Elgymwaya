@@ -5,6 +5,7 @@ import { sendPasswordResetMail } from "../../../services/sendEmail.js";
 import planModel from "../../../../Database/models/plan.model.js";
 import axios from "axios";
 import transactionModel from "../../../../Database/models/transaction.model.js";
+import crypto from "crypto";
 
 // Sign Up a New Client
 export const signUp = async (req, res) => {
@@ -336,6 +337,7 @@ async function generatePaymentKey(
       client_id: clientId,
       order_id: orderId,
       subscriptionMonths: subscriptionMonths,
+      amount: subscriptionFees / 100,
     });
 
     await newTransaction.save();
@@ -378,6 +380,46 @@ export const subscriptionint = async (req, res) => {
 export const subscriptionfin = async (req, res) => {
   try {
     console.log(req.body);
+    const hmacReceived = req.query.hmac;
+    const data = req.body.obj;
+    const hmacSecret = process.env.HMAC;
+
+    const concatenatedValues = [
+      data.amount_cents.toString(),
+      data.created_at,
+      data.currency,
+      data.error_occured.toString(),
+      data.has_parent_transaction.toString(),
+      data.id.toString(),
+      data.integration_id.toString(),
+      data.is_3d_secure.toString(),
+      data.is_auth.toString(),
+      data.is_capture.toString(),
+      data.is_refunded.toString(),
+      data.is_standalone_payment.toString(),
+      data.is_voided.toString(),
+      data.order.id.toString(),
+      data.owner.toString(),
+      data.pending.toString(),
+      data.source_data.pan,
+      data.source_data.sub_type,
+      data.source_data.type,
+      data.success.toString(),
+    ].join("");
+
+    const calculatedHmac = crypto
+      .createHmac("sha512", hmacSecret)
+      .update(concatenatedValues)
+      .digest("hex");
+
+    console.log("Concatenated String:", concatenatedValues);
+    console.log("Calculated HMAC:", calculatedHmac);
+    console.log("Received HMAC:", hmacReceived);
+
+    // Verify the HMAC
+    if (calculatedHmac !== hmacReceived) {
+      return res.status(401).send("Invalid HMAC authentication");
+    }
     const {
       obj: {
         success,
@@ -386,17 +428,21 @@ export const subscriptionfin = async (req, res) => {
       type,
     } = req.body;
 
+    // Find the transaction by the order ID regardless of the payment success
+    const transaction = await transactionModel.findOne({
+      order_id: orderId,
+    });
+
+    if (!transaction) {
+      return res.status(404).send("Transaction not found");
+    }
+
     if (!success) {
-      // Find the transaction by the order ID
-      const transaction = await transactionModel.findOne({
-        order_id: orderId,
-      });
-
-      if (!transaction) {
-        return res.status(404).send("Transaction not found");
-      }
-
       const { client_id, plan_id, subscriptionMonths } = transaction;
+
+      // Update payment status to successful
+      transaction.payment_status = "Successful";
+      await transaction.save(); // Make sure to save the updated transaction
 
       const client = await clientModel.findById(client_id);
       const plan = await planModel.findById(plan_id);
@@ -415,16 +461,20 @@ export const subscriptionfin = async (req, res) => {
 
         await client.save();
 
-        console.log("Client details after subscription update:", client);
+        // console.log("Client details after subscription update:", client);
         res.status(200).json({ message: "Subscription successful", client });
       } else {
         res.status(404).send("Client or Plan not found");
       }
     } else {
+      // Update payment status to rejected
+      transaction.payment_status = "Rejected";
+      await transaction.save();
+
       res.status(400).send("Payment failed");
     }
   } catch (error) {
-    console.error("Error processing Paymob callback:", error);
+    // console.error("Error processing Paymob callback:", error);
     res.status(500).send("Server error processing payment");
   }
 };
