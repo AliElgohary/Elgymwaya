@@ -1,0 +1,59 @@
+<div class="container-fluid	align-middle w-50 ">
+  <form #signInForm="ngForm" (ngSubmit)="login(user)" class="align-items-center">
+    <div class="form-group row mb-2">
+      <label for="userName" class="col-form-label">User Name</label>
+      <input
+        type="text"
+        name="userName"
+        class="form-control"
+        placeholder="Product Name"
+        required
+        minlength="6"
+        [(ngModel)]="user.userName"
+        #userNameInput="ngModel"
+        [ngClass]="{
+          'is-invalid':
+            (userNameInput.touched || userNameInput.dirty) &&
+            !userNameInput.valid
+        }"
+      />
+      <span class="invalid-feedback">
+        @if(userNameInput.errors?.['required']){
+        <span>Name is required</span>
+        } @if(userNameInput.errors?.['minlength']){
+        <span>Name at least 6 chars</span>
+        }
+      </span>
+    </div>
+    <div class="form-group row mb-2">
+      <label for="password" class="col-form-label col-md-2">Password</label>
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        placeholder="Password"
+        required
+        [(ngModel)]="user.password"
+        #passwordInput="ngModel"
+        [ngClass]="{
+          'is-invalid':
+            (passwordInput.touched || passwordInput.dirty) &&
+            !passwordInput.valid
+        }"
+      />
+      <span class="invalid-feedback">
+        @if(passwordInput.errors?.['required']){
+        <span>Password is required</span>
+        }
+      </span>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-success"
+      [disabled]="!signInForm.valid"
+    >
+      Login
+    </button>
+  </form>
+</div>

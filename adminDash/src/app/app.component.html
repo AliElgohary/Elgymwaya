@@ -1,5 +1,9 @@
-<div>
-  <app-header></app-header>
-  <app-navbar></app-navbar>
-  <router-outlet></router-outlet>
-</div>
+@if(isLoggedIn){
+  <div>
+    <app-header></app-header>
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
+  </div>
+} @else {
+  <app-login></app-login>
+}
