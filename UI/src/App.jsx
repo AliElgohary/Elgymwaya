@@ -1,10 +1,10 @@
 import "./App.css";
-import LogoutNav from "./components/LandingNavbar/LandingNav";
+import LandingLayout from "./layouts/LandingLayout/LandingLayout";
 
 function App() {
   return (
     <>
-      <LogoutNav></LogoutNav>
+      <LandingLayout />
     </>
   );
 }
