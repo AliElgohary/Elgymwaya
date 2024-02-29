@@ -1,5 +1,5 @@
-import clientModel from "../../../../Database/models/client.model";
-import workoutPlan from "../../../../Database/models/workoutPlan.model";
+import clientModel from "../../../../Database/models/client.model.js";
+import workoutPlan from "../../../../Database/models/workoutPlan.model.js";
 
 // Create Workou Plan - By Coaches Only
 export const createWorkoutPlan = async (req, res) => {
