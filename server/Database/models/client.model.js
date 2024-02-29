@@ -8,7 +8,11 @@ let clientSchema = new mongoose.Schema({
   phone_number: String,
   birth_date: Date,
   age: Number,
-  role: { type: String, default: "client" },
+  role: {
+    type: String,
+    default: "client",
+    enum: ["client", "manager", "owner"],
+  },
   profile_picture: String,
   height: Number,
   weight: Number,
