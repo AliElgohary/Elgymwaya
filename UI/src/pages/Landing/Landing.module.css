@@ -1,3 +1,6 @@
+/* body {
+  background: linear-gradient(to right, #beb0ffad, #eee4ee);
+} */
 .background {
   background: linear-gradient(to right, #beb0ffad, #eee4ee);
 }
@@ -13,4 +16,24 @@
 .customBtn:hover {
   background-color: rgba(118, 36, 194, 0.726);
   color: white;
+}
+.icon {
+  background-color: rgba(
+    158,
+    78,
+    233,
+    0.993
+  ); /* Replace with your desired background color */
+  border-radius: 50%; /* Make it a circle */
+  padding: 16px; /* Adjust padding as needed */
+  display: inline-block; /* Ensure inline display */
+  color: white;
+}
+.animat:hover {
+  transform: scale(1.07);
+  transition: transform 0.5s ease;
+}
+
+.animat:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
