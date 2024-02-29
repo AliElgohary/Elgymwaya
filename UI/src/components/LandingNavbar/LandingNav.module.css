@@ -1,0 +1,17 @@
+.navbar {
+  background: linear-gradient(to right, #beb0ffad, #eee4ee);
+}
+.brand {
+  font-weight: 700;
+  margin-left: 1rem;
+}
+.nav_img {
+  margin: 0;
+  height: 50px;
+  border-radius: 50px;
+  margin-left: 1rem;
+}
+.item_links {
+  margin-right: 1rem;
+  cursor: pointer;
+}
