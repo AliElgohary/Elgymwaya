@@ -43,16 +43,16 @@ const LogoutNav = () => {
                 <PiArrowBendRightDown size={30} />
               </Link>
             </li>
-            <li className="nav-item">
-              <a className={`nav-link fs-5 ${styles.item_links}`}>
-                Login
-                <IoLogIn size={30} />
-              </a>
-            </li>
             <li className="nav-item ">
               <a className={`nav-link fs-5 ${styles.item_links}`}>
                 Register
                 <RiUserAddFill size={25} />
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className={`nav-link fs-5 ${styles.item_links}`}>
+                Login
+                <IoLogIn size={30} />
               </a>
             </li>
           </ul>
