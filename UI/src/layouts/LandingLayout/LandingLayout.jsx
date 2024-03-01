@@ -1,11 +1,16 @@
+import LandingFooter from "../../components/LandingFooter/LandingFooter";
 import LogoutNav from "../../components/LandingNavbar/LandingNav";
 import Landing from "../../pages/Landing/Landing";
+import styles from "./LandingLayout.module.css";
 
 const LandingLayout = () => {
   return (
     <>
-      <LogoutNav />
-      <Landing />
+      <div className={styles.back}>
+        <LogoutNav />
+        <Landing />
+        <LandingFooter />
+      </div>
     </>
   );
 };

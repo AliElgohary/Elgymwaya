@@ -1,0 +1,9 @@
+.link {
+  color: rgba(131, 44, 212, 0.993);
+}
+
+@media (max-width: 768px) {
+  .responsive {
+    justify-content: center;
+  }
+}
