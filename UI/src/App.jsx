@@ -1,12 +1,13 @@
 import "./App.css";
 import Register from "./pages/Register/Register";
 // import UserHomePage from "./pages/UserHomePage/UserHomePage";
+// import LandingLayout from "./layouts/LandingLayout/LandingLayout";
 
 function App() {
   return (
     <>
       {/* <UserHomePage /> */}
-      {/*<LandingLayout />*/}
+      {/* <LandingLayout /> */}
       {/* <Login></Login> */}
       {/*<CaloriesCalculator/>*/}
       <Register />

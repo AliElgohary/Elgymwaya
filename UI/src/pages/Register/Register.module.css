@@ -2,7 +2,15 @@ body {
   background: linear-gradient(to right, #4520ecad, #eee4ee);
   font-family: sans-serif;
 }
+.inputsWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
 
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 .loginHolder {
   display: flex;
   flex-direction: column;
@@ -34,38 +42,11 @@ body {
 }
 .gym_title {
   color: rgb(135, 31, 161);
-}
-.input {
-  width: 20vw;
-  border-radius: 20px;
-  background: linear-gradient(to right, #d9c3f873, #eee4ee);
-  border: 2px solid rgb(235, 235, 235); /* Add an initial border color */
-  padding: 10px;
-  margin-bottom: 15px;
-  transition: border-color 0.3s;
-  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
 
-.input:focus {
-  border-color: #4d34db4d;
-  outline: none;
-  /* Change the border color to your desired color when in focus */
-}
-.input-with-icon {
-  position: relative;
-}
-
-.input-with-icon input::placeholder {
-  padding-left: 30px; /* Adjust the padding as needed */
-}
-
-.input-with-icon .placeholder-icon {
-  position: absolute;
-  left: 10px; /* Adjust the left position as needed */
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px; /* Adjust the font size as needed */
-}
 .btn {
   border: none;
   color: white;

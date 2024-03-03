@@ -5,9 +5,11 @@
   display: inline-block;
   color: white;
 }
+.animat {
+  transition: transform 0.5s ease-in-out;
+}
 .animat:hover {
   transform: scale(1.07);
-  transition: transform 0.5s ease;
 }
 
 .animat:hover {

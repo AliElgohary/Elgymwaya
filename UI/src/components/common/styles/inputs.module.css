@@ -1,0 +1,50 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.inputGroup {
+  display: flex;
+  align-items: center;
+  svg {
+    color: #535353;
+  }
+  position: relative;
+}
+.inputGroup .iconWrapper {
+  position: absolute;
+  left: 7px;
+}
+.inputGroup .inputWrapper {
+}
+.inputGroup .input {
+  padding-left: 30px;
+}
+
+.input {
+  border-radius: 5px;
+  background: white;
+  border: none;
+  padding: 6px 8px;
+  transition: box-shadow 0.1s ease-in-out;
+  outline: none;
+}
+.input::placeholder {
+  color: #e2e2e2;
+}
+
+.input:focus {
+  box-shadow: 0px 0px 0.5px 2.5px #711eba68;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  height: 10px;
+  margin-top: 7px;
+}
+.errorField {
+  font-size: 10px;
+  font-weight: bold;
+  color: rgb(177, 7, 7);
+}
