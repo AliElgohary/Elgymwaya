@@ -27,7 +27,7 @@ const Login = () => {
           ></input>
           <button className={styles.btn}>Login</button>
           <h6 className="text-muted ">
-            Don't have an account yet?
+            Dont have an account yet?
             <span className="text-dark mx-2 fw-bold ">Register Now</span>
           </h6>
         </form>
