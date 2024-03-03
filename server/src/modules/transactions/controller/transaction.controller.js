@@ -125,6 +125,5 @@ export const updateTransaction = async (req, res) => {
   if (!updatedTransaction) {
     return res.json({ message: "Transaction not found." });
   }
-
   res.json({ message: "Transaction updated successfully", updatedTransaction });
 };

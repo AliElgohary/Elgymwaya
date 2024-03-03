@@ -1,0 +1,19 @@
+/* body {
+  background: linear-gradient(to right, #beb0ffad, #eee4ee);
+} */
+/* .background {
+  background: linear-gradient(to right, #beb0ffad, #eee4ee);
+} */
+.header {
+  color: rgb(255, 0, 140);
+}
+.title {
+  color: rgb(118, 36, 194);
+}
+.customBtn {
+  border: 1px dotted black;
+}
+.customBtn:hover {
+  background-color: rgba(118, 36, 194, 0.726);
+  color: white;
+}

@@ -4,33 +4,33 @@
   box-sizing: border-box;
 }
 
-div {
-  color: #343a40;
-  font-size: 24px;
-  height: 100vh;
-  text-align: center;
-  font-weight: bold;
-  display: grid;
-  grid-template-columns: 400px 0 1fr;
-  grid-template-rows: 80px 1fr;
-}
+// div {
+//   color: #343a40;
+//   font-size: 24px;
+//   height: 100vh;
+//   text-align: center;
+//   font-weight: bold;
+//   display: grid;
+//   grid-template-columns: 400px 0 1fr;
+//   grid-template-rows: 80px 1fr;
+// }
 
-app-header {
-  grid-column: 1 / -1;
-  background-color: #7048e8;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 0 40px;
-  border-radius: 0 0 10px 10px;
-}
+// app-header {
+//   grid-column: 1 / -1;
+//   background-color: #7048e8;
+//   display: flex;
+//   align-items: center;
+//   gap: 12px;
+//   padding: 0 40px;
+//   border-radius: 0 0 10px 10px;
+// }
 
-app-navbar {
-  background-color: #e9ecef;
-  padding: 40px;
-  overflow: scroll;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  padding-top: 24px;
-}
+// app-navbar {
+//   background-color: #e9ecef;
+//   padding: 40px;
+//   overflow: scroll;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 40px;
+//   padding-top: 24px;
+// }

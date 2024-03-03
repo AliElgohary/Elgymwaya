@@ -1,0 +1,30 @@
+.routineContainer{
+    background-color: #fff;
+    margin: 12px 0 12px;
+    padding: 20px;
+}
+.DaysBoxs{
+    border-radius: 10px;
+    background-color:  #c084fc;
+    height: 50px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.DaysBoxs p{
+    font-weight: 700;
+    text-align: center;
+    width: fit-content;
+    margin: 0;
+}
+.day{
+    background-color: #fff;
+    color: #c084fc;
+    font-size: 12px;
+    font-weight: 800;
+    transform: rotate(-90deg);
+    position: absolute;
+    left: 5px;
+}

@@ -1,0 +1,22 @@
+.UserInfoBox{
+    background-color: #fff;
+    padding: 20px;
+}
+h2{
+    font-weight: bold;
+    color: rgb(71, 68, 68);
+    font-size: 25px;
+}
+.userImage{
+    width: 40px;
+    margin-right: 10px;
+}
+.infoHead{
+    font-size: 16px;
+    margin-top: 15px;
+    font-weight: 800;
+    color: rgba(71, 68, 68, 0.551);
+}
+span{
+    color: rgb(71, 68, 68);
+}
