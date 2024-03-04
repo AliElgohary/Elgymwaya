@@ -14,8 +14,11 @@
   position: absolute;
   left: 7px;
 }
-.inputGroup .inputWrapper {
+.iconWrapper {
+  padding-bottom: 3px;
 }
+/* .inputGroup .inputWrapper {
+} */
 .inputGroup .input {
   padding-left: 30px;
 }

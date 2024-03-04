@@ -1,7 +1,15 @@
 import { useMemo, useState } from "react";
 import InputWithIcon from "../../components/common/InputWithIcon";
 import styles from "./Register.module.css";
-import { IoBarbellOutline, IoPerson, IoLockClosed } from "react-icons/io5";
+import {
+  IoBarbellOutline,
+  IoPerson,
+  IoLockClosed,
+  IoPersonOutline,
+} from "react-icons/io5";
+import { FaWeightScale, FaPhone } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+import { CiLineHeight } from "react-icons/ci";
 import Joi from "joi";
 
 const Register = () => {
@@ -18,12 +26,17 @@ const Register = () => {
   const [errors, setErrors] = useState({}); // [key: string] : string[]  {"name": ["name is required", "name must be at least 5 chars"]}
   const validationRules = useMemo(
     () => ({
-      name: Joi.string().trim().required().label("name"),
+      name: Joi.string().required().label("name"),
       email: Joi.string()
-        .trim()
         .email({ tlds: { allow: false } })
         .required()
         .label("email"),
+      weight: Joi.number().required().label("weight"),
+      height: Joi.number().required().label("height"),
+      age: Joi.number().required().label("age"),
+      phoneNumber: Joi.number().required().label("phoneNumber"),
+      password: Joi.string().required().label("password"),
+      cPassword: Joi.string().required().label("cPassword"),
     }),
     []
   );
@@ -40,7 +53,7 @@ const Register = () => {
       }
     }
     if (valid) {
-      // send api
+      //TODO: send api
       alert(JSON.stringify(data));
     }
   };
@@ -71,7 +84,7 @@ const Register = () => {
       <div className={styles.custom_form_holder}>
         <form className={styles.custom_form} onSubmit={handleSubmit}>
           <h1 className={`${styles.gym_title} fw-bold`}>
-            EL GYMAWEYA
+            ELGYMAWEYA
             <IoBarbellOutline size={60} />
           </h1>
           <h3 className="fw-bold">Register</h3>
@@ -89,37 +102,48 @@ const Register = () => {
               onChange={(e) => handleInputChange(e, "email")}
               placeholder={"email"}
               errors={errors["email"]}
+              Icon={MdEmail}
             />
             <InputWithIcon
               type="number"
               onChange={(e) => handleInputChange(e, "weight")}
               placeholder={"weight"}
+              errors={errors["weight"]}
+              Icon={FaWeightScale}
             />
             <InputWithIcon
               type="number"
               onChange={(e) => handleInputChange(e, "height")}
               placeholder={"height"}
+              errors={errors["height"]}
+              Icon={CiLineHeight}
             />
             <InputWithIcon
               type="number"
               onChange={(e) => handleInputChange(e, "age")}
               placeholder={"age"}
+              errors={errors["age"]}
+              Icon={IoPersonOutline}
             />
             <InputWithIcon
               type="number"
               onChange={(e) => handleInputChange(e, "phoneNumber")}
               placeholder={"phone number"}
+              errors={errors["phoneNumber"]}
+              Icon={FaPhone}
             />
             <InputWithIcon
               type="password"
               onChange={(e) => handleInputChange(e, "password")}
               placeholder={"password"}
+              errors={errors["password"]}
               Icon={IoLockClosed}
             />
             <InputWithIcon
               type="password"
               onChange={(e) => handleInputChange(e, "cPassword")}
               placeholder={"confirm password"}
+              errors={errors["cPassword"]}
               Icon={IoLockClosed}
             />
           </div>
