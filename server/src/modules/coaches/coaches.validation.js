@@ -11,7 +11,7 @@ export const addingCoachSchema = {
       email: Joi.string().email().required(),
       password: Joi.string().pattern(new RegExp(passwordPattern)).required(),
       Cpassword: Joi.string().valid(Joi.ref("password")).required(),
-      phone_number: Joi.string().required(),
+      phone_number: Joi.string().pattern(/^(01)[0-9]{9}$/).required(),
       birth_date: Joi.date().less("now").required(),
       age: Joi.number().min(15).max(60).required(),
       role:Joi.string(),
