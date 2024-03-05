@@ -350,6 +350,46 @@ export const changeCoach = async (req, res) => {
   }
 };
 
+// give  Coach feedback
+export const giveCoachFeedback = async (req, res) => {
+  try {
+    const clientID = req.userID;
+    const { rating, comment } = req.body;
+
+    const client = await clientModel.findById(clientID).select("coach_id");
+    if (!client || !client.coach_id) {
+      return res
+        .status(404)
+        .send({ message: "Client or client's coach not found." });
+    }
+
+    const coach = await coachModel.findById(client.coach_id);
+    if (!coach) {
+      return res.status(404).send({ message: "Coach not found." });
+    }
+
+    coach.feedbacks.push({
+      client_id: clientID,
+      rating,
+      comment,
+      date: new Date(),
+    });
+
+    await coach.save();
+
+    res
+      .status(201)
+      .send({ message: "Feedback successfully added to your coach." });
+  } catch (error) {
+    res
+      .status(500)
+      .send({
+        message: "An error occurred while submitting feedback.",
+        error: error.toString(),
+      });
+  }
+};
+
 export const getAllClients = async (req, res) => {
   try {
     // Fetch the user based on req.userID set by your authentication middleware

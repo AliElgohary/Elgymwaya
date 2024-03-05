@@ -30,6 +30,14 @@ let coachSchema = new mongoose.Schema({
       end_time: String, // Could be 'HH:mm' 24h format
     },
   ],
+  feedbacks: [
+    {
+      client_id: { type: mongoose.Schema.Types.ObjectId, ref: "Client" },
+      rating: { type: Number, min: 1, max: 5 },
+      comment: String,
+      date: { type: Date, default: Date.now },
+    },
+  ],
 });
 
 const coachModel = mongoose.model("Coach", coachSchema);

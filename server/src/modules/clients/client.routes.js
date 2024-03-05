@@ -15,6 +15,7 @@ import {
   forgetPassword,
   getAllClients,
   getClientById,
+  giveCoachFeedback,
   resetPassword,
   setCoach,
   signIn,
@@ -77,6 +78,9 @@ clientRoutes.patch("/client/setcoach", auth, setCoach);
 
 // Update Coach
 clientRoutes.patch("/client/changecoach", auth, changeCoach);
+
+// feedback Coach
+clientRoutes.post("/client/feedback", auth, giveCoachFeedback);
 
 // Get All Clients - auth
 clientRoutes.get("/client", auth, getAllClients);

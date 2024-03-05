@@ -151,17 +151,6 @@ export const updateCoach = async (req, res) => {
   }
 };
 
-// Helper function to calculate age from birth date
-function calculateAge(birthDate) {
-  const today = new Date();
-  const age = today.getFullYear() - birthDate.getFullYear();
-  const m = today.getMonth() - birthDate.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-    age--;
-  }
-  return age;
-}
-
 export const getAllcoaches = async (req, res) => {
   try {
     const user = await clientModel.findById(req.userID);
@@ -210,6 +199,51 @@ export const getcoachById = async (req, res) => {
   }
 };
 
+export const getcoachFeedbackById = async (req, res) => {
+  try {
+    const coachId = req.params.id;
+    const coach = await coachModel.findById(coachId).select("feedbacks");
+
+    if (!coach) {
+      return res.status(404).send({ message: "Coach not found." });
+    }
+
+    res.send(coach.feedbacks);
+  } catch (error) {
+    res.status(500).send({
+      message: "An error occurred while fetching the coach's feedbacks.",
+      error: error.toString(),
+    });
+  }
+};
+
+export const getcoachRatingById = async (req, res) => {
+  try {
+    const coachId = req.params.id;
+    const coach = await coachModel.findById(coachId).select("feedbacks");
+
+    if (!coach || !coach.feedbacks || coach.feedbacks.length === 0) {
+      return res.status(404).send({
+        message:
+          "No feedbacks found for the coach to calculate an average rating.",
+      });
+    }
+
+    // Calculate the average rating
+    const averageRating =
+      coach.feedbacks.reduce((acc, curr) => acc + curr.rating, 0) /
+      coach.feedbacks.length;
+
+    res.send({ averageRating: averageRating.toFixed(2) });
+  } catch (error) {
+    res.status(500).send({
+      message:
+        "An error occurred while calculating the coach's average rating.",
+      error: error.toString(),
+    });
+  }
+};
+
 export const deleteCoach = async (req, res) => {
   const user = await clientModel.findById(req.userID);
   if (!user) {
@@ -229,3 +263,14 @@ export const deleteCoach = async (req, res) => {
     res.json({ message: "Coach not found" });
   }
 };
+
+// Helper function to calculate age from birth date
+function calculateAge(birthDate) {
+  const today = new Date();
+  const age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
