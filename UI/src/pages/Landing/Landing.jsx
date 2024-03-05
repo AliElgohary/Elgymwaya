@@ -1,5 +1,6 @@
 import styles from "./Landing.module.css";
 import Features from "./../../components/Features/Features";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
@@ -16,10 +17,16 @@ const Landing = () => {
               "Unleash Your Potential, Powered By Fitness!"
             </p>
             <div className="text-center">
-              <button className={`btn mx-2 ${styles.customBtn}`}>
-                Register Now
-              </button>
-              <button className={`btn mx-2 ${styles.customBtn}`}>Login</button>
+              <Link to="/register">
+                <button className={`btn mx-2 ${styles.customBtn}`}>
+                  Register Now
+                </button>
+              </Link>
+              <Link to="/login">
+                <button className={`btn mx-2 ${styles.customBtn}`}>
+                  Login
+                </button>
+              </Link>
             </div>
           </div>
         </div>

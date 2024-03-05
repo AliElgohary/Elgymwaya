@@ -3,18 +3,19 @@ import { IoLogIn } from "react-icons/io5";
 import { RiUserAddFill } from "react-icons/ri";
 import { IoBarbellOutline } from "react-icons/io5";
 import { PiArrowBendRightDown } from "react-icons/pi";
-
-import { Link } from "react-scroll";
+import { Link as RouterLink } from "react-router-dom";
+// Import Link from react-scroll
+import { Link as ScrollLink } from "react-scroll";
 const LogoutNav = () => {
   return (
     <>
       <nav className={`navbar navbar-expand-lg  ${styles.navbar}`}>
-        <a className="text-decoration-none">
+        <h3>
           <span className={`navbar-brand  ${styles.brand}`}>
             ELGYMAWEYA
             <IoBarbellOutline size={35} />
           </span>
-        </a>
+        </h3>
         <button
           className="navbar-toggler"
           type="button"
@@ -32,7 +33,7 @@ const LogoutNav = () => {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link
+              <ScrollLink
                 to="features" // Specify the id of the target section
                 spy={true}
                 smooth={true}
@@ -41,19 +42,25 @@ const LogoutNav = () => {
               >
                 Features
                 <PiArrowBendRightDown size={30} />
-              </Link>
+              </ScrollLink>
             </li>
             <li className="nav-item ">
-              <a className={`nav-link fs-5 ${styles.item_links}`}>
+              <RouterLink
+                to="/register"
+                className={`nav-link fs-5 ${styles.item_links}`}
+              >
                 Register
                 <RiUserAddFill size={25} />
-              </a>
+              </RouterLink>
             </li>
             <li className="nav-item">
-              <a className={`nav-link fs-5 ${styles.item_links}`}>
+              <RouterLink
+                to="/login"
+                className={`nav-link fs-5 ${styles.item_links}`}
+              >
                 Login
                 <IoLogIn size={30} />
-              </a>
+              </RouterLink>
             </li>
           </ul>
         </div>
