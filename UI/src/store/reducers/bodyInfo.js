@@ -4,28 +4,28 @@ const initialState={weight:0 , height:0 , gender:"male", age:0}
 const bodyInfoSlice = createSlice({
     name: 'bodyInfo',
     initialState:initialState,
-    BmiCalc:{
-        weight:(state,action)=>{
+    reducers:{
+        weightValue:(state,action)=>{
             state.weight = action.payload;
         },
-        height:(state,action)=>{
+        heightValue:(state,action)=>{
             state.height = action.payload;
         },
-        gender:(state,action)=>{
+        genderValue:(state,action)=>{
             state.gender = action.payload;
         },
-        age:(state,action)=>{
+        ageValue:(state,action)=>{
             state.age = action.payload;
         },
-        bodyBmi:(state,action)=>{
+        bodyBmiValue:(state,action)=>{
             state.Bmi=action.payload;
         },
-        caloriesInDay:(state,action)=>{
+        caloriesInDayValue:(state,action)=>{
             state.caloriesInDay=action.payload;
         }
 
     }
 })
 
-export const{height,weight,gender,age,bodyBmi,caloriesInDay} = bodyInfoSlice.actions;
+export const {caloriesInDayValue,bodyBmiValue,ageValue,genderValue,heightValue,weightValue} = bodyInfoSlice.actions;
 export default bodyInfoSlice.reducer;
