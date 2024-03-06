@@ -2,6 +2,8 @@
 import React from 'react'
 import { useState } from "react";
 import { Col, Form, InputGroup, Row, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPerson, faWeightScale } from '@fortawesome/free-solid-svg-icons';
 
 // eslint-disable-next-line react/prop-types
 function BmiClacForm({calcBmi}) {
@@ -11,6 +13,15 @@ function BmiClacForm({calcBmi}) {
     e.preventDefault();
     calcBmi(weight, height);
   }
+
+//   -----------------
+  const handelReset = (e)=>{
+    e.preventDefault();
+    setWeight(0);
+    setHeight(0);
+    calcBmi(weight ,height);
+  }
+
   return (
      
     <Form onSubmit={handelCalcBmi}>
@@ -20,7 +31,7 @@ function BmiClacForm({calcBmi}) {
                 weight
             </Form.Label>
             <InputGroup className="mb-2">
-                <InputGroup.Text>@</InputGroup.Text>
+                <InputGroup.Text><FontAwesomeIcon icon={faWeightScale} /></InputGroup.Text>
                 <Form.Control id="inlineFormInputGroup" placeholder="Weight" value={weight>0?weight:""} onChange={(e)=>setWeight(e.target.value)} required />
             </InputGroup>
             </Col>
@@ -30,7 +41,7 @@ function BmiClacForm({calcBmi}) {
                 height
             </Form.Label>
             <InputGroup className="mb-2">
-                <InputGroup.Text>@</InputGroup.Text>
+                <InputGroup.Text><FontAwesomeIcon icon={faPerson} /></InputGroup.Text>
                 <Form.Control id="inlineFormInputGroup" placeholder="Height" value={height>0?height:""}  onChange={(e)=>setHeight(e.target.value)} required />
             </InputGroup>
             </Col>
@@ -41,6 +52,7 @@ function BmiClacForm({calcBmi}) {
                 type="submit"
                 className="px-4 mx-2"
                 style={{ backgroundColor: "#eee", color: "#000" }}
+                onClick={handelReset}
                 >
                 Clear
                 </Button>
