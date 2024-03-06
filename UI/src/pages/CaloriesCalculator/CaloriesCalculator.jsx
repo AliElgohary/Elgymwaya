@@ -6,7 +6,7 @@ import style from './CaloriesCalculator.module.css'
 function CaloriesCalculator() {
   return (
     <div  className={style.wrapper}>
-        <Container className={style.myCustomContainer}>
+        <Container style={{maxWidth:"800px"}}>
             <CalculatorHeader headerTitle="Calorie Calculator" />
             <CalculatorForm/>
         </Container>
