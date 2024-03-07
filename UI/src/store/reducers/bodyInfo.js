@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialState={weight:0 , height:0 , gender:"male", age:0}
+const initialState={weight:null , height:null , gender:"male", age:null}
 const bodyInfoSlice = createSlice({
     name: 'bodyInfo',
     initialState:initialState,

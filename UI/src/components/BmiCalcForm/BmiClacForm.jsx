@@ -16,7 +16,6 @@ function BmiClacForm({calcBmi}) {
 
 //   -----------------
   const handelReset = (e)=>{
-    e.preventDefault();
     setWeight(0);
     setHeight(0);
     calcBmi(weight ,height);

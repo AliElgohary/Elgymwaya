@@ -16,6 +16,7 @@ import {
   heightValue,
   weightValue,
 } from "../../store/reducers/bodyInfo";
+import { Link } from "react-router-dom";
 
 
 
@@ -37,24 +38,27 @@ function BmiCalc() {
   
   const cartStyle = {
     backgroundColor:"inherit",
-    display:`${GlobalState.userBodyInfo.Bmi? "block" : "none"}`,
+    // display:`${GlobalState.userBodyInfo.Bmi? "block" : "none"}`,
     transition:"1s ease",
   }
   return (
     <div className={style.wrapper}>
       <Container style={{ maxWidth: "800px" }}>
+      
+      <Link to='/caloriesCalculator' type="button" className={`btn btn-secondary ${style.routesBtn}`}>Calories Calculator</Link>
         <CalculatorHeader headerTitle="Bmi Calculator" />
         <BmiClacForm calcBmi={calcBmi} />
+        {GlobalState.userBodyInfo.Bmi>0&&<Card className="mt-3" style={cartStyle}>
+        <Card.Body>
+          <Card.Text>
+            <span>Your Body Mass Index is</span>
+            <h2 className="text-light d-inline m-2">{GlobalState.userBodyInfo.Bmi}</h2>
+          </Card.Text>
+        </Card.Body>
+        <Card.Img variant="bottom" src={bmiRangesImage} />
+   </Card>
+        }
         
-            <Card className="mt-3" style={cartStyle}>
-                <Card.Body>
-                  <Card.Text>
-                    <span>Your Body Mass Index is</span>
-                    <h2 className="text-light d-inline m-2">{GlobalState.userBodyInfo.Bmi}</h2>
-                  </Card.Text>
-                </Card.Body>
-                <Card.Img variant="bottom" src={bmiRangesImage} />
-           </Card>
         
       </Container>
     </div>

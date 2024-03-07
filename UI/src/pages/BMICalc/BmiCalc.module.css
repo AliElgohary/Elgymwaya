@@ -6,3 +6,14 @@
     padding-top: 100px;
     background-image: linear-gradient(to right , #6465ed , #4c6ee8 , #3c82f7);
 }
+.routesBtn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    /* background-color:#3c82f7; */
+    transition:  .3s ease;
+}
+.routesBtn:hover {
+     background-color: #3c82f7;
+    };
