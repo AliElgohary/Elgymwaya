@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const workoutPlanSchema = new mongoose.Schema({
-  client_id: { type: mongoose.Schema.Types.ObjectId, ref: "Client" },
+  client_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   coach_id: { type: mongoose.Schema.Types.ObjectId, ref: "Coach" },
   start_date: Date,
   end_date: Date,

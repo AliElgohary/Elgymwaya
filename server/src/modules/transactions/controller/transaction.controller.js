@@ -1,10 +1,10 @@
-import clientModel from "../../../../Database/models/client.model.js";
+import userModel from "../../../../Database/models/user.model.js";
 import transactionModel from "../../../../Database/models/transaction.model.js";
 
 // Add Transaction
 export const addTransaction = async (req, res) => {
   try {
-    const user = await clientModel.findById(req.userID);
+    const user = await userModel.findById(req.userID);
     if (!user) {
       return res.status(404).send("User not found.");
     }
@@ -67,7 +67,7 @@ export const getTransactionById = async (req, res) => {
 };
 // Delete Transaction
 export const deleteTransaction = async (req, res) => {
-  const user = await clientModel.findById(req.userID);
+  const user = await userModel.findById(req.userID);
   if (!user) {
     return res.status(404).send("User not found.");
   }
@@ -87,7 +87,7 @@ export const deleteTransaction = async (req, res) => {
 };
 // Update Transaction
 export const updateTransaction = async (req, res) => {
-  const user = await clientModel.findById(req.userID);
+  const user = await userModel.findById(req.userID);
   if (!user) {
     return res.status(404).send("User not found.");
   }

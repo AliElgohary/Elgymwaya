@@ -11,7 +11,7 @@ let coachSchema = new mongoose.Schema({
   role: { type: String, default: "coach" },
   salary: Number,
   profile_picture: String,
-  client_ids: [{ type: mongoose.Schema.Types.ObjectId, ref: "Client" }],
+  client_ids: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   working_days: [
     {
       day: {
