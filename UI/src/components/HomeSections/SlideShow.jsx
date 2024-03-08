@@ -15,7 +15,7 @@ function SlideShow() {
     <div>
       <section
         className="slider container mb-3 position-relative"
-        style={{ minHeight: "80vh" }}
+        style={{ minHeight: "100vh" }}
       >
         <Carousel interval={3000} className={style.carousel}>
           {/****************/}
@@ -58,7 +58,7 @@ function SlideShow() {
           {/****************/}
           <Carousel.Item className="slide">
             <div className="wrapper d-flex flex-lg-row flex-sm-column justify-content-center">
-              <div className="align-self-end w-50">
+              <div className="align-self-start w-50">
                 <img className="d-block w-75" src={s4} alt="Third slide" />
                 <Link
                   to="/"
@@ -68,7 +68,7 @@ function SlideShow() {
                 </Link>
               </div>
 
-              <div className="align-self-start w-50">
+              <div className="align-self-end w-50">
                 <Link
                   to="/"
                   className="text-light text-decoration-none fw-bold"

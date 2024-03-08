@@ -5,6 +5,7 @@ import styles from "./LandingLayout.module.css";
 import "../../styles/vars.css";
 import { Outlet } from "react-router-dom";
 import SlideShow from "../../components/HomeSections/SlideShow";
+import SomeFeature from "../../components/SomeFeature/SomeFeature";
 const LandingLayout = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const LandingLayout = () => {
           <SlideShow/>
         </div>
         <Outlet />
+        <SomeFeature/>
         <LandingFooter />
       </div>
     </>
