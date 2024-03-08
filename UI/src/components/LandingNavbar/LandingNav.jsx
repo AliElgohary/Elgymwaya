@@ -4,16 +4,17 @@ import { RiUserAddFill } from "react-icons/ri";
 import { IoBarbellOutline } from "react-icons/io5";
 import { PiArrowBendRightDown } from "react-icons/pi";
 import { Link as RouterLink } from "react-router-dom";
+import logo from '../../assets/main_icon/dumbbell-svgrepo-com (2).png'
 // Import Link from react-scroll
 import { Link as ScrollLink } from "react-scroll";
 const LogoutNav = () => {
   return (
     <>
-      <nav className={`navbar navbar-expand-lg  ${styles.navbar}`}>
+      <nav className={`navbar navbar-expand-lg text-light p-3 ${styles.navbar}`}>
         <h3>
-          <span className={`navbar-brand  ${styles.brand}`}>
+          <span className={`navbar-brand text-light ${styles.brand}`}>
             ELGYMAWEYA
-            <IoBarbellOutline size={35} />
+            <img src={logo}  style={{width:"40px"}}/>
           </span>
         </h3>
         <button
