@@ -1,0 +1,26 @@
+.header {
+    color: rgb(255, 0, 140);
+  }
+  .title {
+    color: rgb(118, 36, 194);
+  }
+  .customBtn {
+    border: 1px dotted black;
+  }
+  .customBtn:hover {
+    background-color: rgba(118, 36, 194, 0.726);
+    color: white;
+  }
+  .mainHeader{
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    font-size: 7rem;
+    z-index: 1;
+    color: #de3726;
+    font-style: italic;
+    font-weight: 800;
+  }
+  .carousel{
+    z-index: 0;
+  }

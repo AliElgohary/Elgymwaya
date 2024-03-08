@@ -12,10 +12,13 @@
   margin-left: 1rem;
 }
 .item_links {
-  color: rgba(20, 20, 20, 0.822);
+  color: #e4d9ef;
   margin-right: 1rem;
   cursor: pointer;
 }
 .item_links:hover {
   color: rgb(111, 35, 182);
+}
+.navbar{
+  background-color: #000000cb;
 }
