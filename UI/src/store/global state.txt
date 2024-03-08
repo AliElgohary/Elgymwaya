@@ -1,0 +1,3 @@
+GlobalState.userBodyInfo.weight
+GlobalState.userBodyInfo.height
+GlobalState.userBodyInfo.Bmi

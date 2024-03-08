@@ -19,7 +19,11 @@ const InputWithIcon = (props) => {
           </div>
         )}
         <div className={InputStyles.inputWrapper}>
-          <Input ref={inputRef} {...rest} />
+          <Input
+            ref={inputRef}
+            className={errors?.length > 0 ? InputStyles.inputDanger : ""}
+            {...rest}
+          />
         </div>
       </div>
 
@@ -35,7 +39,7 @@ const InputWithIcon = (props) => {
 };
 
 InputWithIcon.propTypes = {
-  Icon: PropTypes.node,
+  Icon: PropTypes.func,
   iconSize: PropTypes.number,
   errors: PropTypes.array,
 };

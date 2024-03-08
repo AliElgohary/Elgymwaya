@@ -5,6 +5,7 @@
 .inputGroup {
   display: flex;
   align-items: center;
+  /* scss */
   svg {
     color: #535353;
   }
@@ -37,6 +38,10 @@
 
 .input:focus {
   box-shadow: 0px 0px 0.5px 2.5px #711eba68;
+}
+
+.inputDanger:focus {
+  box-shadow: 0px 0px 0.5px 2.5px rgb(177, 7, 7);
 }
 
 .errors {
