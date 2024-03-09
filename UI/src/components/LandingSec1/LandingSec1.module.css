@@ -1,0 +1,17 @@
+.sec1{
+    background-image: url('../../assets/bk1.avif');
+    height: 100vh;
+  }
+  
+  .button_group{
+    position: absolute;
+    top: calc(100% - 82px) ;
+    border-radius: 0 !important;
+    width: 100px;
+  }
+  .button_group button{
+    border-radius: 0;
+    z-index: 5;
+    width: 100px;
+    height: 40px;
+  }

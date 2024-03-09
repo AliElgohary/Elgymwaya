@@ -8,11 +8,13 @@ import vandik from "../../assets/football.jpg";
 import bigRamy from "../../assets/big ramy.jpeg";
 import salah from "../../assets/salah.jpeg";
 import { Link } from "react-router-dom";
+
 import style from "./HomeSections.module.css";
 
 function SlideShow() {
   return (
-    <div>
+    <div style={{position:"relative"}}>
+    
       <section
         className="slider container mb-3 position-relative"
         style={{ minHeight: "100vh" }}
@@ -21,7 +23,7 @@ function SlideShow() {
           {/****************/}
           <Carousel.Item className="slide position-relative ">
             <h1 className={style.mainHeader}>Find your Energy</h1>
-            <div className="wrapper d-flex flex-lg-row flex-sm-column justify-content-center">
+            <div className="wrapper d-flex  flex-column flex-lg-row flex-xs-column  justify-content-center">
               <div className="align-self-start w-50">
                 <Link
                   to="/"
@@ -57,7 +59,7 @@ function SlideShow() {
           </Carousel.Item>
           {/****************/}
           <Carousel.Item className="slide">
-            <div className="wrapper d-flex flex-lg-row flex-sm-column justify-content-center">
+            <div className="wrapper d-flex flex-column flex-lg-row justify-content-center">
               <div className="align-self-start w-50">
                 <img className="d-block w-75" src={s4} alt="Third slide" />
                 <Link
@@ -83,7 +85,7 @@ function SlideShow() {
           {/****************/}
           <Carousel.Item className="slide">
             <h1 className={style.mainHeader}>Start your dream</h1>
-            <div className="wrapper d-flex flex-lg-row flex-sm-column justify-content-center">
+            <div className="wrapper d-flex flex-column flex-lg-row justify-content-center">
               <div className="align-self-start w-50">
                 <Link
                   to="/"

@@ -24,3 +24,10 @@
   .carousel{
     z-index: 0;
   }
+  
+  @media (max-width: 768px) {
+    .mainHeader {
+      font-size: 4rem
+    }
+  }
+  
