@@ -15,6 +15,7 @@ import {
   UpdatingCoachSchema,
   addingCoachSchema,
 } from "./coaches.validation.js";
+
 const coachRoutes = express.Router();
 
 // Add Coach - Validation - auth required
@@ -22,7 +23,7 @@ coachRoutes.post(
   "/coach/add",
   upload,
   auth,
-  validation(addingCoachSchema),
+  // validation(addingCoachSchema),
   addCoach
 );
 
@@ -31,7 +32,7 @@ coachRoutes.patch(
   "/coach/update",
   upload,
   auth,
-  validation(UpdatingCoachSchema),
+  // validation(UpdatingCoachSchema),
   addCoach
 );
 

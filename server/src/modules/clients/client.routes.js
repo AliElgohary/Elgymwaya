@@ -85,5 +85,5 @@ clientRoutes.post("/client/feedback", auth, giveCoachFeedback);
 // Get All Clients - auth
 clientRoutes.get("/client", auth, getAllClients);
 
-// Get All Clients
+// Get Client by id
 clientRoutes.get("/client/:id", getClientById);
