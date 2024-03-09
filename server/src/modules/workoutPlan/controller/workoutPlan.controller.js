@@ -1,4 +1,4 @@
-import clientModel from "../../../../Database/models/client.model.js";
+import userModel from "../../../../Database/models/user.model.js";
 import workoutPlan from "../../../../Database/models/workoutPlan.model.js";
 
 // Create Workou Plan - By Coaches Only
@@ -63,7 +63,7 @@ export const createWorkoutPlan = async (req, res) => {
 // Get All Plans - Admins Only
 export const getAllWorkoutPlans = async (req, res) => {
   try {
-    const admin = await clientModel.findById(req.userID);
+    const admin = await userModel.findById(req.userID);
     if (!admin) {
       return res.status(404).send("Admin user not found.");
     }
@@ -109,7 +109,7 @@ export const updateWorkoutPlan = async (req, res) => {
     }
 
     // Fetch the user making the request
-    const user = await clientModel.findById(req.userID);
+    const user = await userModel.findById(req.userID);
     if (!user) {
       return res.status(404).send("User not found.");
     }
@@ -164,7 +164,7 @@ export const deleteWorkoutPlan = async (req, res) => {
     }
 
     // Fetch the user making the request
-    const user = await clientModel.findById(req.userID);
+    const user = await userModel.findById(req.userID);
     if (!user) {
       return res.status(404).send("User not found.");
     }

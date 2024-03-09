@@ -1,11 +1,10 @@
-import clientModel from "../../../../Database/models/client.model.js";
+import userModel from "../../../../Database/models/user.model.js";
 import planModel from "../../../../Database/models/plan.model.js";
 
 // Add Plan (Manager and Owner Only)
 export const addPlan = async (req, res) => {
   try {
-    // Fetch the user based on req.userID set by your authentication middleware
-    const user = await clientModel.findById(req.userID);
+    const user = await userModel.findById(req.userID);
     if (!user) {
       return res.status(404).send("User not found.");
     }
@@ -53,7 +52,7 @@ export const getPlanById = async (req, res) => {
 };
 // Delete Plan
 export const deleteplan = async (req, res) => {
-  const user = await clientModel.findById(req.userID);
+  const user = await userModelModel.findById(req.userID);
   if (!user) {
     return res.status(404).send("User not found.");
   }
@@ -74,7 +73,7 @@ export const deleteplan = async (req, res) => {
 // Update Plan (Manager and Owner Only)
 export const updatePlan = async (req, res) => {
   try {
-    const user = await clientModel.findById(req.userID);
+    const user = await userModelModel.findById(req.userID);
     if (!user) {
       return res.status(404).send("User not found.");
     }

@@ -1,11 +1,11 @@
 import coachModel from "../../../../Database/models/coach.model.js";
-import clientModel from "../../../../Database/models/client.model.js";
+import userModel from "../../../../Database/models/user.model.js";
 import bcrypt from "bcrypt";
 
 // Add Coach (Manager and Owner Only)
 export const addCoach = async (req, res) => {
   try {
-    const user = await clientModel.findById(req.userID);
+    const user = await userModel.findById(req.userID);
     if (!user) {
       return res.status(404).send("User not found.");
     }
@@ -74,7 +74,7 @@ export const addCoach = async (req, res) => {
 // Update Coach Data (Manager and Owner Only)
 export const updateCoach = async (req, res) => {
   try {
-    const user = await clientModel.findById(req.userID);
+    const user = await userModel.findById(req.userID);
     if (!user) {
       return res.status(404).send("User not found.");
     }
@@ -153,7 +153,7 @@ export const updateCoach = async (req, res) => {
 
 export const getAllcoaches = async (req, res) => {
   try {
-    const user = await clientModel.findById(req.userID);
+    const user = await userModel.findById(req.userID);
     if (!user) {
       return res.status(404).send("User not found.");
     }
@@ -177,7 +177,7 @@ export const getAllcoaches = async (req, res) => {
 };
 
 export const getcoachById = async (req, res) => {
-  const user = await clientModel.findById(req.userID);
+  const user = await userModel.findById(req.userID);
   if (!user) {
     return res.status(404).send("User not found.");
   }
@@ -245,7 +245,7 @@ export const getcoachRatingById = async (req, res) => {
 };
 
 export const deleteCoach = async (req, res) => {
-  const user = await clientModel.findById(req.userID);
+  const user = await userModel.findById(req.userID);
   if (!user) {
     return res.status(404).send("User not found.");
   }

@@ -6,7 +6,7 @@ const Landing = () => {
   return (
     <>
       <div className={styles.background}>
-        <div className="d-flex align-items-center justify-content-center vh-100">
+        {/*<div className="d-flex align-items-center justify-content-center vh-100">
           <div className="text-center">
             <h1 className="mb-3">
               WELCOME TO <span className={styles.header}>ELGYMAWEYA</span>
@@ -29,7 +29,7 @@ const Landing = () => {
               </Link>
             </div>
           </div>
-        </div>
+  </div>*/}
         <Features />
       </div>
     </>

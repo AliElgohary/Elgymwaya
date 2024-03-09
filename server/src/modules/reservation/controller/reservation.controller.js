@@ -1,6 +1,4 @@
-import clientModel from "../../../../Database/models/client.model.js";
 import reservationModel from "../../../../Database/models/reservation.model.js";
-import workoutPlan from "../../../../Database/models/workoutPlan.model.js";
 
 async function isCoachAvailable(coachId, date, startTime, endTime) {
   const reservationDate = new Date(date);
@@ -162,11 +160,9 @@ export const coachReservations = async (req, res) => {
 
     res.send(reservations);
   } catch (error) {
-    res
-      .status(500)
-      .send({
-        message: "An error occurred while fetching the coach's reservations.",
-        error: error.toString(),
-      });
+    res.status(500).send({
+      message: "An error occurred while fetching the coach's reservations.",
+      error: error.toString(),
+    });
   }
 };

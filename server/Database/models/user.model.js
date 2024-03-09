@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-let clientSchema = new mongoose.Schema({
+let userSchema = new mongoose.Schema({
   full_name: String,
   email: String,
   password: String,
@@ -23,6 +23,6 @@ let clientSchema = new mongoose.Schema({
   coach_id: { type: mongoose.Schema.Types.ObjectId, ref: "Coach" },
 });
 
-const clientModel = mongoose.model("Client", clientSchema);
+const userModel = mongoose.model("USer", userSchema);
 
-export default clientModel;
+export default userModel;

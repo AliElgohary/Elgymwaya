@@ -1,4 +1,4 @@
-import clientModel from "../../../../Database/models/client.model.js";
+import userModel from "../../../../Database/models/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { sendPasswordResetMail } from "../../../services/sendEmail.js";
@@ -25,7 +25,7 @@ export const signUp = async (req, res) => {
     if (password !== Cpassword) {
       return res.status(400).send("Passwords do not match");
     }
-    let foundUserEmail = await clientModel.findOne({ email: req.body.email });
+    let foundUserEmail = await userModel.findOne({ email: req.body.email });
     if (foundUserEmail) {
       res.json({ message: "client email already registered" });
     } else {
@@ -34,7 +34,7 @@ export const signUp = async (req, res) => {
       // Calculate age
       const age = calculateAge(new Date(birth_date));
 
-      const newClient = new clientModel({
+      const newClient = new userModel({
         full_name,
         email,
         phone_number,
@@ -64,7 +64,7 @@ export const signIn = async (req, res) => {
     if (!email || !password) {
       return res.status(400).send("Missing email or password");
     }
-    const client = await clientModel.findOne({ email });
+    const client = await userModel.findOne({ email });
 
     if (!client) {
       return res.status(404).send("You need to register first");
@@ -89,7 +89,7 @@ export const changePassword = async (req, res) => {
     const { oldPassword, newPassword, CNewPassword } = req.body;
 
     // Find the current client
-    const client = await clientModel.findById(req.userID);
+    const client = await userModel.findById(req.userID);
     if (!client) {
       return res.status(404).send("Client not found");
     }
@@ -122,7 +122,7 @@ export const changePassword = async (req, res) => {
 // Update Client Data (Self Only)
 export const updateUser = async (req, res) => {
   try {
-    const clientToUpdate = await clientModel.findById(req.userID);
+    const clientToUpdate = await userModel.findById(req.userID);
 
     if (!clientToUpdate) {
       return res.status(404).send("User not found.");
@@ -130,7 +130,7 @@ export const updateUser = async (req, res) => {
 
     // Check if the email is being updated and if it's already used by another user
     if (req.body.email && req.body.email !== clientToUpdate.email) {
-      const emailExists = await clientModel.findOne({
+      const emailExists = await userModel.findOne({
         email: req.body.email,
         _id: { $ne: req.userID }, // Exclude the current user from the search
       });
@@ -162,7 +162,7 @@ export const updateUser = async (req, res) => {
 // Update Client Picture (Self Only)
 export const updateUserPicture = async (req, res) => {
   try {
-    const clientToUpdate = await clientModel.findById(req.userID);
+    const clientToUpdate = await userModel.findById(req.userID);
 
     if (!clientToUpdate) {
       return res.status(404).send("User not found.");
@@ -188,7 +188,7 @@ export const updateUserPicture = async (req, res) => {
 // Forget Password
 export const forgetPassword = async (req, res) => {
   const { email } = req.body;
-  const client = await clientModel.findOne({ email });
+  const client = await userModel.findOne({ email });
   if (!client) {
     return res.status(404).send("Client not found");
   }
@@ -221,7 +221,7 @@ export const resetPassword = async (req, res) => {
       const hashedPassword = await bcrypt.hash(newPassword, 12);
 
       // Update the client's password in the database
-      await clientModel.findByIdAndUpdate(decoded.id, {
+      await userModel.findByIdAndUpdate(decoded.id, {
         password: hashedPassword,
       });
 
@@ -236,7 +236,7 @@ export const resetPassword = async (req, res) => {
 export const setCoach = async (req, res) => {
   try {
     // Use req.userID to ensure a user is updating their own profile
-    const clientToUpdate = await clientModel
+    const clientToUpdate = await userModel
       .findById(req.userID)
       .populate("plan_id");
 
@@ -300,7 +300,7 @@ export const setCoach = async (req, res) => {
 // Change Coach
 export const changeCoach = async (req, res) => {
   try {
-    const clientToUpdate = await clientModel.findById(req.userID);
+    const clientToUpdate = await userModel.findById(req.userID);
 
     if (!clientToUpdate) {
       return res.status(404).send("Client not found.");
@@ -356,7 +356,7 @@ export const giveCoachFeedback = async (req, res) => {
     const clientID = req.userID;
     const { rating, comment } = req.body;
 
-    const client = await clientModel.findById(clientID).select("coach_id");
+    const client = await userModel.findById(clientID).select("coach_id");
     if (!client || !client.coach_id) {
       return res
         .status(404)
@@ -381,19 +381,17 @@ export const giveCoachFeedback = async (req, res) => {
       .status(201)
       .send({ message: "Feedback successfully added to your coach." });
   } catch (error) {
-    res
-      .status(500)
-      .send({
-        message: "An error occurred while submitting feedback.",
-        error: error.toString(),
-      });
+    res.status(500).send({
+      message: "An error occurred while submitting feedback.",
+      error: error.toString(),
+    });
   }
 };
 
 export const getAllClients = async (req, res) => {
   try {
     // Fetch the user based on req.userID set by your authentication middleware
-    const user = await clientModel.findById(req.userID);
+    const user = await userModel.findById(req.userID);
 
     if (!user) {
       return res.status(404).send("User not found.");
@@ -408,7 +406,7 @@ export const getAllClients = async (req, res) => {
     }
 
     // Fetch all clients. Exclude passwords
-    const clients = await clientModel
+    const clients = await userModel
       .find({}, "-password -Cpassword")
       .populate("coach_id", "full_name");
 
@@ -422,7 +420,7 @@ export const getAllClients = async (req, res) => {
 // Get Client By ID
 export const getClientById = async (req, res) => {
   try {
-    const client = await clientModel
+    const client = await userModel
       .findById(req.params.id, "-password -Cpassword")
       .populate("coach_id", "full_name");
 
@@ -547,7 +545,7 @@ export const subscriptionint = async (req, res) => {
   try {
     const { clientId, planId, subscriptionMonths } = req.body;
 
-    const client = await clientModel.findById(clientId);
+    const client = await userModel.findById(clientId);
     const plan = await planModel.findById(planId);
     const subscriptionFees = plan.fee * subscriptionMonths;
     const authToken = await authenticateWithPaymob();
@@ -637,7 +635,7 @@ export const subscriptionfin = async (req, res) => {
       transaction.payment_status = "Successful";
       await transaction.save(); // Make sure to save the updated transaction
 
-      const client = await clientModel.findById(client_id);
+      const client = await userModel.findById(client_id);
       const plan = await planModel.findById(plan_id);
 
       if (client && plan) {
