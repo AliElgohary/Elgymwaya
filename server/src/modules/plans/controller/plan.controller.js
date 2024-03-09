@@ -34,6 +34,7 @@ export const addPlan = async (req, res) => {
 
 export const getAllPlans = async (req, res) => {
   try {
+    
     const plans = await planModel.find();
     res.json({ message: "Get all Plans", plans });
   } catch (error) {

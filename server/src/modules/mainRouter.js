@@ -1,5 +1,5 @@
 import express from "express";
-import planRoutes from "./workoutPlan/workoutPlan.routes.js";
+import planRoutes from "./plans/plan.routes.js"
 import clientRoutes from "./clients/client.routes.js";
 import coachRoutes from "./coaches/coaches.routes.js";
 import transactionRoutes from "./transactions/transaction.routes.js";

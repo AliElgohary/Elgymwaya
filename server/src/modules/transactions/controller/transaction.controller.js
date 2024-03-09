@@ -50,7 +50,7 @@ export const addTransaction = async (req, res) => {
 export const getAllTransactions = async (req, res) => {
   try {
     const trans = await transactionModel.find();
-    res.json({ message: "Get all transactions", trans });
+    res.json({ message: "Get all transactions" ,trans });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });

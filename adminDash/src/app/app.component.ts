@@ -13,5 +13,5 @@ import { LoginComponent } from './components/login/login.component';
 })
 export class AppComponent {
   title = 'adminDash';
-  isLoggedIn : boolean = true;
+  isLoggedIn : boolean = false;
 }

@@ -16,7 +16,7 @@ const planRoutes = express.Router();
 // Add Plan
 planRoutes.post("/plan/add", upload, auth, validation(addSchema), addPlan);
 
-planRoutes.get("/plan", getAllPlans);
+planRoutes.get("/plans", getAllPlans);
 planRoutes.get("/plan/:id", getPlanById);
 planRoutes.delete("/plan/:id", auth, deleteplan);
 planRoutes.patch(

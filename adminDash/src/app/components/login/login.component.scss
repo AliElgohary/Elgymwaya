@@ -1,7 +1,60 @@
-.container-fluid {
-  height: 100%;
-  margin-top: 10%;
+body {
+  background: linear-gradient(to right, #4520ecad, #eee4ee);
+  font-family: sans-serif;
 }
-button {
-  margin-top: 15px;
+
+.loginHolder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 0;
+  height: 100vh;
+}
+.custom_form_holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(241, 245, 249);
+  background-color: FFFFFF;
+  box-shadow: 20px;
+  width: 80%;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.09);
+  padding: 30px 0;
+  border-radius: 19px;
+}
+.inputsWrapper {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+.custom_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.gym_title {
+  color: rgb(135, 31, 161);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+input {
+  max-width: 300px;
+}
+
+.btn {
+  border: none;
+  color: white;
+  background-color: rgba(120, 70, 212, 0.884);
+  padding: 8px;
+  border-radius: 10px;
+  display: block;
+  width: 200px;
+  margin: 12px auto;
+  margin-bottom: 2rem;
+  font-weight: bold;
 }

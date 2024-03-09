@@ -1,1 +1,26 @@
-<p>transactions works!</p>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">plan_id</th>
+        <th scope="col">client_id</th>
+        <th scope="col">order_id</th>
+        <th scope="col">amount</th>
+        <th scope="col">subscriptionMonths</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (trans of transactions; track trans.id) {
+      <tr>
+        <td>{{ trans.plan_id }}</td>
+        <td>{{ trans.client_id }}</td>
+        <td>{{ trans.order_id }}</td>
+        <td>{{ trans.amount }}</td>
+        <td>{{ trans.subscriptionMonths }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<h1>Add a new Transaction</h1>
