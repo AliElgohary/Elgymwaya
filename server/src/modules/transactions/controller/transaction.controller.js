@@ -49,8 +49,11 @@ export const addTransaction = async (req, res) => {
 // Get Transaction
 export const getAllTransactions = async (req, res) => {
   try {
-    const trans = await transactionModel.find();
-    res.json({ message: "Get all transactions" ,trans });
+    const trans = await transactionModel
+      .find()
+      .populate("client_id")
+      .populate("plan_id");
+    res.json({ message: "Get all transactions", trans });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });

@@ -77,7 +77,7 @@ export const signIn = async (req, res) => {
     }
 
     const token = jwt.sign({ id: client._id }, "ITI", { expiresIn: "1h" });
-    res.status(200).json({ message: "Welcome To El Gymaweya", token });
+    res.status(200).json({ message: "Welcome To El Gymaweya", role: client.role ,token });
   } catch (error) {
     res.status(500).send("Error in signin");
   }

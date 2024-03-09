@@ -23,6 +23,6 @@ let userSchema = new mongoose.Schema({
   coach_id: { type: mongoose.Schema.Types.ObjectId, ref: "Coach" },
 });
 
-const userModel = mongoose.model("USer", userSchema);
+const userModel = mongoose.model("User", userSchema);
 
 export default userModel;
