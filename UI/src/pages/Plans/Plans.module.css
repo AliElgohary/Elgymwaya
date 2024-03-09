@@ -1,0 +1,72 @@
+.plans_container {
+  background-color: var(--background);
+}
+.plan_box {
+  background-color: white;
+  width: 25rem;
+  height: 30rem;
+  border-radius: 10px;
+  transition: transform 0.5s ease-in-out;
+}
+.plan_box:hover {
+  transform: scale(1.07);
+}
+
+.plan_box:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.199);
+}
+.free_plan {
+  background-color: #00b7ff;
+  color: white;
+  border-radius: 10px 10px 0 0;
+  padding-bottom: 10px;
+}
+.gold_plan {
+  background-color: gold;
+  color: white;
+  border-radius: 10px 10px 0 0;
+  padding-bottom: 10px;
+}
+.btn {
+  border-radius: 40px;
+  border: 0;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin: 1.5rem 0;
+  outline: 0;
+  padding: 1rem 2vw;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background-color: white;
+}
+
+.customBtn {
+  border: 1px solid black;
+}
+.customBtn:hover {
+  color: white;
+  font-weight: 600;
+  border: none;
+}
+.gold_plan_btn:hover {
+  background-color: gold;
+}
+.free_plan_btn:hover {
+  background-color: #00b7ff;
+}
+@media (max-width: 768px) {
+  .plan_box {
+    width: 100%; /* Full width on smaller screens */
+  }
+  .largeScreenHeight {
+    margin: 4rem 0;
+  }
+}
+
+@media (min-width: 769px) {
+  .largeScreenHeight {
+    height: 100vh; /* Adjust as needed for your design */
+  }
+}

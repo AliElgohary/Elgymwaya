@@ -1,6 +1,5 @@
 import LandingFooter from "../../components/LandingFooter/LandingFooter";
 import LogoutNav from "../../components/LandingNavbar/LandingNav";
-import Landing from "../../pages/Landing/Landing";
 import styles from "./LandingLayout.module.css";
 import "../../styles/vars.css";
 import { Outlet } from "react-router-dom";
@@ -12,10 +11,10 @@ const LandingLayout = () => {
       <div className={styles.background}>
         <div className={styles.sec1}>
           <LogoutNav />
-          <SlideShow/>
+          <SlideShow />
         </div>
         <Outlet />
-        <SomeFeature/>
+        <SomeFeature />
         <LandingFooter />
       </div>
     </>
