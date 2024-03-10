@@ -14,6 +14,7 @@
               class="form-control"
               placeholder="E-mail"
               required
+              email
               minlength="6"
               [(ngModel)]="user.email"
               #emailInput="ngModel"
@@ -25,9 +26,9 @@
             />
             <span class="invalid-feedback">
               @if(emailInput.errors?.['required']){
-              <span>Name is required</span>
-              } @if(emailInput.errors?.['minlength']){
-              <span>Name at least 6 chars</span>
+              <span>Email is required</span>
+              } @if(emailInput.errors?.['email']){
+              <span>Enter a valid Email</span>
               }
             </span>
           </div>
