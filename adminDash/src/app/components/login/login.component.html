@@ -7,26 +7,26 @@
       <form #signInForm="ngForm" (ngSubmit)="login(user)" class="custom_form">
         <div class="inputsWrapper">
           <div class="form-group mb-2">
-            <label for="userName" class="col-form-label">User Name</label>
+            <label for="userName" class="col-form-label">E-mail</label>
             <input
               type="text"
               name="userName"
               class="form-control"
-              placeholder="User Name"
+              placeholder="E-mail"
               required
               minlength="6"
-              [(ngModel)]="user.userName"
-              #userNameInput="ngModel"
+              [(ngModel)]="user.email"
+              #emailInput="ngModel"
               [ngClass]="{
                 'is-invalid':
-                  (userNameInput.touched || userNameInput.dirty) &&
-                  !userNameInput.valid
+                  (emailInput.touched || emailInput.dirty) &&
+                  !emailInput.valid
               }"
             />
             <span class="invalid-feedback">
-              @if(userNameInput.errors?.['required']){
+              @if(emailInput.errors?.['required']){
               <span>Name is required</span>
-              } @if(userNameInput.errors?.['minlength']){
+              } @if(emailInput.errors?.['minlength']){
               <span>Name at least 6 chars</span>
               }
             </span>

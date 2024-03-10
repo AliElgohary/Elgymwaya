@@ -1,98 +1,156 @@
 <div class="slideDashboard">
-  <div class="px-sm-2 px-0 ">
-      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-        <ul class="nav nav-pills flex-column  align-items-center align-items-sm-start" id="menu">
-            <a href="/" class="text-decoration-none">
-                <span style='font-size: 12px; font-weight: 800; color: #cdcdcd;'>Dashboard</span>
-            </a>
-              <li class="nav-item">
-                  <a routerLink="" class="nav-link align-middle px-0">
-                    <i class="bi bi-house-door-fill"></i>
-                    <span class="ms-1 d-none d-sm-inline linkTitle">Home</span>
-                  </a>
-              </li>
-              <li>
-                  <a routerLink="analytics" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                    <i class="bi bi-bar-chart"></i>
-                    <span class="ms-1 d-none d-sm-inline linkTitle">Analytics</span>
-                   </a>
-              </li>
-              <li>
-                  <a routerLink="sales" data-bs-toggle="collapse" class="nav-link px-0 align-middle" >
-                    <i class="bi bi-graph-up-arrow"></i>
-                    <span class="ms-1 d-none d-sm-inline linkTitle">Sales</span>
-                </a>
-              </li>
-          </ul>
+  <div class="px-sm-2 px-0">
+    <div
+      class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+    >
+      <ul
+        class="nav nav-pills flex-column align-items-center align-items-sm-start"
+        id="menu"
+      >
+        <a href="/" class="text-decoration-none">
+          <span style="font-size: 12px; font-weight: 800; color: #cdcdcd"
+            >Dashboard</span
+          >
+        </a>
+        <li class="nav-item">
+          <a routerLink="" class="nav-link align-middle px-0">
+            <i class="bi bi-house-door-fill"></i>
+            <span class="ms-1 d-none d-sm-inline linkTitle">Home</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="analytics"
+            data-bs-toggle="collapse"
+            class="nav-link px-0 align-middle"
+          >
+            <i class="bi bi-bar-chart"></i>
+            <span class="ms-1 d-none d-sm-inline linkTitle">Analytics</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="sales"
+            data-bs-toggle="collapse"
+            class="nav-link px-0 align-middle"
+          >
+            <i class="bi bi-graph-up-arrow"></i>
+            <span class="ms-1 d-none d-sm-inline linkTitle">Sales</span>
+          </a>
+        </li>
+      </ul>
 
-          <ul class="nav nav-pills flex-column  align-items-center align-items-sm-start" id="menu">
-            <a href="/" class="text-decoration-none">
-                <span style='font-size: 12px; font-weight: 800; color: #cdcdcd;'>Quick menu</span>
-            </a>
-              <li class="nav-item">
-                  <a routerLink="trainees" class="nav-link align-middle px-0">
-                    <i class="bi bi-people-fill"></i>
-                    <span class="ms-1 d-none d-sm-inline linkTitle">Users</span>
-                  </a>
-              </li>
-              <li>
-                  <a routerLink="trainers" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                    <i class="bi bi-people"></i>
-                    <span class="ms-1 d-none d-sm-inline linkTitle">Trainers</span>
-                   </a>
-              </li>
-              <li>
-                  <a routerLink="transactions" data-bs-toggle="collapse" class="nav-link px-0 align-middle" >
-                    <i class="bi bi-cash-coin"></i>
-                    <span class="ms-1 d-none d-sm-inline linkTitle">Transactions</span>
-                </a>
-              </li>
-              <li>
-                  <a routerLink="plans" data-bs-toggle="collapse" class="nav-link px-0 align-middle" >
-                    <i class="bi bi-clipboard2-data-fill"></i>
-                    <span class="ms-1 d-none d-sm-inline linkTitle">Plans</span>
-                </a>
-              </li>
-          </ul>
+      <ul
+        class="nav nav-pills flex-column align-items-center align-items-sm-start"
+        id="menu"
+      >
+        <a href="/" class="text-decoration-none">
+          <span style="font-size: 12px; font-weight: 800; color: #cdcdcd"
+            >Quick menu</span
+          >
+        </a>
+        <li class="nav-item">
+          <a routerLink="trainees" class="nav-link align-middle px-0">
+            <i class="bi bi-people-fill"></i>
+            <span class="ms-1 d-none d-sm-inline linkTitle">Users</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="trainers"
+            data-bs-toggle="collapse"
+            class="nav-link px-0 align-middle"
+          >
+            <i class="bi bi-people"></i>
+            <span class="ms-1 d-none d-sm-inline linkTitle">Trainers</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="transactions"
+            data-bs-toggle="collapse"
+            class="nav-link px-0 align-middle"
+          >
+            <i class="bi bi-cash-coin"></i>
+            <span class="ms-1 d-none d-sm-inline linkTitle">Transactions</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="plans"
+            data-bs-toggle="collapse"
+            class="nav-link px-0 align-middle"
+          >
+            <i class="bi bi-clipboard2-data-fill"></i>
+            <span class="ms-1 d-none d-sm-inline linkTitle">Plans</span>
+          </a>
+        </li>
+      </ul>
 
-         <ul class="nav nav-pills flex-column  align-items-center align-items-sm-start" id="menu">
-            <a href="/" class="text-decoration-none">
-                <span style='font-size: 12px; font-weight: 800; color: #cdcdcd;'>Add New</span>
-            </a>
-              <li class="nav-item">
-                  <a href="#" class="nav-link align-middle px-0">
-                    <i class="bi bi-house-door-fill"></i>
-                    <span class="ms-1 d-none d-sm-inline linkTitle">Home</span>
-                  </a>
-              </li>
-              <li>
-                  <a href="#" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                    <i class="bi bi-bar-chart"></i>
-                    <span class="ms-1 d-none d-sm-inline linkTitle">Analytics</span>
-                   </a>
-              </li>
-              <li>
-                  <a href="#" data-bs-toggle="collapse" class="nav-link px-0 align-middle" >
-                    <i class="bi bi-graph-up-arrow"></i>
-                    <span class="ms-1 d-none d-sm-inline linkTitle">Sales</span>
-                </a>
-              </li>
-          </ul>
-          <hr>
-          <div class="dropdown pb-4">
-              <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="../../../assets/admin.png" width="30" height="30" class="rounded-circle">
-                  <i class="bi bi-list"></i>
-                </a>
-              <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
-                  <li>
-                      <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="#">Sign out</a></li>
-              </ul>
-          </div>
+      <ul
+        class="nav nav-pills flex-column align-items-center align-items-sm-start"
+        id="menu"
+      >
+        <a href="/" class="text-decoration-none">
+          <span style="font-size: 12px; font-weight: 800; color: #cdcdcd"
+            >Add New</span
+          >
+        </a>
+        <li class="nav-item">
+          <a href="#" class="nav-link align-middle px-0">
+            <i class="bi bi-house-door-fill"></i>
+            <span class="ms-1 d-none d-sm-inline linkTitle">Home</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            data-bs-toggle="collapse"
+            class="nav-link px-0 align-middle"
+          >
+            <i class="bi bi-bar-chart"></i>
+            <span class="ms-1 d-none d-sm-inline linkTitle">Analytics</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            data-bs-toggle="collapse"
+            class="nav-link px-0 align-middle"
+          >
+            <i class="bi bi-graph-up-arrow"></i>
+            <span class="ms-1 d-none d-sm-inline linkTitle">Sales</span>
+          </a>
+        </li>
+      </ul>
+      <hr />
+      <div class="dropdown pb-4">
+        <a
+          href="#"
+          class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+          id="dropdownUser1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img
+            src="../../../assets/admin.png"
+            width="30"
+            height="30"
+            class="rounded-circle"
+          />
+          <i class="bi bi-list"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li>
+            <a class="dropdown-item" href="#" (click)="logout()">Sign out</a>
+          </li>
+        </ul>
       </div>
+    </div>
   </div>
 </div>

@@ -1,16 +1,15 @@
 <div class="container-fluid m-auto">
-@if(isLoggedIn){
-    <app-header></app-header>
-    
-    <div class="row">
-      <div class="col-2 col-md-3 col-xl-2">
-        <app-navbar></app-navbar>
-      </div>
-      <div class="col-10 col-md-9 col-xl-10">
-        <router-outlet></router-outlet>
-      </div>
+  @if(isLoggedIn ){
+  <app-header></app-header>
+  <div class="row">
+    <div class="col-2 col-md-3 col-xl-2">
+      <app-navbar></app-navbar>
     </div>
-  } @else {
-    <app-login></app-login>
+    <div class="col-10 col-md-9 col-xl-10">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  } @else if(!isLoggedIn ) {
+  <app-login></app-login>
   }
 </div>
