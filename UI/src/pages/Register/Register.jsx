@@ -11,30 +11,45 @@ import { FaWeightScale, FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { CiLineHeight } from "react-icons/ci";
 import Joi from "joi";
-
+import { useNavigate } from "react-router-dom";
 const Register = () => {
   const [data, setData] = useState({
     name: "",
     email: "",
     weight: undefined,
     height: undefined,
-    age: undefined,
-    phoneNumber: undefined,
+    date: undefined,
+    phoneNumber: "",
     password: undefined,
     cPassword: undefined,
   });
   const [errors, setErrors] = useState({}); // [key: string] : string[]  {"name": ["name is required", "name must be at least 5 chars"]}
+  //  FIXME:fixe the margin issue when a larg error message appear
+  const navigate = useNavigate();
+
   const validationRules = useMemo(
     () => ({
-      name: Joi.string().required().label("name"),
+      name: Joi.string()
+        .min(3)
+        .max(50)
+        .pattern(/^[A-Za-z]+$/)
+        .message("Name must only contain letters")
+        .required()
+        .label("name"),
       email: Joi.string()
         .email({ tlds: { allow: false } })
         .required()
         .label("email"),
       weight: Joi.number().required().label("weight"),
       height: Joi.number().required().label("height"),
-      age: Joi.number().required().label("age"),
-      phoneNumber: Joi.number().required().label("phoneNumber"),
+      date: Joi.date().required().label("date"),
+      phoneNumber: Joi.string()
+        .required()
+        .pattern(/^(01)[0-9]{9}$/)
+        .messages({
+          "string.pattern.base": "Please enter a valid Egyptian phone number.",
+        })
+        .label("phoneNumber"),
       password: Joi.string().required().label("password"),
       cPassword: Joi.string().required().label("cPassword"),
     }),
@@ -53,11 +68,11 @@ const Register = () => {
       }
     }
     if (valid) {
-      //TODO: send api
-      alert(JSON.stringify(data));
+      // TODO: send API request
+      // Assuming the API call is successful, redirect to "/plans"
+      navigate("/plans");
     }
   };
-
   const validate = (key, value) => {
     const validationRule = validationRules[key];
     const validationResult = validationRule.validate(value);
@@ -94,7 +109,7 @@ const Register = () => {
               type="text"
               onChange={(e) => handleInputChange(e, "name")}
               errors={errors["name"]}
-              placeholder={"name"}
+              placeholder={"full name"}
               Icon={IoPerson}
             />
             <InputWithIcon
@@ -119,10 +134,11 @@ const Register = () => {
               Icon={CiLineHeight}
             />
             <InputWithIcon
-              type="number"
-              onChange={(e) => handleInputChange(e, "age")}
-              placeholder={"age"}
-              errors={errors["age"]}
+              type="date"
+              className="text-secondary"
+              onChange={(e) => handleInputChange(e, "date")}
+              placeholder={"date"}
+              errors={errors["date"]}
               Icon={IoPersonOutline}
             />
             <InputWithIcon

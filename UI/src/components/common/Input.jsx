@@ -19,7 +19,8 @@ const Input = React.forwardRef((props, ref) => {
 
 Input.displayName = "Input";
 Input.propTypes = {
-  type: PropTypes.oneOf(["text", "password", "email", "number"]).isRequired,
+  type: PropTypes.oneOf(["text", "password", "email", "date", "number"])
+    .isRequired,
   value: PropTypes.string,
   className: PropTypes.string,
   onChange: PropTypes.func,

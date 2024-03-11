@@ -18,6 +18,27 @@
 .iconWrapper {
   padding-bottom: 3px;
 }
+.inputGroup .inputWrapper input[type="date"] {
+  text-align: end;
+  padding: 6px 3.1rem;
+}
+.placeholderLabel {
+  position: absolute;
+  left: 20px;
+  top: 95%;
+  pointer-events: none;
+  font-size: 20px;
+  color: #e2e2e2 !important;
+}
+
+.inputGroup .inputWrapper input[type="date"]:focus + .placeholderLabel,
+.inputGroup
+  .inputWrapper
+  input[type="date"]:not(:placeholder-shown)
+  + .placeholderLabel {
+  transform: translateY(-102%) scale(0.8);
+  color: #535353;
+}
 /* .inputGroup .inputWrapper {
 } */
 .inputGroup .input {

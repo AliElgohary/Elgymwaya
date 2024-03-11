@@ -24,6 +24,11 @@ const InputWithIcon = (props) => {
             className={errors?.length > 0 ? InputStyles.inputDanger : ""}
             {...rest}
           />
+          {rest.type === "date" && (
+            <label className={`${InputStyles.placeholderLabel}`}>
+              {rest.placeholder}
+            </label>
+          )}
         </div>
       </div>
 

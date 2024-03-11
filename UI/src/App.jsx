@@ -8,6 +8,7 @@ import Register from "./pages/Register/Register";
 import CaloriesCalculator from "./pages/CaloriesCalculator/CaloriesCalculator";
 import BmiCalc from "./pages/BMICalc/BmiCalc";
 import Plans from "./pages/Plans/Plans";
+import SubscriptionMonths from "./pages/SubscriptionMonths/SubscriptionMonths";
 
 const routes = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const routes = createBrowserRouter([
   { path: "caloriesCalculator", element: <CaloriesCalculator /> },
   { path: "bmiCalc", element: <BmiCalc /> },
   { path: "plans", element: <Plans /> },
+  { path: "subscriptionMonths", element: <SubscriptionMonths /> },
 ]);
 // BMI => w/h2
 // calories => (66.5+13.75*w+5.003*h-6.755*age)* 1.3||1.4||1.6

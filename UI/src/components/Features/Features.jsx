@@ -9,7 +9,7 @@ import { GrDocumentPerformance } from "react-icons/gr";
 const Features = () => {
   return (
     <>
-      <div id="features" className="container">
+      <div id="features" className="container mt-5">
         <h3 className="text-center display-6 md-display-6 align-self-center mb-4 text-muted">
           Our Features
         </h3>
