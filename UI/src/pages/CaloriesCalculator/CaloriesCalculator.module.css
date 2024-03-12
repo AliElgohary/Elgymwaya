@@ -16,4 +16,19 @@
 }
 .routesBtn:hover {
      background-color: #3c82f7;
-};
+}
+
+.routesHomeBtn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    border-radius: 0 10px 10px 0;
+    width: 15%;
+}
+.routesHomeBtn:hover {
+    background-color: #000000c5;
+}
+.routesHomeBtn img{
+    width: 30px;
+}

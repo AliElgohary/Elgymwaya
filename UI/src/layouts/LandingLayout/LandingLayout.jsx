@@ -6,7 +6,7 @@ import { Link, Outlet } from "react-router-dom";
 import { Button, ButtonGroup } from "react-bootstrap";
 import SlideShow from "../../components/HomeSections/SlideShow";
 import SomeFeature from "../../components/SomeFeature/SomeFeature";
-import LandingSec1 from "../../components/LandingSec1/LandingSec1";
+import LandingSec1 from "../../components/landingSections/LandingSec1/LandingSec1";
 const LandingLayout = () => {
   return (
     <>

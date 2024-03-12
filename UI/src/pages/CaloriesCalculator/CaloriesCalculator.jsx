@@ -5,6 +5,7 @@ import style from "./CaloriesCalculator.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
+import logo from '../../assets/main_icon/dumbbell-svgrepo-com (2).png'
 // For men: BMR = 88.362 + (13.397 × weight in kg) + (4.799 × height in cm) - (5.677 × age in years)
 // For women: BMR = 447.593 + (9.247 × weight in kg) + (3.098 × height in cm) - (4.330 × age in years)
 function CaloriesCalculator() {
@@ -53,6 +54,10 @@ function CaloriesCalculator() {
           className={`btn btn-secondary ${style.routesBtn}`}
         >
           Bmi Calculator
+        </Link>
+
+        <Link to='/'type="button"  className={`btn text-light ${style.routesHomeBtn}`}>
+              Home <img src={logo} />
         </Link>
 
         <CalculatorHeader headerTitle="Calorie Calculator" />

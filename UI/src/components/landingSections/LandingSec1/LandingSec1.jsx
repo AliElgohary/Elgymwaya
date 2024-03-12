@@ -1,6 +1,6 @@
 import React from 'react'
-import LogoutNav from '../LandingNavbar/LandingNav'
-import SlideShow from '../HomeSections/SlideShow'
+import LogoutNav from '../../LandingNavbar/LandingNav'
+import SlideShow from '../../HomeSections/SlideShow'
 import { ButtonGroup ,Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import styles from "./LandingSec1.module.css";

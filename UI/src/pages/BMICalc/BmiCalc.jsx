@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import BmiClacForm from "../../components/BmiCalcForm/BmiClacForm";
 // import {bodyBmi  , weight , height} from '../../store/reducers/bodyInfo'
 import bmiRangesImage from '../../assets/bmi.jpg'
+import logo from '../../assets/main_icon/dumbbell-svgrepo-com (2).png'
 import {
   caloriesInDayValue,
   bodyBmiValue,
@@ -46,6 +47,9 @@ function BmiCalc() {
       <Container style={{ maxWidth: "800px" }}>
       
       <Link to='/caloriesCalculator' type="button" className={`btn btn-secondary ${style.routesBtn}`}>Calories Calculator</Link>
+      <Link to='/'type="button"  className={`btn text-light ${style.routesHomeBtn}`}>
+          Home <img src={logo} />
+      </Link>
         <CalculatorHeader headerTitle="Bmi Calculator" />
         <BmiClacForm calcBmi={calcBmi} />
         {GlobalState.userBodyInfo.Bmi>0&&<Card className="mt-3" style={cartStyle}>
