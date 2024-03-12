@@ -1,17 +1,29 @@
-.sec1{
-    background-image: url('../../assets/bk1.avif');
-    height: 100vh;
-  }
-  
-  .button_group{
-    position: absolute;
-    top: calc(100% - 82px) ;
-    border-radius: 0 !important;
-    width: 100px;
-  }
-  .button_group button{
-    border-radius: 0;
-    z-index: 5;
-    width: 100px;
-    height: 40px;
-  }
+.sec1 {
+  background-image: url('../../assets/bk1.avif');
+  height: 100vh;
+  z-index: 1;
+}
+
+.sec1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.849);
+  z-index: 0;
+}
+.button_group {
+  position: absolute;
+  top: calc(100% - 82px);
+  border-radius: 0 !important;
+  width: 100px;
+}
+
+.button_group button {
+  border-radius: 0;
+  z-index: 5;
+  width: 100px;
+  height: 40px;
+}
