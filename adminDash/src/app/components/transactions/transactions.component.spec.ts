@@ -11,7 +11,7 @@ describe('TransactionsComponent', () => {
       imports: [TransactionsComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(TransactionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,5 +19,6 @@ describe('TransactionsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+
   });
 });

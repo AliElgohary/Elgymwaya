@@ -1,54 +1,60 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { PlansService } from '../../services/plans.service';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-plans',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './plans.component.html',
-  styleUrl: './plans.component.scss'
+  styleUrl: './plans.component.scss',
 })
-export class PlansComponent implements OnInit{
-  Plans: any = {
-  newPlanName:'',
-  newPlanDescription: '',
-  newPlanFee: 0,
-  newPlanProfilePicture: null
-  }
-  constructor(private authServ: AuthService, private plansService: PlansService) {}
+export class PlansComponent implements OnInit {
+  plans: any = {
+    newPlanName: '',
+    newPlanDescription: '',
+    newPlanFee: 0,
+    newPlanProfilePicture: null,
+  };
+
+  constructor(private plansService: PlansService) {}
+
   ngOnInit(): void {
-    this.plansService.getPlans().subscribe((data) => {
-      this.Plans = data;
-      console.log(this.Plans);
-  });
-  }
-  addPlan() {
-    const formData = new FormData();
-    formData.append('title', this.Plans.newPlanName);
-    formData.append('description', this.Plans.newPlanDescription);
-    formData.append('fee', this.Plans.newPlanFee.toString());
-    if (this.Plans.newPlanProfilePicture) {
-      formData.append('profile_picture', this.Plans.newPlanProfilePicture);
-    }
-    // if (this.authServ.isUserLogged()) {
-    this.plansService.addPlan(formData).subscribe((data) => {
-      console.log('New plan:', data);
-      this.Plans.newPlanName = '';
-      this.Plans.newPlanDescription = '';
-      this.Plans.newPlanFee = 0;
-      this.Plans.newPlanProfilePicture = null;
-    }, (error) => {
-      console.error('Error adding new plan:', error);
-    });
-    
+    this.loadPlans();
   }
 
-  onProfilePictureChange(event: any) {
-    const fileList: FileList = event.target.files;
-    if (fileList.length > 0) {
-      this.Plans.newPlanProfilePicture = fileList[0];
+  loadPlans() {
+    this.plansService.getPlans().subscribe((data) => {
+      this.plans = data;
+    });
+  }
+
+  addPlan() {
+    this.plansService.addPlan(this.plans).subscribe(
+      (data) => {
+        console.log('Plan added successfully:', data);
+        this.plans = {
+          newPlanName: '',
+          newPlanDescription: '',
+          newPlanFee: 0,
+          newPlanProfilePicture:
+            'https://res.cloudinary.com/dlljqtquk/image/upload/v1709051275/ElGymaweya/profile_picture-1709051385598.png',
+        };
+        this.loadPlans();
+      },
+      (error) => {
+        console.error('Error adding plan:', error);
+      }
+    );
+  }
+
+  onFileSelected(event: Event) {
+    const target = event.target as HTMLInputElement;
+    if (target && target.files && target.files.length > 0) {
+      const file: File = target.files[0];
+      this.plans.newPlanProfilePicture = file;
     }
   }
 }

@@ -1,41 +1,82 @@
 <div class="row">
-    @for (plan of Plans; track plan.id) {
-    <div class="col-md-4 mb-4">
-      <div class="card">
-        <img src="{{ plan.profile_picture }}" class="card-img-top" alt="{{ plan.title }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ plan.title }}</h5>
-          <p class="card-text">{{ plan.description }}</p>
-          <p class="card-text">Fee: {{ plan.fee }}</p>
-        </div>
+  @for (plan of plans; track plan.id) {
+  <div class="col-md-4 mb-4">
+    <div class="card">
+      <img
+        src="{{ plan.profile_picture }}"
+        class="card-img-top"
+        style="width: 100px"
+        alt="{{ plan.title }}"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ plan.title }}</h5>
+        <p class="card-text">{{ plan.description }}</p>
+        <p class="card-text">Fee: {{ plan.fee }}</p>
       </div>
     </div>
-    }
   </div>
+  }
+</div>
 
-<div class="container"> 
-       <form (ngSubmit)="addPlan()">
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" class="form-control" id="title" name="title" [(ngModel)]="Plans.newPlanName" placeholder="Enter title">
-        </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <input type="text" class="form-control" id="description" name="description" [(ngModel)]="Plans.newPlanDescription" placeholder="Enter description">
-        </div>
-        <div class="form-group">
-          <label for="fee">Fee</label>
-          <input type="text" class="form-control" id="fee" name="fee" [(ngModel)]="Plans.newPlanFee" placeholder="Enter fee">
-        </div>
-        <div class="form-group">
-          <label for="profile_picture">Profile Picture</label>
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="profile_picture" name="profile_picture" [(ngModel)]="Plans.newPlanProfilePicture">
-            <label class="custom-file-label" for="profile_picture">Choose file</label>
-          </div>
-        </div><br/>
-        <button type="submit" class="btn btn-secondary">Add Plan</button>
-      </form>
-   </div>   
-
-  
+<h2>Add New Plan</h2>
+<form #addPlanForm="ngForm" (ngSubmit)="addPlan()">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      name="title"
+      [(ngModel)]="plans.newPlanName"
+      placeholder="Enter title"
+      #titleInput="ngModel"
+      required
+    />
+    <div
+      *ngIf="titleInput.invalid && (titleInput.touched || titleInput.dirty)"
+      class="invalid-feedback"
+    >
+      Please provide a valid title.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea
+      class="form-control"
+      id="description"
+      name="description"
+      [(ngModel)]="plans.newPlanDescription"
+      placeholder="Enter description"
+      required
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <label for="fee">Fee</label>
+    <input
+      type="number"
+      class="form-control"
+      id="fee"
+      name="fee"
+      [(ngModel)]="plans.newPlanFee"
+      placeholder="Enter fee"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="profilePicture">Profile Picture</label>
+    <input
+      type="file"
+      class="form-control-file"
+      id="profilePicture"
+      name="profilePicture"
+      (change)="onFileSelected($event)"
+    />
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="addPlanForm.invalid"
+  >
+    Submit
+  </button>
+</form>

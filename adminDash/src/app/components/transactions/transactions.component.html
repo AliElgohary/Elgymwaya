@@ -3,7 +3,7 @@
     <thead>
       <tr>
         <th scope="col">plan_id</th>
-        <th scope="col">client_id</th>
+        <th scope="col">Client Name</th>
         <th scope="col">order_id</th>
         <th scope="col">amount</th>
         <th scope="col">subscriptionMonths</th>
@@ -13,7 +13,7 @@
       @for (trans of transactions; track trans.id) {
       <tr>
         <td>{{ trans.plan_id }}</td>
-        <td>{{ trans.client_id }}</td>
+        <td>{{ trans.client_id.full_name }}</td>
         <td>{{ trans.order_id }}</td>
         <td>{{ trans.amount }}</td>
         <td>{{ trans.subscriptionMonths }}</td>
