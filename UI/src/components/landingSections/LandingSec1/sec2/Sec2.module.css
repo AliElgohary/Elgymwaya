@@ -1,0 +1,54 @@
+.container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.header {
+    color: #000;
+    font-size: 3vw;
+    font-weight: 500;
+    text-transform: uppercase;
+    width: 50%;
+    text-align: center;
+    margin: 25px auto;
+    font-family: "Fira Sans", sans-serif;
+}
+
+.textBox {
+    width: 85%;
+    margin: 20px auto;
+}
+
+.logoBox {
+    background-color: #de3726;
+    height: 100px;
+    width: 80px;
+    text-align: center;
+    line-height: 100px;
+    margin-top: 10px;
+    margin-right: 10px;
+    opacity: .8;
+    border-radius: 5px;
+}
+
+@media (max-width: 992px) {
+    .logoBox {
+        height: 70px;
+        width: 80px;
+        line-height: 70px;
+        margin: 0;
+        border-radius: 20px;
+        opacity: .5;
+    }
+}
+
+.logo {
+    width: 60px;
+}
+
+.ptext {
+    font-family: "Roboto", sans-serif;
+    /* font-size: 1.1rem; */
+    line-height: 35px;
+    text-align: justify;
+}

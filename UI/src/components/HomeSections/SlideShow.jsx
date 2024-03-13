@@ -96,7 +96,7 @@ function SlideShow() {
                 <img className="d-block w-75" src={salah} alt="Third slide" />
               </div>
 
-              <div className="align-self-end w-50">
+              <div className="align-self-center w-50">
                 <Link
                   to="/"
                   className="text-light text-decoration-none fw-bold"
