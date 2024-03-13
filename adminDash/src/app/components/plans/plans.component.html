@@ -1,22 +1,15 @@
-<div class="row">
-  @for (plan of plans; track plan.id) {
-  <div class="col-md-4 mb-4">
-    <div class="card">
-      <img
-        src="{{ plan.profile_picture }}"
-        class="card-img-top"
-        style="width: 100px"
-        alt="{{ plan.title }}"
-      />
-      <div class="card-body">
-        <h5 class="card-title">{{ plan.title }}</h5>
-        <p class="card-text">{{ plan.description }}</p>
-        <p class="card-text">Fee: {{ plan.fee }}</p>
-      </div>
+<div class="row" *ngIf="this.plans && this.plans.length > 0">
+  @for (plan of this.plans; track plans.id) {
+    <div class="col-md-4 mb-4">
+      <h4>{{ plan.title }}</h4>
+      <img src="{{ plan.profile_picture }}" />
+      <p class="card-text">{{ plan.description }}</p>
+      <p class="card-text">Fee: {{ plan.fee }}</p>
     </div>
-  </div>
   }
 </div>
+
+
 
 <h2>Add New Plan</h2>
 <form #addPlanForm="ngForm" (ngSubmit)="addPlan()">
