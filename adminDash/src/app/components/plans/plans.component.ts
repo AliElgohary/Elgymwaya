@@ -1,7 +1,7 @@
 import { Component, NgModule, OnInit } from '@angular/core';
-import { PlansService } from '../../services/plans.service';
+import { PlansService } from '../../services/plans/plans.service';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
