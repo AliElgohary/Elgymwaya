@@ -12,17 +12,18 @@ export class PlansService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'token': `${this.token}`,
+      token: `${this.token}`,
     }),
   };
   constructor(private http: HttpClient) {}
-  addPlan(planData: any): Observable<any> {
-    return this.http.post<any>(
-      'http://localhost:5000/plan/add',
-      planData,
-      this.httpOptions
-    );
+  addPlan(planData: FormData): Observable<any> {
+    return this.http.post<any>('http://localhost:5000/plan/add', planData, {
+      headers: new HttpHeaders({
+        token: `${this.token}`,
+      }),
+    });
   }
+
   getPlans(): Observable<any[]> {
     return this.http
       .get<Iplans>('http://localhost:5000/plans')

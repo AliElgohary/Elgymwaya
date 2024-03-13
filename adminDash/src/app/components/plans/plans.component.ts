@@ -32,16 +32,22 @@ export class PlansComponent implements OnInit {
   }
 
   addPlan() {
-    this.plansService.addPlan(this.plans).subscribe(
+    const formData = new FormData();
+    formData.append('title', this.plans.newPlanName);
+    formData.append('description', this.plans.newPlanDescription);
+    formData.append('fee', this.plans.newPlanFee.toString());
+    if (this.plans.newPlanProfilePicture) {
+      formData.append(
+        'profile_picture',
+        this.plans.newPlanProfilePicture,
+        this.plans.newPlanProfilePicture.name
+      );
+    }
+
+    this.plansService.addPlan(formData).subscribe(
       (data) => {
         console.log('Plan added successfully:', data);
-        this.plans = {
-          newPlanName: '',
-          newPlanDescription: '',
-          newPlanFee: 0,
-          newPlanProfilePicture:
-            'https://res.cloudinary.com/dlljqtquk/image/upload/v1709051275/ElGymaweya/profile_picture-1709051385598.png',
-        };
+        this.resetPlanForm();
         this.loadPlans();
       },
       (error) => {
@@ -52,9 +58,17 @@ export class PlansComponent implements OnInit {
 
   onFileSelected(event: Event) {
     const target = event.target as HTMLInputElement;
-    if (target && target.files && target.files.length > 0) {
-      const file: File = target.files[0];
-      this.plans.newPlanProfilePicture = file;
+    if (target && target.files && target.files.length) {
+      this.plans.newPlanProfilePicture = target.files[0];
     }
+  }
+
+  resetPlanForm() {
+    this.plans = {
+      newPlanName: '',
+      newPlanDescription: '',
+      newPlanFee: 0,
+      newPlanProfilePicture: null,
+    };
   }
 }
