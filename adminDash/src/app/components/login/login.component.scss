@@ -1,50 +1,117 @@
 body {
-  background: linear-gradient(to right, #4520ecad, #eee4ee);
+  background: linear-gradient(to bottom, #816fd4ad, #eee4ee);
   font-family: sans-serif;
-}
-
-.loginHolder {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 28px 0;
   height: 100vh;
 }
-.custom_form_holder {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(241, 245, 249);
-  background-color: FFFFFF;
-  box-shadow: 20px;
-  width: 80%;
-  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.09);
-  padding: 30px 0;
-  border-radius: 19px;
+
+#box {
+  height: 70vh;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
-.inputsWrapper {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 10px;
+
+#img {
+  background-image: url("../../../assets/pwo.png");
+  background-size: cover;
 }
-.custom_form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+
+form {
+  background-color: #232222;
+  box-sizing: border-box;
 }
+
+#first {
+  margin-top: 100px;
+}
+
+input:nth-child(1) {
+  margin-top: 100px;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #fff;
+  font-size: 18px;
+  background-color: #2b232a;
+  outline: none;
+  color: #d2cbcb;
+}
+
+input::placeholder {
+  color: #eee;
+}
+
+input:focus {
+  color: #fff;
+  background-color: #000000;
+}
+
+// [type=submit] {
+//   border-color: #fff;
+//   background-color: #c9c2ec;
+//   font-weight: bold;
+//   cursor: pointer;
+// }
+
+// .loginHolder {
+//   // display: flex;
+//   // flex-direction: column;
+//   // justify-content: center;
+//   // align-items: center;
+//   // padding: 28px 0;
+//   // height: 100vh;
+// }
+// .custom_form_holder {
+//   // display: flex;
+//   // flex-direction: column;
+//   // justify-content: center;
+//   // align-items: center;
+//   // background-color: rgb(241, 245, 249);
+//   // background-color: FFFFFF;
+//   // box-shadow: 20px;
+//   // width: 80%;
+//   // box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.09);
+//   // padding: 30px 0;
+//   // border-radius: 19px;
+// }
+// .inputsWrapper {
+//   display: grid;
+//   grid-template-columns: repeat(1, 1fr);
+//   gap: 10px;
+// }
+// .custom_form {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+// }
 .gym_title {
-  color: rgb(135, 31, 161);
+  margin-top: 50px;
+  color: #fff;
   display: flex;
   align-items: center;
   gap: 7px;
 }
-input {
-  max-width: 300px;
+
+.gym_title h2 {
+  margin: 2px auto;
 }
+
+.rope {
+  position: absolute;
+  width: 100px;
+  height: 150px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// input {
+//   max-width: 300px;
+// }
 
 .btn {
   border: none;
@@ -54,7 +121,7 @@ input {
   border-radius: 10px;
   display: block;
   width: 200px;
-  margin: 12px auto;
+  margin: 20px auto;
   margin-bottom: 2rem;
   font-weight: bold;
 }
