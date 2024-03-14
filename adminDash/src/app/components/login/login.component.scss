@@ -6,11 +6,12 @@ body {
 
 #box {
   height: 70vh;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  // background-color: #fff;
   position: relative;
 }
-
+#card{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
 #img {
   background-image: url("../../../assets/pwo.png");
   background-size: cover;

@@ -1,5 +1,5 @@
 export const emailTemplate = (url) => {
-  return `<style>
+    return `<style>
     body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
    img { -ms-interpolation-mode: bicubic; }
@@ -95,7 +95,7 @@ export const emailTemplate = (url) => {
 };
 
 export const passwordResetEmailTemplate = (url) => {
-  return `<style>
+    return `<style>
       body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
      table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
      img { -ms-interpolation-mode: bicubic; }

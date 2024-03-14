@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <!-- <div class="row">
     @for (trainee of trainees; track trainee.id) {
       <div class="col-md-4 mb-3">  <div class="card">  <img [src]="trainee.profile_picture" class="card-img-top" alt="{{ trainee.full_name }}'s profile picture" width="100" height="100">
           <div class="card-body">
@@ -16,4 +16,42 @@
       </div>
     }
   </div>
+  <hr> -->
+  <!-- --------------------------- -->
+
+        <table class="table mb-0">
+          <thead>
+              <tr class="text-start">
+                  <th scope="col">ID</th>
+                  <th scope="col">User</th>
+                  <th scope="col">Age</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Birth Date</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Height</th>
+                  <th scope="col">Weight</th>
+                  <th scope="col">Edit</th>
+              </tr>
+          </thead>
+          <tbody>
+            @for (trainee of trainees; track trainee.id) {
+              <tr class="text-start">
+                  <th scope="row">{{trainee.id}}</th>
+                  <td>{{trainee.full_name }}</td>
+                  <td>{{trainee.age}}</td>
+                  <td>{{ trainee.email }}</td>
+                  <td>{{ trainee.phone_number }}</td>
+                  <td>{{ trainee.birth_date  }}</td>
+                  <td>{{ trainee.role }}</td>
+                  <td>{{ trainee.weight }}</td>
+                  <td>{{ trainee.height }}</td>
+                  <td>
+                    <button class="btn text-light" style="background-color: #8119db;"> Edit </button>
+                  </td>
+              </tr>
+            }
+              
+          </tbody>
+      </table>
 </div>
