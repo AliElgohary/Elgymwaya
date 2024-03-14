@@ -8,6 +8,7 @@ import SlideShow from "../../components/HomeSections/SlideShow";
 import SomeFeature from "../../components/SomeFeature/SomeFeature";
 import LandingSec1 from "../../components/landingSections/LandingSec1/LandingSec1";
 import Sec2 from "../../components/landingSections/LandingSec1/sec2/Sec2";
+import Sec4 from "../../components/landingSections/sec4/Sec4";
 const LandingLayout = () => {
   return (
     <>
@@ -15,6 +16,7 @@ const LandingLayout = () => {
         <LandingSec1/>
         <Sec2/>
         <Outlet />
+        <Sec4/>
         <SomeFeature />
         <LandingFooter />
       </div>
