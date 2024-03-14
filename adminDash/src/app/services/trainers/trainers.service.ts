@@ -24,9 +24,14 @@ export class TrainersService {
     });
   }
 
-  getTrainers(): Observable<any[]> {
-    return this.http
-      .get<Itrainers>('http://localhost:5000/coach')
-      .pipe(map((response: any) => response.coach));
+  // getTrainers(): Observable<any[]> {
+  //   return this.http
+  //     .get<Itrainers>('http://localhost:5000/coach')
+  //     .pipe(map((response: any) => response.trainers));
+  // }
+
+  getTrainers(): Observable<any> {
+    return this.http.get<any>('http://localhost:5000/coach', this.httpOptions);
   }
+
 }
