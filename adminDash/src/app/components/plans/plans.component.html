@@ -1,10 +1,22 @@
-<div class="row" *ngIf="this.plans && this.plans.length > 0">
-  @for (plan of this.plans; track plan.id) {
-  <div class="col-md-4 mb-4">
-    <h4>{{ plan.title }}</h4>
-    <img src="{{ plan.profile_picture }}" />
-    <p class="card-text">{{ plan.description }}</p>
-    <p class="card-text">Fee: {{ plan.fee }}</p>
-  </div>
-  }
+<div class="row" style="margin: 0px;">
+<table class="table table-hover table-centered mb-0">
+  <thead>
+      <tr>
+        <th>Plan Title</th>
+        <th>Price</th>
+        <th>Show Plan Details</th>
+      </tr>
+  </thead>
+  <tbody>
+    @for (plan of this.plans; track plan.id) {
+      <tr>
+        <td>{{ plan.title }}</td>
+        <td>{{ plan.fee }}</td>
+        <td>
+          <button class="btn btn-success">Details</button>
+        </td>
+      </tr>
+      }
+  </tbody>
+</table>
 </div>
