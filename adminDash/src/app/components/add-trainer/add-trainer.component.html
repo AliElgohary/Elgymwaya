@@ -1,4 +1,4 @@
-<h2>Add New Trainer</h2>
+<h2 class="bng-dark m-5 mb-2">Add New Trainer</h2>
 <form #addPlanForm="ngForm" (ngSubmit)="addTrainer()">
   <div class="form-group">
     <label for="full_name">full_name</label>
@@ -27,14 +27,14 @@
   <div class="form-group mb-2">
     <label for="coachemail" class="col-form-label">E-mail</label>
     <input
-     type="text" 
-     name="coachemail" 
+     type="text"
+     name="coachemail"
      id="coachemail"
-     class="form-control" 
-     placeholder="E-mail" 
+     class="form-control"
+     placeholder="E-mail"
      required email minlength="10"
      [(ngModel)]="trainer.email"
-     #emailInput="ngModel" 
+     #emailInput="ngModel"
      [ngClass]="{
         'is-invalid':
           (emailInput.touched || emailInput.dirty) &&
@@ -51,14 +51,14 @@
 
   <div class="form-group mb-2">
     <label for="password" class="col-form-label">Password</label>
-    <input type="password" 
+    <input type="password"
     name="password"
-    id="password" 
-    class="form-control" 
-    placeholder="Password" 
+    id="password"
+    class="form-control"
+    placeholder="Password"
     required
-    [(ngModel)]="trainer.password" 
-    #passwordInput="ngModel" 
+    [(ngModel)]="trainer.password"
+    #passwordInput="ngModel"
     [ngClass]="{
         'is-invalid':
           (passwordInput.touched || passwordInput.dirty) &&
@@ -73,15 +73,15 @@
 
   <div class="form-group mb-2">
     <label for="Cpassword" class="col-form-label"> Confirme Password</label>
-    <input 
-    type="password" 
-    name="Cpassword" 
-    id="Cpassword" 
-    class="form-control" 
-    placeholder="Confirmed Password" 
+    <input
+    type="password"
+    name="Cpassword"
+    id="Cpassword"
+    class="form-control"
+    placeholder="Confirmed Password"
     required
-    [(ngModel)]="trainer.Cpassword" 
-    #CpasswordInput="ngModel" 
+    [(ngModel)]="trainer.Cpassword"
+    #CpasswordInput="ngModel"
     [ngClass]="{
         'is-invalid':
           (CpasswordInput.touched || CpasswordInput.dirty) &&
@@ -110,7 +110,7 @@
         'is-invalid':
           (PhoneInput.touched || PhoneInput.dirty) &&
           !PhoneInput.valid
-      }" 
+      }"
     />
     <span class="invalid-feedback">
         @if(PhoneInput.errors?.['pattern']){

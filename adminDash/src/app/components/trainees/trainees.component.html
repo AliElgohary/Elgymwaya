@@ -1,28 +1,7 @@
 <div class="container">
-  <!-- <div class="row">
-    @for (trainee of trainees; track trainee.id) {
-      <div class="col-md-4 mb-3">  <div class="card">  <img [src]="trainee.profile_picture" class="card-img-top" alt="{{ trainee.full_name }}'s profile picture" width="100" height="100">
-          <div class="card-body">
-            <h2 class="card-title">{{ trainee.full_name }}</h2>
-            <p class="card-text">Age: {{ trainee.age }}</p>
-            <p class="card-text">Birth Date: {{ trainee.birth_date  }}</p>
-            <p class="card-text">Email: {{ trainee.email }}</p>
-            <p class="card-text">Height: {{ trainee.height }} cm</p>
-            <p class="card-text">Phone Number: {{ trainee.phone_number }}</p>
-            <p class="card-text">Role: {{ trainee.role }}</p>
-            <p class="card-text">Weight: {{ trainee.weight }} kg</p>
-          </div>
-        </div>
-      </div>
-    }
-  </div>
-  <hr> -->
-  <!-- --------------------------- -->
-
         <table class="table mb-0">
           <thead>
               <tr class="text-start">
-                  <th scope="col">ID</th>
                   <th scope="col">User</th>
                   <th scope="col">Age</th>
                   <th scope="col">Email</th>
@@ -31,27 +10,26 @@
                   <th scope="col">Role</th>
                   <th scope="col">Height</th>
                   <th scope="col">Weight</th>
-                  <th scope="col">Edit</th>
+                  <th scope="col">Action</th>
               </tr>
           </thead>
           <tbody>
-            @for (trainee of trainees; track trainee.id) {
+            @for (trainee of trainees; track trainee._id) {
               <tr class="text-start">
-                  <th scope="row">{{trainee.id}}</th>
                   <td>{{trainee.full_name }}</td>
                   <td>{{trainee.age}}</td>
                   <td>{{ trainee.email }}</td>
                   <td>{{ trainee.phone_number }}</td>
-                  <td>{{ trainee.birth_date  }}</td>
+                  <td>{{ trainee.birth_date | date  }}</td>
                   <td>{{ trainee.role }}</td>
                   <td>{{ trainee.weight }}</td>
                   <td>{{ trainee.height }}</td>
                   <td>
-                    <button class="btn text-light" style="background-color: #8119db;"> Edit </button>
+                    <button class="btn text-light" style="background-color: #8119db;"> Details </button>
                   </td>
               </tr>
             }
-              
+
           </tbody>
       </table>
 </div>

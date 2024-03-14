@@ -3,6 +3,7 @@ import { Itrainers } from '../../models/itrainers';
 import { TrainersService } from '../../services/trainers/trainers.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-trainer',
@@ -24,7 +25,7 @@ export class AddTrainerComponent {
     newPlanProfilePicture: null,
   }
 
-  constructor(private trainerService: TrainersService) {}
+  constructor(private trainerService: TrainersService, private router:Router) {}
 
   addTrainer() {
     const formData = new FormData();
@@ -48,6 +49,7 @@ export class AddTrainerComponent {
       (data) => {
         console.log('Trainer added successfully:', data);
         this.resetPlanForm();
+        this.router.navigate(['/trainers'])
       },
       (error) => {
         console.error('Error adding Trainer:', error);

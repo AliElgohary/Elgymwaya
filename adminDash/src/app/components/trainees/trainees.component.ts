@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { TraineesService } from '../../services/trainees/trainees.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-trainees',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './trainees.component.html',
   styleUrl: './trainees.component.scss',
 })

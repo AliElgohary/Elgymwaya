@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PlansService } from '../../services/plans/plans.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-plan',
@@ -18,7 +19,7 @@ export class AddPlanComponent {
     newPlanProfilePicture: null,
   };
 
-  constructor(private plansService: PlansService) {}
+  constructor(private plansService: PlansService, private route: Router) {}
 
   addPlan() {
     const formData = new FormData();
@@ -32,11 +33,11 @@ export class AddPlanComponent {
         this.plans.newPlanProfilePicture.name
       );
     }
-
     this.plansService.addPlan(formData).subscribe(
       (data) => {
         console.log('Plan added successfully:', data);
         this.resetPlanForm();
+        this.route.navigate(['/plans']);
       },
       (error) => {
         console.error('Error adding plan:', error);
