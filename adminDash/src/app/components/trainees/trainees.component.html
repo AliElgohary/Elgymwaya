@@ -1,1 +1,19 @@
-<p>trainees works!</p>
+<div class="container">
+  <div class="row">
+    @for (trainee of trainees; track trainee.id) {
+      <div class="col-md-4 mb-3">  <div class="card">  <img [src]="trainee.profile_picture" class="card-img-top" alt="{{ trainee.full_name }}'s profile picture" width="100" height="100">
+          <div class="card-body">
+            <h2 class="card-title">{{ trainee.full_name }}</h2>
+            <p class="card-text">Age: {{ trainee.age }}</p>
+            <p class="card-text">Birth Date: {{ trainee.birth_date  }}</p>
+            <p class="card-text">Email: {{ trainee.email }}</p>
+            <p class="card-text">Height: {{ trainee.height }} cm</p>
+            <p class="card-text">Phone Number: {{ trainee.phone_number }}</p>
+            <p class="card-text">Role: {{ trainee.role }}</p>
+            <p class="card-text">Weight: {{ trainee.weight }} kg</p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

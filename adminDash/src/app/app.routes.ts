@@ -9,6 +9,9 @@ import { PlansComponent } from './components/plans/plans.component';
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { authGuard } from './guards/auth.guard';
 import { LoginComponent } from './components/login/login.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { AddPlanComponent } from './components/add-plan/add-plan.component';
+import { AddTrainerComponent } from './components/add-trainer/add-trainer.component';
 
 export const routes: Routes = [
   {path: '', component:HomeComponent, canActivate: [authGuard]},
@@ -19,5 +22,8 @@ export const routes: Routes = [
   {path: 'transactions', component:TransactionsComponent, canActivate: [authGuard]},
   {path: 'plans', component:PlansComponent, canActivate: [authGuard]},
   {path: 'login', component:LoginComponent},
+  {path: 'adduser', component:AddUserComponent},
+  {path: 'addplan', component:AddPlanComponent},
+  {path: 'addtrainer', component:AddTrainerComponent},
   {path: '**', component:NotFoundComponent},
 ];

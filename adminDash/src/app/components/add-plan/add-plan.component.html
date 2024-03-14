@@ -1,0 +1,63 @@
+
+<h2>Add New Plan</h2>
+<form #addPlanForm="ngForm" (ngSubmit)="addPlan()">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      name="title"
+      [(ngModel)]="plans.newPlanName"
+      placeholder="Enter title"
+      #titleInput="ngModel"
+      required
+    />
+    <div
+      *ngIf="titleInput.invalid && (titleInput.touched || titleInput.dirty)"
+      class="invalid-feedback"
+    >
+      Please provide a valid title.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea
+      class="form-control"
+      id="description"
+      name="description"
+      [(ngModel)]="plans.newPlanDescription"
+      placeholder="Enter description"
+      required
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <label for="fee">Fee</label>
+    <input
+      type="number"
+      class="form-control"
+      id="fee"
+      name="fee"
+      [(ngModel)]="plans.newPlanFee"
+      placeholder="Enter fee"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="profilePicture">Profile Picture</label>
+    <input
+      type="file"
+      class="form-control-file"
+      id="profilePicture"
+      name="profilePicture"
+      (change)="onFileSelected($event)"
+    />
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="addPlanForm.invalid"
+  >
+    Submit
+  </button>
+</form>
