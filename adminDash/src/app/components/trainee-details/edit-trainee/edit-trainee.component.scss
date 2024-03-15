@@ -1,0 +1,13 @@
+.box{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 15px;
+}
+[type="file"],
+[type="number"],
+[type="submit"],
+[type="text"],
+[type="password"],
+[type="date"] {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-bottom: 5px;
+}

@@ -1,136 +1,84 @@
-<h2 class="bng-dark m-5 mb-2">Edit trainee</h2>
+<h2 class="bng-dark m-auto mt-5 mb-2 w-75">Edit trainee</h2>
 <div class="container">
   <form #addPlanForm="ngForm" (ngSubmit)="editTrainee()">
-    <div class="form-group">
-      <label for="full_name">full_name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="full_name"
-        name="full_name"
-        [(ngModel)]="trainee.full_name"
-        placeholder="Enter full_name"
-        #NameInput="ngModel"
-        required
-        [ngClass]="{
-          'is-invalid':
-            (NameInput.touched || NameInput.dirty) && !NameInput.valid
-        }"
-      />
-      <span class="invalid-feedback">
-        @if(NameInput.errors?.['required']){
-        <span>Name is required</span>
-        }
-      </span>
+    <div class="row box m-auto w-75">
+      <div class=" col col-12 form-gr col col-8 oup">
+        <label for="full_name">full_name</label>
+        <input type="text" class="form-control" id="full_name" name="full_name" [(ngModel)]="trainee.full_name"
+          placeholder="Enter full_name" #NameInput="ngModel" required [ngClass]="{
+            'is-invalid':
+              (NameInput.touched || NameInput.dirty) && !NameInput.valid
+          }" />
+        <span class="invalid-feedback">
+          @if(NameInput.errors?.['required']){
+          <span>Name is required</span>
+          }
+        </span>
+      </div>
+
+      <div class=" col col-12 form-group mb-2">
+        <label for="coachemail" class="col-form-label">E-mail</label>
+        <input type="text" name="coachemail" id="coachemail" class="form-control" placeholder="E-mail" required email
+          minlength="10" [(ngModel)]="trainee.email" #emailInput="ngModel" [ngClass]="{
+            'is-invalid':
+              (emailInput.touched || emailInput.dirty) && !emailInput.valid
+          }" />
+        <span class="invalid-feedback">
+          @if(emailInput.errors?.['required']){
+          <span>Email is required</span>
+          } @if(emailInput.errors?.['email']){
+          <span>Enter a valid Email</span>
+          }
+        </span>
+      </div>
+
+      <div class=" col col-12 form-group">
+        <label for="phone_number"> Phone Number</label>
+        <input type="text" class="form-control" id="phone_number" pattern="^(01)[0-9]{9}$" name="phone_number"
+          [(ngModel)]="trainee.phone_number" placeholder="Enter Phone Number" required #PhoneInput="ngModel" [ngClass]="{
+            'is-invalid':
+              (PhoneInput.touched || PhoneInput.dirty) && !PhoneInput.valid
+          }" />
+        <span class="invalid-feedback">
+          @if(PhoneInput.errors?.['pattern']){
+          <span>Phone Number Must be correct</span>
+          }
+        </span>
+      </div>
+
+
+      <div class=" col col-12 form-group">
+        <label for="height">Height</label>
+        <input type="number" class="form-control" id="height" name="height" [(ngModel)]="trainee.height"
+          placeholder="Enter height" #heightInput="ngModel" required />
+        <span class="invalid-feedback">
+          @if(heightInput.errors?.['required']){
+          <span>height is required</span>
+          }
+        </span>
+      </div>
+
+      <div class=" col col-12 form-group">
+        <label for="weight">weight</label>
+        <input type="number" class="form-control" id="weight" name="weight" [(ngModel)]="trainee.weight"
+          placeholder="Enter weight" #weightInput="ngModel" required />
+        <span class="invalid-feedback">
+          @if(weightInput.errors?.['required']){
+          <span>Weight is required</span>
+          }
+        </span>
+      </div>
+
+      <div class=" col col-12 form-group">
+        <label for="profilePicture">Profile Picture</label>
+        <input type="file" class="form-control-file" id="profilePicture" name="profilePicture"
+          (change)="onFileSelected($event)" />
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="addPlanForm.invalid">
+        Edit
+      </button>
+
     </div>
-
-    <div class="form-group mb-2">
-      <label for="coachemail" class="col-form-label">E-mail</label>
-      <input
-        type="text"
-        name="coachemail"
-        id="coachemail"
-        class="form-control"
-        placeholder="E-mail"
-        required
-        email
-        minlength="10"
-        [(ngModel)]="trainee.email"
-        #emailInput="ngModel"
-        [ngClass]="{
-          'is-invalid':
-            (emailInput.touched || emailInput.dirty) && !emailInput.valid
-        }"
-      />
-      <span class="invalid-feedback">
-        @if(emailInput.errors?.['required']){
-        <span>Email is required</span>
-        } @if(emailInput.errors?.['email']){
-        <span>Enter a valid Email</span>
-        }
-      </span>
-    </div>
-
-    <div class="form-group">
-      <label for="phone_number"> Phone Number</label>
-      <input
-        type="text"
-        class="form-control"
-        id="phone_number"
-        pattern="^(01)[0-9]{9}$"
-        name="phone_number"
-        [(ngModel)]="trainee.phone_number"
-        placeholder="Enter Phone Number"
-        required
-        #PhoneInput="ngModel"
-        [ngClass]="{
-          'is-invalid':
-            (PhoneInput.touched || PhoneInput.dirty) && !PhoneInput.valid
-        }"
-      />
-      <span class="invalid-feedback">
-        @if(PhoneInput.errors?.['pattern']){
-        <span>Phone Number Must be correct</span>
-        }
-      </span>
-    </div>
-
-
-    <div class="form-group">
-      <label for="height">Height</label>
-      <input
-        type="number"
-        class="form-control"
-        id="height"
-        name="height"
-        [(ngModel)]="trainee.height"
-        placeholder="Enter height"
-        #heightInput="ngModel"
-        required
-      />
-      <span class="invalid-feedback">
-        @if(heightInput.errors?.['required']){
-        <span>height is required</span>
-        }
-      </span>
-    </div>
-
-    <div class="form-group">
-      <label for="weight">weight</label>
-      <input
-        type="number"
-        class="form-control"
-        id="weight"
-        name="weight"
-        [(ngModel)]="trainee.weight"
-        placeholder="Enter weight"
-        #weightInput="ngModel"
-        required
-      />
-      <span class="invalid-feedback">
-        @if(weightInput.errors?.['required']){
-        <span>Weight is required</span>
-        }
-      </span>
-    </div>
-
-    <div class="form-group">
-      <label for="profilePicture">Profile Picture</label>
-      <input
-        type="file"
-        class="form-control-file"
-        id="profilePicture"
-        name="profilePicture"
-        (change)="onFileSelected($event)"
-      />
-    </div>
-
-    <button
-      type="submit"
-      class="btn btn-primary"
-      [disabled]="addPlanForm.invalid"
-    >
-      Edit
-    </button>
   </form>
 </div>
