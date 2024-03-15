@@ -159,18 +159,18 @@
             <hr>
             <div class="row">
               <div class="col-sm-12">
-                <a class="btn btn-info " target="__blank">Edit</a>
+                <button class="btn btn-primary" (click)="navigateToEdit(trainee._id)">Edit</button>
               </div>
             </div>
           </div>
         </div>
-
-
-
-
       </div>
     </div>
 
   </div>
 </div>
 }
+
+<div class="container">
+  <router-outlet  ></router-outlet>
+</div>

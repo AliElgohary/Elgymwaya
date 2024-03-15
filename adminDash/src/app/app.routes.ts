@@ -15,6 +15,7 @@ import { AddTrainerComponent } from './components/add-trainer/add-trainer.compon
 import { PlanDetailsComponent } from './components/plans/plan-details/plan-details.component';
 import { TraineeDetailsComponent } from './components/trainee-details/trainee-details.component';
 import { TrainersDetailsComponent } from './components/trainers-details/trainers-details.component';
+import { EditTraineeComponent } from './components/trainee-details/edit-trainee/edit-trainee.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuard] },
@@ -43,6 +44,7 @@ export const routes: Routes = [
     path: 'trainees/details/:id',
     component: TraineeDetailsComponent,
     canActivate: [authGuard],
+    children: [{path: 'edit', component: EditTraineeComponent}]
   },
   {
     path: 'transactions',
