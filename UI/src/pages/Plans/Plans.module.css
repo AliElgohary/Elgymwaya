@@ -56,6 +56,7 @@
 .free_plan_btn:hover {
   background-color: #00b7ff;
 }
+
 @media (max-width: 768px) {
   .plan_box {
     width: 100%; /* Full width on smaller screens */
