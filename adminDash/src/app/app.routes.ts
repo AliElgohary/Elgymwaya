@@ -13,8 +13,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { AddPlanComponent } from './components/add-plan/add-plan.component';
 import { AddTrainerComponent } from './components/add-trainer/add-trainer.component';
 import { PlanDetailsComponent } from './components/plans/plan-details/plan-details.component';
-import { TraineeDetailsComponent } from './components/trainees/trainee-details/trainee-details.component';
-import { TrainersDetailsComponent } from './components/trainers/trainers-details/trainers-details.component';
+import { TraineeDetailsComponent } from './components/trainee-details/trainee-details.component';
+import { TrainersDetailsComponent } from './components/trainers-details/trainers-details.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuard] },
@@ -28,16 +28,22 @@ export const routes: Routes = [
     path: 'trainers',
     component: TrainersComponent,
     canActivate: [authGuard],
-    children: [],
   },
-  { path: 'trainers/details/:id', component: TrainersDetailsComponent },
+  {
+    path: 'trainers/details/:id',
+    component: TrainersDetailsComponent,
+    canActivate: [authGuard],
+  },
   {
     path: 'trainees',
     component: TraineesComponent,
     canActivate: [authGuard],
-    children: [],
   },
-  { path: 'trainees/details/:id', component: TraineeDetailsComponent },
+  {
+    path: 'trainees/details/:id',
+    component: TraineeDetailsComponent,
+    canActivate: [authGuard],
+  },
   {
     path: 'transactions',
     component: TransactionsComponent,
@@ -47,7 +53,13 @@ export const routes: Routes = [
     path: 'plans',
     component: PlansComponent,
     canActivate: [authGuard],
-    children: [{ path: 'details/:id', component: PlanDetailsComponent }],
+    children: [
+      {
+        path: 'details/:id',
+        component: PlanDetailsComponent,
+        canActivate: [authGuard],
+      },
+    ],
   },
   { path: 'login', component: LoginComponent },
   { path: 'adduser', component: AddUserComponent, canActivate: [authGuard] },

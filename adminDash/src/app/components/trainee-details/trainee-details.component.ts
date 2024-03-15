@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TraineesService } from '../../../services/trainees/trainees.service';
+import { TraineesService } from '../../services/trainees/trainees.service';
 import { Subscription } from 'rxjs';
-import { Itrainee } from '../../../models/Itrainee';
+import { Itrainee } from '../../models/Itrainee';
 
 @Component({
   selector: 'app-trainee-details',

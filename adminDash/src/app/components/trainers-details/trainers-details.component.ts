@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TrainersService } from '../../../services/trainers/trainers.service';
+import { TrainersService } from '../../services/trainers/trainers.service';
 import { ActivatedRoute } from '@angular/router';
-import { Itrainers } from '../../../models/itrainers';
+import { Itrainers } from '../../models/itrainers';
 import { CommonModule } from '@angular/common';
 
 @Component({
