@@ -1,6 +1,5 @@
 @if(trainee){
-
-  <div>
+  <div >
     <div class="card mb-3">
       <div class="card-header">
         <h3>{{ trainee.full_name }}</h3>
@@ -20,10 +19,16 @@
           <div class="col-md-6">
             <p>Height: {{ trainee.height }} cm</p>
             <p>Weight: {{ trainee.weight }} kg</p>
-
+            @if (trainee.coach_id){
+              <div>
+                <h4>Coach</h4>
+                <p>Name: {{ trainee.coach_id.full_name }}</p>
+              </div>
+            }
           </div>
         </div>
       </div>
     </div>
   </div>
+
 }

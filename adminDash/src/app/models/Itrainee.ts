@@ -14,5 +14,8 @@ export interface Itrainee {
   subscription_date: Date;
   subscription_end_date: Date;
   subscription_months: number;
-  coach: object;
+  coach_id: {
+    _id: string,
+    full_name: string
+  }
 }
