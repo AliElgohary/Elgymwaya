@@ -8,15 +8,18 @@
       </tr>
   </thead>
   <tbody>
-    @for (plan of this.plans; track plan.id) {
+    @for (plan of this.plans; track plan._id) {
       <tr>
         <td>{{ plan.title }}</td>
         <td>{{ plan.fee }}</td>
         <td>
-          <button class="btn btn-success">Details</button>
+          <button class="btn btn-success" [routerLink]="['details', plan._id]">Details</button>
         </td>
       </tr>
       }
   </tbody>
 </table>
 </div>
+
+<router-outlet></router-outlet>
+

@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-      
+
     @for (trans of transactions; track trans.id) {
       <tr>
         <td>{{ trans.client_id.full_name }}</td>
@@ -19,8 +19,8 @@
         <td>{{ trans.subscriptionMonths }}</td>
         <th scope="col"><button class="btn btn-danger">Del</button></th>
       </tr>
-      }  
-  
+      }
+
   </tbody>
 </table>
 </div>

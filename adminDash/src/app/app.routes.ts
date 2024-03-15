@@ -12,18 +12,36 @@ import { LoginComponent } from './components/login/login.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { AddPlanComponent } from './components/add-plan/add-plan.component';
 import { AddTrainerComponent } from './components/add-trainer/add-trainer.component';
+import { PlanDetailsComponent } from './components/plans/plan-details/plan-details.component';
 
 export const routes: Routes = [
-  {path: '', component:HomeComponent, canActivate: [authGuard]},
-  {path: 'analytics', component:AnalyticsComponent, canActivate: [authGuard]},
-  {path: 'sales', component:SalesComponent, canActivate: [authGuard]},
-  {path: 'trainers', component:TrainersComponent, canActivate: [authGuard]},
-  {path: 'trainees', component:TraineesComponent, canActivate: [authGuard]},
-  {path: 'transactions', component:TransactionsComponent, canActivate: [authGuard]},
-  {path: 'plans', component:PlansComponent, canActivate: [authGuard]},
-  {path: 'login', component:LoginComponent},
-  {path: 'adduser', component:AddUserComponent},
-  {path: 'addplan', component:AddPlanComponent},
-  {path: 'addtrainer', component:AddTrainerComponent},
-  {path: '**', component:NotFoundComponent},
+  { path: '', component: HomeComponent, canActivate: [authGuard] },
+  {
+    path: 'analytics',
+    component: AnalyticsComponent,
+    canActivate: [authGuard],
+  },
+  { path: 'sales', component: SalesComponent, canActivate: [authGuard] },
+  { path: 'trainers', component: TrainersComponent, canActivate: [authGuard] },
+  { path: 'trainees', component: TraineesComponent, canActivate: [authGuard] },
+  {
+    path: 'transactions',
+    component: TransactionsComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'plans',
+    component: PlansComponent,
+    canActivate: [authGuard],
+    children: [{ path: 'details/:id', component: PlanDetailsComponent }],
+  },
+  { path: 'login', component: LoginComponent },
+  { path: 'adduser', component: AddUserComponent, canActivate: [authGuard] },
+  { path: 'addplan', component: AddPlanComponent, canActivate: [authGuard] },
+  {
+    path: 'addtrainer',
+    component: AddTrainerComponent,
+    canActivate: [authGuard],
+  },
+  { path: '**', component: NotFoundComponent },
 ];

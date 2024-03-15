@@ -23,10 +23,14 @@ export class PlansService {
       }),
     });
   }
-
   getPlans(): Observable<any[]> {
     return this.http
       .get<Iplans>('http://localhost:5000/plans')
       .pipe(map((response: any) => response.plans));
+  }
+  getPlan(id: string): Observable<Iplans> {
+    return this.http
+      .get<Iplans>(`http://localhost:5000/plan/${id}`)
+      .pipe(map((response: any) => response.plan));
   }
 }
