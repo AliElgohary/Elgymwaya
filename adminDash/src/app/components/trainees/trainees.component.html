@@ -1,35 +1,40 @@
 <div class="container">
-        <table class="table mb-0">
-          <thead>
-              <tr class="text-start">
-                  <th scope="col">User</th>
-                  <th scope="col">Age</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Phone</th>
-                  <th scope="col">Birth Date</th>
-                  <th scope="col">Role</th>
-                  <th scope="col">Height</th>
-                  <th scope="col">Weight</th>
-                  <th scope="col">Action</th>
-              </tr>
-          </thead>
-          <tbody>
-            @for (trainee of trainees; track trainee._id) {
-              <tr class="text-start">
-                  <td>{{trainee.full_name }}</td>
-                  <td>{{trainee.age}}</td>
-                  <td>{{ trainee.email }}</td>
-                  <td>{{ trainee.phone_number }}</td>
-                  <td>{{ trainee.birth_date | date  }}</td>
-                  <td>{{ trainee.role }}</td>
-                  <td>{{ trainee.weight }}</td>
-                  <td>{{ trainee.height }}</td>
-                  <td>
-                    <button class="btn text-light" style="background-color: #8119db;"> Details </button>
-                  </td>
-              </tr>
-            }
-
-          </tbody>
-      </table>
+  <table class="table mb-0">
+    <thead>
+      <tr class="text-start">
+        <th scope="col">User</th>
+        <th scope="col">Age</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Birth Date</th>
+        <th scope="col">Role</th>
+        <th scope="col">Height</th>
+        <th scope="col">Weight</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (trainee of trainees; track trainee._id) {
+      <tr class="text-start">
+        <td>{{ trainee.full_name }}</td>
+        <td>{{ trainee.age }}</td>
+        <td>{{ trainee.email }}</td>
+        <td>{{ trainee.phone_number }}</td>
+        <td>{{ trainee.birth_date | date }}</td>
+        <td>{{ trainee.role }}</td>
+        <td>{{ trainee.weight }}</td>
+        <td>{{ trainee.height }}</td>
+        <td>
+          <button
+            class="btn text-light"
+            style="background-color: #8119db"
+            (click)="onDetailsClick(trainee._id)"
+          >
+            Details
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
 </div>

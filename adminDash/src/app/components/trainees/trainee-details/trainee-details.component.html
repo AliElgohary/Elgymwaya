@@ -1,0 +1,29 @@
+@if(trainee){
+
+  <div>
+    <div class="card mb-3">
+      <div class="card-header">
+        <h3>{{ trainee.full_name }}</h3>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Email: {{ trainee.email }}</li>
+          <li class="list-group-item">Phone Number: {{ trainee.phone_number }}</li>
+          <li class="list-group-item">Birth Date: {{ trainee.birth_date | date }}</li>
+          <li class="list-group-item">Age: {{ trainee.age }}</li>
+          <li class="list-group-item">Role: {{ trainee.role }}</li>
+        </ul>
+        <div class="row">
+          <div class="col-md-6">
+            <img [src]="trainee.profile_picture" alt="Profile Picture" class="img-thumbnail">
+          </div>
+          <div class="col-md-6">
+            <p>Height: {{ trainee.height }} cm</p>
+            <p>Weight: {{ trainee.weight }} kg</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

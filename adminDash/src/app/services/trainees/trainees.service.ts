@@ -18,4 +18,10 @@ export class TraineesService {
   getTrainees(): Observable<any> {
     return this.http.get<any>('http://localhost:5000/client', this.httpOptions);
   }
+
+  getTrainee(id: string): Observable<any> {
+    console.log(id)
+    return this.http
+      .get<any>(`http://localhost:5000/client/${id}`)
+  }
 }

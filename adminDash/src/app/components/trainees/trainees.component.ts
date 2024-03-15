@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TraineesService } from '../../services/trainees/trainees.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trainees',
@@ -11,11 +12,14 @@ import { CommonModule } from '@angular/common';
 })
 export class TraineesComponent implements OnInit {
   trainees: any;
-  constructor(private traineesSer: TraineesService) {}
+  constructor(private traineesSer: TraineesService, private router: Router) {}
   ngOnInit(): void {
     this.traineesSer.getTrainees().subscribe((data) => {
       this.trainees = data;
-      console.log(this.trainees)
+      console.log(this.trainees);
     });
+  }
+  onDetailsClick(traineeID: string) {
+    this.router.navigate(['trainees/details', traineeID]);
   }
 }

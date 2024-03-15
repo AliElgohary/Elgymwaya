@@ -13,6 +13,7 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { AddPlanComponent } from './components/add-plan/add-plan.component';
 import { AddTrainerComponent } from './components/add-trainer/add-trainer.component';
 import { PlanDetailsComponent } from './components/plans/plan-details/plan-details.component';
+import { TraineeDetailsComponent } from './components/trainees/trainee-details/trainee-details.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuard] },
@@ -23,7 +24,13 @@ export const routes: Routes = [
   },
   { path: 'sales', component: SalesComponent, canActivate: [authGuard] },
   { path: 'trainers', component: TrainersComponent, canActivate: [authGuard] },
-  { path: 'trainees', component: TraineesComponent, canActivate: [authGuard] },
+  {
+    path: 'trainees',
+    component: TraineesComponent,
+    canActivate: [authGuard],
+    children: [],
+  },
+  { path: 'trainees/details/:id', component: TraineeDetailsComponent },
   {
     path: 'transactions',
     component: TransactionsComponent,
