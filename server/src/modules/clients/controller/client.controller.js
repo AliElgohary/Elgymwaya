@@ -76,7 +76,7 @@ export const signIn = async (req, res) => {
       return res.status(400).send("Invalid credentials");
     }
 
-    const token = jwt.sign({ id: client._id }, "ITI", { expiresIn: "1h" });
+    const token = jwt.sign({ id: client._id }, "ITI");
     res
       .status(200)
       .json({ message: "Welcome To El Gymaweya", role: client.role, token });
