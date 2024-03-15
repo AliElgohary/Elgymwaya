@@ -132,25 +132,7 @@
       required
     />
   </div>
-
-  <div class="form-group">
-    <label for="age">Age</label>
-    <input
-      type="number"
-      class="form-control"
-      id="age"
-      name="age"
-      [(ngModel)]="user.age"
-      placeholder="Enter Age"
-      #ageInput="ngModel"
-      required
-    />
-    <span class="invalid-feedback">
-        @if(ageInput.errors?.['required']){
-        <span>Age is required</span>
-        }
-      </span>
-  </div>
+   
 
   <div class="form-group">
     <label for="height">Height</label>
@@ -202,98 +184,7 @@
     />
   </div>
 
-  <div class="form-group">
-    <label for="plan_id">plan_id</label>
-    <input
-      type="text"
-      class="form-control"
-      id="plan_id"
-      name="plan_id"
-      [(ngModel)]="user.plan_id"
-      placeholder="Enter plan_id"
-      #PlanIdInput="ngModel"
-      required
-      [ngClass]="{
-        'is-invalid':
-          (PlanIdInput.touched || PlanIdInput.dirty) &&
-          !PlanIdInput.valid
-      }"
-    />
-    <span class="invalid-feedback">
-        @if(PlanIdInput.errors?.['required']){
-        <span>PlanId is required</span>
-        }
-      </span>
-  </div>
 
-  <div class="form-group">
-    <label for="subscription_date">Subscription Date</label>
-    <input
-      type="date"
-      class="form-control"
-      id="subscription_date"
-      name="subscription_date"
-      [(ngModel)]="user.subscription_date"
-      placeholder="Enter Subscription Date"
-      required
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="subscription_end_date">Subscription end Date</label>
-    <input
-      type="date"
-      class="form-control"
-      id="subscription_end_date"
-      name="subscription_end_date"
-      [(ngModel)]="user.subscription_end_date"
-      placeholder="Enter subscription_end_date"
-      required
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="subscription_months">Subscription Months</label>
-    <input
-      type="number"
-      class="form-control"
-      id="subscription_months"
-      name="subscription_months"
-      [(ngModel)]="user.subscription_months"
-      placeholder="Enter subscription_months"
-      #SMonthsInput="ngModel"
-      required
-    />
-    <span class="invalid-feedback">
-        @if(SMonthsInput.errors?.['required']){
-        <span>SMonths is required</span>
-        }
-      </span>
-  </div>
-
-  <div class="form-group">
-    <label for="coach_id">coach_id</label>
-    <input
-      type="text"
-      class="form-control"
-      id="coach_id"
-      name="coach_id"
-      [(ngModel)]="user.coach_id"
-      placeholder="Enter coach_id"
-      #coachIdInput="ngModel"
-      required
-      [ngClass]="{
-        'is-invalid':
-          (coachIdInput.touched || coachIdInput.dirty) &&
-          !coachIdInput.valid
-      }"
-    />
-    <span class="invalid-feedback">
-        @if(coachIdInput.errors?.['required']){
-        <span>coachId is required</span>
-        }
-      </span>
-  </div>
 
   <button
     type="submit"

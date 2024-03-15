@@ -37,14 +37,8 @@ export class AddUserComponent {
     formData.append('Cpassword', this.user.Cpassword); 
     formData.append('phone_number', this.user.phone_number);
     formData.append('birth_date', this.user.birth_date);
-    formData.append('age', this.user.age);
     formData.append('height', this.user.height);
     formData.append('weight', this.user.weight);
-    formData.append('plan_id', this.user.plan_id);
-    formData.append('subscription_date', this.user.subscription_date);
-    formData.append('subscription_end_date', this.user.subscription_end_date);
-    formData.append('subscription_months', this.user.subscription_months);
-    formData.append('coach_id', this.user.coach_id);
     if (this.user.newPlanProfilePicture) {
       formData.append(
         'profile_picture',
@@ -80,15 +74,9 @@ export class AddUserComponent {
       Cpassword: '',
       phone_number: '',
       birth_date: '',
-      age: 0,
       height: 0,
       weight: 0,
-      plan_id: '',
-      subscription_date: '',
-      subscription_end_date: '',
-      subscription_months: 0,
       newPlanProfilePicture: null,
-      coach_id:''
     };
   }
 
