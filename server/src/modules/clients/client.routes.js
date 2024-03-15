@@ -32,7 +32,7 @@ const clientRoutes = express.Router();
 clientRoutes.post("/client/signup", upload, validation(signUpSchema), signUp);
 
 // Signin - Validation but no auth required
-clientRoutes.post("/client/signin", validation(signInSchema), signIn);
+clientRoutes.post("/client/signin", signIn);
 
 // Change Password - Validation and auth required
 clientRoutes.patch(
