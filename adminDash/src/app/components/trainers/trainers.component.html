@@ -22,7 +22,7 @@
             <td>{{trainer.role }}</td>
             <td>{{trainer.salary }}</td>
             <td>
-              <button class="btn text-light" style="background-color: #8119db;"> Details </button>
+              <button class="btn text-light" style="background-color: #8119db;" (click)="onDetailsClick(trainer._id)"> Details </button>
             </td>
         </tr>
       }

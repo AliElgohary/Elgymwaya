@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { Itrainers } from '../../models/itrainers';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TrainersService {
   token = localStorage.getItem('userToken');
@@ -24,9 +24,14 @@ export class TrainersService {
     });
   }
 
-
   getTrainers(): Observable<any> {
     return this.http.get<any>('http://localhost:5000/coach', this.httpOptions);
   }
 
+  getTrainer(id: string): Observable<any> {
+    return this.http.get<any>(
+      `http://localhost:5000/coach/${id}`,
+      this.httpOptions
+    ).pipe(map((response: any) => response.coach));;
+  }
 }
