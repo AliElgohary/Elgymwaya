@@ -1,28 +1,31 @@
 <div class="table-responsive">
-<table class="table table-striped table-centered mb-0">
-  <thead>
-    <tr>
-      <th scope="col">Client Name</th>
-      <th scope="col">order_id</th>
-      <th scope="col">amount</th>
-      <th scope="col">subscriptionMonths</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    @for (trans of transactions; track trans.id) {
+  <table class="table table-striped table-centered mb-0">
+    <thead>
+      <tr>
+        <th scope="col">Client Name</th>
+        <th scope="col">order_id</th>
+        <th scope="col">amount</th>
+        <th scope="col">subscriptionMonths</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (trans of transactions; track trans.id) {
       <tr>
         <td>{{ trans.client_id.full_name }}</td>
         <td>{{ trans.order_id }}</td>
         <td>{{ trans.amount }}</td>
         <td>{{ trans.subscriptionMonths }}</td>
-        <th scope="col"><button class="btn btn-danger">Del</button></th>
+        <th scope="col">
+          <button
+            class="btn btn-danger"
+            (click)="deleteTransaction(trans._id)"
+          >
+            Delete
+          </button>
+        </th>
       </tr>
       }
-
-  </tbody>
-</table>
+    </tbody>
+  </table>
 </div>
-
-<h1>Add a new Transaction</h1>

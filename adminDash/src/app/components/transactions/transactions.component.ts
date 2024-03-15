@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionsService } from '../../services/transactions/transactions.service';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-transactions',
@@ -15,10 +14,22 @@ export class TransactionsComponent implements OnInit {
   constructor(private transactionsService: TransactionsService) {}
 
   ngOnInit(): void {
+    this.getTransactions();
+  }
+
+  getTransactions() {
     this.transactionsService.getTransactions().subscribe((data) => {
       this.transactions = data;
-      console.log(this.transactions);
     });
   }
 
+  deleteTransaction(id: string) {
+    this.transactionsService.deleteTransactions(id).subscribe((response) => {
+      if (response.message === 'Transaction Deleted') {
+        this.getTransactions()
+      } else {
+        console.error('Unexpected deletion response:', response);
+      }
+    });
+  }
 }

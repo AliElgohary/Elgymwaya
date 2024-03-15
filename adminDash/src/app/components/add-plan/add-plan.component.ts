@@ -35,7 +35,6 @@ export class AddPlanComponent {
     }
     this.plansService.addPlan(formData).subscribe(
       (data) => {
-        console.log('Plan added successfully:', data);
         this.resetPlanForm();
         this.route.navigate(['/plans']);
       },
