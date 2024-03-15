@@ -9,6 +9,7 @@ let coachSchema = new mongoose.Schema({
   birth_date: Date,
   age: Number,
   role: { type: String, default: "coach" },
+  hiredDate: Date,
   salary: Number,
   profile_picture: String,
   client_ids: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],

@@ -49,7 +49,7 @@ export const addCoach = async (req, res) => {
     const profile_picture = req.file ? req.file.path : undefined;
     const hashedPassword = await bcrypt.hash(password, 10);
     const age = birth_date ? calculateAge(new Date(birth_date)) : undefined;
-
+    const hiredDate = new Date();
     const newCoach = new coachModel({
       full_name,
       email,
@@ -60,6 +60,7 @@ export const addCoach = async (req, res) => {
       salary,
       profile_picture,
       working_days: workingDays,
+      hiredDate,
     });
 
     await newCoach.save();

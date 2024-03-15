@@ -1,1 +1,7 @@
-<p>analytics works!</p>
+<ng-container *ngIf="linechart">
+  <highcharts-chart
+    [Highcharts]="Highcharts"
+    [options]="linechart"
+    style="width: 100%; height: 400px; display: block"
+  ></highcharts-chart>
+</ng-container>
