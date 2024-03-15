@@ -41,7 +41,7 @@ export const signUp = async (req, res) => {
         password: hashedPassword,
         birth_date,
         age,
-        profile_picture: req.file.path,
+        // profile_picture: req.file.path, just for now xD
         height,
         weight,
       });
@@ -77,7 +77,9 @@ export const signIn = async (req, res) => {
     }
 
     const token = jwt.sign({ id: client._id }, "ITI", { expiresIn: "1h" });
-    res.status(200).json({ message: "Welcome To El Gymaweya", role: client.role ,token });
+    res
+      .status(200)
+      .json({ message: "Welcome To El Gymaweya", role: client.role, token });
   } catch (error) {
     res.status(500).send("Error in signin");
   }

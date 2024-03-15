@@ -1,17 +1,23 @@
 import styles from "./Login.module.css";
 import { IoBarbellOutline, IoLockClosed } from "react-icons/io5";
 import InputWithIcon from "./../../components/common/InputWithIcon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMemo } from "react";
 import Joi from "joi";
 import { MdEmail } from "react-icons/md";
-
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { loginFailure, loginSuccess } from "./../../store/action/authActions";
 const Login = () => {
   const [data, setData] = useState({
     email: "",
     password: undefined,
   });
   const [errors, setErrors] = useState({}); // [key: string] : string[]  {"name": ["name is required", "name must be at least 5 chars"]}
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const navigate = useNavigate();
   const validationRules = useMemo(
     () => ({
       email: Joi.string()
@@ -23,7 +29,7 @@ const Login = () => {
     []
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validatedKeys = Object.keys(validationRules);
     let valid = true;
@@ -36,7 +42,25 @@ const Login = () => {
     }
     if (valid) {
       //TODO: send api
-      alert(JSON.stringify(data));
+      // alert(JSON.stringify(data));
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/client/signin",
+          data
+        );
+        if (response.data.message === "Client created successfully") {
+          console.log("Welcome To El Gymaweya", response.data);
+          dispatch(loginSuccess(response.data.token));
+        } else {
+          setErrors("Registration failed. Please try again later.");
+          dispatch(loginFailure("Invalid credentials"));
+        }
+      } catch (error) {
+        console.error("Error registering user:", error);
+        // Handle network errors or unexpected errors
+        dispatch(loginFailure(error.message));
+        setErrors("Registration failed. Please try again later.");
+      }
     }
   };
   const validate = (key, value) => {
@@ -60,6 +84,13 @@ const Login = () => {
       setData((prev) => ({ ...prev, [key]: val }));
     }
   };
+  useEffect(() => {
+    console.log("isAuthenticated changed:", isAuthenticated);
+    if (isAuthenticated) {
+      //TODO:finxing the navigate issuse
+      navigate("/userHome");
+    }
+  }, [isAuthenticated, navigate]);
 
   //TODO:fix the icon in placeholder :)
   return (
@@ -93,7 +124,9 @@ const Login = () => {
           </button>
           <h6 className="text-muted ">
             Dont have an account yet?
-            <span className="text-dark mx-2 fw-bold ">Register Now</span>
+            <Link to="/register" className="text-decoration-none">
+              <span className="text-dark mx-2 fw-bold ">Register Now</span>
+            </Link>
           </h6>
         </form>
       </div>
