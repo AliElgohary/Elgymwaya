@@ -1,209 +1,215 @@
 .our_pricing {
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: top center;
-    position: relative;
-    padding: 20px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: top center;
+  position: relative;
+  padding: 20px;
 }
 
-@media only screen and (max-width:480px) {
-    .our_pricing {
-        background-size: auto;
-    }
+@media only screen and (max-width: 480px) {
+  .our_pricing {
+    background-size: auto;
+  }
 }
 
 .pricingTable {
-    background: #fff none repeat scroll 0 0;
-    color: #232434;
-    margin-top: 30px;
-    padding: 50px 15px;
-    -webkit-box-shadow: 0px 19px 43px 0px rgba(17, 17, 17, 0.05);
-    box-shadow: 0px 19px 43px 0px rgba(17, 17, 17, 0.05);
-    -webkit-perspective: 700px;
-    perspective: 700px;
-    position: relative;
-    text-align: center;
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    -o-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s;
-    z-index: 1;
+  background: #fff none repeat scroll 0 0;
+  color: #232434;
+  margin-top: 30px;
+  padding: 50px 15px;
+  -webkit-box-shadow: 0px 19px 43px 0px rgba(17, 17, 17, 0.05);
+  box-shadow: 0px 19px 43px 0px rgba(17, 17, 17, 0.05);
+  -webkit-perspective: 700px;
+  perspective: 700px;
+  position: relative;
+  text-align: center;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -o-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+  z-index: 1;
+  transition: transform 0.5s ease-in-out;
+}
+.pricingTable:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.199);
 }
 
-@media only screen and (max-width:480px) {
-    .pricingTable {
-        margin-bottom: 60px;
-    }
+@media only screen and (max-width: 480px) {
+  .pricingTable {
+    margin-bottom: 60px;
+  }
 }
 
 .pricingTabletop {
-    margin-top: -30px;
+  margin-top: -30px;
 }
 
-.pricingTable .pricingTable-header {}
+.pricingTable .pricingTable-header {
+}
 
 .pricingTable .title {
-    display: block;
-    font-size: 24px;
-    font-weight: 600;
-    text-transform: capitalize;
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    -o-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s;
+  display: block;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: capitalize;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -o-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
 }
 
 .pricingTable .price-month {
-    font-size: 16px;
-    font-weight: 500;
-    margin-top: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 5px;
 }
 
 .pricingTable .price-value {
-    font-size: 170px;
-    line-height: 112px;
-    position: relative;
-    color: #e4f1ff;
-    margin: 40px 0;
+  font-size: 170px;
+  line-height: 112px;
+  position: relative;
+  color: #e4f1ff;
+  margin: 40px 0;
 }
 
-@media only screen and (max-width:768px) {
-    .pricingTable .price-value {
-        font-size: 130px;
-    }
+@media only screen and (max-width: 768px) {
+  .pricingTable .price-value {
+    font-size: 130px;
+  }
 }
 
 .pricingTable .price-value .value-bg {
-    display: inline-block;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -ms-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    color: #1386fc;
-    font-weight: 600;
-    font-size: 60px;
-    line-height: 60px;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  color: #1386fc;
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 60px;
 }
 
 .pricingTable-2 .price-value {
-    color: #e6e4ff;
+  color: #e6e4ff;
 }
 
 .pricingTable-2 .price-value .value-bg {
-    color: #7564e5;
+  color: #7564e5;
 }
 
 .pricingTable .pricing-content {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 20px 0;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
 }
 
-.pricing-content-border {}
+.pricing-content-border {
+}
 
-.pricing-content-border>li {
-    border: 1px solid #eee;
-    margin-bottom: 10px;
+.pricing-content-border > li {
+  border: 1px solid #eee;
+  margin-bottom: 10px;
 }
 
 .pricingTable .pricing-content li {
-    line-height: 40px;
+  line-height: 40px;
 }
 
 @media only screen and (max-width: 990px) {
-    .pricingTable {
-        margin-bottom: 30px;
-    }
+  .pricingTable {
+    margin-bottom: 30px;
+  }
 }
 
 @media only screen and (max-width: 767px) {
-    .pricingTable {
-        margin-bottom: 50px;
-    }
+  .pricingTable {
+    margin-bottom: 50px;
+  }
 }
 
 .btn-price-bg {
-    background: #7564e5;
-    border: 2px solid #7564e5;
-    border-radius: 5000px;
-    color: #fff;
-    display: inline-block;
-    font-size: 16px;
-    overflow: hidden;
-    padding: 12px 40px;
-    text-transform: capitalize;
-    -webkit-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
+  background: #7564e5;
+  border: 2px solid #7564e5;
+  border-radius: 5000px;
+  color: #fff;
+  display: inline-block;
+  font-size: 16px;
+  overflow: hidden;
+  padding: 12px 40px;
+  text-transform: capitalize;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
 
 .pricingTable:hover .btn-price-bg {
-    background: #232434;
-    color: #fff;
-    border: 2px solid #232434;
+  background: #232434;
+  color: #fff;
+  border: 2px solid #232434;
 }
 
 .section-title {
-    margin-bottom: 60px;
+  margin-bottom: 60px;
 }
 
 h1.section-title-white {
-    color: #fff;
+  color: #fff;
 }
 
 .section-title h1 {
-    font-size: 44px;
-    font-weight: 500;
-    margin-top: 0;
-    position: relative;
-    text-transform: capitalize;
-    margin-bottom: 15px;
+  font-size: 44px;
+  font-weight: 500;
+  margin-top: 0;
+  position: relative;
+  text-transform: capitalize;
+  margin-bottom: 15px;
 }
 
 p.section-title-white {
-    color: #fff;
+  color: #fff;
 }
 
 .section-title p {
-    padding: 0 10px;
-    width: 70%;
-    margin: auto;
-    letter-spacing: 1px;
+  padding: 0 10px;
+  width: 70%;
+  margin: auto;
+  letter-spacing: 1px;
 }
 
 .closedCard {
-    pointer-events: none;
-    /* opacity:  0.4; */
-    position: relative;
+  pointer-events: none;
+  /* opacity:  0.4; */
+  position: relative;
 }
 
 .closedCard::after {
-    content: "Unavailable";
-    position: absolute;
-    top: 55px;
-    left: -23px;
-    width: 140px;
-    background-color: red;
-    z-index: 1;
-    color: white;
-    transform: rotate(-45deg) skew(10deg);
-    text-align: center;
-    font-size: 14px;
-    font-weaight: 700;
-    border-radius: 100px 0px;
-    
+  content: "Unavailable";
+  position: absolute;
+  top: 55px;
+  left: -23px;
+  width: 140px;
+  background-color: red;
+  z-index: 1;
+  color: white;
+  transform: rotate(-45deg) skew(10deg);
+  text-align: center;
+  font-size: 14px;
+  font-weaight: 700;
+  border-radius: 100px 0px;
 }
 
-.closedCard>div{
-    position: relative;
+.closedCard > div {
+  position: relative;
 }
-.closedCard>div::after{
-    content: "";
-    position: absolute;
-    top:0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: #000000ba;
-    /* z-index: ; */
+.closedCard > div::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #000000ba;
+  /* z-index: ; */
 }

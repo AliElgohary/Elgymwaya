@@ -51,6 +51,7 @@ const Login = () => {
         if (response.data.message === "Client created successfully") {
           console.log("Welcome To El Gymaweya", response.data);
           dispatch(loginSuccess(response.data.token));
+          console.log(response.data.token);
         } else {
           setErrors("Registration failed. Please try again later.");
           dispatch(loginFailure("Invalid credentials"));
