@@ -7,7 +7,6 @@ import mainRouter from "./src/modules/mainRouter.js";
 const server = express();
 server.use(cors());
 server.use(express.json());
-
 server.use(mainRouter);
 
 initConnection().then(() => {

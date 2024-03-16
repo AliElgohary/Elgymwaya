@@ -6,9 +6,9 @@ import { useMemo } from "react";
 import Joi from "joi";
 import { MdEmail } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { loginFailure, loginSuccess } from "./../../store/action/authActions";
+import { login } from "../../thunks/users";
+
 const Login = () => {
   const [data, setData] = useState({
     email: "",
@@ -41,27 +41,7 @@ const Login = () => {
       }
     }
     if (valid) {
-      //TODO: send api
-      // alert(JSON.stringify(data));
-      try {
-        const response = await axios.post(
-          "http://localhost:5000/client/signin",
-          data
-        );
-        if (typeof response.data.token !== "undefined") {
-          console.log("Welcome To El Gymaweya", response.data);
-          dispatch(loginSuccess(response.data.token));
-          console.log(response.data.token);
-        } else {
-          setErrors("Registration failed. Please try again later.");
-          dispatch(loginFailure("Invalid credentials"));
-        }
-      } catch (error) {
-        console.error("Error registering user:", error);
-        // Handle network errors or unexpected errors
-        dispatch(loginFailure(error.message));
-        setErrors("Registration failed. Please try again later.");
-      }
+      dispatch(login(data.email, data.password));
     }
   };
   const validate = (key, value) => {

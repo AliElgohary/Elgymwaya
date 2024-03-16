@@ -10,6 +10,9 @@ import BmiCalc from "./pages/BMICalc/BmiCalc";
 import Plans from "./pages/Plans/Plans";
 import SubscriptionMonths from "./pages/SubscriptionMonths/SubscriptionMonths";
 import AllTrainers from "./pages/AllTrainers/AllTrainers";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getCurrentUser } from "./thunks/users";
 
 const routes = createBrowserRouter([
   {
@@ -26,10 +29,17 @@ const routes = createBrowserRouter([
   { path: "subscriptionMonths", element: <SubscriptionMonths /> },
   { path: "allTrainers", element: <AllTrainers /> },
 ]);
+
 // BMI => w/h2
 // calories => (66.5+13.75*w+5.003*h-6.755*age)* 1.3||1.4||1.6
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, []);
+
   return (
     <>
       <RouterProvider router={routes}></RouterProvider>
