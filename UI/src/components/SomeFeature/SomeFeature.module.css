@@ -1,12 +1,15 @@
-.text_box{
-    margin: 40px;
+.text_box {
+    /* margin: 40px; */
+    padding: 20px;
 }
-.featureHeader{
+
+.featureHeader {
     font-size: 2rem;
     font-weight: 700;
     position: relative;
 }
-.featureHeader::after{
+
+.featureHeader::after {
     content: "";
     display: block;
     position: absolute;
@@ -15,20 +18,23 @@
     height: 2px;
     background-color: rgba(71, 68, 68, 0.385);
 }
-.featureHeader+p{
+
+.featureHeader+p {
     font-size: 1.2rem;
     font-weight: 400;
     margin-top: 40px;
     width: 70%;
     line-height: 30px;
 }
-.text_box>button{
-     background-color: #e8d9e6;
-     font-weight: bold;
-     padding: 10px;
-     margin: 20px 0;
+
+.text_box>button {
+    background-color: #e8d9e6;
+    font-weight: bold;
+    padding: 10px;
+    margin: 20px 0;
 }
-.text_box>button:hover{
+
+.text_box>button:hover {
     background-color: blueviolet;
     color: #e8d9e6;
 }

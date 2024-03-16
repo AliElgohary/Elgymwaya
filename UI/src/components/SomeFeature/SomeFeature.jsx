@@ -7,7 +7,7 @@ import style from "./SomeFeature.module.css";
 function SomeFeature() {
   return (
     <>
-      <Container fluid className="mt-5">
+      <Container className="mt-5">
         <Row className="m-3">
           <Col
             lg={{ order: 0 }}
@@ -21,7 +21,7 @@ function SomeFeature() {
             sm={{ order: 1 }}
             className="col col-lg-6 col-sm-12 p-0 "
           >
-            <div className={style.text_box}>
+            <div className={` ${style.text_box}`}>
               <h2 className={`p-0 ${style.featureHeader}`}>
                 Personal Training
               </h2>
