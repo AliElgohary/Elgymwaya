@@ -9,15 +9,17 @@ import SomeFeature from "../../components/SomeFeature/SomeFeature";
 import LandingSec1 from "../../components/landingSections/LandingSec1/LandingSec1";
 import Sec2 from "../../components/landingSections/LandingSec1/sec2/Sec2";
 import Sec4 from "../../components/landingSections/sec4/Sec4";
+import OurTrainersSection from "../../components/landingSections/OurTrainersSections/OurTrainersSection";
 const LandingLayout = () => {
   return (
     <>
       <div className={styles.background}>
         <LandingSec1/>
         <Sec2/>
-        <Outlet />
         <Sec4/>
+        <Outlet />
         <SomeFeature />
+        <OurTrainersSection/>
         <LandingFooter />
       </div>
     </>

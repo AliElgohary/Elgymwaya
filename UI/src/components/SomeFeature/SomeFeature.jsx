@@ -6,7 +6,7 @@ import img3 from "../../assets/f3.jpg";
 import style from "./SomeFeature.module.css";
 function SomeFeature() {
   return (
-    <>
+    <div style={{marginBottom:"100px"}}>
       <Container className="mt-5">
         <Row className="m-3">
           <Col
@@ -84,7 +84,7 @@ function SomeFeature() {
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   );
 }
 
