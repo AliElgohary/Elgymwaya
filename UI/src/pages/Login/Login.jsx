@@ -48,7 +48,7 @@ const Login = () => {
           "http://localhost:5000/client/signin",
           data
         );
-        if (response.data.message === "Client created successfully") {
+        if (typeof response.data.token !== "undefined") {
           console.log("Welcome To El Gymaweya", response.data);
           dispatch(loginSuccess(response.data.token));
           console.log(response.data.token);

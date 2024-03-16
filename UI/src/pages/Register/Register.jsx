@@ -74,7 +74,7 @@ const Register = () => {
           "http://localhost:5000/client/signup",
           data
         );
-        if (response.data.message === "Client created successfully") {
+        if (response.status === 200) {
           console.log("Registration successful:", response.data);
           navigate("/plans");
         } else {

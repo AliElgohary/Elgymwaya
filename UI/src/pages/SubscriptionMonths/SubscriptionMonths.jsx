@@ -75,7 +75,7 @@ const SubscriptionMonths = () => {
           </h4>
           <div className={styles.inputsWrapper}>
             <InputWithIcon
-              type="subscription"
+              type="number"
               onChange={(e) => handleInputChange(e, "subscription")}
               placeholder={"subscription"}
               errors={errors["subscription"]}
