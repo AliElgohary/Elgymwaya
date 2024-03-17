@@ -13,6 +13,7 @@ import AllTrainers from "./pages/AllTrainers/AllTrainers";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getCurrentUser } from "./thunks/users";
+import SelectTrainer from "./pages/SelectTrainer/SelectTrainer";
 
 const routes = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const routes = createBrowserRouter([
   { path: "plans", element: <Plans /> },
   { path: "subscriptionMonths", element: <SubscriptionMonths /> },
   { path: "allTrainers", element: <AllTrainers /> },
+  { path: "selectTrainer", element: <SelectTrainer /> },
 ]);
 
 // BMI => w/h2
