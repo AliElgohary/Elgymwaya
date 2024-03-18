@@ -27,7 +27,7 @@ const Plans = () => {
             </div>
 
             {plans.map((plan) => (
-              <div key={plan.id} className="col-xs-12 col-sm-4 col-lg-4">
+              <div key={plan._id} className="col-xs-12 col-sm-4 col-lg-4">
                 <div className="pricingTable pricingTable-2">
                   <div className="pricingTable-header">
                     <h3 className="title">{plan.title}</h3>
