@@ -10,15 +10,19 @@ const Thnx = () => {
   useEffect(() => {
     // Parse the query parameters from the URL
     const queryParams = new URLSearchParams(location.search);
-    const id = queryParams.get("id");
+    const paymentStatus = queryParams.get("success");
+    const transactionId = queryParams.get("id");
 
     // Example: redirect to /userHome after 5 seconds
-    const timeoutId = setTimeout(() => {
-      navigateTo("/userHome");
-    }, 5000);
-
-    // Clean up the timeout to prevent memory leaks
-    return () => clearTimeout(timeoutId);
+    if (paymentStatus === "true" || paymentStatus === "false") {
+      // Payment successful, handle accordingly
+      // For example, update user's transaction history, show success message, etc.
+      console.log("Payment successful. Transaction ID: ", transactionId);
+      const timeoutId = setTimeout(() => {
+        navigateTo("/userHome");
+      }, 5000);
+      return () => clearTimeout(timeoutId);
+    }
   }, [location.search, navigateTo]);
 
   return (
