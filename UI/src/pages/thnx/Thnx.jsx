@@ -1,19 +1,25 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { GiCheckMark } from "react-icons/gi";
 
 const Thnx = () => {
+  const location = useLocation();
   const navigateTo = useNavigate();
 
   useEffect(() => {
+    // Parse the query parameters from the URL
+    const queryParams = new URLSearchParams(location.search);
+    const id = queryParams.get("id");
+
+    // Example: redirect to /userHome after 5 seconds
     const timeoutId = setTimeout(() => {
       navigateTo("/userHome");
     }, 5000);
 
     // Clean up the timeout to prevent memory leaks
     return () => clearTimeout(timeoutId);
-  }, [history]);
+  }, [location.search, navigateTo]);
 
   return (
     <div className="vh-100 d-flex align-items-center justify-content-center">
