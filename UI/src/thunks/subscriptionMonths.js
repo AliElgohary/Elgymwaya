@@ -12,13 +12,13 @@ export const getCurrentUser = () => (dispatch, getState) => {
   dispatch(loginSuccess(token));
 };
 
-export const login = (email, password) => async (dispatch, getState) => {
+export const subscription = (subscription) => async (dispatch, getState) => {
   try {
-    const response = await api.post("client/signin", { email, password });
+    const response = await api.post("client/subscribe", { subscription });
     if (typeof response.data.token !== "undefined") {
       console.log("Welcome To El Gymaweya", response.data);
       const token = response.data.token;
-      localStorage.setItem("token", token);
+      localStorage.getItem("token", token);
       dispatch(loginSuccess(response.data.token));
     } else {
       dispatch(loginFailure("Invalid credentials"));

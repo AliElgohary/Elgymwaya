@@ -45,11 +45,12 @@ export const signUp = async (req, res) => {
         height,
         weight,
       });
+      const token = jwt.sign({ id: newClient._id }, "ITI");
 
       await newClient.save();
       res
         .status(201)
-        .json({ message: "Client created successfully", newClient });
+        .json({ message: "Client created successfully", newClient, token });
     }
   } catch (error) {
     res.status(500).send("Error in signup");
@@ -424,7 +425,35 @@ export const getClientById = async (req, res) => {
   try {
     const client = await userModel
       .findById(req.params.id, "-password -Cpassword")
-      .populate("coach_id", "full_name");
+      .populate({
+        path: "coach_id",
+        select: "-hiredDate -salary -client_ids",
+      })
+      .populate("plan_id");
+
+    if (!client) {
+      return res.status(404).send("User not found.");
+    }
+
+    res.json(client);
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    res.status(500).send("Error fetching user");
+  }
+};
+
+// Get Client By Token
+export const getClientByToken = async (req, res) => {
+  try {
+    const clientID = req.userID;
+
+    const client = await userModel
+      .findById(clientID, "-password -Cpassword")
+      .populate({
+        path: "coach_id",
+        select: "-hiredDate -salary -client_ids",
+      })
+      .populate("plan_id");
 
     if (!client) {
       return res.status(404).send("User not found.");
@@ -545,9 +574,8 @@ async function generatePaymentKey(
 // step 4
 export const subscriptionint = async (req, res) => {
   try {
-    const { clientId, planId, subscriptionMonths } = req.body;
+    const { planId, subscriptionMonths } = req.body;
 
-    const client = await userModel.findById(clientId);
     const plan = await planModel.findById(planId);
     const subscriptionFees = plan.fee * subscriptionMonths;
     const authToken = await authenticateWithPaymob();
@@ -556,7 +584,7 @@ export const subscriptionint = async (req, res) => {
     const paymentKey = await generatePaymentKey(
       authToken,
       order.id,
-      clientId,
+      req.userID,
       planId,
       subscriptionMonths,
       orderAmount

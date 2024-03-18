@@ -5,6 +5,7 @@ let planSchema = new mongoose.Schema({
   description: String,
   fee: Number,
   profile_picture: String,
+  features: [String],
 });
 
 const planModel = mongoose.model("Plan", planSchema);

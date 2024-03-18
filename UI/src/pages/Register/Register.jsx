@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import InputWithIcon from "../../components/common/InputWithIcon";
 import styles from "./Register.module.css";
 import {
@@ -12,7 +12,8 @@ import { MdEmail } from "react-icons/md";
 import { CiLineHeight } from "react-icons/ci";
 import Joi from "joi";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../../thunks/registerUser";
 const Register = () => {
   const [data, setData] = useState({
     full_name: "",
@@ -26,6 +27,8 @@ const Register = () => {
   });
   const [errors, setErrors] = useState({}); // [key: string] : string[]  {"name": ["name is required", "name must be at least 5 chars"]}
   //  FIXME:fixe the margin issue when a larg error message appear
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const navigate = useNavigate();
 
   const validationRules = useMemo(
@@ -69,6 +72,7 @@ const Register = () => {
       }
     }
     if (valid) {
+<<<<<<< HEAD
       try {
         const response = await axios.post(
           "http://localhost:6000/client/signup",
@@ -85,8 +89,29 @@ const Register = () => {
         // Handle network errors or unexpected errors
         setErrors("Registration failed. Please try again later.");
       }
+=======
+      await dispatch(
+        register(
+          data.full_name,
+          data.email,
+          data.weight,
+          data.height,
+          data.birth_date,
+          data.phone_number,
+          data.password,
+          data.Cpassword
+        )
+      );
+>>>>>>> e8e87bb74495d2923bddea78f42f51f68bdf7ebb
     }
   };
+  useEffect(() => {
+    console.log("isAuthenticated changed:", isAuthenticated);
+    if (isAuthenticated) {
+      navigate("/plans");
+    }
+  }, [isAuthenticated, navigate]);
+
   const validate = (key, value) => {
     const validationRule = validationRules[key];
     const validationResult = validationRule.validate(value);
@@ -108,6 +133,7 @@ const Register = () => {
       setData((prev) => ({ ...prev, [key]: val }));
     }
   };
+
   return (
     <div className={`container ${styles.loginHolder}`}>
       <div className={styles.custom_form_holder}>

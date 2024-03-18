@@ -17,12 +17,13 @@ export const addPlan = async (req, res) => {
         .send("Unauthorized: Only managers and owners can add plans.");
     }
 
-    const { title, description, fee } = req.body;
+    const { title, description, fee, features } = req.body;
     const newPlan = new planModel({
       title,
       description,
       fee,
       profile_picture: req.file.path,
+      features,
     });
     await newPlan.save();
     res.status(201).json({ message: "Plan added successfully", plan: newPlan });
@@ -33,7 +34,6 @@ export const addPlan = async (req, res) => {
 
 export const getAllPlans = async (req, res) => {
   try {
-    
     const plans = await planModel.find();
     res.json({ message: "Get all Plans", plans });
   } catch (error) {
