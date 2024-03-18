@@ -64,13 +64,13 @@ const SubscriptionMonths = () => {
   };
 
   return (
-    <div className={`container ${styles.loginHolder}`}>
+    <div className={` ${styles.loginHolder}`}>
       <div className={styles.custom_form_holder}>
         <form className={styles.custom_form} onSubmit={handleSubmit}>
-          <h3 className={`${styles.gym_title} fw-bold`}>
+          <h3 className={` ${styles.gym_title} fw-bold`}>
             Welcome To Elgymaweya Gold Plan
           </h3>
-          <h4 className="text-muted mb-4 mt-2">
+          <h4 className="text-light-emphasis" style={{fontSize:"16px"}}>
             Enter Your Subscription Months
           </h4>
           <div className={styles.inputsWrapper}>

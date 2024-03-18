@@ -10,7 +10,7 @@ server.use(express.json());
 server.use(mainRouter);
 
 initConnection().then(() => {
-  server.listen(5000, () => {
+  server.listen(6000, () => {
     console.log("Elgymaweya app listening");
   });
 });

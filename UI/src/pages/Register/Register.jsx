@@ -71,7 +71,7 @@ const Register = () => {
     if (valid) {
       try {
         const response = await axios.post(
-          "http://localhost:5000/client/signup",
+          "http://localhost:6000/client/signup",
           data
         );
         if (response.status === 200) {
