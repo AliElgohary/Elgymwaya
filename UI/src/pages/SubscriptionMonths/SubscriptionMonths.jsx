@@ -75,7 +75,7 @@ const SubscriptionMonths = () => {
         setErrors("Subscription failed. Please try again later.");
       }
 
-      alert(JSON.stringify(data));
+      // alert(JSON.stringify(data));
     }
   };
   // useEffect(() => {

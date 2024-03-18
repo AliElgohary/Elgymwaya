@@ -1,3 +1,3 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const GetAllPlansAction = createAction("GET_ALL_PLANS");
+export const GetAllCoachesAction = createAction("GET_ALL_Coaches");
