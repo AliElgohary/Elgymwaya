@@ -1,6 +1,5 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
 import style from "./SelectTrainer.module.css";
-import coauch from "../../assets/trainersImages/fitness1.png";
 import { getAllcoaches } from "../../thunks/coaches";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -15,8 +14,8 @@ function SelectTrainer() {
     <div className={style.AllTrainersPages}>
       <Container>
         <div className={`text-center mb-5 ${style.header}`}>
-          <h1>Meet Our Coaches</h1>
-          <p>cdccc cdcsc cdcdc cdcd cdcdc cdcdc</p>
+          <h1>Discover Our Talented Coaches</h1>
+          <p>Explore the expertise and skills of our coaching team:</p>
         </div>
         <Row className={style.gridBox}>
           {coaches.map((coach) => (
@@ -25,6 +24,11 @@ function SelectTrainer() {
                 <img src={coach.profile_picture} alt={coach.full_name} />
                 <div className={style.Coauchinfo}>
                   <h4>{coach.full_name}</h4>
+                  {coach.feedbacks.length > 0 ? (
+                    <h4>Rate: {coach.feedbacks[0].rating}</h4>
+                  ) : (
+                    <p className="text-info">No feedback available</p>
+                  )}
                   <p>{coach.phone_number}</p>
                   <div className={style.selectBtn}>
                     <Button>Select</Button>
