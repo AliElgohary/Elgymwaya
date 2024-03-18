@@ -546,9 +546,8 @@ async function generatePaymentKey(
 // step 4
 export const subscriptionint = async (req, res) => {
   try {
-    const { clientId, planId, subscriptionMonths } = req.body;
+    const { planId, subscriptionMonths } = req.body;
 
-    const client = await userModel.findById(clientId);
     const plan = await planModel.findById(planId);
     const subscriptionFees = plan.fee * subscriptionMonths;
     const authToken = await authenticateWithPaymob();
@@ -557,7 +556,7 @@ export const subscriptionint = async (req, res) => {
     const paymentKey = await generatePaymentKey(
       authToken,
       order.id,
-      clientId,
+      req.userID,
       planId,
       subscriptionMonths,
       orderAmount

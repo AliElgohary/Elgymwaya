@@ -27,7 +27,7 @@ const routes = createBrowserRouter([
   { path: "caloriesCalculator", element: <CaloriesCalculator /> },
   { path: "bmiCalc", element: <BmiCalc /> },
   { path: "plans", element: <Plans /> },
-  { path: "subscriptionMonths", element: <SubscriptionMonths /> },
+  { path: "subscriptionMonths/:id", element: <SubscriptionMonths /> },
   { path: "allTrainers", element: <AllTrainers /> },
   { path: "selectTrainer", element: <SelectTrainer /> },
 ]);

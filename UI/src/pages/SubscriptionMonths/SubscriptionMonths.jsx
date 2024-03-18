@@ -4,8 +4,13 @@ import InputWithIcon from "./../../components/common/InputWithIcon";
 import { useState } from "react";
 import { useMemo } from "react";
 import Joi from "joi";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import { api } from "./../../api/http";
 
 const SubscriptionMonths = () => {
+  const navigate = useNavigate();
+  const params = useParams();
   const [data, setData] = useState({
     subscription: "",
   });
@@ -25,7 +30,7 @@ const SubscriptionMonths = () => {
     []
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validatedKeys = Object.keys(validationRules);
     let valid = true;
@@ -37,10 +42,46 @@ const SubscriptionMonths = () => {
       }
     }
     if (valid) {
-      //TODO: send api
+      try {
+        const token = localStorage.getItem("token");
+        console.log("Token:", token);
+        console.log("Request Headers:", axios.defaults.headers.common);
+        if (!token) {
+          console.error("Token not found in localStorage");
+          // Handle the absence of token, such as redirecting to the login page
+          return;
+        }
+        const response = await api.post(
+          "client/subscribe",
+          {
+            subscriptionMonths: data.subscription,
+            planId: params.id,
+          },
+          {
+            headers: {
+              token,
+            },
+          }
+        );
+        if (response.status === 200) {
+          console.log("Subscription successful:", response.data);
+          window.location = response.data.url;
+        } else {
+          setErrors("Subscription failed. Please try again later.");
+        }
+      } catch (error) {
+        console.error("Error subscribing:", error);
+        // Handle network errors or unexpected errors
+        setErrors("Subscription failed. Please try again later.");
+      }
+
       alert(JSON.stringify(data));
     }
   };
+  // useEffect(() => {
+  //   console.log("isAuthenticated changed:");
+  //   navigate("/userHome");
+  // }, [navigate]);
   const validate = (key, value) => {
     const validationRule = validationRules[key];
     const validationResult = validationRule.validate(value);
