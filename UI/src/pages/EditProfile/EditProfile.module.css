@@ -1,0 +1,8 @@
+.parent {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    background-image: linear-gradient(to right, #6465ed, #4c6ee8, #3c82f7);
+}

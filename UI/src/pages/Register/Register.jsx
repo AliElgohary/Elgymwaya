@@ -72,7 +72,7 @@ const Register = () => {
       }
     }
     if (valid) {
-<<<<<<< HEAD
+// <<<<<<< HEAD
       try {
         const response = await axios.post(
           "http://localhost:6000/client/signup",
@@ -89,7 +89,7 @@ const Register = () => {
         // Handle network errors or unexpected errors
         setErrors("Registration failed. Please try again later.");
       }
-=======
+// =======
       await dispatch(
         register(
           data.full_name,
@@ -102,7 +102,7 @@ const Register = () => {
           data.Cpassword
         )
       );
->>>>>>> e8e87bb74495d2923bddea78f42f51f68bdf7ebb
+// >>>>>>> e8e87bb74495d2923bddea78f42f51f68bdf7ebb
     }
   };
   useEffect(() => {

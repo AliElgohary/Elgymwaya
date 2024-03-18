@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { getCurrentUser } from "./thunks/users";
 import SelectTrainer from "./pages/SelectTrainer/SelectTrainer";
 import Thnx from "./pages/thnx/Thnx";
+import EditProfile from "./pages/EditProfile/EditProfile";
 
 const routes = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ const routes = createBrowserRouter([
   { path: "allTrainers", element: <AllTrainers /> },
   { path: "selectTrainer", element: <SelectTrainer /> },
   { path: "thnx/:id", element: <Thnx /> },
+  { path: "editProfile", element: <EditProfile /> },
 ]);
 
 // BMI => w/h2
