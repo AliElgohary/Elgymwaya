@@ -32,8 +32,12 @@ const routes = createBrowserRouter([
   { path: "subscriptionMonths/:id", element: <SubscriptionMonths /> },
   { path: "allTrainers", element: <AllTrainers /> },
   { path: "selectTrainer", element: <SelectTrainer /> },
+<<<<<<< HEAD
   { path: "thnx/:id", element: <Thnx /> },
   { path: "editProfile", element: <EditProfile /> },
+=======
+  { path: "thnx", element: <Thnx /> },
+>>>>>>> 401107e91450ea964eb531a71d890cfbf45802f7
 ]);
 
 // BMI => w/h2

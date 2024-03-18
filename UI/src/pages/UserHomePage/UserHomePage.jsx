@@ -3,9 +3,11 @@ import UserInfo from "../../components/UserInfo/UserInfo";
 import Trainer from "../../components/Trainer/Trainer";
 import style from "./UserHomePage.module.css";
 import UserRoutine from "../../components/UserRoutine/UserRoutine";
+import NavBarUserHome from "../../components/NavBarUserHome";
 function UserHomePage() {
   return (
     <div>
+      <NavBarUserHome  />
       <Container className="mt-4" style={{ maxWidth: "97%" }}>
         <Row className="justify-content-between">
           <UserInfo />

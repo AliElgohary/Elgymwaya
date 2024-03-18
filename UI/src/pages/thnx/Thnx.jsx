@@ -1,29 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
-import { GiCheckMark } from "react-icons/gi";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { GiCheckMark, GiCrossMark } from "react-icons/gi";
 
 const Thnx = () => {
   const location = useLocation();
-  const navigateTo = useNavigate();
-
+  const navigate = useNavigate();
+  const [paymentDetails, setPaymentDetails] = useState({
+    transactionId: "",
+    amountCents: 0,
+    paymentStatus: "processing",
+  });
+  const { id } = useParams();
   useEffect(() => {
-    // Parse the query parameters from the URL
     const queryParams = new URLSearchParams(location.search);
-    const paymentStatus = queryParams.get("success");
     const transactionId = queryParams.get("id");
+    const amountCents = queryParams.get("amount_cents");
+    const paymentStatus =
+      queryParams.get("success") === "true" ? "successful" : "failed";
 
-    // Example: redirect to /userHome after 5 seconds
-    if (paymentStatus === "true" || paymentStatus === "false") {
-      // Payment successful, handle accordingly
-      // For example, update user's transaction history, show success message, etc.
-      console.log("Payment successful. Transaction ID: ", transactionId);
-      const timeoutId = setTimeout(() => {
-        navigateTo("/userHome");
-      }, 5000);
-      return () => clearTimeout(timeoutId);
-    }
-  }, [location.search, navigateTo]);
+    setPaymentDetails({
+      transactionId,
+      amountCents: amountCents ? parseInt(amountCents) / 100 : 0,
+    });
+
+    const timeoutId = setTimeout(() => {
+      navigate("/userHome");
+    }, 5000);
+    return () => clearTimeout(timeoutId);
+  }, [location.search, navigate, id]);
 
   return (
     <div className="vh-100 d-flex align-items-center justify-content-center">
@@ -31,13 +36,18 @@ const Thnx = () => {
         <Row className="justify-content-center">
           <Col md={8}>
             <div className="text-center">
-              <h1 className="fw-bold my-2">
-                Payment Successful <GiCheckMark size={50} />
-              </h1>
-              <h4 className="my-3">
-                Your payment has been processed successfully.
-              </h4>
-              <h5 className="my-3">Thank you for your purchase!</h5>
+              <>
+                <h1 className="fw-bold my-2">
+                  Payment Successful <GiCheckMark size={50} />
+                </h1>
+                <h4 className="my-3">
+                  Your payment has been processed successfully.
+                </h4>
+              </>
+
+              <h5 className="my-3">Thank you for your transaction!</h5>
+              <p>Transaction ID: {paymentDetails.transactionId}</p>
+              <p>Amount: EGP {paymentDetails.amountCents.toFixed(2)}</p>
               <p>Redirecting to home page...</p>
             </div>
           </Col>
