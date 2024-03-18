@@ -24,7 +24,7 @@ export const login = (email, password) => async (dispatch, getState) => {
       dispatch(loginFailure("Invalid credentials"));
     }
   } catch (error) {
-    console.error("Error registering user:", error);
+    console.error("Error login user:", error);
     // Handle network errors or unexpected errors
     dispatch(loginFailure(error.message));
   }

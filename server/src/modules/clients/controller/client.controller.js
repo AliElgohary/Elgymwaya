@@ -45,11 +45,12 @@ export const signUp = async (req, res) => {
         height,
         weight,
       });
+      const token = jwt.sign({ id: newClient._id }, "ITI");
 
       await newClient.save();
       res
         .status(201)
-        .json({ message: "Client created successfully", newClient });
+        .json({ message: "Client created successfully", newClient, token });
     }
   } catch (error) {
     res.status(500).send("Error in signup");

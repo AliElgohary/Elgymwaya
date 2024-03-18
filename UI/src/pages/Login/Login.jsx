@@ -68,7 +68,6 @@ const Login = () => {
   useEffect(() => {
     console.log("isAuthenticated changed:", isAuthenticated);
     if (isAuthenticated) {
-      //TODO:finxing the navigate issuse
       navigate("/userHome");
     }
   }, [isAuthenticated, navigate]);
