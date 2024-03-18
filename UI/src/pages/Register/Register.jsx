@@ -72,6 +72,24 @@ const Register = () => {
       }
     }
     if (valid) {
+<<<<<<< HEAD
+      try {
+        const response = await axios.post(
+          "http://localhost:6000/client/signup",
+          data
+        );
+        if (response.status === 200) {
+          console.log("Registration successful:", response.data);
+          navigate("/plans");
+        } else {
+          setErrors("Registration failed. Please try again later.");
+        }
+      } catch (error) {
+        console.error("Error registering user:", error);
+        // Handle network errors or unexpected errors
+        setErrors("Registration failed. Please try again later.");
+      }
+=======
       await dispatch(
         register(
           data.full_name,
@@ -84,6 +102,7 @@ const Register = () => {
           data.Cpassword
         )
       );
+>>>>>>> e8e87bb74495d2923bddea78f42f51f68bdf7ebb
     }
   };
   useEffect(() => {
