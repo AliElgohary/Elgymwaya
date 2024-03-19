@@ -43,8 +43,8 @@ export class TrainersDetailsComponent implements OnInit {
     });
   }
   navigateToEdit(id : string) {
-  // console.log(  this.router.navigate([`trainers/details/${this.trainerId}/edit`]) );
-   this.router.navigate([`trainers/details/${this.trainerId}/edit`]) ;
+   this.router.navigate(
+    [`trainers/details/${this.trainerId}/edit`]) ;
 
   }
 }

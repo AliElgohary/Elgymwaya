@@ -16,6 +16,7 @@ import { PlanDetailsComponent } from './components/plans/plan-details/plan-detai
 import { TraineeDetailsComponent } from './components/trainee-details/trainee-details.component';
 import { TrainersDetailsComponent } from './components/trainers-details/trainers-details.component';
 import { EditTraineeComponent } from './components/trainee-details/edit-trainee/edit-trainee.component';
+import { EditTrainerComponent } from './components/trainers-details/edit-trainer/edit-trainer.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuard] },
@@ -70,6 +71,12 @@ export const routes: Routes = [
     path: 'addtrainer',
     component: AddTrainerComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: 'trainers/details/:id',
+    component: TrainersDetailsComponent,
+    canActivate: [authGuard],
+    children: [{path: 'edit', component: EditTrainerComponent}]
   },
   { path: '**', component: NotFoundComponent },
 ];
