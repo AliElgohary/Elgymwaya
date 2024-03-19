@@ -131,19 +131,19 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Weight</h6>
+                  <h6 class="mb-0">Birth date</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  {{ trainer }}
+                  {{ trainer.birth_date }}
                 </div>
               </div>
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Height</h6>
+                  <h6 class="mb-0">Salary</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  {{ trainer }}
+                  {{ trainer.salary }}
                 </div>
               </div>
               @if (trainer){
@@ -160,7 +160,8 @@
               <hr>
               <div class="row">
                 <div class="col-sm-12">
-                  <a class="btn btn-info " target="__blank">Edit</a>
+                  <!-- <a class="btn btn-info " target="__blank">Edit</a> -->
+                  <a class="btn btn-info " (click)="navigateToEdit(trainer._id)">Edit</a>
                 </div>
               </div>
             </div>

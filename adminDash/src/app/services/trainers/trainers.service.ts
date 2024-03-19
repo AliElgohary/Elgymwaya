@@ -34,4 +34,13 @@ export class TrainersService {
       this.httpOptions
     ).pipe(map((response: any) => response.coach));;
   }
+
+  editTrainer(data : any): Observable<any> {
+    return this.http.patch<any>('http://localhost:5000//coach/update', data, {
+      headers: new HttpHeaders({
+        token: `${this.token}`,
+      }),
+    });
+  }
+
 }

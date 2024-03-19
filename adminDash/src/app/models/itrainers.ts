@@ -1,4 +1,5 @@
 export interface Itrainers {
+    _id: string;
     full_name: String,
     email: String,
     password: String,
