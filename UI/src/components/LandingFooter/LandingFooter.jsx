@@ -14,22 +14,22 @@ const LandingFooter = () => {
               <span className="text-light">Get connected with us on social networks:</span>
             </div>
             <div>
-              <a href="#" className="text-primary me-4">
+              <a href="https://www.facebook.com" className="text-primary me-4">
                 <FontAwesomeIcon icon={faFacebook} />
               </a>
-              <a href="#" className="text-primary me-4">
+              <a href="https://twitter.com" className="text-primary me-4">
                   <FontAwesomeIcon icon={faTwitter} />  
               </a>
               <a href="https://github.com/AliElgohary/Elgymwaya" className="text-white me-4">
                 <FontAwesomeIcon icon={faGithub} />
               </a>
-              <a href className="text-danger me-4">
+              <a href="#" className="text-danger me-4">
               <FontAwesomeIcon icon={faYoutube} />
               </a>
-              <a href="#" className="text-danger me-4">
+              <a href="https://www.instagram.com" className="text-danger me-4">
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
-              <a href="#" className="text-success me-4">
+              <a href="https://web.whatsapp.com/" className="text-success me-4">
                 <FontAwesomeIcon icon={faWhatsapp} />
               </a>
             </div>
