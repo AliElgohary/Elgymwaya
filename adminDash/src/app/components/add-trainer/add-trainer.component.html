@@ -13,7 +13,7 @@
         }" />
       <span class="invalid-feedback">
         @if(NameInput.errors?.['required']){
-        <span>Name is required</span>
+        <span style="color: #8119db;">Name is required</span>
         }
       </span>
     </div>
@@ -28,9 +28,9 @@
         }" />
       <span class="invalid-feedback">
         @if(emailInput.errors?.['required']){
-        <span>Email is required</span>
+        <span style="color: #8119db;">Email is required</span>
         } @if(emailInput.errors?.['email']){
-        <span>Enter a valid Email</span>
+        <span style="color: #8119db;">Enter a valid Email</span>
         }
       </span>
     </div>
@@ -45,7 +45,7 @@
         }" />
       <span class="invalid-feedback">
         @if(passwordInput.errors?.['required']){
-        <span>Password is required</span>
+        <span style="color: #8119db;">Password is required</span>
         }
       </span>
     </div>
@@ -60,7 +60,7 @@
         }" />
       <span class="invalid-feedback">
         @if(CpasswordInput.errors?.['required']){
-        <span>Confirmed Password is required</span>
+        <span style="color: #8119db;">Confirmed Password is required</span>
         }
       </span>
     </div>
@@ -75,7 +75,7 @@
         }" />
       <span class="invalid-feedback">
         @if(PhoneInput.errors?.['pattern']){
-        <span>Phone Number Must be correct</span>
+        <span style="color: #8119db;">Phone Number Must be correct</span>
         }
       </span>
     </div>
@@ -106,7 +106,11 @@
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="addPlanForm.invalid">
+  <button type="submit"
+   class="btn btn-primary" 
+   [disabled]="addPlanForm.invalid"
+   style="background-color: #8119db"
+   >
     Submit
   </button>
 
