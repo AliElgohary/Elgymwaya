@@ -65,22 +65,35 @@ export const signIn = async (req, res) => {
     if (!email || !password) {
       return res.status(400).send("Missing email or password");
     }
-    const client = await userModel.findOne({ email });
 
-    if (!client) {
+    let userOrCoach = await userModel.findOne({ email });
+    let isCoach = false;
+
+    // If not found in userModel, check coachModel
+    if (!userOrCoach) {
+      userOrCoach = await coachModel.findOne({ email });
+      isCoach = true;
+    }
+
+    if (!userOrCoach) {
       return res.status(404).send("You need to register first");
     }
 
-    const isPasswordValid = await bcrypt.compare(password, client.password);
+    const isPasswordValid = await bcrypt.compare(
+      password,
+      userOrCoach.password
+    );
 
     if (!isPasswordValid) {
       return res.status(400).send("Invalid credentials");
     }
 
-    const token = jwt.sign({ id: client._id }, "ITI");
-    res
-      .status(200)
-      .json({ message: "Welcome To El Gymaweya", role: client.role, token });
+    const token = jwt.sign({ id: userOrCoach._id }, "ITI");
+    res.status(200).json({
+      message: "Welcome To El Gymaweya",
+      role: isCoach ? "coach" : userOrCoach.role, // Determine role based on isCoach flag
+      token,
+    });
   } catch (error) {
     res.status(500).send("Error in signin");
   }

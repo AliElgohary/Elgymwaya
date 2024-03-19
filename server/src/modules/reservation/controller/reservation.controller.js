@@ -1,4 +1,6 @@
+import coachModel from "../../../../Database/models/coach.model.js";
 import reservationModel from "../../../../Database/models/reservation.model.js";
+import userModel from "../../../../Database/models/user.model.js";
 
 async function isCoachAvailable(coachId, date, startTime, endTime) {
   const reservationDate = new Date(date);
@@ -24,10 +26,16 @@ async function isCoachAvailable(coachId, date, startTime, endTime) {
 
 // Create Reservation
 export const createReservation = async (req, res) => {
-  const { coach_id, date, start_time, end_time } = req.body;
+  const { date, start_time, end_time } = req.body;
   const client_id = req.userID;
 
   try {
+    // Fetch the user to get the coach_id
+    const user = await userModel.findById(client_id);
+    if (!user || !user.coach_id) {
+      return res.status(404).send({ message: "Coach not found for the user." });
+    }
+    const coach_id = user.coach_id;
     // Check coach's availability
     const available = await isCoachAvailable(
       coach_id,
@@ -123,7 +131,9 @@ export const clientReservations = async (req, res) => {
     const clientId = req.userID;
 
     const reservations = await reservationModel
-      .find({ client_id: clientId })
+      .find({
+        client_id: clientId,
+      })
       .populate("coach_id", "full_name profile_picture")
       .exec();
 

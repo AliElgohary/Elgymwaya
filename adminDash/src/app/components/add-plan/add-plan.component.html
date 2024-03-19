@@ -15,8 +15,7 @@
       required
       [ngClass]="{
         'is-invalid':
-          (titleInput.touched || titleInput.dirty) &&
-          !titleInput.valid
+          (titleInput.touched || titleInput.dirty) && !titleInput.valid
       }"
     />
     <div
@@ -44,11 +43,14 @@
       }"
     ></textarea>
     <div
-    *ngIf="descriptionInput.invalid && (descriptionInput.touched || descriptionInput.dirty)"
-    class="invalid-feedback"
-  >
-    Please provide a valid description.
-  </div>
+      *ngIf="
+        descriptionInput.invalid &&
+        (descriptionInput.touched || descriptionInput.dirty)
+      "
+      class="invalid-feedback"
+    >
+      Please provide a valid description.
+    </div>
   </div>
   <div class="form-group">
     <label for="fee">Price</label>
@@ -62,27 +64,35 @@
       required
       #feeInbut="ngModel"
       [ngClass]="{
-        'is-invalid':
-          (feeInbut.touched || feeInbut.dirty) &&
-          !feeInbut.valid
+        'is-invalid': (feeInbut.touched || feeInbut.dirty) && !feeInbut.valid
       }"
     />
     <div
-    *ngIf="feeInbut.invalid && (feeInbut.touched || feeInbut.dirty)"
-    class="invalid-feedback"
-  >
-    Please provide a valid fee.
+      *ngIf="feeInbut.invalid && (feeInbut.touched || feeInbut.dirty)"
+      class="invalid-feedback"
+    >
+      Please provide a valid fee.
+    </div>
   </div>
-  </div>
-  <div class="form-group">
-    <label for="profilePicture">Profile Picture</label>
-    <input
-      type="file"
-      class="form-control-file"
-      id="profilePicture"
-      name="profilePicture"
-      (change)="onFileSelected($event)"
-    />
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-5 mb-3">
+        <div class="mb-3">
+          <label for="profilePicture" class="form-label">Plan Picture</label>
+          <input
+            type="file"
+            class="form-control form-control-lg"
+            id="profilePicture"
+            name="profilePicture"
+            accept="image/*"
+            (change)="onFileSelected($event)"
+          />
+          <div id="profilePictureHelp" class="form-text">
+            Choose a plan picture to upload.
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <button
     type="submit"

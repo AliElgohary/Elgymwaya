@@ -1,7 +1,8 @@
+import coachModel from "../../../../Database/models/coach.model.js";
 import userModel from "../../../../Database/models/user.model.js";
 import workoutPlan from "../../../../Database/models/workoutPlan.model.js";
 
-// Create Workou Plan - By Coaches Only
+// Create Workout Plan - By Coaches Only
 export const createWorkoutPlan = async (req, res) => {
   try {
     // First, verify if the user is a coach
@@ -48,12 +49,12 @@ export const createWorkoutPlan = async (req, res) => {
         );
     }
 
-    const workoutPlan = new workoutPlan({
+    const newWorkoutPlan = new workoutPlan({
       ...req.body,
       coach_id: req.userID,
     });
-    await workoutPlan.save();
-    res.status(201).send(workoutPlan);
+    await newWorkoutPlan.save();
+    res.status(201).send(newWorkoutPlan.toJSON()); // or newWorkoutPlan.toObject()
   } catch (error) {
     console.error("Error in adding workout plan:", error);
     res.status(400).send(error.message);

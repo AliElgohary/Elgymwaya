@@ -1,116 +1,197 @@
 <h3 class="bng-dark m-5 mb-2">Add New Trainer</h3>
-<hr style="width: 300px;"/>
+<hr style="width: 300px" />
 <form #addPlanForm="ngForm" (ngSubmit)="addTrainer()" class="m-5">
   <div class="row box">
-
     <div class="col col-12 col-md-6 form-group">
       <label for="full_name col-form-label">full_name</label>
-      <input type="text" class="form-control" id="full_name" name="full_name" [(ngModel)]="trainer.full_name"
-        placeholder="Enter full_name" #NameInput="ngModel" required [ngClass]="{
+      <input
+        type="text"
+        class="form-control"
+        id="full_name"
+        name="full_name"
+        [(ngModel)]="trainer.full_name"
+        placeholder="Enter full_name"
+        #NameInput="ngModel"
+        required
+        [ngClass]="{
           'is-invalid':
-            (NameInput.touched || NameInput.dirty) &&
-            !NameInput.valid
-        }" />
+            (NameInput.touched || NameInput.dirty) && !NameInput.valid
+        }"
+      />
       <span class="invalid-feedback">
         @if(NameInput.errors?.['required']){
-        <span style="color: #8119db;">Name is required</span>
+        <span style="color: #8119db">Name is required</span>
         }
       </span>
     </div>
 
-    <div class="col col-12 col-md-6 form-group ">
+    <div class="col col-12 col-md-6 form-group">
       <label for="coachemail" class="col-form-label">E-mail</label>
-      <input type="text" name="coachemail" id="coachemail" class="form-control" placeholder="E-mail" required email
-        minlength="10" [(ngModel)]="trainer.email" #emailInput="ngModel" [ngClass]="{
+      <input
+        type="text"
+        name="coachemail"
+        id="coachemail"
+        class="form-control"
+        placeholder="E-mail"
+        required
+        email
+        minlength="10"
+        [(ngModel)]="trainer.email"
+        #emailInput="ngModel"
+        [ngClass]="{
           'is-invalid':
-            (emailInput.touched || emailInput.dirty) &&
-            !emailInput.valid
-        }" />
+            (emailInput.touched || emailInput.dirty) && !emailInput.valid
+        }"
+      />
       <span class="invalid-feedback">
         @if(emailInput.errors?.['required']){
-        <span style="color: #8119db;">Email is required</span>
+        <span style="color: #8119db">Email is required</span>
         } @if(emailInput.errors?.['email']){
-        <span style="color: #8119db;">Enter a valid Email</span>
+        <span style="color: #8119db">Enter a valid Email</span>
         }
       </span>
     </div>
 
-    <div class="col col-12 col-md-6 form-group ">
+    <div class="col col-12 col-md-6 form-group">
       <label for="password" class="col-form-label">Password</label>
-      <input type="password" name="password" id="password" class="form-control" placeholder="Password" required
-        [(ngModel)]="trainer.password" #passwordInput="ngModel" [ngClass]="{
+      <input
+        type="password"
+        name="password"
+        id="password"
+        class="form-control"
+        placeholder="Password"
+        required
+        [(ngModel)]="trainer.password"
+        #passwordInput="ngModel"
+        [ngClass]="{
           'is-invalid':
             (passwordInput.touched || passwordInput.dirty) &&
             !passwordInput.valid
-        }" />
+        }"
+      />
       <span class="invalid-feedback">
         @if(passwordInput.errors?.['required']){
-        <span style="color: #8119db;">Password is required</span>
+        <span style="color: #8119db">Password is required</span>
         }
       </span>
     </div>
 
-    <div class="col col-12 col-md-6 form-group ">
-      <label for="Cpassword" class="col-form-label"> Confirme Password</label>
-      <input type="password" name="Cpassword" id="Cpassword" class="form-control" placeholder="Confirmed Password"
-        required [(ngModel)]="trainer.Cpassword" #CpasswordInput="ngModel" [ngClass]="{
+    <div class="col col-12 col-md-6 form-group">
+      <label for="Cpassword" class="col-form-label"> Confirm Password</label>
+      <input
+        type="password"
+        name="Cpassword"
+        id="Cpassword"
+        class="form-control"
+        placeholder="Confirmed Password"
+        required
+        [(ngModel)]="trainer.Cpassword"
+        #CpasswordInput="ngModel"
+        [ngClass]="{
           'is-invalid':
             (CpasswordInput.touched || CpasswordInput.dirty) &&
             !CpasswordInput.valid
-        }" />
+        }"
+      />
       <span class="invalid-feedback">
         @if(CpasswordInput.errors?.['required']){
-        <span style="color: #8119db;">Confirmed Password is required</span>
+        <span style="color: #8119db">Confirmed Password is required</span>
         }
       </span>
     </div>
 
     <div class="col col-12 col-md-6 form-group">
       <label for="phone_number"> Phone Number</label>
-      <input type="text" class="form-control" id="phone_number" pattern="^(01)[0-9]{9}$" name="phone_number"
-        [(ngModel)]="trainer.phone_number" placeholder="Enter Phone Number" required #PhoneInput="ngModel" [ngClass]="{
+      <input
+        type="text"
+        class="form-control"
+        id="phone_number"
+        pattern="^(01)[0-9]{9}$"
+        name="phone_number"
+        [(ngModel)]="trainer.phone_number"
+        placeholder="Enter Phone Number"
+        required
+        #PhoneInput="ngModel"
+        [ngClass]="{
           'is-invalid':
-            (PhoneInput.touched || PhoneInput.dirty) &&
-            !PhoneInput.valid
-        }" />
+            (PhoneInput.touched || PhoneInput.dirty) && !PhoneInput.valid
+        }"
+      />
       <span class="invalid-feedback">
         @if(PhoneInput.errors?.['pattern']){
-        <span style="color: #8119db;">Phone Number Must be correct</span>
+        <span style="color: #8119db">Phone Number Must be correct</span>
         }
       </span>
     </div>
 
     <div class="col col-12 col-md-6 form-group">
       <label for="birth_date">Birth Date</label>
-      <input type="date" class="form-control" id="birth_date" name="birth_date" [(ngModel)]="trainer.birth_date"
-        placeholder="Enter Birth Date" required />
+      <input
+        type="date"
+        class="form-control"
+        id="birth_date"
+        name="birth_date"
+        [(ngModel)]="trainer.birth_date"
+        placeholder="Enter Birth Date"
+        required
+      />
     </div>
 
     <div class="col col-12 col-md-6 form-group">
       <label for="age">Age</label>
-      <input type="number" class="form-control" id="age" name="age" [(ngModel)]="trainer.age" placeholder="Enter Age"
-        required />
+      <input
+        type="number"
+        class="form-control"
+        id="age"
+        name="age"
+        [(ngModel)]="trainer.age"
+        placeholder="Enter Age"
+        required
+      />
     </div>
-
 
     <div class="col col-12 col-md-6 form-group">
       <label for="salary">Salary</label>
-      <input type="number" class="form-control" id="salary" name="salary" [(ngModel)]="trainer.salary"
-        placeholder="Enter Salary" required />
-
+      <input
+        type="number"
+        class="form-control"
+        id="salary"
+        name="salary"
+        [(ngModel)]="trainer.salary"
+        placeholder="Enter Salary"
+        required
+      />
     </div>
-    <div class="col col-12 col-md-6 form-group">
-      <label for="profilePicture">Profile Picture</label>
-      <input type="file" class="form-control-file" id="profilePicture" name="profilePicture"
-        (change)="onFileSelected($event)" />
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-5 mb-3">
+          <div class="mb-3">
+            <label for="profilePicture" class="form-label"
+              >Profile Picture</label
+            >
+            <input
+              type="file"
+              class="form-control form-control-lg"
+              id="profilePicture"
+              name="profilePicture"
+              accept="image/*"
+              (change)="onFileSelected($event)"
+            />
+            <div id="profilePictureHelp" class="form-text">
+              Choose a profile picture to upload.
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <button type="submit"
-   class="btn btn-primary" 
-   [disabled]="addPlanForm.invalid"
-   style="background-color: #8119db"
-   >
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="addPlanForm.invalid"
+    style="background-color: #8119db"
+  >
     Submit
   </button>
 

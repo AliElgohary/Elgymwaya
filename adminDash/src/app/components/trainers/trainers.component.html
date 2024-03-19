@@ -1,47 +1,45 @@
 <div class="container">
-<table class="table mb-0">
+  <table class="table mb-0">
     <thead>
-        <tr class="text-start">
-            <th scope="col">Trainer</th>
-            <th scope="col">Age</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Birth Date</th>
-            <th scope="col">Role</th>
-            <th scope="col">Salary</th>
-            <th scope="col">View Details</th>
-            <th scope="col">Delete Trainer</th>
-        </tr>
+      <tr class="text-start">
+        <th scope="col">Trainer</th>
+        <th scope="col">Age</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Role</th>
+        <th scope="col">Salary</th>
+        <th scope="col">View Details</th>
+        <th scope="col">Delete Trainer</th>
+      </tr>
     </thead>
     <tbody>
       @for (trainer of trainers; track trainer.id) {
-        <tr class="text-start">
-            <td>{{trainer.full_name }}</td>
-            <td>{{trainer.age}}</td>
-            <td>{{trainer.email }}</td>
-            <td>{{trainer.phone_number }}</td>
-            <td>{{trainer.birth_date | date  }}</td>
-            <td>{{trainer.role }}</td>
-            <td>{{trainer.salary }}</td>
-            <td>
-              <button class="btn text-light" 
-              style="background-color: #8119db;" 
-              (click)="onDetailsClick(trainer._id)"
-              > 
-              Details 
-              </button>
-            </td>
-            <td>
-              <button class="btn text-light btn-danger"
-              (click)="deleteTrainees(trainer._id)"
-              >
-               Delete 
-              </button>
-            </td>
-        </tr>
+      <tr class="text-start">
+        <td>{{ trainer.full_name }}</td>
+        <td>{{ trainer.age }}</td>
+        <td>{{ trainer.email }}</td>
+        <td>{{ trainer.phone_number }}</td>
+        <td>{{ trainer.role }}</td>
+        <td>{{ trainer.salary }}</td>
+        <td>
+          <button
+            class="btn text-light"
+            style="background-color: #8119db"
+            (click)="onDetailsClick(trainer._id)"
+          >
+            Details
+          </button>
+        </td>
+        <td>
+          <button
+            class="btn text-light btn-danger"
+            (click)="deleteTrainees(trainer._id)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
       }
-
     </tbody>
-</table>
+  </table>
 </div>
-
