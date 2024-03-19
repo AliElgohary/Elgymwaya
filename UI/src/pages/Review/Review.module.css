@@ -1,0 +1,29 @@
+/* styles.css */
+
+.review-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .review-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .review-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .review-item h3 {
+    margin-top: 0;
+  }
+  
+  .review-item p {
+    margin-bottom: 5px;
+  }
+  
+  /* Add more styles as needed */
+  

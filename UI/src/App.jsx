@@ -17,6 +17,8 @@ import SelectTrainer from "./pages/SelectTrainer/SelectTrainer";
 import Thnx from "./pages/thnx/Thnx";
 import EditProfile from "./pages/EditProfile/EditProfile";
 
+
+
 const routes = createBrowserRouter([
   {
     path: "",
@@ -50,6 +52,7 @@ function App() {
   return (
     <>
       <RouterProvider router={routes}></RouterProvider>
+      
     </>
   );
 }
