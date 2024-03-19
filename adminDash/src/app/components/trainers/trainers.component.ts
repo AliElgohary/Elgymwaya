@@ -22,4 +22,17 @@ export class TrainersComponent implements OnInit {
   onDetailsClick(id: string) {
     this.router.navigate(['trainers/details', id]);
   }
+
+  deleteTrainees(id: string) {
+    this.trainersSer.deleteTrainer(id).subscribe((response) => {
+      if (response.message === 'Coach Deleted') {
+        this.trainersSer.getTrainers().subscribe((data) => {
+          this.trainers = data;
+        });
+      } else {
+        console.error('Unexpected deletion response:', response);
+      }
+    });
+  }
+
 }

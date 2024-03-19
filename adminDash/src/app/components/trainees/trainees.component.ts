@@ -22,4 +22,16 @@ export class TraineesComponent implements OnInit {
   onDetailsClick(traineeID: string) {
     this.router.navigate(['trainees/details', traineeID]);
   }
+
+  deleteTrainees(id: string) {
+    this.traineesSer.deleteTrainee(id).subscribe((response) => {
+      if (response.message === 'user Deleted') {
+        this.traineesSer.getTrainees().subscribe((data) => {
+          this.trainees = data;
+        });
+    } else {
+        console.error('Unexpected deletion response:', response);
+      }
+    });
+  }
 }

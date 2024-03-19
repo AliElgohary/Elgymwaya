@@ -718,3 +718,24 @@ function calculateSubscriptionEndDate(startDate, months) {
   endDate.setMonth(endDate.getMonth() + months);
   return endDate;
 }
+
+//////////////////////////////////////////
+export const deleteClient = async (req, res) => {
+  const user = await userModel.findById(req.userID);
+  if (!user) {
+    return res.status(404).send("User not found.");
+  }
+  const isAuthorized = user.role === "manager" || user.role === "owner";
+  if (!isAuthorized) {
+    return res
+      .status(403)
+      .send("Unauthorized: Only managers and owners can delete users.");
+  }
+
+  let userTodelete = await userModel.findByIdAndDelete(req.params.id);
+  if (userTodelete) {
+    res.json({ message: "user Deleted", userTodelete });
+  } else {
+    res.json({ message: "user not found" });
+  }
+};

@@ -40,4 +40,11 @@ export class TraineesService {
       }),
     });
   }
+  deleteTrainee(id: string): Observable<any> {
+    return this.http.delete(`http://localhost:5000/client/${id}`, {
+      headers: new HttpHeaders({
+        token: `${this.token}`,
+      }),
+    });
+  }
 }

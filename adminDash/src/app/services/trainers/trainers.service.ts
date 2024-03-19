@@ -43,4 +43,12 @@ export class TrainersService {
     });
   }
 
+  deleteTrainer(id: string): Observable<any> {
+    return this.http.delete(`http://localhost:5000/coach/${id}`, {
+      headers: new HttpHeaders({
+        token: `${this.token}`,
+      }),
+    });
+  }
+
 }

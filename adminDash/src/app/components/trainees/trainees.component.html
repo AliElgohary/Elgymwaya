@@ -11,6 +11,7 @@
         <th scope="col">Height</th>
         <th scope="col">Weight</th>
         <th scope="col">Action</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -31,6 +32,14 @@
             (click)="onDetailsClick(trainee._id)"
           >
             Details
+          </button>
+        </td>
+        <td>
+          <button
+            class="btn text-light btn-danger"
+            (click)="deleteTrainees(trainee._id)"
+          >
+            Delete
           </button>
         </td>
       </tr>

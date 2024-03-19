@@ -12,6 +12,7 @@ import {
 import {
   changeCoach,
   changePassword,
+  deleteClient,
   forgetPassword,
   getAllClients,
   getClientById,
@@ -64,6 +65,9 @@ clientRoutes.put(
   validation(updateUserSchema),
   updateUser
 );
+
+//Delete User:
+clientRoutes.delete("/client/:id", auth, deleteClient);
 
 // Update User Picture - Auth required
 clientRoutes.patch("/client/updatepicture", upload, auth, updateUserPicture);

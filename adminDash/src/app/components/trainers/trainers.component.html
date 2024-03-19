@@ -10,6 +10,7 @@
             <th scope="col">Role</th>
             <th scope="col">Salary</th>
             <th scope="col">View Details</th>
+            <th scope="col">Delete Trainer</th>
         </tr>
     </thead>
     <tbody>
@@ -23,7 +24,19 @@
             <td>{{trainer.role }}</td>
             <td>{{trainer.salary }}</td>
             <td>
-              <button class="btn text-light" style="background-color: #8119db;" (click)="onDetailsClick(trainer._id)"> Details </button>
+              <button class="btn text-light" 
+              style="background-color: #8119db;" 
+              (click)="onDetailsClick(trainer._id)"
+              > 
+              Details 
+              </button>
+            </td>
+            <td>
+              <button class="btn text-light btn-danger"
+              (click)="deleteTrainees(trainer._id)"
+              >
+               Delete 
+              </button>
             </td>
         </tr>
       }
