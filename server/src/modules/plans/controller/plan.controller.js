@@ -52,7 +52,7 @@ export const getPlanById = async (req, res) => {
 };
 // Delete Plan
 export const deleteplan = async (req, res) => {
-  const user = await userModelModel.findById(req.userID);
+  const user = await userModel.findById(req.userID);
   if (!user) {
     return res.status(404).send("User not found.");
   }

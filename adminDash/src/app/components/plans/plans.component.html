@@ -5,7 +5,8 @@
       <tr>
         <th>Plan Title</th>
         <th>Price</th>
-        <th>Show Plan Details</th>
+        <th>Plan Details</th>
+        <th>Delete Plan</th>
       </tr>
   </thead>
   <tbody>
@@ -14,7 +15,18 @@
         <td>{{ plan.title }}</td>
         <td>{{ plan.fee }}</td>
         <td>
-          <button class="btn btn-success" [routerLink]="['details', plan._id]">Details</button>
+          <button class="btn btn-success" 
+          [routerLink]="['details', plan._id]"
+          >
+          Details
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-danger"
+          (click)="deletePlan(plan._id)"
+          >
+          Delete
+        </button>
         </td>
       </tr>
       }

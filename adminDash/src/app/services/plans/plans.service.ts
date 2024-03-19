@@ -33,4 +33,12 @@ export class PlansService {
       .get<Iplans>(`http://localhost:5000/plan/${id}`)
       .pipe(map((response: any) => response.plan));
   }
+
+  deletePlans(id: string): Observable<any> {
+    return this.http.delete(`http://localhost:5000/plan/${id}`, {
+      headers: new HttpHeaders({
+        token: `${this.token}`,
+      }),
+    });
+  }
 }

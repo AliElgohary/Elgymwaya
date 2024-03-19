@@ -27,4 +27,16 @@ export class PlansComponent implements OnInit {
       console.log(this.plans)
     });
   }
+
+  deletePlan(id: string) {
+    this.plansService.deletePlans(id).subscribe((response) => {
+      if (response.message === 'plan Deleted') {
+        this.loadPlans()
+      } else {
+        console.error('Unexpected deletion response:', response);
+      }
+    });
+  }
+
+
 }

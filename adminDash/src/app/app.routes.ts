@@ -35,6 +35,7 @@ export const routes: Routes = [
     path: 'trainers/details/:id',
     component: TrainersDetailsComponent,
     canActivate: [authGuard],
+    children: [{path: 'edit', component: EditTrainerComponent}]
   },
   {
     path: 'trainees',
@@ -72,11 +73,6 @@ export const routes: Routes = [
     component: AddTrainerComponent,
     canActivate: [authGuard],
   },
-  {
-    path: 'trainers/details/:id',
-    component: TrainersDetailsComponent,
-    canActivate: [authGuard],
-    children: [{path: 'edit', component: EditTrainerComponent}]
-  },
+
   { path: '**', component: NotFoundComponent },
 ];
