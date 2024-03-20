@@ -1,0 +1,31 @@
+.routineBox{
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 20px;
+    padding: 20px;
+}
+.imgBox{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fdd21d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart{
+    background-color: #d9ccee;
+    width: 240px;
+    height: 100px;
+    border-radius: 20px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cart button{
+    background-color: #57da8b;
+    padding: 5px 10px;
+    border: none;
+    font-size: 14px;
+}

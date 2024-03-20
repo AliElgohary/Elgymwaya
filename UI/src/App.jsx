@@ -19,6 +19,7 @@ import EditProfile from "./pages/EditProfile/EditProfile";
 import ReviewPage from "./pages/Review/ReviewPage";
 import { fetchCurrentUser } from "./thunks/me";
 import CoachDetails from "./pages/CoachDetails/CoachDetails";
+import TraineeRotine from "./pages/TraineeRotine/TraineeRotine";
 
 const routes = createBrowserRouter([
   {
@@ -40,6 +41,8 @@ const routes = createBrowserRouter([
   { path: "thnx", element: <Thnx /> },
   { path: "coachDetails/:coachId", element: <CoachDetails /> },
   { path: "review", element: <ReviewPage /> },
+  { path: "traineeRotine", element: <TraineeRotine /> },
+  
 ]);
 
 // BMI => w/h2
