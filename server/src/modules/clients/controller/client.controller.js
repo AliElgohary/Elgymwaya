@@ -262,11 +262,13 @@ export const setCoach = async (req, res) => {
 
     // Check if the client has an active subscription
     const today = new Date();
-    const hasActiveSubscription = clientToUpdate.subscription_end_date > today;
+    //FIXME:JUST FOR NOW
+    // TODO: apply ActiveSubscription
+    // const hasActiveSubscription = clientToUpdate.subscription_end_date > today;
 
-    if (!hasActiveSubscription) {
-      return res.status(403).send("You do not have an active subscription.");
-    }
+    // if (!hasActiveSubscription) {
+    //   return res.status(403).send("You do not have an active subscription.");
+    // }
 
     // Check if the client's plan is "basic"
     if (

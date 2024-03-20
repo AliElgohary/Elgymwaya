@@ -1,17 +1,25 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCoachById } from "./../../thunks/coach";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom"; // Import useParams hook
-import "./CoachDetails.css"; // Import custom CSS file for styling
+import { useNavigate, useParams } from "react-router-dom";
+import "./CoachDetails.css";
+import { setCoach } from "./../../thunks/setCoach";
 
 const CoachDetails = () => {
-  const { coachId } = useParams(); // Get coachId from URL params
+  const { coachId } = useParams();
   const dispatch = useDispatch();
-  const coach = useSelector((state) => state.coach.coach?.coach); // Add null check here
+  const navigate = useNavigate();
+  const coach = useSelector((state) => state.coach.coach?.coach);
   console.log(coach);
+
   useEffect(() => {
-    dispatch(fetchCoachById(coachId)); // Use coachId retrieved from useParams
+    dispatch(fetchCoachById(coachId));
   }, [dispatch, coachId]);
+
+  const handleSelectedCoach = () => {
+    dispatch(setCoach(coachId));
+    navigate("/userHome");
+  };
 
   return (
     <div className="container">
@@ -76,7 +84,12 @@ const CoachDetails = () => {
             </div>
           </div>
           <div className="text-center mb-3">
-            <button className="btn btn-primary btn-lg">select</button>
+            <button
+              className="btn btn-primary btn-lg"
+              onClick={handleSelectedCoach}
+            >
+              select
+            </button>
           </div>
         </div>
       )}
