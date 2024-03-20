@@ -3,7 +3,7 @@ import { Container, Image, Nav, NavDropdown, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import logo from "../../assets/main_icon/dumbbell-svgrepo-com (1).png"
 import user from "../../assets/user.png"
-function TraineeRotineNav() {
+function TraineeRotineNav({trainerName}) {
   return (
     <Navbar expand="lg" className=" bg-secondary-subtle">
         <Container fluid>
@@ -13,19 +13,20 @@ function TraineeRotineNav() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto me-5">
-            <NavDropdown title="" id="basic-nav-dropdown" className='mr-5'  key='start'> 
-                <NavDropdown.Item>
-                <Link to='#' className='text-dark text-decoration-none'>
-                    _
-                </Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                <Link to='#' className='text-dark text-decoration-none'>
-                   _
-                </Link>
-                </NavDropdown.Item>
-            </NavDropdown>
+            <Nav className="d-flex align-items-center ms-auto me-5">
+                <NavDropdown title="" id="basic-nav-dropdown" className='mr-5'  key='start'> 
+                    <NavDropdown.Item>
+                    <Link to='#' className='text-dark text-decoration-none'>
+                        _
+                    </Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                    <Link to='#' className='text-dark text-decoration-none'>
+                        _
+                    </Link>
+                    </NavDropdown.Item>
+                </NavDropdown>
+                <span style={{fontSize:"14px"}}>{trainerName}</span>
                 <Image src={user} roundedCircle width="40px" />
             </Nav>
         </Navbar.Collapse>
