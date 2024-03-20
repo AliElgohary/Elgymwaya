@@ -25,7 +25,7 @@ const Thnx = () => {
     });
 
     const timeoutId = setTimeout(() => {
-      navigate("/userHome");
+      navigate("/selectTrainer");
     }, 5000);
     return () => clearTimeout(timeoutId);
   }, [location.search, navigate, id]);

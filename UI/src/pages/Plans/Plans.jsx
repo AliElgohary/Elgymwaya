@@ -56,9 +56,15 @@ const Plans = () => {
                       </p>
                     </li>
                   </ul>
-                  <Link to={`/subscriptionMonths/${plan._id}`}>
-                    <p className="btn btn-lg btn-price-bg">Enroll Now</p>
-                  </Link>
+                  {plan.title.toLowerCase() === "free" ? (
+                    <Link to="/userHome">
+                      <p className="btn btn-lg btn-price-bg">Enroll Now</p>
+                    </Link>
+                  ) : (
+                    <Link to={`/subscriptionMonths/${plan._id}`}>
+                      <p className="btn btn-lg btn-price-bg">Enroll Now</p>
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}
