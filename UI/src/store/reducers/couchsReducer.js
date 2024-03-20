@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { GetAllCoachesAction } from "./../action/couchsActions";
+import { GetAllCoachesAction } from "../action/couchsActions";
 
 const initialState = {
   list: [],

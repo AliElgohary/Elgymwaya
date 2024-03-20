@@ -3,13 +3,20 @@ import style from "./SelectTrainer.module.css";
 import { getAllcoaches } from "../../thunks/coaches";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { fetchCoachById } from "./../../thunks/coach";
+import { useNavigate } from "react-router-dom";
 
 function SelectTrainer() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const coaches = useSelector((state) => state.coaches.list);
   useEffect(() => {
     dispatch(getAllcoaches());
   }, []);
+  const handleSelectCoach = (coachId) => {
+    dispatch(fetchCoachById(coachId));
+    navigate(`/coachDetails/${coachId}`);
+  };
   return (
     <div className={style.AllTrainersPages}>
       <Container>
@@ -19,7 +26,7 @@ function SelectTrainer() {
         </div>
         <Row className={style.gridBox}>
           {coaches.map((coach) => (
-            <Col key={coach.id} sm={12} md={6} lg={4}>
+            <Col key={coach._id} sm={12} md={6} lg={4}>
               <div className={`${style.imgCard}`}>
                 <img src={coach.profile_picture} alt={coach.full_name} />
                 <div className={style.Coauchinfo}>
@@ -31,7 +38,9 @@ function SelectTrainer() {
                   )}
                   <p>{coach.phone_number}</p>
                   <div className={style.selectBtn}>
-                    <Button>Select</Button>
+                    <Button onClick={() => handleSelectCoach(coach._id)}>
+                      Show
+                    </Button>
                   </div>
                 </div>
               </div>

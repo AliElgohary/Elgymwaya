@@ -18,6 +18,7 @@ import Thnx from "./pages/thnx/Thnx";
 import EditProfile from "./pages/EditProfile/EditProfile";
 import ReviewPage from "./pages/Review/ReviewPage";
 import { fetchCurrentUser } from "./thunks/me";
+import CoachDetails from "./pages/CoachDetails/CoachDetails";
 
 const routes = createBrowserRouter([
   {
@@ -37,6 +38,7 @@ const routes = createBrowserRouter([
   { path: "thnx/:id", element: <Thnx /> },
   { path: "editProfile", element: <EditProfile /> },
   { path: "thnx", element: <Thnx /> },
+  { path: "coachDetails/:coachId", element: <CoachDetails /> },
   { path: "review", element: <ReviewPage /> },
 ]);
 
