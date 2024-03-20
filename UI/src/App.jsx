@@ -17,8 +17,7 @@ import SelectTrainer from "./pages/SelectTrainer/SelectTrainer";
 import Thnx from "./pages/thnx/Thnx";
 import EditProfile from "./pages/EditProfile/EditProfile";
 import ReviewPage from "./pages/Review/ReviewPage";
-
-
+import { fetchCurrentUser } from "./thunks/me";
 
 const routes = createBrowserRouter([
   {
@@ -38,7 +37,7 @@ const routes = createBrowserRouter([
   { path: "thnx/:id", element: <Thnx /> },
   { path: "editProfile", element: <EditProfile /> },
   { path: "thnx", element: <Thnx /> },
-  { path: "review", element: <ReviewPage /> },  
+  { path: "review", element: <ReviewPage /> },
 ]);
 
 // BMI => w/h2
@@ -47,14 +46,15 @@ const routes = createBrowserRouter([
 function App() {
   const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   dispatch(getCurrentUser());
+  // }, []);
   useEffect(() => {
-    dispatch(getCurrentUser());
-  }, []);
-
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
   return (
     <>
       <RouterProvider router={routes}></RouterProvider>
-      
     </>
   );
 }

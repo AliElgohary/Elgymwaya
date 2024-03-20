@@ -4,6 +4,7 @@ import userBodyInfo from "./reducers/bodyInfo";
 import planReducer from "./reducers/plan";
 import { thunk } from "redux-thunk";
 import coachesReducer from "./reducers/couchsActions";
+import userReducer from "./reducers/userReducer";
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     auth: authReducer,
     plans: planReducer,
     coaches: coachesReducer,
+    me: userReducer,
   },
   middleware: (getDefaultMiddlewares) =>
     getDefaultMiddlewares().concat([thunk]),
