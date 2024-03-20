@@ -38,13 +38,13 @@ const workoutPlanSchema = new mongoose.Schema({
       date: Date,
       workout_completed: Boolean,
       notes: String,
-      adjustments: String, // Coach's notes for adjustments
+      adjustments: String, 
     },
   ],
   goals: String,
-  notes: String, // Additional notes from the coach
+  notes: String, 
 });
 
-const workoutPlan = mongoose.model("WorkoutPlan", workoutPlanSchema);
+const workoutPlanModel = mongoose.model("WorkoutPlan", workoutPlanSchema);
 
-export default workoutPlan;
+export default workoutPlanModel;

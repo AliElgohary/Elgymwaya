@@ -9,7 +9,6 @@ export const addPlan = async (req, res) => {
       return res.status(404).send("User not found.");
     }
 
-    // Check if the user's role is either manager or owner
     const isAuthorized = user.role === "manager" || user.role === "owner";
     if (!isAuthorized) {
       return res

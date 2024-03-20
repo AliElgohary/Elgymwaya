@@ -10,13 +10,13 @@ export const addCoach = async (req, res) => {
       return res.status(404).send("User not found.");
     }
 
-    // Check if the user's role is either manager or owner
     const isAuthorized = user.role === "manager" || user.role === "owner";
     if (!isAuthorized) {
       return res
         .status(403)
         .send("Unauthorized: Only managers and owners can add coaches.");
     }
+
     let workingDays = [];
     if (req.body.working_days) {
       try {
@@ -172,7 +172,6 @@ export const getAllcoaches = async (req, res) => {
     const coaches = await coachModel.find();
     res.json({ message: "Get all coaches", coaches });
   } catch (error) {
-    // console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };

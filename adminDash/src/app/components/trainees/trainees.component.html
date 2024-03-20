@@ -1,5 +1,5 @@
 <div class="container">
-  <table class="table mb-0">
+  <table class="table table-hover mb-0">
     <thead>
       <tr class="text-start">
         <th scope="col">Full Name</th>
@@ -16,7 +16,20 @@
     <tbody>
       @for (trainee of trainees; track trainee._id) {
       <tr class="text-start">
-        <td>{{ trainee.full_name }}</td>
+        <td>
+          <img
+            src="{{ trainee.profile_picture }}"
+            alt="Profile Picture"
+            style="
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              object-fit: cover;
+              margin-right: 10px;
+            "
+          />
+          {{ trainee.full_name }}
+        </td>
         <td>{{ trainee.age }}</td>
         <td>{{ trainee.email }}</td>
         <td>{{ trainee.phone_number }}</td>

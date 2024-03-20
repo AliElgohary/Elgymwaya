@@ -41,7 +41,7 @@ export const signUp = async (req, res) => {
         password: hashedPassword,
         birth_date,
         age,
-        // profile_picture: req.file.path, just for now xD
+        profile_picture: req.file.path,
         height,
         weight,
       });
@@ -91,7 +91,7 @@ export const signIn = async (req, res) => {
     const token = jwt.sign({ id: userOrCoach._id }, "ITI");
     res.status(200).json({
       message: "Welcome To El Gymaweya",
-      role: isCoach ? "coach" : userOrCoach.role, // Determine role based on isCoach flag
+      role: isCoach ? "coach" : userOrCoach.role,
       token,
     });
   } catch (error) {
@@ -324,7 +324,6 @@ export const changeCoach = async (req, res) => {
       return res.status(404).send("Client not found.");
     }
 
-    // Extract the new coachId from the request body (can be null if removing coach)
     const { coachId } = req.body;
 
     // If the client already has a coach, remove the client from the old coach's client_ids
@@ -415,7 +414,6 @@ export const getAllClients = async (req, res) => {
       return res.status(404).send("User not found.");
     }
 
-    // Check if the user's role is either manager or owner
     const isAuthorized = user.role === "manager" || user.role === "owner";
     if (!isAuthorized) {
       return res

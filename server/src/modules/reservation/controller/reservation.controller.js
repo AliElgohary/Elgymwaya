@@ -49,14 +49,14 @@ export const createReservation = async (req, res) => {
         .send({ message: "Coach is not available at the requested time." });
     }
 
-    // Proceed with creating the reservation if the coach is available
+
     const reservation = new reservationModel({
       client_id,
       coach_id,
       date,
       start_time,
       end_time,
-      status: "pending", // Initial status; could be updated based on business logic
+      status: "pending", 
     });
 
     await reservation.save();

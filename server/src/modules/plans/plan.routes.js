@@ -13,7 +13,6 @@ import { addSchema, updateSchema } from "./plan.validation.js";
 import { validation } from "../../middleware/validation.js";
 const planRoutes = express.Router();
 
-// Add Plan
 planRoutes.post("/plan/add", upload, auth, validation(addSchema), addPlan);
 
 planRoutes.get("/plans", getAllPlans);

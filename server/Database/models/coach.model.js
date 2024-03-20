@@ -27,8 +27,8 @@ let coachSchema = new mongoose.Schema({
           "Sunday",
         ],
       },
-      start_time: String, // Could be 'HH:mm' 24h format
-      end_time: String, // Could be 'HH:mm' 24h format
+      start_time: String, // 'HH:mm' 24h format
+      end_time: String, // 'HH:mm' 24h format
     },
   ],
   feedbacks: [
