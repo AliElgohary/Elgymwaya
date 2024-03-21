@@ -4,7 +4,7 @@
   <form #addPlanForm="ngForm" (ngSubmit)="addTrainee()">
     <div class="row box">
       <div class="col col-12 col-md-5 form-group my-2">
-        <label for="full_name">full_name</label>
+        <label for="full_name">Full_name</label>
         <input
           type="text"
           class="form-control"
@@ -14,6 +14,8 @@
           placeholder="Enter full_name"
           #NameInput="ngModel"
           required
+          maxlength="40" 
+          minlength="5"
           [ngClass]="{
             'is-invalid':
               (NameInput.touched || NameInput.dirty) && !NameInput.valid
@@ -22,6 +24,10 @@
         <span class="invalid-feedback">
           @if(NameInput.errors?.['required']){
           <span style="color: #8119db">Name is required</span>
+          } @if(NameInput.errors?.['minlength']){
+            <span style="color: #8119db">Minimum length is 5 characters</span>
+          } @if(NameInput.errors?.['maxlength']){
+            <span style="color: #8119db">Maximum length is 40 characters</span>
           }
         </span>
       </div>
@@ -35,6 +41,7 @@
           placeholder="E-mail"
           required
           email
+          maxlength="50" 
           minlength="10"
           [(ngModel)]="user.email"
           #emailInput="ngModel"
@@ -59,6 +66,7 @@
           name="password"
           id="password"
           class="form-control"
+          pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,20}$          "
           placeholder="Password"
           required
           [(ngModel)]="user.password"
@@ -72,7 +80,10 @@
         <span class="invalid-feedback">
           @if(passwordInput.errors?.['required']){
           <span style="color: #8119db">Password is required</span>
+          } @if(passwordInput.errors?.['pattern']){
+            <span style="color: #8119db">Password must be correct</span>
           }
+          
         </span>
       </div>
 
@@ -120,6 +131,8 @@
         <span class="invalid-feedback">
           @if(PhoneInput.errors?.['pattern']){
           <span style="color: #8119db">Phone Number Must be correct</span>
+          } @if(PhoneInput.errors?.['required']){
+            <span style="color: #8119db">Phone is required</span>
           }
         </span>
       </div>
@@ -148,11 +161,14 @@
           placeholder="Enter height"
           #heightInput="ngModel"
           required
+          min="0"
         />
         <span class="invalid-feedback">
           @if(heightInput.errors?.['required']){
           <span style="color: #8119db">height is required</span>
-          }
+        } @if(heightInput.errors?.['min']){
+          <span style="color: #8119db">Height must be a positive number</span>
+        }
         </span>
       </div>
 
@@ -167,10 +183,13 @@
           placeholder="Enter weight"
           #weightInput="ngModel"
           required
+          min="0"
         />
         <span class="invalid-feedback">
           @if(weightInput.errors?.['required']){
           <span style="color: #8119db">Weight is required</span>
+          }  @if(weightInput.errors?.['min']){
+            <span style="color: #8119db">Weight must be a positive number</span>
           }
         </span>
       </div>
@@ -207,5 +226,7 @@
         Submit
       </button>
     </div>
+      <p> errors: {{NameInput.errors | json}}</p>
+
   </form>
 </div>
