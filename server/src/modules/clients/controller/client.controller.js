@@ -41,7 +41,7 @@ export const signUp = async (req, res) => {
         password: hashedPassword,
         birth_date,
         age,
-        profile_picture: req.file.path,
+        // profile_picture: req.file.path,
         height,
         weight,
       });
