@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Container,
   Dropdown,
@@ -10,11 +9,13 @@ import {
 
 import logo from "../assets/main_icon/dumbbell-svgrepo-com (2).png";
 import user from "../assets/user.png";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../store/action/authActions";
 function NavBarUserHome() {
   const currentUser = useSelector((state) => state.me.currentUser);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
   return (
     <div>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -59,9 +60,13 @@ function NavBarUserHome() {
                 </NavDropdown.Item>
                 <Dropdown.Divider />
                 <NavDropdown.Item style={{ backgroundColor: "#e3d8ee" }}>
-                  <Link to="/" className="text-dark text-decoration-none">
+                  <span onClick={() => {
+                    localStorage.removeItem("token")
+                    dispatch(logout())
+                    navigate("/")
+                  }} className="text-dark text-decoration-none">
                     Log Out
-                  </Link>
+                  </span>
                 </NavDropdown.Item>
               </NavDropdown>
               {currentUser && (

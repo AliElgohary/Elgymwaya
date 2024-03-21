@@ -12,7 +12,6 @@ import SubscriptionMonths from "./pages/SubscriptionMonths/SubscriptionMonths";
 import AllTrainers from "./pages/AllTrainers/AllTrainers";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getCurrentUser } from "./thunks/users";
 import SelectTrainer from "./pages/SelectTrainer/SelectTrainer";
 import Thnx from "./pages/thnx/Thnx";
 import EditProfile from "./pages/EditProfile/EditProfile";
