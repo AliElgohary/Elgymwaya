@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { TrainersService } from '../../../services/trainers/trainers.service';
 
 @Component({
   selector: 'app-edit-trainer',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterOutlet],
   templateUrl: './edit-trainer.component.html',
   styleUrl: './edit-trainer.component.scss'
 })

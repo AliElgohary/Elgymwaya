@@ -5,12 +5,12 @@
     <div class="row box m-auto w-75">
       <div class=" col col-12 form-gr col col-8 oup">
         <label for="full_name">full_name</label>
-        <input type="text" 
-        class="form-control" 
-        id="full_name" name="full_name" 
+        <input type="text"
+        class="form-control"
+        id="full_name" name="full_name"
         [(ngModel)]="trainer.full_name"
-        placeholder="Enter full_name" 
-        #NameInput="ngModel" required 
+        placeholder="Enter full_name"
+        #NameInput="ngModel" required
         [ngClass]="{
             'is-invalid':
               (NameInput.touched || NameInput.dirty) && !NameInput.valid
@@ -24,15 +24,15 @@
 
       <div class=" col col-12 form-group mb-2">
         <label for="coachemail" class="col-form-label">E-mail</label>
-        <input type="text" 
-        name="coachemail" 
-        id="coachemail" 
-        class="form-control" 
-        placeholder="E-mail" 
+        <input type="text"
+        name="coachemail"
+        id="coachemail"
+        class="form-control"
+        placeholder="E-mail"
         required email
-        minlength="10" 
-        [(ngModel)]="trainer.email" 
-        #emailInput="ngModel" 
+        minlength="10"
+        [(ngModel)]="trainer.email"
+        #emailInput="ngModel"
         [ngClass]="{
             'is-invalid':
               (emailInput.touched || emailInput.dirty) && !emailInput.valid
@@ -48,14 +48,14 @@
 
       <div class=" col col-12 form-group">
         <label for="phone_number"> Phone Number</label>
-        <input type="text" 
-        class="form-control" 
-        id="phone_number" 
-        pattern="^(01)[0-9]{9}$" 
+        <input type="text"
+        class="form-control"
+        id="phone_number"
+        pattern="^(01)[0-9]{9}$"
         name="phone_number"
-        [(ngModel)]="trainer.phone_number" 
-        placeholder="Enter Phone Number" 
-        required #PhoneInput="ngModel" 
+        [(ngModel)]="trainer.phone_number"
+        placeholder="Enter Phone Number"
+        required #PhoneInput="ngModel"
         [ngClass]="{
             'is-invalid':
               (PhoneInput.touched || PhoneInput.dirty) && !PhoneInput.valid
@@ -70,11 +70,11 @@
 
       <div class=" col col-12 form-group">
         <label for="age">Age</label>
-        <input type="number" 
-        class="form-control" 
-        id="age" name="age" 
+        <input type="number"
+        class="form-control"
+        id="age" name="age"
         [(ngModel)]="trainer.age"
-        placeholder="Enter Age" 
+        placeholder="Enter Age"
         #AgeInput="ngModel" required />
         <span class="invalid-feedback">
           @if(AgeInput.errors?.['required']){
@@ -85,11 +85,11 @@
 
       <div class=" col col-12 form-group">
         <label for="salary">salary</label>
-        <input type="number" 
-        class="form-control" 
-        id="salary" name="salary" 
+        <input type="number"
+        class="form-control"
+        id="salary" name="salary"
         [(ngModel)]="trainer.salary"
-        placeholder="Enter salary" 
+        placeholder="Enter salary"
         #salaryInput="ngModel" required />
         <span class="invalid-feedback">
           @if(salaryInput.errors?.['required']){
@@ -100,19 +100,23 @@
 
       <div class=" col col-12 form-group">
         <label for="profilePicture">Profile Picture</label>
-        <input type="file" 
-        class="form-control-file" 
+        <input type="file"
+        class="form-control-file"
         id="profilePicture" name="profilePicture"
         (change)="onFileSelected($event)" />
       </div>
 
-      <button 
-      type="submit" 
-      class="btn btn-primary" 
+      <button
+      type="submit"
+      class="btn btn-primary"
       [disabled]="addTrainerForm.invalid">
         Edit
       </button>
 
     </div>
   </form>
+</div>
+
+<div class="container">
+  <router-outlet></router-outlet>
 </div>
