@@ -20,13 +20,13 @@ function Trainer() {
             className={style.userImage}
             roundedCircle
           />
-          <span className="text-dark">{coachInfo.full_name}</span>
+          <span className="text-dark fw-bold">{coachInfo.full_name}</span>
         </div>
       )}
       {coachInfo && (
         <div id="contact-info">
           <h5 className={style.infoHead}>Contact Info</h5>
-          <div id="phone">
+          <div id="phone" className="my-3">
             <FontAwesomeIcon icon={faPhone} className="me-2" />
             <span className={style.infoSpan}>
               Phone: {coachInfo.phone_number}

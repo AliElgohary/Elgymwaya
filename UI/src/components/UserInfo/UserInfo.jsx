@@ -22,18 +22,22 @@ function UserInfo() {
       <h2>User Information</h2>
       {currentUser && (
         <div>
-          <Image src={userImage} className={style.userImage} roundedCircle />
-          <span className="text-dark">{currentUser.full_name}</span>
+          <Image
+            src={currentUser.profile_picture || userImage}
+            className={style.userImage}
+            roundedCircle
+          />
+          <span className="text-dark fw-bold">{currentUser.full_name}</span>
         </div>
       )}
       {currentUser && (
         <div id="body-info" className={style.bodyInfo}>
           <h5 className={style.infoHead}>Body Info</h5>
-          <div id="age">
+          <div id="age" className="my-2">
             <FontAwesomeIcon icon={faUser} className="me-2" />
             <span className={style.infoSpan}>Age: {currentUser.age}</span>
           </div>
-          <div id="height">
+          <div id="height" className="my-2">
             <FontAwesomeIcon icon={faRuler} className="me-2" />
             <span className={style.infoSpan}>Height: {currentUser.height}</span>
           </div>
@@ -46,7 +50,7 @@ function UserInfo() {
       {currentUser && (
         <div id="contact-info">
           <h5 className={style.infoHead}>Contact Info</h5>
-          <div id="phone">
+          <div id="phone" className="my-2">
             <FontAwesomeIcon icon={faPhone} className="me-2" />
             <span className={style.infoSpan}>
               Phone: {currentUser.phone_number}
