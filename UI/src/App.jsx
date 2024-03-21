@@ -42,7 +42,6 @@ const routes = createBrowserRouter([
   { path: "coachDetails/:coachId", element: <CoachDetails /> },
   { path: "review", element: <ReviewPage /> },
   { path: "traineeRotine", element: <TraineeRotine /> },
-  
 ]);
 
 // BMI => w/h2

@@ -33,7 +33,8 @@
     font-size: 14px;
 }
 
-.selctedTreaineeInfo {
+.selctedTreaineeInfo,
+.formBox {
     width: 500px;
     background: #fff;
     padding: 20px;
@@ -44,7 +45,8 @@
     transform: translate(-50%, -50%);
 }
 
-.selctedTreaineeInfo button {
+.selctedTreaineeInfo button,
+.formBox .exit {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -88,4 +90,31 @@
     font-weight: 600;
     color: #000;
     opacity: .8;
+}
+
+.inpGroup {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 100px;
+    align-items: center;
+    margin: 5px 0;
+    background-color: #eeeeee59;
+}
+
+.inpGroup input {
+    background-color: #d9ccee;
+    border: 1px solid #fff;
+    height: 30px;
+    text-indent: 15px;
+}
+
+[type="submit"] {
+    background-color: #292027;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-weight: bold;
 }
