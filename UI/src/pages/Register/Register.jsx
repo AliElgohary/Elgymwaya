@@ -36,8 +36,10 @@ const Register = () => {
       full_name: Joi.string()
         .min(3)
         .max(50)
-        .pattern(/^[A-Za-z]+$/)
-        .message("Name must only contain letters")
+        .pattern(/^[A-Za-z]+(?:\s[A-Za-z]+)*$/)
+        .message(
+          "Name must only contain letters and single spaces between words"
+        )
         .required()
         .label("full_name"),
       email: Joi.string()

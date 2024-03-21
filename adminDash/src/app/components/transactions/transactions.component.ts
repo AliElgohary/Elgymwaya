@@ -26,7 +26,7 @@ export class TransactionsComponent implements OnInit {
   deleteTransaction(id: string) {
     this.transactionsService.deleteTransactions(id).subscribe((response) => {
       if (response.message === 'Transaction Deleted') {
-        this.getTransactions()
+        this.getTransactions();
       } else {
         console.error('Unexpected deletion response:', response);
       }

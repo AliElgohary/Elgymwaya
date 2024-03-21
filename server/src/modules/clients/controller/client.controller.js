@@ -178,7 +178,7 @@ export const updateUser = async (req, res) => {
 // Update Client with ID (For Admin)
 export const updateUserWithId = async (req, res) => {
   try {
-    const { clientId } = req.params; 
+    const { clientId } = req.params;
 
     let clientToUpdate = await userModel.findById(clientId);
 
@@ -189,7 +189,7 @@ export const updateUserWithId = async (req, res) => {
     if (req.body.email && req.body.email !== clientToUpdate.email) {
       const emailExists = await userModel.findOne({
         email: req.body.email,
-        _id: { $ne: clientId }, 
+        _id: { $ne: clientId },
       });
 
       if (emailExists) {
@@ -214,9 +214,6 @@ export const updateUserWithId = async (req, res) => {
     res.status(500).send("Error in updating client");
   }
 };
-
-
-
 
 // Update Client Picture (Self Only)
 export const updateUserPicture = async (req, res) => {
@@ -616,6 +613,7 @@ async function generatePaymentKey(
       order_id: orderId,
       subscriptionMonths: subscriptionMonths,
       amount: subscriptionFees / 100,
+      transactionDateAndTime: new Date(),
     });
 
     await newTransaction.save();
