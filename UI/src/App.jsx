@@ -17,6 +17,7 @@ import SelectTrainer from "./pages/SelectTrainer/SelectTrainer";
 import Thnx from "./pages/thnx/Thnx";
 import EditProfile from "./pages/EditProfile/EditProfile";
 import ReviewPage from "./pages/Review/ReviewPage";
+import ReviewItem from "./pages/Review/ReviewItem";
 import { fetchCurrentUser } from "./thunks/me";
 import CoachDetails from "./pages/CoachDetails/CoachDetails";
 import TraineeRotine from "./pages/TraineeRotine/TraineeRotine";

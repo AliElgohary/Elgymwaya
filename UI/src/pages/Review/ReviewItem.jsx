@@ -9,7 +9,6 @@ const ReviewItem = ({ name, comment, rating }) => {
       <p>{comment}</p>
       <p>Rating: {rating}</p>
     </div>
-    
   );
 }
 
