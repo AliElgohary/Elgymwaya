@@ -51,12 +51,6 @@ const CoachDetails = () => {
                   <strong>Hired Date:</strong>{" "}
                   {new Date(coach.hiredDate).toLocaleDateString()}
                 </p>
-                <p>
-                  <strong>Role:</strong> {coach.role}
-                </p>
-                <p>
-                  <strong>Salary:</strong> {coach.salary}
-                </p>
               </div>
               <div className="col-md-6 mt-5">
                 <h3>Feedbacks:</h3>
