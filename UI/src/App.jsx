@@ -50,9 +50,6 @@ const routes = createBrowserRouter([
 function App() {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getCurrentUser());
-  // }, []);
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
