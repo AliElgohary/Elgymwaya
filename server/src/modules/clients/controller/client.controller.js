@@ -180,7 +180,7 @@ export const updateUserWithId = async (req, res) => {
   try {
     const { clientId } = req.params; 
 
-    const clientToUpdate = await userModel.findById(clientId);
+    let clientToUpdate = await userModel.findById(clientId);
 
     if (!clientToUpdate) {
       return res.status(404).send("Client not found.");
@@ -198,7 +198,7 @@ export const updateUserWithId = async (req, res) => {
     }
 
     if (req.body.birth_date) {
-      const newBirthDate = new Date(req.body.birth_date);
+      let newBirthDate = new Date(req.body.birth_date);
 
       req.body.age = calculateAge(newBirthDate);
     }

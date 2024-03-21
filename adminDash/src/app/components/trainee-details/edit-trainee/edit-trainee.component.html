@@ -1,24 +1,25 @@
 <h2 class="bng-dark m-auto mt-5 mb-2 w-75">Edit trainee</h2>
-{{ trainee | json }}
+<!-- {{ trainee | json }} -->
 <div class="container">
+
   <form #addPlanForm="ngForm" (ngSubmit)="editTrainee()">
     <div class="row box m-auto w-75">
       <div class="col col-12 form-gr col col-8 oup">
-        <label for="full_name">full_name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="full_name"
-          name="full_name"
-          [(ngModel)]="trainee.full_name"
-          placeholder="Enter full_name"
-          #NameInput="ngModel"
-          required
-          [ngClass]="{
-            'is-invalid':
-              (NameInput.touched || NameInput.dirty) && !NameInput.valid
-          }"
-        />
+         <label for="full_name">full_name</label>
+         <input
+           type="text"
+           class="form-control"
+           id="full_name"
+           name="full_name"
+           [(ngModel)]="trainee.full_name"
+           placeholder="Enter full_name"
+           #NameInput="ngModel"
+           required
+           [ngClass]="{
+             'is-invalid':
+               (NameInput.touched || NameInput.dirty) && !NameInput.valid
+           }"
+         />
         <span class="invalid-feedback">
           @if(NameInput.errors?.['required']){
           <span>Name is required</span>
@@ -114,12 +115,28 @@
           }
         </span>
       </div>
+      <div class=" col col-12 form-group">
+        <label for="BD">Birth Date</label>
+       <input type="date"
+       class="form-control"
+       id="BD" 
+       name="BD"
+       [(ngModel)]="trainee.birth_date"
+       placeholder="Enter Birth Date"
+       #BDInput="ngModel" required />
+       <span class="invalid-feedback">
+         @if(BDInput.errors?.['required']){
+         <span>BirthDate is required</span>
+         }
+       </span>
+     </div>
 
       <div class="col col-12 form-group">
-        <label for="profilePicture">Profile Picture</label>
+        <label for="profilePicture" 
+        class="form-label">Profile Picture</label>
         <input
           type="file"
-          class="form-control-file"
+          class="form-control"
           id="profilePicture"
           name="profilePicture"
           (change)="onFileSelected($event)"

@@ -35,8 +35,10 @@ export class TrainersService {
     ).pipe(map((response: any) => response.coach));;
   }
 
-  editTrainer(data : any): Observable<any> {
-    return this.http.patch<any>('http://localhost:5000//coach/update', data, {
+  editTrainer(id : string,data : any): Observable<any> {
+    console.log(id + "id");
+    console.log(data);
+    return this.http.put<any>(`http://localhost:5000/coach/update/${id}`, data, {
       headers: new HttpHeaders({
         token: `${this.token}`,
       }),
