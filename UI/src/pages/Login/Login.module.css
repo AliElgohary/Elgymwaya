@@ -55,4 +55,8 @@ body {
   margin: 12px auto;
   margin-bottom: 2rem;
   font-weight: bold;
+  &:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
 }

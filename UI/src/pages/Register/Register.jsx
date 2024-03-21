@@ -14,7 +14,10 @@ import Joi from "joi";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../thunks/registerUser";
+import axios from "axios";
+import { toast } from "react-toastify";
 const Register = () => {
+  const [loading, setLoading] = useState(false)
   const [data, setData] = useState({
     full_name: "",
     email: "",
@@ -74,22 +77,24 @@ const Register = () => {
       }
     }
     if (valid) {
-      // <<<<<<< HEAD
+      setLoading(true)
       try {
         const response = await axios.post(
           "http://localhost:5000/client/signup",
           data
         );
-        if (response.status === 200) {
-          console.log("Registration successful:", response.data);
-          navigate("/plans");
-        } else {
-          setErrors("Registration failed. Please try again later.");
-        }
+        console.log("Registration successful:", response.data);
+        navigate("/plans");
       } catch (error) {
         console.error("Error registering user:", error);
         // Handle network errors or unexpected errors
         setErrors("Registration failed. Please try again later.");
+        const msg = error.response?.data;
+        if (msg && typeof msg == "string") {
+          toast.error(msg)
+        }
+      } finally {
+        setLoading(false);
       }
       // =======
       await dispatch(
@@ -104,7 +109,6 @@ const Register = () => {
           data.Cpassword
         )
       );
-      // >>>>>>> e8e87bb74495d2923bddea78f42f51f68bdf7ebb
     }
   };
   useEffect(() => {
@@ -205,7 +209,7 @@ const Register = () => {
               Icon={IoLockClosed}
             />
           </div>
-          <button className={styles.btn} type="submit">
+          <button className={styles.btn} type="submit" disabled={loading}>
             Register
           </button>
           <h6 className="text-muted ">
