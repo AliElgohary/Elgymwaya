@@ -24,7 +24,9 @@ function AllTrainers() {
               <div className={style.Coauchinfo}>
                 <h4>Ahmed Hani</h4>
                 <p>fitness trainer</p>
-                <div className={style.socialIcons}>
+                <a class="btn btn-primary" href="../Review" role="button">Review</a>
+              
+                {/* <div className={style.socialIcons}>
                   <FontAwesomeIcon
                     className={`${style.icon} text-primary`}
                     icon={faTwitter}
@@ -41,7 +43,7 @@ function AllTrainers() {
                     className={`${style.icon} text-danger`}
                     icon={faYoutube}
                   />
-                </div>
+                </div> */}
               </div>
             </div>
           </Col>
@@ -51,7 +53,8 @@ function AllTrainers() {
               <div className={style.Coauchinfo}>
                 <h4>Ahmed Hani</h4>
                 <p>fitness trainer</p>
-                <div className={style.socialIcons}>
+                <a class="btn btn-primary" href="../Review" role="button">Review</a>
+                {/* <div className={style.socialIcons}>
                   <FontAwesomeIcon
                     className={`${style.icon} text-primary`}
                     icon={faTwitter}
@@ -68,7 +71,7 @@ function AllTrainers() {
                     className={`${style.icon} text-danger`}
                     icon={faYoutube}
                   />
-                </div>
+                </div> */}
               </div>
             </div>
           </Col>
@@ -78,7 +81,8 @@ function AllTrainers() {
               <div className={style.Coauchinfo}>
                 <h4>Ahmed Hani</h4>
                 <p>fitness trainer</p>
-                <div className={style.socialIcons}>
+                <a class="btn btn-primary" href="../Review" role="button">Review</a>
+                {/* <div className={style.socialIcons}>
                   <FontAwesomeIcon
                     className={`${style.icon} text-primary`}
                     icon={faTwitter}
@@ -95,7 +99,7 @@ function AllTrainers() {
                     className={`${style.icon} text-danger`}
                     icon={faYoutube}
                   />
-                </div>
+                </div> */}
               </div>
             </div>
           </Col>
@@ -105,7 +109,8 @@ function AllTrainers() {
               <div className={style.Coauchinfo}>
                 <h4>Ahmed Hani</h4>
                 <p>fitness trainer</p>
-                <div className={style.socialIcons}>
+                <a class="btn btn-primary" href="../Review" role="button">Review</a>
+                {/* <div className={style.socialIcons}>
                   <FontAwesomeIcon
                     className={`${style.icon} text-primary`}
                     icon={faTwitter}
@@ -122,7 +127,7 @@ function AllTrainers() {
                     className={`${style.icon} text-danger`}
                     icon={faYoutube}
                   />
-                </div>
+                </div> */}
               </div>
             </div>
           </Col>
