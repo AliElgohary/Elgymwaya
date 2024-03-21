@@ -10,6 +10,7 @@ import {
   getcoachById,
   getcoachFeedbackById,
   getcoachRatingById,
+  updateCoach,
 } from "./controller/coaches.controller.js";
 import {
   UpdatingCoachSchema,
@@ -33,7 +34,7 @@ coachRoutes.patch(
   upload,
   auth,
   // validation(UpdatingCoachSchema),
-  addCoach
+  updateCoach
 );
 
 coachRoutes.get("/coach", auth, getAllcoaches);

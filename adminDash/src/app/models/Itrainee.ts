@@ -15,7 +15,8 @@ export interface Itrainee {
   subscription_end_date: Date;
   subscription_months: number;
   coach_id: {
-    _id: string,
-    full_name: string
-  }
+    _id: string;
+    full_name: string;
+  };
+  newPlanProfilePicture?: File;
 }

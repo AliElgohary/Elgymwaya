@@ -33,8 +33,10 @@ export class TraineesService {
       .get<any>(`http://localhost:5000/client/${id}`)
   }
 
-  editTrainee(data : any): Observable<any> {
-    return this.http.put<any>('http://localhost:5000/client/update', data, {
+  editTrainee(id : string,data : any): Observable<any> {
+    console.log(data);
+    console.log(id + "id");
+    return this.http.put<any>(`http://localhost:5000/client/update/${id}`, data, {
       headers: new HttpHeaders({
         token: `${this.token}`,
       }),

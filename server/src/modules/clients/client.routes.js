@@ -26,6 +26,7 @@ import {
   subscriptionint,
   updateUser,
   updateUserPicture,
+  updateUserWithId,
 } from "./controller/client.controller.js";
 import { upload } from "../../middleware/images.js";
 const clientRoutes = express.Router();
@@ -64,6 +65,11 @@ clientRoutes.put(
   auth,
   validation(updateUserSchema),
   updateUser
+);
+
+clientRoutes.put(
+  "/client/update/:clientId",
+  updateUserWithId
 );
 
 //Delete User:
