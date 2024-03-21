@@ -12,7 +12,6 @@ import SubscriptionMonths from "./pages/SubscriptionMonths/SubscriptionMonths";
 import AllTrainers from "./pages/AllTrainers/AllTrainers";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getCurrentUser } from "./thunks/users";
 import SelectTrainer from "./pages/SelectTrainer/SelectTrainer";
 import Thnx from "./pages/thnx/Thnx";
 import EditProfile from "./pages/EditProfile/EditProfile";
@@ -43,7 +42,6 @@ const routes = createBrowserRouter([
   { path: "coachDetails/:coachId", element: <CoachDetails /> },
   { path: "review", element: <ReviewPage /> },
   { path: "traineeRotine", element: <TraineeRotine /> },
-  
 ]);
 
 // BMI => w/h2
@@ -52,9 +50,6 @@ const routes = createBrowserRouter([
 function App() {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getCurrentUser());
-  // }, []);
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);

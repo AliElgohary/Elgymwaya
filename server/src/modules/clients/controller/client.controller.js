@@ -41,7 +41,7 @@ export const signUp = async (req, res) => {
         password: hashedPassword,
         birth_date,
         age,
-        profile_picture: req.file.path,
+        // profile_picture: req.file.path,
         height,
         weight,
       });
@@ -172,6 +172,46 @@ export const updateUser = async (req, res) => {
   } catch (error) {
     console.error("Error in updating user:", error);
     res.status(500).send("Error in updating user");
+  }
+};
+
+// Update Client with ID (For Admin)
+export const updateUserWithId = async (req, res) => {
+  try {
+    const { clientId } = req.params;
+
+    let clientToUpdate = await userModel.findById(clientId);
+
+    if (!clientToUpdate) {
+      return res.status(404).send("Client not found.");
+    }
+
+    if (req.body.email && req.body.email !== clientToUpdate.email) {
+      const emailExists = await userModel.findOne({
+        email: req.body.email,
+        _id: { $ne: clientId },
+      });
+
+      if (emailExists) {
+        return res.status(400).send("Email is already in use.");
+      }
+    }
+
+    if (req.body.birth_date) {
+      let newBirthDate = new Date(req.body.birth_date);
+
+      req.body.age = calculateAge(newBirthDate);
+    }
+
+    Object.assign(clientToUpdate, req.body);
+    await clientToUpdate.save();
+
+    res
+      .status(200)
+      .json({ message: "Client updated successfully", client: clientToUpdate });
+  } catch (error) {
+    console.error("Error in updating client:", error);
+    res.status(500).send("Error in updating client");
   }
 };
 
@@ -573,6 +613,7 @@ async function generatePaymentKey(
       order_id: orderId,
       subscriptionMonths: subscriptionMonths,
       amount: subscriptionFees / 100,
+      transactionDateAndTime: new Date(),
     });
 
     await newTransaction.save();

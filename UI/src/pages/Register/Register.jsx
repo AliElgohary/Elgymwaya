@@ -14,7 +14,12 @@ import Joi from "joi";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../thunks/registerUser";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { loginSuccess } from "../../store/action/authActions";
+import { fetchCurrentUser } from "./../../thunks/me";
 const Register = () => {
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     full_name: "",
     email: "",
@@ -25,8 +30,7 @@ const Register = () => {
     password: undefined,
     Cpassword: undefined,
   });
-  const [errors, setErrors] = useState({}); // [key: string] : string[]  {"name": ["name is required", "name must be at least 5 chars"]}
-  //  FIXME:fixe the margin issue when a larg error message appear
+  const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const navigate = useNavigate();
@@ -36,8 +40,10 @@ const Register = () => {
       full_name: Joi.string()
         .min(3)
         .max(50)
-        .pattern(/^[A-Za-z]+$/)
-        .message("Name must only contain letters")
+        .pattern(/^[A-Za-z]+(?:\s[A-Za-z]+)*$/)
+        .message(
+          "Name must only contain letters and single spaces between words"
+        )
         .required()
         .label("full_name"),
       email: Joi.string()
@@ -72,22 +78,27 @@ const Register = () => {
       }
     }
     if (valid) {
-      // <<<<<<< HEAD
+      setLoading(true);
       try {
         const response = await axios.post(
           "http://localhost:5000/client/signup",
           data
         );
-        if (response.status === 200) {
-          console.log("Registration successful:", response.data);
-          navigate("/plans");
-        } else {
-          setErrors("Registration failed. Please try again later.");
-        }
+        console.log("Registration successful:", response.data);
+        const token = response.data.token;
+        localStorage.setItem("token", token); // Save token to local storage
+        dispatch(loginSuccess(token)); // Dispatch loginSuccess action to update authentication state
+        dispatch(fetchCurrentUser()); // Call fetchCurrentUser to get current user data
+        navigate("/plans");
       } catch (error) {
         console.error("Error registering user:", error);
-        // Handle network errors or unexpected errors
         setErrors("Registration failed. Please try again later.");
+        const msg = error.response?.data;
+        if (msg && typeof msg == "string") {
+          toast.error(msg);
+        }
+      } finally {
+        setLoading(false);
       }
       // =======
       await dispatch(
@@ -102,16 +113,15 @@ const Register = () => {
           data.Cpassword
         )
       );
-      // >>>>>>> e8e87bb74495d2923bddea78f42f51f68bdf7ebb
     }
   };
+
   useEffect(() => {
     console.log("isAuthenticated changed:", isAuthenticated);
     if (isAuthenticated) {
       navigate("/plans");
     }
   }, [isAuthenticated, navigate]);
-
   const validate = (key, value) => {
     const validationRule = validationRules[key];
     const validationResult = validationRule.validate(value);
@@ -203,7 +213,7 @@ const Register = () => {
               Icon={IoLockClosed}
             />
           </div>
-          <button className={styles.btn} type="submit">
+          <button className={styles.btn} type="submit" disabled={loading}>
             Register
           </button>
           <h6 className="text-muted ">

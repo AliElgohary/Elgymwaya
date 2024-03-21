@@ -1,36 +1,38 @@
 // authReducer.js
 
+import { createReducer } from "@reduxjs/toolkit";
+
 const initialState = {
   token: null,
   isAuthenticated: false,
   error: null,
-};
-
-const authReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "LOGIN_SUCCESS":
-      return {
-        ...state,
-        token: action.payload,
-        isAuthenticated: true,
-        error: null,
-      };
-    case "LOGIN_FAILURE":
-      return {
-        ...state,
-        isAuthenticated: false,
-        error: action.payload,
-      };
-    case "LOGOUT":
-      return {
-        ...state,
-        token: null,
-        isAuthenticated: false,
-        error: null,
-      };
-    default:
-      return state;
+  loadingStates: {
+    login: false,
   }
 };
+
+const authReducer = createReducer(initialState, (builder) => {
+  builder.addCase("LOGIN_SUCCESS", (state, action) => {
+    state.isAuthenticated = true;
+    state.token = action.payload;
+    state.error = null;
+    state.loadingStates.login = false;
+  });
+
+  builder.addCase("LOGIN_FAILURE", (state, action) => {
+    state.error = action.payload;
+    state.loadingStates.login = false;
+  });
+
+  builder.addCase("LOGOUT", (state) => {
+    state.isAuthenticated = false;
+    state.token = null;
+    state.error = null;
+  });
+
+  builder.addCase("LOGIN_INIT", (state) => {
+    state.loadingStates.login = true;
+  });
+});
 
 export default authReducer;

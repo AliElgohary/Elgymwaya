@@ -32,7 +32,7 @@ const CoachDetails = () => {
                 <img
                   src={coach.profile_picture}
                   alt={coach.full_name}
-                  className="img-fluid rounded mb-3"
+                  className="img-fluid rounded mb-3 h-50 w-50"
                 />
                 <p>
                   <strong>Email:</strong> {coach.email}
@@ -47,18 +47,19 @@ const CoachDetails = () => {
                   <strong>Birth Date:</strong>{" "}
                   {new Date(coach.birth_date).toLocaleDateString()}
                 </p>
-                <p>
-                  <strong>Hired Date:</strong>{" "}
-                  {new Date(coach.hiredDate).toLocaleDateString()}
-                </p>
-                <p>
-                  <strong>Role:</strong> {coach.role}
-                </p>
-                <p>
-                  <strong>Salary:</strong> {coach.salary}
-                </p>
+                <h3 className="my-3 fw-bold">Working Days</h3>
+                <ul className="list-unstyled">
+                  {coach.working_days.map((day, index) => (
+                    <li key={index}>
+                      <p>
+                        <strong>{day.day}:</strong> {day.start_time} -{" "}
+                        {day.end_time}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 mt-5">
                 <h3>Feedbacks:</h3>
                 {coach.feedbacks.length > 0 ? (
                   <ul className="list-unstyled">

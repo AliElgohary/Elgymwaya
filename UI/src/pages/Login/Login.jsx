@@ -8,6 +8,8 @@ import { MdEmail } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../thunks/users";
+import { getLoginLoading } from "../../store/selectors/authSelectors";
+import { getCurrentUser } from "../../store/selectors/userSelectors";
 
 const Login = () => {
   const [data, setData] = useState({
@@ -16,7 +18,8 @@ const Login = () => {
   });
   const [errors, setErrors] = useState({}); // [key: string] : string[]  {"name": ["name is required", "name must be at least 5 chars"]}
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const currentUser = useSelector(getCurrentUser);
+  const isLoginLoading = useSelector(getLoginLoading)
   const navigate = useNavigate();
   const validationRules = useMemo(
     () => ({
@@ -66,11 +69,10 @@ const Login = () => {
     }
   };
   useEffect(() => {
-    console.log("isAuthenticated changed:", isAuthenticated);
-    if (isAuthenticated) {
+    if (currentUser) {
       navigate("/userHome");
     }
-  }, [isAuthenticated, navigate]);
+  }, [currentUser, navigate]);
 
   //TODO:fix the icon in placeholder :)
   return (
@@ -99,7 +101,7 @@ const Login = () => {
               Icon={IoLockClosed}
             />
           </div>
-          <button className={styles.btn} type="submit">
+          <button className={styles.btn} type="submit" disabled={isLoginLoading}>
             Login
           </button>
           <h6 className="text-muted ">

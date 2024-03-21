@@ -29,12 +29,13 @@ export class AddTrainerComponent {
 
   addTrainer() {
     const formData = new FormData();
+
     formData.append('full_name', this.trainer.full_name);
     formData.append('email', this.trainer.email);
     formData.append('password', this.trainer.password);
     formData.append('Cpassword', this.trainer.Cpassword);
     formData.append('phone_number', this.trainer.phone_number);
-    formData.append('birth_date', this.trainer.birth_date);
+    formData.append('birth_date', this.trainer.birth_date.toISOString().split('T')[0]);
     formData.append('age', this.trainer.age);
     formData.append('salary', this.trainer.salary);
     if (this.trainer.newPlanProfilePicture) {
@@ -46,6 +47,7 @@ export class AddTrainerComponent {
     }
 
     this.trainerService.addTrainer(formData).subscribe(
+
       (data) => {
         console.log('Trainer added successfully:', data);
         this.resetPlanForm();
@@ -58,6 +60,7 @@ export class AddTrainerComponent {
   }
 
   onFileSelected(event: Event) {
+    
     const target = event.target as HTMLInputElement;
     if (target && target.files && target.files.length) {
       this.trainer.newPlanProfilePicture = target.files[0];

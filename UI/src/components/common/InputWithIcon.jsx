@@ -2,6 +2,8 @@ import React from "react";
 import Input from "./Input";
 import InputStyles from "./styles/inputs.module.css";
 import PropTypes from "prop-types";
+import { longText } from "../../utils/cutLongText";
+import Tooltip from "./tooltip";
 
 const InputWithIcon = (props) => {
   const { Icon, iconSize = 20, errors, ...rest } = props;
@@ -34,9 +36,12 @@ const InputWithIcon = (props) => {
 
       <div className={InputStyles.errors}>
         {errors?.map((e) => (
-          <span key={e} className={InputStyles.errorField}>
-            {e}
-          </span>
+          <Tooltip
+            key={e}
+            className={InputStyles.errorField}
+            placement={"bottom"}
+            content={e}
+          />
         ))}
       </div>
     </div>

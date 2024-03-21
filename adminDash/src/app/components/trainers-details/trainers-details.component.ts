@@ -23,11 +23,6 @@ export class TrainersDetailsComponent implements OnInit {
   trainer!: Itrainers;
   trainIDChangedSubscription!: Subscription;
 
-  // ngOnInit(): void {
-  //   this.trainerId = this.route.snapshot.paramMap.get('id') as string;
-  //   this.loadTrainer()
-  // }
-
   ngOnInit(): void {
     this.trainIDChangedSubscription = this.route.paramMap.subscribe(
       (params) => {
