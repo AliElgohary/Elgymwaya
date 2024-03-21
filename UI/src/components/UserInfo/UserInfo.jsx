@@ -23,7 +23,7 @@ function UserInfo() {
       {currentUser && (
         <div>
           <Image src={userImage} className={style.userImage} roundedCircle />
-          <span className="text-dark">{currentUser.name}</span>
+          <span className="text-dark">{currentUser.full_name}</span>
         </div>
       )}
       {currentUser && (
@@ -64,6 +64,7 @@ function UserInfo() {
           <div id="registration-date">
             <FontAwesomeIcon icon={faCalendarDays} className="me-2" />
             <span className={style.infoSpan}>
+              {/* //TODO:registrationDate */}
               Registration Date: {currentUser.registrationDate}
             </span>
           </div>
