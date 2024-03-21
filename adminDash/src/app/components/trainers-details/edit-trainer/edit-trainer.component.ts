@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { TrainersService } from '../../../services/trainers/trainers.service';
+import { Itrainers } from '../../../models/itrainers';
 
 @Component({
   selector: 'app-edit-trainer',
@@ -14,7 +15,8 @@ import { TrainersService } from '../../../services/trainers/trainers.service';
 export class EditTrainerComponent implements OnInit{
 
   trainerId!: string;
-  trainer!: any;
+   //trainer!: any;
+   trainer:Itrainers = {} as Itrainers;
   constructor(
     private route: ActivatedRoute,
     private trainerServ: TrainersService,
@@ -30,12 +32,15 @@ export class EditTrainerComponent implements OnInit{
   }
   editTrainer() {
     const formData = new FormData();
-    formData.append('full_name', this.trainer.full_name);
-    formData.append('email', this.trainer.email);
-    formData.append('phone_number', this.trainer.phone_number);
-    formData.append('birth_date', this.trainer.birth_date);
-    formData.append('age', this.trainer.age);
-    formData.append('salary', this.trainer.salary);
+    formData.append('full_name', this.trainer.full_name.toString());
+    formData.append('email', this.trainer.email.toString());
+    formData.append('phone_number', this.trainer.phone_number.toString());
+    // formData.append('birth_date', this.trainer.birth_date);
+    if (this.trainer.birth_date instanceof Date) {
+      formData.append('birth_date', this.trainer.birth_date.toISOString().split('T')[0]);
+    }
+    formData.append('age', this.trainer.age.toString());
+    formData.append('salary', this.trainer.salary.toString());
     if (this.trainer.newPlanProfilePicture) {
       formData.append(
         'profile_picture',
@@ -44,17 +49,16 @@ export class EditTrainerComponent implements OnInit{
       );
     }
 
-    this.trainerServ.editTrainer(formData).subscribe(
+    this.trainerServ.editTrainer(this.trainerId, this.trainer).subscribe(
       (data) => {
-        console.log('trainer edited successfully:', data);
+        console.log('Trainer edited successfully:', data);
         this.router.navigate(['/trainers']);
       },
       (error) => {
-        console.error('Error editting trainer:', error);
+        console.error('Error editing trainer:', error);
       }
     );
   }
-
   onFileSelected(event: Event) {
     const target = event.target as HTMLInputElement;
     if (target && target.files && target.files.length) {

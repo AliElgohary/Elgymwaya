@@ -1,4 +1,5 @@
 export interface Itrainers {
+    
     _id: string;
     full_name: String,
     email: String,
@@ -10,4 +11,6 @@ export interface Itrainers {
     role:  String,
     salary: Number,
     profile_picture: String,
+    newPlanProfilePicture?: File;
+
 }

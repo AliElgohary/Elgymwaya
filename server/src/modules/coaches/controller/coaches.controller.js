@@ -267,10 +267,54 @@ export const deleteCoach = async (req, res) => {
 // Helper function to calculate age from birth date
 function calculateAge(birthDate) {
   const today = new Date();
-  const age = today.getFullYear() - birthDate.getFullYear();
+  let age = today.getFullYear() - birthDate.getFullYear();
   const m = today.getMonth() - birthDate.getMonth();
   if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
     age--;
   }
   return age;
 }
+
+// update coach to admin
+export const updateCoachWithId = async (req, res) => {
+  try {
+    const { coachId } = req.params; 
+
+    const coachToUpdate = await coachModel.findById(coachId);
+
+    if (!coachToUpdate) {
+      return res.status(404).send("Coach not found.");
+    }
+
+    if (req.body.email && req.body.email !== coachToUpdate.email) {
+      const emailExists = await coachModel.findOne({
+        email: req.body.email,
+        _id: { $ne: coachId }, 
+      });
+
+      if (emailExists) {
+        return res.status(400).send("Email is already in use.");
+      }
+
+    }
+
+    if (req.body.birth_date) {
+      const newBirthDate = new Date(req.body.birth_date);
+
+      req.body.age = calculateAge(newBirthDate);
+    }
+
+    Object.assign(coachToUpdate, req.body);
+    await coachToUpdate.save();
+
+    res
+      .status(200)
+      .json({ message: "Coach updated successfully", coaches: coachToUpdate });
+  } catch (error) {
+    console.error("Error in updating Coach:", error);
+    res.status(500).send("Error in updating Coach");
+  }
+
+};
+
+

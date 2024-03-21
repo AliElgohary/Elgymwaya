@@ -11,6 +11,7 @@ import {
   getcoachFeedbackById,
   getcoachRatingById,
   updateCoach,
+  updateCoachWithId,
 } from "./controller/coaches.controller.js";
 import {
   UpdatingCoachSchema,
@@ -37,10 +38,41 @@ coachRoutes.patch(
   updateCoach
 );
 
-coachRoutes.get("/coach", auth, getAllcoaches);
-coachRoutes.get("/coach/:id", auth, getcoachById);
-coachRoutes.get("/coach/:id/average-rating", auth, getcoachRatingById);
-coachRoutes.get("/coach/:id/feedbacks", auth, getcoachFeedbackById);
-coachRoutes.delete("/coach/:id", auth, deleteCoach);
+//get all coaches
+coachRoutes.get(
+  "/coach",
+   auth, 
+   getAllcoaches
+   );
+
+// get coach by id 
+coachRoutes.get(
+  "/coach/:id", 
+  auth, 
+  getcoachById
+  );
+
+// get coach average rating 
+coachRoutes.get(
+  "/coach/:id/average-rating", 
+  auth, 
+  getcoachRatingById
+  );
+  
+// get coaches feadback
+coachRoutes.get("/coach/:id/feedbacks", 
+auth, 
+getcoachFeedbackById
+);
+// delete coaches
+coachRoutes.delete("/coach/:id", 
+auth, 
+deleteCoach
+);
+//update coach to admin
+coachRoutes.put(
+  "/coach/update/:coachId",
+  updateCoachWithId
+);
 
 export default coachRoutes;
