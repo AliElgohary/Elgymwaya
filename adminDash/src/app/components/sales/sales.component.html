@@ -82,10 +82,12 @@
         <tbody>
           @for (transaction of transactions; track transaction._id) {
           <tr>
-            <td>{{ transaction.client_id.full_name }}</td>
-            <td>{{ transaction.amount }}</td>
-            <td>{{ transaction.transactionDateAndTime | date }}</td>
-            <td>{{ transaction.payment_status }}</td>
+            @if(transaction.client_id){
+              <td>{{ transaction.client_id.full_name }}</td>
+              <td>{{ transaction.amount }}</td>
+              <td>{{ transaction.transactionDateAndTime | date }}</td>
+              <td>{{ transaction.payment_status }}</td>
+            }
           </tr>
           }
         </tbody>

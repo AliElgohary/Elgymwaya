@@ -14,6 +14,7 @@
       <tbody>
         @for (trans of transactions; track trans.id) {
         <tr>
+          @if(trans.client_id){
           <td>{{ trans.client_id.full_name }}</td>
           <td>{{ trans.order_id }}</td>
           <td>{{ trans.amount }}</td>
@@ -27,6 +28,7 @@
               Delete
             </button>
           </th>
+          }
         </tr>
         }
       </tbody>

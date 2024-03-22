@@ -16,7 +16,7 @@ import { TrainersService } from '../../services/trainers/trainers.service';
 })
 export class SalesComponent implements OnInit {
   sales!: ISales;
-  transactions!: ITransaction[];
+  transactions!: any[];
   trainers!: Itrainers[]
   constructor(
     private salesServ: SalesService,
@@ -36,6 +36,7 @@ export class SalesComponent implements OnInit {
   getTransactions() {
     this.transServ.getTransactions().subscribe((data) => {
       this.transactions = data;
+      console.log(this.transactions);
     });
   }
   getTrainers(){
