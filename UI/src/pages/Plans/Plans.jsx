@@ -58,7 +58,7 @@ const Plans = () => {
                     </li>
                   </ul>
                   {plan.title.toLowerCase() === "free" ? (
-                    <Link to="/userHome">
+                    <Link to="/freeUserHomePage">
                       <p className="btn btn-lg btn-price-bg">Enroll Now</p>
                     </Link>
                   ) : (
