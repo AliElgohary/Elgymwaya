@@ -36,13 +36,11 @@ export class SalesComponent implements OnInit {
   getTransactions() {
     this.transServ.getTransactions().subscribe((data) => {
       this.transactions = data;
-      console.log(this.transactions);
     });
   }
   getTrainers(){
     this.trainserServ.getTrainers().subscribe((data) => {
       this.trainers = data.coaches;
-      console.log(this.trainers);
     });
   }
 }
