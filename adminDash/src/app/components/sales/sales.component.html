@@ -1,1 +1,41 @@
-<p>sales works!</p>
+@if (sales){
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div
+        class="card text-white border border-light"
+        style="background-color: #d7ccc8"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Monthly Cost</h2>
+          <h3 class="card-text">{{ sales.totalCoachesSalary }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        class="card text-white border border-light"
+        style="background-color: #b3886a"
+      >
+        <div class="card-body">
+          <h2 class="title card-title">Total Income</h2>
+          <h3 class="card-text">{{ sales.totalTransactions }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        class="card text-white border border-light"
+        style="background-color: #a59b91"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Revenue</h2>
+          <h3 class="card-text">
+            {{ sales.totalTransactions - sales.totalCoachesSalary }}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}
