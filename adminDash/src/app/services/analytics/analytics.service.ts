@@ -20,4 +20,27 @@ export class AnalyticsService {
 
     return this.http.get('http://localhost:5000/analytics', httpOptions);
   }
+  getAnalyticsCounts(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        token: `${this.token}`,
+      }),
+    };
+
+    return this.http.get('http://localhost:5000/analytics/count', httpOptions);
+  }
+  getTopThreeCoaches(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        token: `${this.token}`,
+      }),
+    };
+
+    return this.http.get(
+      'http://localhost:5000/analytics/coaches',
+      httpOptions
+    );
+  }
 }

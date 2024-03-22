@@ -5,3 +5,123 @@
     style="width: 100%; height: 400px; display: block"
   ></highcharts-chart>
 </ng-container>
+
+<div *ngIf="countsData" class="container mt-4">
+  <div class="row">
+    <!-- User Count Card -->
+    <div class="col-md-4">
+      <div
+        class="card text-white border border-light analytics-card"
+        style="background-color: #f2e8fb"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Users</h2>
+          <h3 class="card-text">
+            <i class="fa-solid fa-arrow-trend-up" style="color: green"></i>
+            {{ countsData.numberOfUsers }}
+          </h3>
+        </div>
+      </div>
+    </div>
+    <!-- Coach Count Card -->
+    <div class="col-md-4">
+      <div
+        class="card text-white border border-light analytics-card"
+        style="background-color: #e5d1f7"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Coaches</h2>
+          <h3 class="card-text">
+            <i class="fa-solid fa-arrow-trend-up" style="color: green"></i>
+            {{ countsData.numberOfCoaches }}
+          </h3>
+        </div>
+      </div>
+    </div>
+    <!-- Transactions Count Card -->
+    <div class="col-md-4">
+      <div
+        class="card text-white border border-light analytics-card"
+        style="background-color: #d9baf4"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Transactions</h2>
+          <h3 class="card-text">
+            <i class="fa-solid fa-arrow-trend-up" style="color: green"></i>
+            {{ countsData.numberOfTransactions }}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <!-- Plans Count Card -->
+    <div class="col-md-4">
+      <div
+        class="card text-white border border-light analytics-card"
+        style="background-color: #cca3f0"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Plans</h2>
+          <h3 class="card-text">
+            <i class="fa-solid fa-arrow-trend-up" style="color: green"></i>
+            {{ countsData.numberOfPlans }}
+          </h3>
+        </div>
+      </div>
+    </div>
+    <!-- Workout Plans Count Card -->
+    <div class="col-md-4">
+      <div
+        class="card text-white border border-light analytics-card"
+        style="background-color: #c08ced"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Workout Plans</h2>
+          <h3 class="card-text">
+            <i class="fa-solid fa-arrow-trend-up" style="color: green"></i>
+            {{ countsData.numberOfWorkoutPlans }}
+          </h3>
+        </div>
+      </div>
+    </div>
+    <!-- Reservations Count Card -->
+    <div class="col-md-4">
+      <div
+        class="card text-white border border-light analytics-card"
+        style="background-color: #b375e9"
+      >
+        <div class="card-body">
+          <h2 class="card-title">Reservations</h2>
+          <h3 class="card-text">
+            <i class="fa-solid fa-arrow-trend-up" style="color: green"></i>
+            {{ countsData.numberOfReservations }}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="topCoaches.length > 0" class="container mt-4">
+  <h2 class="mt-4 mb-4">Top 3 Coaches</h2>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let coach of topCoaches; let i = index">
+      <div class="card-container">
+        <img
+          [src]="coach.profile_picture"
+          [alt]="coach.full_name"
+          class="card-profile-img"
+        />
+        <div class="card-details">
+          <div class="card-badge">{{ i + 1 }}</div>
+          <h5 class="card-title">{{ coach.full_name }}</h5>
+          <p class="card-text">
+            Hired {{ coach.monthsSinceHired }} month(s) ago
+          </p>
+          <p class="card-text">Total Clients: {{ coach.clientCount }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

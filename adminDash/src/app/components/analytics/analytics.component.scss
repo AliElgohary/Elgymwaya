@@ -1,0 +1,53 @@
+.analytics-card {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.analytics-card:hover {
+  transform: scale(1.05);
+  background-color: #8119db !important;
+}
+
+$card-bg: #f0f4f8;
+$card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: $card-bg;
+  border-radius: 15px;
+  box-shadow: $card-shadow;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.card-profile-img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.card-details {
+  flex-grow: 1;
+}
+
+.card-title {
+  margin: 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-text {
+  margin: 0;
+  color: #555;
+}
+
+.card-badge {
+  background-color: #eceff1;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  color: #333;
+}
