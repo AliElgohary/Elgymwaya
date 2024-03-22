@@ -4,6 +4,7 @@ import Trainer from "../../components/Trainer/Trainer";
 import style from "./UserHomePage.module.css";
 import UserRoutine from "../../components/UserRoutine/UserRoutine";
 import NavBarUserHome from "../../components/NavBarUserHome";
+import MembershipTracker from "../../components/MembershipTracker/MembershipTracker";
 function UserHomePage() {
   return (
     <div>
@@ -13,6 +14,9 @@ function UserHomePage() {
           <UserInfo />
           <Col xs={12} md={6} className={style.TrainerInfoBox}>
             <Trainer />
+          </Col>
+          <Col xs={3} md={3} className={style.TrainerInfoBox}>
+            <MembershipTracker />
           </Col>
         </Row>
         <Row>
