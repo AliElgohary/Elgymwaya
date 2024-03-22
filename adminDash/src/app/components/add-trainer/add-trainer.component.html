@@ -67,7 +67,7 @@
         class="form-control"
         placeholder="Password"
         required
-        pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,20}$          "
+        pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,20}$"
         [(ngModel)]="trainer.password"
         #passwordInput="ngModel"
         [ngClass]="{
@@ -80,7 +80,7 @@
         @if(passwordInput.errors?.['required']){
         <span style="color: #8119db">Password is required</span>
         }@if(passwordInput.errors?.['pattern']){
-          <span style="color: #8119db">password must be correct</span>
+          <span style="color: #8119db">Password must be(one digit-one uppercase letter-one lowercase letter- length8:20)</span>
         }
       </span>
     </div>

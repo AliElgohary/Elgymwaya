@@ -66,7 +66,7 @@
           name="password"
           id="password"
           class="form-control"
-          pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,20}$          "
+          pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,20}$"
           placeholder="Password"
           required
           [(ngModel)]="user.password"
@@ -81,7 +81,7 @@
           @if(passwordInput.errors?.['required']){
           <span style="color: #8119db">Password is required</span>
           } @if(passwordInput.errors?.['pattern']){
-            <span style="color: #8119db">Password must be correct</span>
+            <span style="color: #8119db">Password must be(one digit-one uppercase letter-one lowercase letter- length8:20)</span>
           }
           
         </span>
@@ -226,7 +226,7 @@
         Submit
       </button>
     </div>
-      <p> errors: {{NameInput.errors | json}}</p>
+      <!-- <p> errors: {{NameInput.errors | json}}</p> -->
 
   </form>
 </div>
