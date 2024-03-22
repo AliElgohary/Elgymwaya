@@ -1,22 +1,13 @@
-// .nav-links {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   height: 100%;
-// }
-
-// .email {
-//   background-color: #adb5bd;
-//   height: 96px;
-//   flex-shrink: 0;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
 .slideDashboard{
   background-color: #fbfbff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.fixed-left {
+  position: fixed;
+  left: 0;
+}
+
 .linkTitle{
   color: #898686;
   font-weight: 600;
@@ -26,5 +17,9 @@
 i{
   color: #8119db;
   font-weight: bold;
-  // margin-right: 5px;
+}
+
+.dropdown {
+  position: fixed;
+  bottom: 0;
 }
