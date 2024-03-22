@@ -8,6 +8,8 @@ import {
   Typography,
   Modal,
   Box,
+  Paper,
+  Stack,
 } from "@mui/material";
 
 function UserRoutine() {
@@ -27,9 +29,7 @@ function UserRoutine() {
         const response = await fetch(
           "http://localhost:5000/clientt/workout-plans",
           {
-            headers: {
-              token,
-            },
+            headers: { token },
           }
         );
 
@@ -59,11 +59,14 @@ function UserRoutine() {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
+    width: "auto",
+    maxWidth: "90vw",
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
     p: 4,
+    overflow: "auto",
+    maxHeight: "90vh",
   };
 
   return (
@@ -82,9 +85,6 @@ function UserRoutine() {
                       <Typography gutterBottom variant="h5" component="div">
                         {workout.name}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {workout.description}
-                      </Typography>
                     </CardContent>
                   </CardActionArea>
                 </Card>
@@ -99,32 +99,53 @@ function UserRoutine() {
         aria-labelledby="workout-details-title"
         aria-describedby="workout-details-description"
       >
-        <Box sx={modalStyle}>
-          {selectedWorkout && (
-            <>
-              <Typography
-                id="workout-details-title"
-                variant="h6"
-                component="h2"
-              >
-                {selectedWorkout.name}
-              </Typography>
-              <Typography id="workout-details-description" sx={{ mt: 2 }}>
-                {selectedWorkout.description}
-              </Typography>
-
-              <iframe
-                width="100%"
-                height="315"
-                src={selectedWorkout.video_link}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </>
-          )}
-        </Box>
+        <Paper elevation={3} sx={modalStyle}>
+          <Stack spacing={2}>
+            {selectedWorkout && (
+              <>
+                <Typography
+                  id="workout-details-title"
+                  variant="h6"
+                  component="h2"
+                >
+                  {selectedWorkout.name}
+                </Typography>
+                <Typography variant="body1">
+                  {selectedWorkout.description}
+                </Typography>
+                <Typography variant="body1">
+                  Frequency: {selectedWorkout.frequency}
+                </Typography>
+                <Typography variant="body1">
+                  Duration: {selectedWorkout.duration} minutes
+                </Typography>
+                <Typography variant="body1">
+                  Sets: {selectedWorkout.sets}, Reps: {selectedWorkout.reps}
+                </Typography>
+                <Typography variant="body1">
+                  Rest period: {selectedWorkout.rest_period} seconds
+                </Typography>
+                <Typography variant="body1">
+                  Equipment Needed:{" "}
+                  {selectedWorkout.equipment_needed.join(", ") || "None"}
+                </Typography>
+                {selectedWorkout.video_link && (
+                  <Box
+                    component="iframe"
+                    src={selectedWorkout.video_link}
+                    alt="Workout Video"
+                    title="YouTube video player"
+                    width="100%"
+                    height="315"
+                    frameBorder="0"
+                    allowFullScreen
+                    sx={{ my: 2, borderRadius: "4px", overflow: "hidden" }}
+                  ></Box>
+                )}
+              </>
+            )}
+          </Stack>
+        </Paper>
       </Modal>
     </Container>
   );
