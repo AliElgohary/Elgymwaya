@@ -159,7 +159,7 @@ const Register = () => {
               type="text"
               onChange={(e) => handleInputChange(e, "full_name")}
               errors={errors["full_name"]}
-              placeholder={"Full nNme"}
+              placeholder={"Full Name"}
               Icon={IoPerson}
             />
             <InputWithIcon

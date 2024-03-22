@@ -23,6 +23,10 @@ export const makeReservation = (reservationData) => async (dispatch) => {
     });
     dispatch(makeReservationSuccess(response.data));
   } catch (error) {
-    dispatch(makeReservationFailure(error.message));
+    const errorMessage =
+      error.response?.data?.message || "An unexpected error occurred";
+    dispatch(makeReservationFailure(errorMessage));
+    alert(errorMessage);
+    // toast.error(errorMessage);
   }
 };

@@ -25,7 +25,7 @@ coachRoutes.post(
   "/coach/add",
   upload,
   auth,
-  // validation(addingCoachSchema),
+  validation(addingCoachSchema),
   addCoach
 );
 

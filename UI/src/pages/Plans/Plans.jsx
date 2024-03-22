@@ -77,7 +77,7 @@ const Plans = () => {
                   <h3 className="title">Premium</h3>
                   <h5 className="price-month">Per Month</h5>
                   <h1 className="price-value">
-                    90 <span className="value-bg">$90</span>
+                    90 <span className="value-bg">EGP 90</span>
                   </h1>
                 </div>
                 <ul className="pricing-content">

@@ -29,7 +29,7 @@ const workoutPlanSchema = new mongoose.Schema({
       equipment_needed: [String],
       video_link: {
         type: String,
-        validate: /https?:\/\/(www\.)?youtube\.com\/watch\?v=\w+(&\S*)?/,
+        // validate: /https?:\/\/(www\.)?youtube\.com\/watch\?v=\w+(&\S*)?/,
       }, // YouTube video link
     },
   ],
@@ -38,11 +38,11 @@ const workoutPlanSchema = new mongoose.Schema({
       date: Date,
       workout_completed: Boolean,
       notes: String,
-      adjustments: String, 
+      adjustments: String,
     },
   ],
   goals: String,
-  notes: String, 
+  notes: String,
 });
 
 const workoutPlanModel = mongoose.model("WorkoutPlan", workoutPlanSchema);

@@ -5,6 +5,7 @@ import style from "./UserHomePage.module.css";
 import UserRoutine from "../../components/UserRoutine/UserRoutine";
 import NavBarUserHome from "../../components/NavBarUserHome";
 import MembershipTracker from "../../components/MembershipTracker/MembershipTracker";
+import Reservations from "../../components/Reservations/Reservations";
 function UserHomePage() {
   return (
     <div>
@@ -19,8 +20,13 @@ function UserHomePage() {
             <MembershipTracker />
           </Col>
         </Row>
-        <Row>
-          <UserRoutine />
+        <Row className="justify-content-between mb-3 gap-3">
+          <Col xs={6} md={6} className={style.TrainerInfoBox}>
+            <UserRoutine />
+          </Col>
+          <Col xs={6} md={6} className={style.TrainerInfoBox}>
+            <Reservations />
+          </Col>
         </Row>
       </Container>
     </div>

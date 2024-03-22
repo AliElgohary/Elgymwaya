@@ -9,7 +9,7 @@
       class="form-control mb-2"
       id="title"
       name="title"
-      maxlength="40" 
+      maxlength="40"
       minlength="5"
       [(ngModel)]="plans.newPlanName"
       placeholder="Enter Plan Name"
@@ -27,11 +27,11 @@
       Please provide a valid title.
     </div>
     <span class="invalid-feedback">
-       @if(titleInput.errors?.['minlength']){
-       <span style="color: #8119db">Minimum length is 5 characters</span>
-     } @if(titleInput.errors?.['maxlength']){
-       <span style="color: #8119db">Maximum length is 40 characters</span>
-     }
+      @if(titleInput.errors?.['minlength']){
+      <span style="color: #8119db">Minimum length is 5 characters</span>
+      } @if(titleInput.errors?.['maxlength']){
+      <span style="color: #8119db">Maximum length is 40 characters</span>
+      }
     </span>
   </div>
 
@@ -44,7 +44,7 @@
       [(ngModel)]="plans.newPlanDescription"
       placeholder="Enter description"
       required
-      maxlength="150" 
+      maxlength="150"
       minlength="5"
       #descriptionInput="ngModel"
       [ngClass]="{
@@ -63,11 +63,11 @@
       Please provide a valid description.
     </div>
     <span class="invalid-feedback">
-       @if(descriptionInput.errors?.['minlength']){
-       <span style="color: #8119db">Minimum length is 5 characters</span>
-     } @if(descriptionInput.errors?.['maxlength']){
-       <span style="color: #8119db">Maximum length is 150 characters</span>
-     }
+      @if(descriptionInput.errors?.['minlength']){
+      <span style="color: #8119db">Minimum length is 5 characters</span>
+      } @if(descriptionInput.errors?.['maxlength']){
+      <span style="color: #8119db">Maximum length is 150 characters</span>
+      }
     </span>
   </div>
   <div class="form-group">
@@ -93,7 +93,7 @@
       Please provide a valid fee.
     </div>
     @if(feeInbut.errors?.['min']){
-      <span style="color: #8119db">fee must be a positive number</span>
+    <span style="color: #8119db">fee must be a positive number</span>
     }
   </div>
   <div class="container">
