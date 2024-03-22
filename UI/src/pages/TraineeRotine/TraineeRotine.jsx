@@ -16,7 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function TraineeRotine() {
   const [showInfoMode, setShowInfoMode] = useState(false);
-  const [AddRoutineMode, setAddRoutineMode] = useState(true);
+  const [AddRoutineMode, setAddRoutineMode] = useState(false);
   const [routine, setRoutine] = useState({
     Saturday: "",
     Sunday: "",
@@ -50,7 +50,7 @@ function TraineeRotine() {
   return (
     <div>
       <TraineeRotineNav trainerName="Ahmed Hani" />
-      <Row>
+      <Row style={{width:"100%"}}>
         <Col sm={12}>
           <div className={styles.routineBox}>
             <h5 className="fw-bold">

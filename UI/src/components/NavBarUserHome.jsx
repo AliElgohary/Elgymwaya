@@ -12,7 +12,7 @@ import user from "../assets/user.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/action/authActions";
-function NavBarUserHome() {
+function NavBarUserHome(freePlane) {
   const currentUser = useSelector((state) => state.me.currentUser);
   const dispatch = useDispatch();
   const navigate = useNavigate()

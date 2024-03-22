@@ -20,6 +20,7 @@ import ReviewItem from "./pages/Review/ReviewItem";
 import { fetchCurrentUser } from "./thunks/me";
 import CoachDetails from "./pages/CoachDetails/CoachDetails";
 import TraineeRotine from "./pages/TraineeRotine/TraineeRotine";
+import FreeUserHomePage from "./pages/FreeUserHomePage/FreeUserHomePage";
 
 const routes = createBrowserRouter([
   {
@@ -42,6 +43,7 @@ const routes = createBrowserRouter([
   { path: "coachDetails/:coachId", element: <CoachDetails /> },
   { path: "review", element: <ReviewPage /> },
   { path: "traineeRotine", element: <TraineeRotine /> },
+  { path: "freeUserHomePage", element: <FreeUserHomePage /> },
 ]);
 
 // BMI => w/h2

@@ -7,9 +7,9 @@ import NavBarUserHome from "../../components/NavBarUserHome";
 function UserHomePage() {
   return (
     <div>
-      <NavBarUserHome  />
+      <NavBarUserHome />
       <Container className="mt-4" style={{ maxWidth: "97%" }}>
-        <Row className="justify-content-between">
+        <Row className="justify-content-between mb-3 gap-3">
           <UserInfo />
           <Col xs={12} md={6} className={style.TrainerInfoBox}>
             <Trainer />
