@@ -26,7 +26,7 @@ const Plans = () => {
               </p>
             </div>
 
-            {plans.map((plan , i) => (
+            {plans.map((plan, i) => (
               <div key={plan._id} className="col-xs-12 col-sm-4 col-lg-4">
                 <div className="pricingTable pricingTable-2">
                   <div className="pricingTable-header">
@@ -58,7 +58,8 @@ const Plans = () => {
                     </li>
                   </ul>
                   {plan.title.toLowerCase() === "free" ? (
-                    <Link to={i==0?`/FreeUserHomePage`:"/userHome"}>
+                    <Link to="/freeUserHomePage">
+                      {/* <Link to={i==0?`/FreeUserHomePage`:"/userHome"}> */}
                       <p className="btn btn-lg btn-price-bg">Enroll Now</p>
                     </Link>
                   ) : (

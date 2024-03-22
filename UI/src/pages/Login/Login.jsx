@@ -72,7 +72,10 @@ const Login = () => {
     if (currentUser) {
       if (currentUser.role === "coach") {
         navigate("/traineeRotine");
-      } else if (currentUser.role === "client") {
+      } else if (
+        currentUser.plan_id &&
+        currentUser.plan_id.description === "gold plan"
+      ) {
         navigate("/userHome");
       } else {
         navigate("/freeUserHomePage");
