@@ -6,6 +6,7 @@ export interface ITransaction {
   };
   payment_status: string;
   order_id: number;
+  transactionDateAndTime: string;
   amount: number;
   subscriptionMonths: number;
 }
