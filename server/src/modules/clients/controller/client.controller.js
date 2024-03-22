@@ -498,21 +498,39 @@ export const getClientById = async (req, res) => {
 // Get Client By Token
 export const getClientByToken = async (req, res) => {
   try {
-    const clientID = req.userID;
+    const userID = req.userID;
 
-    const client = await userModel
-      .findById(clientID, "-password -Cpassword")
+    // Try to find the client in the userModel
+    let userOrCoach = await userModel
+      .findById(userID, "-password -Cpassword")
       .populate({
         path: "coach_id",
         select: "-hiredDate -salary -client_ids",
       })
       .populate("plan_id");
 
-    if (!client) {
-      return res.status(404).send("User not found.");
+    // If not found in userModel, try finding the coach in coachModel
+    if (!userOrCoach) {
+      userOrCoach = await coachModel
+        .findById(userID, "-password -Cpassword")
+        .populate({
+          path: "client_ids",
+          select: "-password -Cpassword",
+          populate: {
+            path: "plan_id",
+          },
+        })
+        .populate({
+          path: "feedbacks.client_id",
+          select: "full_name profile_picture",
+        });
+
+      if (!userOrCoach) {
+        return res.status(404).send("User not found.");
+      }
     }
 
-    res.json(client);
+    res.json(userOrCoach);
   } catch (error) {
     console.error("Error fetching user:", error);
     res.status(500).send("Error fetching user");

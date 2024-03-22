@@ -49,14 +49,13 @@ export const createReservation = async (req, res) => {
         .send({ message: "Coach is not available at the requested time." });
     }
 
-
     const reservation = new reservationModel({
       client_id,
       coach_id,
       date,
       start_time,
       end_time,
-      status: "pending", 
+      status: "pending",
     });
 
     await reservation.save();
@@ -64,62 +63,6 @@ export const createReservation = async (req, res) => {
   } catch (error) {
     res.status(500).send({
       message: "An error occurred while creating the reservation.",
-      error: error.toString(),
-    });
-  }
-};
-
-// Confirm Reservation
-export const confirmReservation = async (req, res) => {
-  try {
-    const reservationId = req.params.id;
-    const coachId = req.userID;
-
-    const reservation = await reservationModel.findOne({
-      _id: reservationId,
-      coach_id: coachId,
-    });
-    if (!reservation) {
-      return res.status(404).send({
-        message: "Reservation not found or not assigned to this coach.",
-      });
-    }
-
-    reservation.status = "confirmed";
-    await reservation.save();
-
-    res.send({ message: "Reservation confirmed.", reservation });
-  } catch (error) {
-    res.status(500).send({
-      message: "An error occurred while confirming the reservation.",
-      error: error.toString(),
-    });
-  }
-};
-
-// Cancel Reservation
-export const cancelReservation = async (req, res) => {
-  try {
-    const reservationId = req.params.id;
-    const coachId = req.userID;
-
-    const reservation = await reservationModel.findOne({
-      _id: reservationId,
-      coach_id: coachId,
-    });
-    if (!reservation) {
-      return res.status(404).send({
-        message: "Reservation not found or not assigned to this coach.",
-      });
-    }
-
-    reservation.status = "cancelled";
-    await reservation.save();
-
-    res.send({ message: "Reservation cancelled.", reservation });
-  } catch (error) {
-    res.status(500).send({
-      message: "An error occurred while cancelling the reservation.",
       error: error.toString(),
     });
   }

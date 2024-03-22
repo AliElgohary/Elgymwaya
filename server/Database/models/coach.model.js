@@ -33,7 +33,7 @@ let coachSchema = new mongoose.Schema({
   ],
   feedbacks: [
     {
-      client_id: { type: mongoose.Schema.Types.ObjectId, ref: "Client" },
+      client_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
       rating: { type: Number, min: 1, max: 5 },
       comment: String,
       date: { type: Date, default: Date.now },
