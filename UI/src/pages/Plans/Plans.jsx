@@ -33,7 +33,8 @@ const Plans = () => {
                     <h3 className="title">{plan.title}</h3>
                     <h5 className="price-month">Per Month</h5>
                     <h1 className="price-value">
-                      {plan.fee} <span className="value-bg">${plan.fee}</span>
+                      {plan.fee}{" "}
+                      <span className="value-bg">EGP {plan.fee}</span>
                     </h1>
                   </div>
                   <ul className="pricing-content">
