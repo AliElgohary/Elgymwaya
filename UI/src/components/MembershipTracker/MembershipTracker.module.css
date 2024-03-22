@@ -1,9 +1,7 @@
-/* MembershipTracker.module.css */
 .MembershipTrackerBox {
   background-color: #fff;
 }
 
-/* The rest of the styles can be the same as UserInfo.module.css */
 h2 {
   font-weight: bold;
   color: rgb(71, 68, 68);
@@ -18,9 +16,7 @@ h2 {
 }
 
 .infoSpan {
-  display: block; /* or inline-block depending on layout */
+  display: block;
   color: rgb(71, 68, 68);
-  margin-bottom: 10px; /* adjust as necessary for spacing */
+  margin-bottom: 10px;
 }
-
-/* Add other necessary styles as required for layout and responsiveness */
