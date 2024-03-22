@@ -18,7 +18,9 @@ function UserInfo() {
   const currentUser = useSelector((state) => state.me.currentUser);
 
   return (
-    <Col md={6} xs={12} className={style.UserInfoBox}>
+    <>
+    {/** for user select free plan */}
+    <Col className={style.UserInfoBox}>
       <h2>User Information</h2>
       {currentUser && (
         <div>
@@ -75,7 +77,10 @@ function UserInfo() {
         </div>
       )}
     </Col>
+    </>
   );
 }
 
 export default UserInfo;
+
+
