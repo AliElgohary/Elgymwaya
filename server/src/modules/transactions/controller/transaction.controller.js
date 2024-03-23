@@ -47,18 +47,43 @@ export const addTransaction = async (req, res) => {
   }
 };
 // Get Transaction
+// export const getAllTransactions = async (req, res) => {
+//   try {
+//     const trans = await transactionModel
+//       .find()
+//       .populate("client_id")
+//       .populate("plan_id");
+//     res.json({ message: "Get all transactions", trans });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// };
+
 export const getAllTransactions = async (req, res) => {
   try {
+    const limit = parseInt(req.query.limit) || 10;
+    const page = parseInt(req.query.page) || 1;
+
+    const skip = (page - 1) * limit; 
+
+    const totalCount = await transactionModel.countDocuments();
+    const totalPages = Math.ceil(totalCount / limit);
+    
     const trans = await transactionModel
       .find()
       .populate("client_id")
-      .populate("plan_id");
-    res.json({ message: "Get all transactions", trans });
+      .populate("plan_id")
+      .limit(limit)
+      .skip(skip);
+    res.json({ message: "Get all transactions", trans, totalPages, currentPage: page  });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+
 // Get Transaction
 export const getTransactionById = async (req, res) => {
   let trans = await transactionModel.findById(req.params.id);

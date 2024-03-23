@@ -23,6 +23,10 @@ export class TransactionsService {
       .pipe(map((response: any) => response.trans));
   }
 
+  getTranPaginnsated(page : number): Observable<any> {
+    return this.http.get<any>(`http://localhost:5000/transaction?page=${page}`, this.httpOptions);
+  }
+
   deleteTransactions(id: string): Observable<any> {
     return this.http.delete(`http://localhost:5000/transaction/${id}`, {
       headers: new HttpHeaders({
