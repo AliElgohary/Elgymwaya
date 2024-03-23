@@ -31,8 +31,7 @@ export const makeReservation = (reservationData) => async (dispatch) => {
     const errorMessage =
       error.response?.data?.message || "An unexpected error occurred";
     dispatch(makeReservationFailure(errorMessage));
-    alert(errorMessage);
-    // toast.error(errorMessage);
+    toast.error(errorMessage);
   }
 };
 export const fetchReservations = () => async (dispatch) => {
