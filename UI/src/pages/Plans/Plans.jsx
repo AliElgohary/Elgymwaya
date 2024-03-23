@@ -26,14 +26,15 @@ const Plans = () => {
               </p>
             </div>
 
-            {plans.map((plan) => (
+            {plans.map((plan, i) => (
               <div key={plan._id} className="col-xs-12 col-sm-4 col-lg-4">
                 <div className="pricingTable pricingTable-2">
                   <div className="pricingTable-header">
                     <h3 className="title">{plan.title}</h3>
                     <h5 className="price-month">Per Month</h5>
                     <h1 className="price-value">
-                      {plan.fee} <span className="value-bg">${plan.fee}</span>
+                      {plan.fee}{" "}
+                      <span className="value-bg">EGP {plan.fee}</span>
                     </h1>
                   </div>
                   <ul className="pricing-content">
@@ -57,7 +58,8 @@ const Plans = () => {
                     </li>
                   </ul>
                   {plan.title.toLowerCase() === "free" ? (
-                    <Link to="/userHome">
+                    <Link to="/freeUserHomePage">
+                      {/* <Link to={i==0?`/FreeUserHomePage`:"/userHome"}> */}
                       <p className="btn btn-lg btn-price-bg">Enroll Now</p>
                     </Link>
                   ) : (
@@ -75,7 +77,7 @@ const Plans = () => {
                   <h3 className="title">Premium</h3>
                   <h5 className="price-month">Per Month</h5>
                   <h1 className="price-value">
-                    90 <span className="value-bg">$90</span>
+                    90 <span className="value-bg">EGP 90</span>
                   </h1>
                 </div>
                 <ul className="pricing-content">

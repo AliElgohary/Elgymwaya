@@ -1,0 +1,189 @@
+.Wrabber {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background-color: #1b1b1b;
+}
+
+.sec1 {
+    width: 100%;
+    position: relative;
+    height: calc(100vh - 100px);
+    overflow: hidden;
+}
+
+.videoWrapper {
+    width: 100%;
+}
+
+.videoWrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.600);
+}
+
+.videoWrapper video {
+    width: 100%;
+    z-index: 0;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: #fff;
+    background-color: #1b1b1b7c;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.sec2 {
+    padding: 80px 0 40px;
+}
+
+.mainHeader {
+    width: fit-content;
+    margin: 10px auto;
+    color: #d7d0c4;
+    position: relative;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 50px;
+    font-size: 35px;
+}
+
+.mainHeader::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #595bd3;
+    width: 40%;
+    height: 2px;
+    transition: .3s;
+}
+
+.mainHeader:hover::after {
+    width: 75%;
+}
+
+.sec2>h4 {
+    font-size: 30px;
+    color: #d1c4d7;
+    width: 60%;
+    position: relative;
+    padding: 20px 0 10px;
+}
+
+@media (max-width: 992px) {
+    .mainHeader {
+        font-size: 30px;
+    }
+
+    .sec2>h4 {
+        font-size: 22px;
+        width: 75%;
+        padding: 15px 0 8px;
+    }
+
+}
+
+.sec2>h4 span {
+    position: absolute;
+    font-size: 12px;
+    font-weight: lighter;
+    top: 0;
+    left: 0;
+}
+
+.sec2>p {
+    color: #d1c4d7;
+    text-align: justify
+}
+
+.glanceRoutine {
+    margin: 25px 0;
+    color: #fff;
+    position: relative;
+    position: relative;
+    padding: 15px 0;
+
+}
+
+.glanceRoutine::before,
+.glanceRoutine::after {
+    content: "";
+    position: absolute;
+    background-color: #d1c4d7;
+    width: 200px;
+    top: 0;
+    left: 0;
+    height: 2px;
+}
+
+.glanceRoutine::after {
+    top: 100%
+}
+
+.glanceRoutine ul {
+    padding-left: 32px;
+    list-style-type: square;
+}
+
+.glanceRoutine ul li {
+    padding: 5px 0;
+}
+
+.glanceRoutine ul li::marker {
+    color: #595bd3;
+}
+
+.accrHead button {
+    background-color: #595bd3;
+    color: #fff;
+}
+
+.accrHead button span {
+    color: #d1c4d7;
+    padding-left: 10px;
+}
+
+.rest {
+    opacity: .1;
+}
+
+
+.videoUp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.800);
+}
+
+.videoUp iframe {
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+}
+.videoUp>span{
+    position: absolute;
+    top: 50px;
+    right: 200px;
+    font-size: 25px;
+    color: #fff;
+    z-index: 11;
+    cursor: pointer;
+}

@@ -13,7 +13,8 @@ import { CommonModule } from '@angular/common';
   imports: [HighchartsChartModule, CommonModule],
 })
 export class AnalyticsComponent implements OnInit {
-  Highcharts: typeof Highcharts = Highcharts; 
+  Highcharts: typeof Highcharts = Highcharts;
+
   linechart: Highcharts.Options = {
     chart: {
       type: 'line',
@@ -37,27 +38,46 @@ export class AnalyticsComponent implements OnInit {
       },
       {
         name: 'Total Income',
-        data: [1200, 1400, 1300], 
+        data: [1200, 1400, 1300],
         type: 'line',
       },
       {
         name: 'Profit',
-        data: [700, 800, 750], 
+        data: [700, 800, 750],
         type: 'line',
       },
     ],
   };
 
+  countsData: {
+    numberOfUsers: number;
+    numberOfCoaches: number;
+    numberOfTransactions: number;
+    numberOfPlans: number;
+    numberOfWorkoutPlans: number;
+    numberOfReservations: number;
+  } = {
+    numberOfUsers: 0,
+    numberOfCoaches: 0,
+    numberOfTransactions: 0,
+    numberOfPlans: 0,
+    numberOfWorkoutPlans: 0,
+    numberOfReservations: 0,
+  };
+  topCoaches: any[] = [];
+
   constructor(private analyticsService: AnalyticsService) {}
 
   ngOnInit() {
     this.fetchData();
+    this.fetchCounts();
+    this.fetchTopThreeCoaches();
   }
 
   fetchData() {
     this.analyticsService.getAnalytics().subscribe({
       next: (response) => {
-        const analyticsData = response.data as AnalyticsItem[]; 
+        const analyticsData = response.data as AnalyticsItem[];
         this.linechart = {
           series: [
             {
@@ -99,6 +119,23 @@ export class AnalyticsComponent implements OnInit {
       error: (error) => {
         console.error('Error fetching analytics data:', error);
       },
+    });
+  }
+  fetchCounts() {
+    this.analyticsService.getAnalyticsCounts().subscribe({
+      next: (response) => {
+        this.countsData = response.data;
+        console.log(this.countsData);
+      },
+      error: (error) => console.error('Error fetching counts:', error),
+    });
+  }
+  fetchTopThreeCoaches() {
+    this.analyticsService.getTopThreeCoaches().subscribe({
+      next: (response) => {
+        this.topCoaches = response.data;
+      },
+      error: (error) => console.error('Error fetching top coaches:', error),
     });
   }
 }

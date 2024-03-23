@@ -15,6 +15,8 @@
            placeholder="Enter full_name"
            #NameInput="ngModel"
            required
+           maxlength="40" 
+           minlength="5"
            [ngClass]="{
              'is-invalid':
                (NameInput.touched || NameInput.dirty) && !NameInput.valid
@@ -22,7 +24,11 @@
          />
         <span class="invalid-feedback">
           @if(NameInput.errors?.['required']){
-          <span>Name is required</span>
+          <span style="color: #8119db">Name is required</span>
+          }@if(NameInput.errors?.['minlength']){
+            <span style="color: #8119db">Minimum length is 5 characters</span>
+          } @if(NameInput.errors?.['maxlength']){
+            <span style="color: #8119db">Maximum length is 40 characters</span>
           }
         </span>
       </div>
@@ -47,9 +53,9 @@
         />
         <span class="invalid-feedback">
           @if(emailInput.errors?.['required']){
-          <span>Email is required</span>
+          <span style="color: #8119db">Email is required</span>
           } @if(emailInput.errors?.['email']){
-          <span>Enter a valid Email</span>
+          <span style="color: #8119db">Enter a valid Email</span>
           }
         </span>
       </div>
@@ -73,7 +79,9 @@
         />
         <span class="invalid-feedback">
           @if(PhoneInput.errors?.['pattern']){
-          <span>Phone Number Must be correct</span>
+          <span style="color: #8119db">Phone Number Must be correct</span>
+          }@if(PhoneInput.errors?.['required']){
+            <span style="color: #8119db">Phone is required</span>
           }
         </span>
       </div>
@@ -89,10 +97,13 @@
           placeholder="Enter height"
           #heightInput="ngModel"
           required
+          min="0"
         />
         <span class="invalid-feedback">
           @if(heightInput.errors?.['required']){
-          <span>height is required</span>
+          <span style="color: #8119db">height is required</span>
+          } @if(heightInput.errors?.['min']){
+            <span style="color: #8119db">Height must be a positive number</span>
           }
         </span>
       </div>
@@ -108,10 +119,13 @@
           placeholder="Enter weight"
           #weightInput="ngModel"
           required
+          min="0"
         />
         <span class="invalid-feedback">
           @if(weightInput.errors?.['required']){
-          <span>Weight is required</span>
+          <span style="color: #8119db">Weight is required</span>
+          } @if(weightInput.errors?.['min']){
+            <span style="color: #8119db">Weight must be a positive number</span>
           }
         </span>
       </div>
@@ -126,7 +140,7 @@
        #BDInput="ngModel" required />
        <span class="invalid-feedback">
          @if(BDInput.errors?.['required']){
-         <span>BirthDate is required</span>
+         <span  style="color: #8119db">BirthDate is required</span>
          }
        </span>
      </div>

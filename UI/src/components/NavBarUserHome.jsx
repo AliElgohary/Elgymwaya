@@ -12,17 +12,17 @@ import user from "../assets/user.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/action/authActions";
-function NavBarUserHome() {
+function NavBarUserHome({ freePlane }) {
   const currentUser = useSelector((state) => state.me.currentUser);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
-          <Navbar.Brand href="/src">
-            <span>ELGYMAWEYA</span>
-            <img src={logo} style={{ width: "40px" }} />
+          <Navbar.Brand>
+            <span className="me-2">ELGYMAWEYA</span>
+            <Image src={logo} width={30} style={{ objectFit: "cover" }} />
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -59,12 +59,15 @@ function NavBarUserHome() {
                   </Link>
                 </NavDropdown.Item>
                 <Dropdown.Divider />
-                <NavDropdown.Item style={{ backgroundColor: "#e3d8ee" }}>
-                  <span onClick={() => {
-                    localStorage.removeItem("token")
-                    dispatch(logout())
-                    navigate("/")
-                  }} className="text-dark text-decoration-none">
+                <NavDropdown.Item
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    dispatch(logout());
+                    navigate("/");
+                  }}
+                  style={{ backgroundColor: "#e3d8ee" }}
+                >
+                  <span className="text-dark text-decoration-none">
                     Log Out
                   </span>
                 </NavDropdown.Item>
@@ -75,9 +78,10 @@ function NavBarUserHome() {
                   <Image
                     src={currentUser.profile_picture || user}
                     roundedCircle
-                    width="40px"
+                    width={40}
+                    height={40}
                     className="ms-2"
-                    style={{ background: "#fdd21d" }}
+                    style={{ background: "#fdd21d", objectFit: "cover" }}
                   />
                 </>
               )}

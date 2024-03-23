@@ -1,15 +1,15 @@
-import React from 'react'
-import LogoutNav from '../../LandingNavbar/LandingNav'
-import SlideShow from '../../HomeSections/SlideShow'
-import { ButtonGroup ,Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import React from "react";
+import LogoutNav from "../../LandingNavbar/LandingNav";
+import SlideShow from "../../HomeSections/SlideShow";
+import { ButtonGroup, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import styles from "./LandingSec1.module.css";
 function LandingSec1() {
   return (
     <div className={styles.sec1}>
-        <LogoutNav />
-        <SlideShow />
-        <ButtonGroup vertical  className={styles.button_group}>
+      <LogoutNav />
+      <SlideShow />
+      {/* <ButtonGroup vertical  className={styles.button_group}>
             <Link to={'bmiCalc'}>
             <Button variant="outline-primary">
                 Bmi
@@ -20,9 +20,9 @@ function LandingSec1() {
                 Calories
             </Button>
             </Link>
-        </ButtonGroup>
+        </ButtonGroup> */}
     </div>
-  )
+  );
 }
 
-export default LandingSec1
+export default LandingSec1;

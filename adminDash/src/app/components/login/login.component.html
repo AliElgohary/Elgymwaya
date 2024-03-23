@@ -1,23 +1,41 @@
-
 <body class="d-flex justify-content-center align-items-center">
   <div class="w-75" id="box">
-    <div class="custom_form_holder d-flex bg-danger w-75 m-auto h-100 " id="card">
-      <img src="../../../assets/rope.png" class="rope" alt="">
+    <div
+      class="custom_form_holder d-flex bg-danger w-75 m-auto h-100"
+      id="card"
+    >
+      <img src="../../../assets/rope.png" class="rope" alt="" />
       <div id="img" class="w-50"></div>
       <div class="w-50 h-100">
-        <form #signInForm="ngForm" (ngSubmit)="login(user)" class="w-100 h-100 p-4">
+        <form
+          #signInForm="ngForm"
+          (ngSubmit)="login(user)"
+          class="w-100 h-100 p-4"
+        >
           <div class="gym_title">
             <h2>Login</h2>
           </div>
           <div class="inputsWrapper">
             <div class="form-group mb-2">
-              <label for="userName" class="col-form-label text-light">E-mail</label>
-              <input type="text" name="userName" class="form-control" placeholder="E-mail" required email minlength="6"
-                [(ngModel)]="user.email" #emailInput="ngModel" [ngClass]="{
+              <label for="userName" class="col-form-label text-light"
+                >E-mail</label
+              >
+              <input
+                type="text"
+                name="userName"
+                class="form-control"
+                placeholder="E-mail"
+                required
+                email
+                minlength="6"
+                [(ngModel)]="user.email"
+                #emailInput="ngModel"
+                [ngClass]="{
                   'is-invalid':
                     (emailInput.touched || emailInput.dirty) &&
                     !emailInput.valid
-                }" />
+                }"
+              />
               <span class="invalid-feedback">
                 @if(emailInput.errors?.['required']){
                 <span>Email is required</span>
@@ -27,13 +45,23 @@
               </span>
             </div>
             <div class="form-group mb-2">
-              <label for="password" class="col-form-label text-light">Password</label>
-              <input type="password" name="password" class="form-control" placeholder="Password" required
-                [(ngModel)]="user.password" #passwordInput="ngModel" [ngClass]="{
+              <label for="password" class="col-form-label text-light"
+                >Password</label
+              >
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                placeholder="Password"
+                required
+                [(ngModel)]="user.password"
+                #passwordInput="ngModel"
+                [ngClass]="{
                   'is-invalid':
                     (passwordInput.touched || passwordInput.dirty) &&
                     !passwordInput.valid
-                }" />
+                }"
+              />
               <span class="invalid-feedback">
                 @if(passwordInput.errors?.['required']){
                 <span>Password is required</span>
@@ -41,69 +69,18 @@
               </span>
             </div>
           </div>
-          <button type="submit" class="btn w-100" [disabled]="!signInForm.valid">Login</button>
+          <div class="alert alert-danger" role="alert" *ngIf="lodingError">
+            Login failed. Please check your credentials and try again.
+          </div>
+          <button
+            type="submit"
+            class="btn w-100"
+            [disabled]="!signInForm.valid"
+          >
+            Login
+          </button>
         </form>
       </div>
     </div>
   </div>
-
-
-
-  <!-- <hr>
-    <div class="container">
-      <div class="login-box">
-        <img src="lamp.png" class="lamp" alt="" />
-        <div class="img-section">
-          <img src="fernuture.png" alt="Image" />
-        </div>
-        <div class="form-section">
-          <h2>Sign In</h2>
-          <form id="signinForm" #signInForm="ngForm" (ngSubmit)="login(user)" class="custom_form">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" minlength="6"
-            [(ngModel)]="user.email"
-            #emailInput="ngModel"
-            [ngClass]="{
-              'is-invalid':
-                (emailInput.touched || emailInput.dirty) &&
-                !emailInput.valid
-            }" />
-            <span class="invalid-feedback">
-              @if(emailInput.errors?.['required']){
-              <span>Email is required</span>
-              } @if(emailInput.errors?.['email']){
-              <span>Enter a valid Email</span>
-              }
-            </span>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"   required
-            [(ngModel)]="user.password"
-            #passwordInput="ngModel"
-            [ngClass]="{
-              'is-invalid':
-                (passwordInput.touched || passwordInput.dirty) &&
-                !passwordInput.valid
-            }"
-           />
-           <span class="invalid-feedback">
-            @if(passwordInput.errors?.['required']){
-            <span>Password is required</span>
-            }
-          </span>
-            <div class="buttons">
-              <button class="btn" type="submit" aria-label="Submit" [disabled]="!signInForm.valid">
-                Submit
-              </button>
-            </div>
-            <div class="register">
-              <p>
-                Don't have an account?
-                <a href="../sign-up/index.html">Register</a>
-              </p>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div> -->
-
 </body>

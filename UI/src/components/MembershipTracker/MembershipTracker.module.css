@@ -1,0 +1,22 @@
+.MembershipTrackerBox {
+  background-color: #fff;
+}
+
+h2 {
+  font-weight: bold;
+  color: rgb(71, 68, 68);
+  font-size: 25px;
+}
+
+.infoHead {
+  font-size: 16px;
+  margin-top: 15px;
+  font-weight: 800;
+  color: rgba(71, 68, 68, 0.551);
+}
+
+.infoSpan {
+  display: block;
+  color: rgb(71, 68, 68);
+  margin-bottom: 10px;
+}

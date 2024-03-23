@@ -19,7 +19,7 @@ const Login = () => {
   const [errors, setErrors] = useState({}); // [key: string] : string[]  {"name": ["name is required", "name must be at least 5 chars"]}
   const dispatch = useDispatch();
   const currentUser = useSelector(getCurrentUser);
-  const isLoginLoading = useSelector(getLoginLoading)
+  const isLoginLoading = useSelector(getLoginLoading);
   const navigate = useNavigate();
   const validationRules = useMemo(
     () => ({
@@ -70,7 +70,13 @@ const Login = () => {
   };
   useEffect(() => {
     if (currentUser) {
-      navigate("/userHome");
+      if (currentUser.role === "coach") {
+        navigate("/coach-home");
+      } else if (currentUser.plan_id?.description === "gold plan") {
+        navigate("/userHome");
+      } else {
+        navigate("/freeUserHomePage");
+      }
     }
   }, [currentUser, navigate]);
 
@@ -101,7 +107,11 @@ const Login = () => {
               Icon={IoLockClosed}
             />
           </div>
-          <button className={styles.btn} type="submit" disabled={isLoginLoading}>
+          <button
+            className={styles.btn}
+            type="submit"
+            disabled={isLoginLoading}
+          >
             Login
           </button>
           <h6 className="text-muted ">

@@ -27,11 +27,19 @@ export class TraineesService {
     return this.http.get<any>('http://localhost:5000/client', this.httpOptions);
   }
 
+  getTraineesPaginated(page : number): Observable<any> {
+    return this.http.get<any>(`http://localhost:5000/client?page=${page}`, this.httpOptions);
+  }
+
   getTrainee(id: string): Observable<any> {
     console.log(id)
     return this.http
       .get<any>(`http://localhost:5000/client/${id}`)
   }
+
+
+
+
 
   editTrainee(id : string,data : any): Observable<any> {
     console.log(data);

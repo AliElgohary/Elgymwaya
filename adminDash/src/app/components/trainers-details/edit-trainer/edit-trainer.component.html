@@ -4,15 +4,18 @@
 <div class="container">
   <form #addTrainerForm="ngForm" (ngSubmit)="editTrainer()">
 
-    <div class="row box m-auto w-75">
-      <div class=" col col-12 form-gr col col-8 oup">
-         <label for="full_name">full_name</label>
+    <div class="row box m-auto w-75 shadow p-4 mb-5 bg-body">
+      <div class="col col-12 form-gr col col-8 oup">
+         <label for="full_name">Full_name</label>
          <input type="text"
          class="form-control"
          id="full_name" name="full_name"
          [(ngModel)]="trainer.full_name"
          placeholder="Enter full_name"
-         #NameInput="ngModel" required
+         #NameInput="ngModel" 
+         required
+         maxlength="40" 
+         minlength="5"
          [ngClass]="{
              'is-invalid':
                (NameInput.touched || NameInput.dirty) && !NameInput.valid
@@ -20,8 +23,12 @@
            />
          <span class="invalid-feedback">
            @if(NameInput.errors?.['required']){
-           <span>Name is required</span>
-           }
+           <span style="color: #8119db">Name is required</span>
+           }@if(NameInput.errors?.['minlength']){
+            <span style="color: #8119db">Minimum length is 5 characters</span>
+          } @if(NameInput.errors?.['maxlength']){
+            <span style="color: #8119db">Maximum length is 40 characters</span>
+          }
          </span>
        </div>
  
@@ -43,10 +50,10 @@
            />
          <span class="invalid-feedback">
            @if(emailInput.errors?.['required']){
-           <span>Email is required</span>
+           <span style="color: #8119db">Email is required</span>
           }
            @if(emailInput.errors?.['email']){
-           <span>Enter a valid Email</span>
+           <span style="color: #8119db">Enter a valid Email</span>
            }
          </span>
        </div>
@@ -68,8 +75,10 @@
             />
          <span class="invalid-feedback">
            @if(PhoneInput.errors?.['pattern']){
-           <span>Phone Number Must be correct</span>
-           }
+           <span style="color: #8119db">Phone Number Must be correct</span>
+           }@if(PhoneInput.errors?.['required']){
+            <span style="color: #8119db">Phone is required</span>
+          }
          </span>
        </div>
 
@@ -81,10 +90,12 @@
         name="BD"
         [(ngModel)]="trainer.birth_date"
         placeholder="Enter Birth Date"
-        #BDInput="ngModel" required />
+        #BDInput="ngModel" 
+        required 
+        />
         <span class="invalid-feedback">
           @if(BDInput.errors?.['required']){
-          <span>BirthDate is required</span>
+          <span style="color: #8119db">BirthDate is required</span>
           }
         </span>
       </div>
@@ -114,10 +125,15 @@
         name="salary"
         [(ngModel)]="trainer.salary"
         placeholder="Enter salary"
-        #salaryInput="ngModel" required />
+        #salaryInput="ngModel"
+         required
+         min="0"
+         />
         <span class="invalid-feedback">
           @if(salaryInput.errors?.['required']){
-          <span>salary is required</span>
+          <span style="color: #8119db">salary is required</span>
+          } @if(salaryInput.errors?.['min']){
+            <span style="color: #8119db">salary must be a positive number</span>
           }
         </span>
       </div>

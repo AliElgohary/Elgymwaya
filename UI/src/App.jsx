@@ -16,9 +16,12 @@ import SelectTrainer from "./pages/SelectTrainer/SelectTrainer";
 import Thnx from "./pages/thnx/Thnx";
 import EditProfile from "./pages/EditProfile/EditProfile";
 import ReviewPage from "./pages/Review/ReviewPage";
+// import ReviewItem from "./pages/Review/ReviewItem";
 import { fetchCurrentUser } from "./thunks/me";
 import CoachDetails from "./pages/CoachDetails/CoachDetails";
-import TraineeRotine from "./pages/TraineeRotine/TraineeRotine";
+import CoachHome from "./pages/CoachHome";
+import FreeUserHomePage from "./pages/FreeUserHomePage/FreeUserHomePage";
+import NotFound from "./pages/NotFound/NotFound";
 
 const routes = createBrowserRouter([
   {
@@ -40,7 +43,9 @@ const routes = createBrowserRouter([
   { path: "thnx", element: <Thnx /> },
   { path: "coachDetails/:coachId", element: <CoachDetails /> },
   { path: "review", element: <ReviewPage /> },
-  { path: "traineeRotine", element: <TraineeRotine /> },
+  { path: "coach-home", element: <CoachHome /> },
+  { path: "freeUserHomePage", element: <FreeUserHomePage /> },
+  { path: "*", element: <NotFound /> },
 ]);
 
 // BMI => w/h2
@@ -51,7 +56,8 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
-  }, [dispatch]);
+  }, []);
+
   return (
     <>
       <RouterProvider router={routes}></RouterProvider>

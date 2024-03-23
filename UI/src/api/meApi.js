@@ -10,7 +10,7 @@ const getClientByToken = async () => {
   try {
     const response = await api.get("/me", {
       headers: {
-        token, // Add token to the request headers
+        token,
       },
     });
     return response.data;

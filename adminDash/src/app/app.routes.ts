@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
 import { TrainersComponent } from './components/trainers/trainers.component';
 import { TraineesComponent } from './components/trainees/trainees.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -19,7 +18,7 @@ import { EditTraineeComponent } from './components/trainee-details/edit-trainee/
 import { EditTrainerComponent } from './components/trainers-details/edit-trainer/edit-trainer.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [authGuard] },
+  { path: '', component: AnalyticsComponent, canActivate: [authGuard] },
   {
     path: 'analytics',
     component: AnalyticsComponent,

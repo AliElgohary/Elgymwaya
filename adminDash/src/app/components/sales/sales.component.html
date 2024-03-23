@@ -1,1 +1,107 @@
-<p>sales works!</p>
+@if (sales){
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div
+        class="card text-white border border-light"
+        style="background-color:#8bbc8d"
+      >
+        <div class="card-body text-center">
+          <h2 class="card-title">Monthly Cost</h2>
+          <h3 class="card-text">{{ sales.totalCoachesSalary }}</h3>
+          <h4><i class="fa-solid fa-arrow-trend-down"></i></h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        class="card text-white border border-light"
+        style="background-color: #af8ede"
+
+      >
+        <div class="card-body text-center">
+          <h2 class="title card-title">Total Income</h2>
+          <h3 class="card-text">{{ sales.totalTransactions }}</h3>
+          <h4><i class="fa-solid fa-arrow-trend-up"></i></h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        class="card text-white border border-light"
+        style="background-color: #ef9a9a"
+      >
+        <div class="card-body text-center">
+          <h2 class="card-title">Revenue</h2>
+          <h3 class="card-text">
+            {{ sales.totalTransactions - sales.totalCoachesSalary }}
+          </h3>
+          <h4><i class="fa-solid fa-arrow-trend-up"></i></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+} @if(transactions && sales && trainers){
+  <div class="container">
+
+<br><br>
+  <div class="row container">
+  <div class="col-md-6">
+    <div class="table-responsive shadow">
+      <div class="d-flex justify-content-between align-items-center mt-5">
+        <h4 class="mr-2 head">Total Coaches salary: {{ sales.totalCoachesSalary }}</h4>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Salary</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (trainer of trainers; track trainer._id) {
+          <tr>
+            <td>{{ trainer.full_name }}</td>
+            <td>{{ trainer.phone_number }}</td>
+            <td>{{ trainer.salary }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="table-responsive shadow">
+      <div class="d-flex justify-content-between align-items-center mt-5">
+        <h4 class="mr-2 head">Total Transactions : {{ sales.totalTransactions }}</h4>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (transaction of transactions; track transaction._id) {
+          <tr>
+            @if(transaction.client_id){
+              <td>{{ transaction.client_id.full_name }}</td>
+              <td>{{ transaction.amount }}</td>
+              <td>{{ transaction.transactionDateAndTime | date }}</td>
+              <td>{{ transaction.payment_status }}</td>
+            }
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+}

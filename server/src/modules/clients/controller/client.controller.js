@@ -7,6 +7,7 @@ import axios from "axios";
 import transactionModel from "../../../../Database/models/transaction.model.js";
 import crypto from "crypto";
 import coachModel from "../../../../Database/models/coach.model.js";
+import workoutPlanModel from "../../../../Database/models/workoutPlan.model.js";
 
 // Sign Up a New Client
 export const signUp = async (req, res) => {
@@ -445,9 +446,40 @@ export const giveCoachFeedback = async (req, res) => {
   }
 };
 
+
+// export const getAllClients = async (req, res) => {
+//   try {
+//     // Fetch the user based on req.userID set by your authentication middleware
+//     const limit = parseInt(req.query.limit) || 6;
+
+//     const user = await userModel.findById(req.userID);
+
+//     if (!user) {
+//       return res.status(404).send("User not found.");
+//     }
+
+//     const isAuthorized = user.role === "manager" || user.role === "owner";
+//     if (!isAuthorized) {
+//       return res
+//         .status(403)
+//         .send("Unauthorized: Only managers and owners can access all clients.");
+//     }
+
+//     // Fetch all clients. Exclude passwords
+//     const clients = await userModel
+//       .find({}, "-password -Cpassword")
+//       .populate("coach_id", "full_name");
+
+//     res.json(clients);
+//   } catch (error) {
+//     console.error("Error fetching clients:", error);
+//     res.status(500).send("Error fetching clients");
+//   }
+// };
 export const getAllClients = async (req, res) => {
   try {
-    // Fetch the user based on req.userID set by your authentication middleware
+    const limit = parseInt(req.query.limit) || 8;
+    const page = parseInt(req.query.page) || 1;
     const user = await userModel.findById(req.userID);
 
     if (!user) {
@@ -461,17 +493,28 @@ export const getAllClients = async (req, res) => {
         .send("Unauthorized: Only managers and owners can access all clients.");
     }
 
-    // Fetch all clients. Exclude passwords
+    const totalClientsCount = await userModel.countDocuments({});
+    const totalPages = Math.ceil(totalClientsCount / limit);
+    const skip = (page - 1) * limit;
+
+    // Fetch clients with pagination
     const clients = await userModel
       .find({}, "-password -Cpassword")
-      .populate("coach_id", "full_name");
+      .populate("coach_id", "full_name")
+      .limit(limit)
+      .skip(skip);
 
-    res.json(clients);
+    res.json({
+      clients: clients,
+      totalPages: totalPages,
+      currentPage: page,
+    });
   } catch (error) {
     console.error("Error fetching clients:", error);
     res.status(500).send("Error fetching clients");
   }
 };
+
 
 // Get Client By ID
 export const getClientById = async (req, res) => {
@@ -498,21 +541,48 @@ export const getClientById = async (req, res) => {
 // Get Client By Token
 export const getClientByToken = async (req, res) => {
   try {
-    const clientID = req.userID;
+    const userID = req.userID;
 
-    const client = await userModel
-      .findById(clientID, "-password -Cpassword")
+    // Try to find the client in the userModel
+    let userOrCoach = await userModel
+      .findById(userID, "-password -Cpassword")
       .populate({
         path: "coach_id",
         select: "-hiredDate -salary -client_ids",
       })
       .populate("plan_id");
 
-    if (!client) {
-      return res.status(404).send("User not found.");
+    // If not found in userModel, try finding the coach in coachModel
+    if (!userOrCoach) {
+      userOrCoach = await coachModel
+        .findById(userID, "-password -Cpassword")
+        .populate({
+          path: "client_ids",
+          select: "-password -Cpassword",
+          populate: [
+            "plan_id",
+          ],
+        })
+        .populate({
+          path: "feedbacks.client_id",
+          select: "full_name profile_picture",
+        });
+
+      if (!userOrCoach) {
+        return res.status(404).send("User not found.");
+      }
     }
 
-    res.json(client);
+    // add workout plans for alll clients
+    const clientIds = userOrCoach.toJSON()?.client_ids?.map(client => client._id) || []
+    const workouts = {}
+    for (const clientId of clientIds) {
+      const workoutsArr = await workoutPlanModel.find({ client_id: clientId })
+      workouts[clientId] = workoutsArr;
+    }
+    const user = userOrCoach.toObject()
+    user["clientsWorkoutsMap"] = workouts
+    res.json(user)
   } catch (error) {
     console.error("Error fetching user:", error);
     res.status(500).send("Error fetching user");

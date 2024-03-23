@@ -16,8 +16,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../thunks/registerUser";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { loginSuccess } from "../../store/action/authActions";
+import { fetchCurrentUser } from "./../../thunks/me";
 const Register = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     full_name: "",
     email: "",
@@ -28,8 +30,7 @@ const Register = () => {
     password: undefined,
     Cpassword: undefined,
   });
-  const [errors, setErrors] = useState({}); // [key: string] : string[]  {"name": ["name is required", "name must be at least 5 chars"]}
-  //  FIXME:fixe the margin issue when a larg error message appear
+  const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const navigate = useNavigate();
@@ -59,7 +60,10 @@ const Register = () => {
           "string.pattern.base": "Please enter a valid Egyptian phone number.",
         })
         .label("phone_number"),
-      password: Joi.string().required().label("password"),
+      password: Joi.string()
+        .required()
+        .pattern(/^(?=.[a-z])(?=.[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/)
+        .label("password"),
       Cpassword: Joi.string().required().label("Cpassword"),
     }),
     []
@@ -77,21 +81,24 @@ const Register = () => {
       }
     }
     if (valid) {
-      setLoading(true)
+      setLoading(true);
       try {
         const response = await axios.post(
           "http://localhost:5000/client/signup",
           data
         );
         console.log("Registration successful:", response.data);
+        const token = response.data.token;
+        localStorage.setItem("token", token); // Save token to local storage
+        dispatch(loginSuccess(token)); // Dispatch loginSuccess action to update authentication state
+        dispatch(fetchCurrentUser()); // Call fetchCurrentUser to get current user data
         navigate("/plans");
       } catch (error) {
         console.error("Error registering user:", error);
-        // Handle network errors or unexpected errors
         setErrors("Registration failed. Please try again later.");
         const msg = error.response?.data;
         if (msg && typeof msg == "string") {
-          toast.error(msg)
+          toast.error(msg);
         }
       } finally {
         setLoading(false);
@@ -111,13 +118,13 @@ const Register = () => {
       );
     }
   };
+
   useEffect(() => {
     console.log("isAuthenticated changed:", isAuthenticated);
     if (isAuthenticated) {
       navigate("/plans");
     }
   }, [isAuthenticated, navigate]);
-
   const validate = (key, value) => {
     const validationRule = validationRules[key];
     const validationResult = validationRule.validate(value);
@@ -155,7 +162,7 @@ const Register = () => {
               type="text"
               onChange={(e) => handleInputChange(e, "full_name")}
               errors={errors["full_name"]}
-              placeholder={"full name"}
+              placeholder={"Full Name"}
               Icon={IoPerson}
             />
             <InputWithIcon

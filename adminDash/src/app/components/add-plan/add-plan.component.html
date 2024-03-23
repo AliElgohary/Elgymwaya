@@ -1,14 +1,15 @@
 <h3 class="bng-dark m-5 mb-2">Add New Plan</h3>
 <hr width="300px" />
-
-<form #addPlanForm="ngForm" (ngSubmit)="addPlan()" class="p-5">
+<form #addPlanForm="ngForm" (ngSubmit)="addPlan()" class="m-2">
   <div class="form-group">
-    <label for="title" class="text-dark fw-bold">Plan Name</label>
+    <label for="title" class="text-dark ">Plan Name</label>
     <input
       type="text"
       class="form-control mb-2"
       id="title"
       name="title"
+      maxlength="40"
+      minlength="5"
       [(ngModel)]="plans.newPlanName"
       placeholder="Enter Plan Name"
       #titleInput="ngModel"
@@ -24,6 +25,13 @@
     >
       Please provide a valid title.
     </div>
+    <span class="invalid-feedback">
+      @if(titleInput.errors?.['minlength']){
+      <span style="color: #8119db">Minimum length is 5 characters</span>
+      } @if(titleInput.errors?.['maxlength']){
+      <span style="color: #8119db">Maximum length is 40 characters</span>
+      }
+    </span>
   </div>
 
   <div class="form-group">
@@ -35,6 +43,8 @@
       [(ngModel)]="plans.newPlanDescription"
       placeholder="Enter description"
       required
+      maxlength="150"
+      minlength="5"
       #descriptionInput="ngModel"
       [ngClass]="{
         'is-invalid':
@@ -51,6 +61,13 @@
     >
       Please provide a valid description.
     </div>
+    <span class="invalid-feedback">
+      @if(descriptionInput.errors?.['minlength']){
+      <span style="color: #8119db">Minimum length is 5 characters</span>
+      } @if(descriptionInput.errors?.['maxlength']){
+      <span style="color: #8119db">Maximum length is 150 characters</span>
+      }
+    </span>
   </div>
   <div class="form-group">
     <label for="fee">Price (EGP)</label>
@@ -62,6 +79,7 @@
       [(ngModel)]="plans.newPlanFee"
       placeholder="Enter Price"
       required
+      min="0"
       #feeInbut="ngModel"
       [ngClass]="{
         'is-invalid': (feeInbut.touched || feeInbut.dirty) && !feeInbut.valid
@@ -73,6 +91,9 @@
     >
       Please provide a valid fee.
     </div>
+    @if(feeInbut.errors?.['min']){
+    <span style="color: #8119db">fee must be a positive number</span>
+    }
   </div>
   <div class="container">
     <div class="row">
