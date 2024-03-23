@@ -5,23 +5,23 @@
 .table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0 20px; 
+  border-spacing: 0 20px;
 }
 
 
 .table tbody tr {
   background-color: white;
-  border-radius: 10px; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .table tbody tr td {
   vertical-align: top;
-  padding: 15px; 
+  padding: 15px;
 }
 
 .table tbody tr td:not(:last-child) {
-  border-bottom: 1px solid #f0f0f0; 
+  border-bottom: 1px solid #f0f0f0;
 }
 
 
@@ -36,7 +36,7 @@
 }
 
 .btn {
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
 .table img {
@@ -46,3 +46,32 @@
   object-fit: cover;
   margin-right: 10px;
 }
+
+
+.page-item {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.page-link {
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.page-link:hover {
+  background-color: #f0f0f0;
+}
+
+.page-item.disabled .page-link {
+  color: #999;
+  pointer-events: none;
+}
+
+.page-item.disabled .page-link:hover {
+  background-color: #fff;
+}
+

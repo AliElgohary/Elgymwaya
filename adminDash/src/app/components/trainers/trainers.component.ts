@@ -12,26 +12,43 @@ import { Router } from '@angular/router';
 })
 export class TrainersComponent implements OnInit {
   trainers: any;
+  totalPages: number = 0;
+  currentPage: number = 1;
+
   constructor(private trainersSer: TrainersService, private router: Router) {}
+
   ngOnInit(): void {
-    this.trainersSer.getTrainers().subscribe((data) => {
+    this.fetchTrainers(this.currentPage);
+  }
+
+  fetchTrainers(page: number) {
+    this.trainersSer.getTrainersPaginated(page).subscribe((data: any) => {
       this.trainers = data.coaches;
-      console.log(this.trainers);
+      this.totalPages = data.totalPages;
+      this.currentPage = data.currentPage;
     });
   }
+
   onDetailsClick(id: string) {
     this.router.navigate(['trainers/details', id]);
   }
 
-  deleteTrainees(id: string) {
-    this.trainersSer.deleteTrainer(id).subscribe((response) => {
+  deleteTrainer(id: string) {
+    this.trainersSer.deleteTrainer(id).subscribe((response: any) => {
       if (response.message === 'Coach Deleted') {
-        this.trainersSer.getTrainers().subscribe((data) => {
-          this.trainers = data;
-        });
+        // Fetch trainers for the current page after deletion
+        this.fetchTrainers(this.currentPage);
       } else {
         console.error('Unexpected deletion response:', response);
       }
     });
+  }
+
+  changePage(newPage: number) {
+    this.fetchTrainers(newPage);
+  }
+
+  generatePages(totalPages: number): number[] {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
 }
