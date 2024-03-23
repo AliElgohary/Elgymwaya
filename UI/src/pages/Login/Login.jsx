@@ -71,11 +71,8 @@ const Login = () => {
   useEffect(() => {
     if (currentUser) {
       if (currentUser.role === "coach") {
-        navigate("/traineeRotine");
-      } else if (
-        currentUser.plan_id &&
-        currentUser.plan_id.description === "gold plan"
-      ) {
+        navigate("/coach-home");
+      } else if (currentUser.plan_id?.description === "gold plan") {
         navigate("/userHome");
       } else {
         navigate("/freeUserHomePage");

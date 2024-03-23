@@ -7,6 +7,7 @@ import axios from "axios";
 import transactionModel from "../../../../Database/models/transaction.model.js";
 import crypto from "crypto";
 import coachModel from "../../../../Database/models/coach.model.js";
+import workoutPlanModel from "../../../../Database/models/workoutPlan.model.js";
 
 // Sign Up a New Client
 export const signUp = async (req, res) => {
@@ -445,7 +446,6 @@ export const giveCoachFeedback = async (req, res) => {
   }
 };
 
-
 // export const getAllClients = async (req, res) => {
 //   try {
 //     // Fetch the user based on req.userID set by your authentication middleware
@@ -514,7 +514,6 @@ export const getAllClients = async (req, res) => {
   }
 };
 
-
 // Get Client By ID
 export const getClientById = async (req, res) => {
   try {
@@ -558,9 +557,7 @@ export const getClientByToken = async (req, res) => {
         .populate({
           path: "client_ids",
           select: "-password -Cpassword",
-          populate: {
-            path: "plan_id",
-          },
+          populate: ["plan_id"],
         })
         .populate({
           path: "feedbacks.client_id",
@@ -572,7 +569,17 @@ export const getClientByToken = async (req, res) => {
       }
     }
 
-    res.json(userOrCoach);
+    // add workout plans for alll clients
+    const clientIds =
+      userOrCoach.toJSON()?.client_ids?.map((client) => client._id) || [];
+    const workouts = {};
+    for (const clientId of clientIds) {
+      const workoutsArr = await workoutPlanModel.find({ client_id: clientId });
+      workouts[clientId] = workoutsArr;
+    }
+    const user = userOrCoach.toObject();
+    user["clientsWorkoutsMap"] = workouts;
+    res.json(user);
   } catch (error) {
     console.error("Error fetching user:", error);
     res.status(500).send("Error fetching user");

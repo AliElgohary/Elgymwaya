@@ -8,6 +8,7 @@ import MembershipTracker from "../../components/MembershipTracker/MembershipTrac
 import Reservations from "../../components/Reservations/Reservations";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import WithCurrentUserRedirect from "../../components/common/WithCurrentUserRedirect";
 function UserHomePage() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -42,4 +43,7 @@ function UserHomePage() {
   );
 }
 
-export default UserHomePage;
+// eslint-disable-next-line react-refresh/only-export-components
+export default WithCurrentUserRedirect(UserHomePage, (currentUser) => {
+  return currentUser.plan_id?.description === "gold plan";
+});

@@ -1,0 +1,224 @@
+.routineBox {
+  background-color: #fff;
+  margin: 20px;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.imgBox {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fdd21d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart {
+  background-color: #d9ccee;
+  width: 240px;
+  height: 100px;
+  border-radius: 20px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart button {
+  background-color: #57da8b;
+  padding: 5px 10px;
+  border: none;
+  font-size: 14px;
+}
+
+.selctedTreaineeInfo,
+.formBox {
+  width: 500px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.selctedTreaineeInfo button,
+.formBox .exit {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+  border-radius: 50%;
+  color: #620af0;
+}
+
+.bgFilter {
+  background-color: #000000bd;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* -------------------- */
+.imgBox_selcted {
+  background-color: #fdd21d;
+  width: 80px;
+  height: 80px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.sec {
+  margin-bottom: 10px;
+  background-color: #eeeeee59;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.sec h5 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  opacity: 0.8;
+}
+
+.inpGroup {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 100px;
+  align-items: center;
+  margin: 5px 0;
+  background-color: #eeeeee59;
+}
+
+.inpGroup input {
+  background-color: #d9ccee;
+  border: 1px solid #fff;
+  height: 30px;
+  text-indent: 15px;
+}
+
+[type="submit"] {
+  background-color: #292027;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 14px;
+  margin-top: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.videoContainer {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
+  & video {
+    background-size: cover;
+    background-position: center;
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
+
+.section {
+  background-color: rgba(0, 0, 0, 0.634);
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px 15px;
+  & .sectionHeader {
+    display: flex;
+    align-items: center;
+    & .sectionTitle {
+      color: white;
+    }
+    & .count {
+      font-size: 17px !important;
+      background-color: var(--primary-color);
+      color: rgb(190, 190, 190);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 7px;
+      font-weight: bold;
+    }
+  }
+}
+
+.cardsWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 10px 0;
+  gap: 10px;
+}
+
+.card {
+  background-color: rgba(32, 30, 30, 0.751);
+  padding: 7px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  & .imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & img {
+      width: 50px;
+      height: 50px;
+      border: 3px solid var(--primary-color);
+    }
+  }
+
+  & .content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    & .title {
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+    }
+    & .subTitle {
+      font-size: 15px;
+      color: gray;
+    }
+
+  }
+}
+.workoutsFormTitle {
+  text-align: center;
+  margin: 10px 0;
+  color: var(--primary-color);
+}
+.workoutFormContainer {
+  padding: 7px;
+  border-radius: 7px;
+  background-color: #e2e2e2;
+  margin: 10px 0;
+}
+
+.addWorkout {
+  margin: 0 auto;
+}
+.removeWorkout {
+  margin-top: 10px;
+}

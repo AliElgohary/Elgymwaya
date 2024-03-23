@@ -87,9 +87,9 @@ export const getClientWorkoutPlans = async (req, res) => {
       .find({ client_id: req.userID })
       .sort("-start_date");
 
-    if (workoutPlans.length === 0) {
-      return res.status(404).send("No workout plans found for this client.");
-    }
+    // if (workoutPlans.length === 0) {
+    //   return res.status(400).send("No workout plans found for this client.");
+    // }
 
     res.send(workoutPlans);
   } catch (error) {
