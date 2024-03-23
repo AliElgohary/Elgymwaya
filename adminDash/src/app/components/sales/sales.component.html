@@ -43,7 +43,7 @@
 </div>
 } @if(transactions && sales && trainers){
 <div class="row container">
-  <div class="col-md-6">
+  <div class="col-md-12 col-lg-6">
     <div class="d-flex justify-content-between align-items-center mt-5">
       <h4 class="mr-2 head w-100">
         Total Coaches salary: {{ sales.totalCoachesSalary }}
@@ -70,7 +70,7 @@
       </table>
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-12 col-lg-6">
     <div class="d-flex justify-content-between align-items-center mt-5">
       <h4 class="mr-2 head w-100">
         Total Transactions : {{ sales.totalTransactions }}
@@ -89,7 +89,7 @@
         <tbody>
           @for (transaction of transactions; track transaction._id) {
           <tr>
-            @if(transaction.client_id){
+            @if(transaction.client_id && transaction.payment_status === "Successful"){
             <td>{{ transaction.client_id.full_name }}</td>
             <td>{{ transaction.amount }}</td>
             <td>{{ transaction.transactionDateAndTime | date }}</td>
