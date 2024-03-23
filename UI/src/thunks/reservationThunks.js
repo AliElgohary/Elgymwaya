@@ -4,7 +4,11 @@ import {
   makeReservationSuccess,
   makeReservationFailure,
 } from "../store/action/reservationActions";
-
+import {
+  fetchReservationsRequest,
+  fetchReservationsSuccess,
+  fetchReservationsFailure,
+} from "../store/action/reservationActions";
 export const makeReservation = (reservationData) => async (dispatch) => {
   dispatch(makeReservationRequest());
 
@@ -28,5 +32,23 @@ export const makeReservation = (reservationData) => async (dispatch) => {
     dispatch(makeReservationFailure(errorMessage));
     alert(errorMessage);
     // toast.error(errorMessage);
+  }
+};
+export const fetchReservations = () => async (dispatch) => {
+  dispatch(fetchReservationsRequest());
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    dispatch(fetchReservationsFailure("Token not found"));
+    return;
+  }
+
+  try {
+    const response = await api.get("/clientt/reservations", {
+      headers: { token },
+    });
+    dispatch(fetchReservationsSuccess(response.data));
+  } catch (error) {
+    dispatch(fetchReservationsFailure(error.toString()));
   }
 };

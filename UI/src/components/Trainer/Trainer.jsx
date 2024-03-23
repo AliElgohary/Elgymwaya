@@ -11,7 +11,10 @@ import {
   faCalendarDay,
 } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
-import { makeReservation } from "../../thunks/reservationThunks";
+import {
+  fetchReservations,
+  makeReservation,
+} from "../../thunks/reservationThunks";
 import {
   Modal,
   Box,
@@ -52,9 +55,13 @@ function Trainer() {
     }
   };
 
-  const handleReservationSubmit = (e) => {
+  const handleReservationSubmit = async (e) => {
     e.preventDefault();
-    dispatch(makeReservation(reservation));
+    dispatch(makeReservation(reservation))
+      .then(() => {
+        dispatch(fetchReservations());
+      })
+      .catch((error) => console.error(error));
   };
 
   const handleFeedbackChange = (e) => {

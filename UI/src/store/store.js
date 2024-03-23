@@ -6,6 +6,7 @@ import { thunk } from "redux-thunk";
 import userReducer from "./reducers/userReducer";
 import coachesReducer from "./reducers/couchsReducer";
 import coachReducer from "./reducers/coachReducer";
+import reservationsReducer from "./reducers/reservationReducer";
 
 const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ const store = configureStore({
     coaches: coachesReducer,
     coach: coachReducer,
     me: userReducer,
+    reservationsState: reservationsReducer,
   },
   middleware: (getDefaultMiddlewares) =>
     getDefaultMiddlewares().concat([thunk]),

@@ -1,41 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import style from "./Reservations.module.css";
+import { fetchReservations } from "../../thunks/reservationThunks";
 
 function Reservations() {
-  const [reservations, setReservations] = useState([]);
-  const token = localStorage.getItem("token");
+  const dispatch = useDispatch();
+  const { reservations, loading, error } = useSelector(
+    (state) => state.reservationsState
+  );
 
   useEffect(() => {
-    const fetchReservations = async () => {
-      if (!token) {
-        console.log("No token found");
-        return;
-      }
-
-      try {
-        const response = await fetch(
-          "http://localhost:5000/clientt/reservations",
-          {
-            headers: {
-              token,
-            },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch reservations");
-        }
-
-        const data = await response.json();
-        setReservations(data);
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
-
-    fetchReservations();
-  }, [token]);
+    dispatch(fetchReservations());
+  }, [dispatch]);
 
   return (
     <div className={style.reservationsContainer}>
