@@ -25,7 +25,7 @@ export class TrainersService {
   }
 
   getTrainers(): Observable<any> {
-    return this.http.get<any>('http://localhost:5000/coach', this.httpOptions);
+    return this.http.get<any>('http://localhost:5000/coaches', this.httpOptions);
   }
   getTrainersPaginated(page: number): Observable<any> {
     return this.http.get<any>(

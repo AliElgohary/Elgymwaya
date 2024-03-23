@@ -152,29 +152,29 @@ export const updateCoach = async (req, res) => {
   }
 };
 
-// export const getAllcoaches = async (req, res) => {
-//   try {
-//     const user = await userModel.findById(req.userID);
-//     if (!user) {
-//       return res.status(404).send("User not found.");
-//     }
-//     const isAuthorized =
-//       user.role === "manager" ||
-//       user.role === "owner" ||
-//       user.role === "client";
-//     if (!isAuthorized) {
-//       return res
-//         .status(403)
-//         .send(
-//           "Unauthorized: Only managers, owners and clients can get all Coaches."
-//         );
-//     }
-//     const coaches = await coachModel.find();
-//     res.json({ message: "Get all coaches", coaches });
-//   } catch (error) {
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// };
+export const getCoaches = async (req, res) => {
+  try {
+    const user = await userModel.findById(req.userID);
+    if (!user) {
+      return res.status(404).send("User not found.");
+    }
+    const isAuthorized =
+      user.role === "manager" ||
+      user.role === "owner" ||
+      user.role === "client";
+    if (!isAuthorized) {
+      return res
+        .status(403)
+        .send(
+          "Unauthorized: Only managers, owners and clients can get all Coaches."
+        );
+    }
+    const coaches = await coachModel.find();
+    res.json({ message: "Get all coaches", coaches });
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 export const getAllcoaches = async (req, res) => {
   try {

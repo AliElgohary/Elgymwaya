@@ -45,6 +45,12 @@ coachRoutes.get(
    getAllcoaches
    );
 
+  coachRoutes.get(
+    "/coaches",
+     auth, 
+     getAllcoaches
+     );
+
 // get coach by id 
 coachRoutes.get(
   "/coach/:id", 

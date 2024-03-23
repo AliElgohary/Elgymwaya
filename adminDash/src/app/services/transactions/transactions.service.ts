@@ -19,7 +19,7 @@ export class TransactionsService {
 
   getTransactions(): Observable<any[]> {
     return this.http
-      .get<ITransaction>('http://localhost:5000/transaction')
+      .get<ITransaction>('http://localhost:5000/transactions')
       .pipe(map((response: any) => response.trans));
   }
 

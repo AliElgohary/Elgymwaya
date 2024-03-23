@@ -4,7 +4,7 @@
     <div class="col-md-4">
       <div
         class="card text-white border border-light"
-        style="background-color:#8bbc8d"
+        style="background-color: #8bbc8d"
       >
         <div class="card-body text-center">
           <h2 class="card-title">Monthly Cost</h2>
@@ -17,7 +17,6 @@
       <div
         class="card text-white border border-light"
         style="background-color: #af8ede"
-
       >
         <div class="card-body text-center">
           <h2 class="title card-title">Total Income</h2>
@@ -43,15 +42,14 @@
   </div>
 </div>
 } @if(transactions && sales && trainers){
-  <div class="container">
-
-<br><br>
-  <div class="row container">
+<div class="row container">
   <div class="col-md-6">
+    <div class="d-flex justify-content-between align-items-center mt-5">
+      <h4 class="mr-2 head w-100">
+        Total Coaches salary: {{ sales.totalCoachesSalary }}
+      </h4>
+    </div>
     <div class="table-responsive shadow">
-      <div class="d-flex justify-content-between align-items-center mt-5">
-        <h4 class="mr-2 head">Total Coaches salary: {{ sales.totalCoachesSalary }}</h4>
-      </div>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -73,10 +71,12 @@
     </div>
   </div>
   <div class="col-md-6">
+    <div class="d-flex justify-content-between align-items-center mt-5">
+      <h4 class="mr-2 head w-100">
+        Total Transactions : {{ sales.totalTransactions }}
+      </h4>
+    </div>
     <div class="table-responsive shadow">
-      <div class="d-flex justify-content-between align-items-center mt-5">
-        <h4 class="mr-2 head">Total Transactions : {{ sales.totalTransactions }}</h4>
-      </div>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -90,10 +90,10 @@
           @for (transaction of transactions; track transaction._id) {
           <tr>
             @if(transaction.client_id){
-              <td>{{ transaction.client_id.full_name }}</td>
-              <td>{{ transaction.amount }}</td>
-              <td>{{ transaction.transactionDateAndTime | date }}</td>
-              <td>{{ transaction.payment_status }}</td>
+            <td>{{ transaction.client_id.full_name }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.transactionDateAndTime | date }}</td>
+            <td>{{ transaction.payment_status }}</td>
             }
           </tr>
           }
@@ -101,7 +101,6 @@
       </table>
     </div>
   </div>
-</div>
 </div>
 
 }
