@@ -3,11 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { PlansService } from '../../../services/plans/plans.service';
 import { Iplans } from '../../../models/iplans';
 import { Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-plan-details',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './plan-details.component.html',
   styleUrl: './plan-details.component.scss',
 })

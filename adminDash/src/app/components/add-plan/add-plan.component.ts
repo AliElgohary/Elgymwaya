@@ -17,6 +17,7 @@ export class AddPlanComponent {
     newPlanDescription: '',
     newPlanFee: 0,
     newPlanProfilePicture: null,
+    // newfeatures:''
   };
 
   constructor(private plansService: PlansService, private route: Router) {}
@@ -26,6 +27,8 @@ export class AddPlanComponent {
     formData.append('title', this.plans.newPlanName);
     formData.append('description', this.plans.newPlanDescription);
     formData.append('fee', this.plans.newPlanFee.toString());
+    // formData.append('features', this.plans.newfeatures);
+
     if (this.plans.newPlanProfilePicture) {
       formData.append(
         'profile_picture',
@@ -57,6 +60,7 @@ export class AddPlanComponent {
       newPlanDescription: '',
       newPlanFee: 0,
       newPlanProfilePicture: null,
+      // newfeatures:''
     };
   }
 }

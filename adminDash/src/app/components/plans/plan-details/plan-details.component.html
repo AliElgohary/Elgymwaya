@@ -3,8 +3,12 @@
     <img class="card-img-top" src="{{ plan.profile_picture }}" style="width: 200px;" alt="{{ plan.title }} ">
     <div class="card-body">
       <h5 class="card-title">{{ plan.title }}</h5>
-      <p class="card-text">Description: {{ plan.description }}</p>
-      <p class="card-text">Fee: {{ plan.fee }}</p>
+      <p class="card-text bold-label">Description: </p><span> {{ plan.description }}</span> <br><br>
+      <p class="card-text bold-label">Fee: </p><span>{{ plan.fee }}</span> <br><br>
+      <ul class="list-unstyled">
+        Features:
+        <li *ngFor="let feature of plan.features">{{ feature }}</li>
+      </ul>
     </div>
   </div>
 }

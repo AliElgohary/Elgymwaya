@@ -4,4 +4,6 @@ export interface Iplans {
     description: String,
     fee: Number,
     profile_picture: String,
+    features: string[]; 
+
 }

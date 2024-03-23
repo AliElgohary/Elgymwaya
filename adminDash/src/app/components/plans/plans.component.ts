@@ -29,6 +29,7 @@ export class PlansComponent implements OnInit {
   }
 
   deletePlan(id: string) {
+    if (confirm("Are you sure you want to delete this trainee?")) {
     this.plansService.deletePlans(id).subscribe((response) => {
       if (response.message === 'plan Deleted') {
         this.loadPlans()
@@ -37,6 +38,7 @@ export class PlansComponent implements OnInit {
       }
     });
   }
+}
 
 
 }
