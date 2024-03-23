@@ -35,8 +35,8 @@ export class AddTrainerComponent {
     formData.append('password', this.trainer.password);
     formData.append('Cpassword', this.trainer.Cpassword);
     formData.append('phone_number', this.trainer.phone_number);
-    formData.append('birth_date', this.trainer.birth_date.toISOString().split('T')[0]);
-    formData.append('age', this.trainer.age);
+    formData.append('birth_date', this.trainer.birth_date.split('T')[0]);
+    // formData.append('age', this.trainer.age);
     formData.append('salary', this.trainer.salary);
     if (this.trainer.newPlanProfilePicture) {
       formData.append(
@@ -45,6 +45,9 @@ export class AddTrainerComponent {
         this.trainer.newPlanProfilePicture.name
       );
     }
+    if (this.trainer.password !== this.trainer.Cpassword) {
+      alert('Passwords do not match');
+      return; }
 
     this.trainerService.addTrainer(formData).subscribe(
 
@@ -75,7 +78,7 @@ export class AddTrainerComponent {
       Cpassword: '',
       phone_number: '',
       birth_date: '',
-      age: 0,
+      // age: 0,
       salary: 0,
       newPlanProfilePicture: null,
     };

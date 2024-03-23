@@ -106,10 +106,8 @@
               !CpasswordInput.valid
           }"
         />
-        <span class="invalid-feedback">
-          @if(CpasswordInput.errors?.['required']){
-          <span style="color: #8119db">Confirmed Password is required</span>
-          }
+        <span class="invalid-feedback" [style.display]="user.password !== user.Cpassword ? 'block' : 'none'">
+          <span style="color: #8119db">Passwords and confirmed password do not match</span>
         </span>
       </div>
 
@@ -132,7 +130,7 @@
         />
         <span class="invalid-feedback">
           @if(PhoneInput.errors?.['pattern']){
-          <span style="color: #8119db">Phone Number Must be correct</span>
+          <span style="color: #8119db">Phone Number Must be correct and start with (01) of 11 number</span>
           } @if(PhoneInput.errors?.['required']){
           <span style="color: #8119db">Phone is required</span>
           }
@@ -177,7 +175,7 @@
       <div class="col col-12 col-md-5 form-group">
         <label for="weight">weight (KG)</label>
         <input
-          type="number"
+          type="number" ngModel
           class="form-control"
           id="weight"
           name="weight"
@@ -194,6 +192,7 @@
           <span style="color: #8119db">Weight must be a positive number</span>
           }
         </span>
+
       </div>
 
       <div class="container">
