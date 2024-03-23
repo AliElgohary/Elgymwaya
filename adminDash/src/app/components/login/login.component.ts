@@ -12,6 +12,7 @@ import {  Router } from '@angular/router';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+  lodingError = false;
   user = {
     email: '',
     password: '',
@@ -24,6 +25,7 @@ export class LoginComponent {
         this.router.navigate(['']);
       },
       (err) => {
+        this.lodingError = true;
         console.log('login error' + err);
       }
     );

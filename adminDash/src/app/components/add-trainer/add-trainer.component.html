@@ -1,6 +1,6 @@
 <h3 class="bng-dark m-5 mb-2">Add New Trainer</h3>
-<hr style="width: 300px" />
-<form #addPlanForm="ngForm" (ngSubmit)="addTrainer()" class="m-5">
+<hr width="300px" />
+<form #addPlanForm="ngForm" (ngSubmit)="addTrainer()" class="m-2">
   <div class="row box">
     <div class="col col-12 col-md-6 form-group">
       <label for="full_name col-form-label">Full Name</label>
@@ -220,7 +220,7 @@
 
   <button
     type="submit"
-    class="btn btn-primary"
+    class="btn btn-primary mt-3"
     [disabled]="addPlanForm.invalid"
     style="background-color: #8119db"
   >
