@@ -477,7 +477,7 @@ export const giveCoachFeedback = async (req, res) => {
 // };
 export const getAllClients = async (req, res) => {
   try {
-    const limit = parseInt(req.query.limit) || 8;
+    const limit = parseInt(req.query.limit) || 5;
     const page = parseInt(req.query.page) || 1;
     const user = await userModel.findById(req.userID);
 
