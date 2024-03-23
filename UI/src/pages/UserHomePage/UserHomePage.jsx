@@ -6,7 +6,16 @@ import UserRoutine from "../../components/UserRoutine/UserRoutine";
 import NavBarUserHome from "../../components/NavBarUserHome";
 import MembershipTracker from "../../components/MembershipTracker/MembershipTracker";
 import Reservations from "../../components/Reservations/Reservations";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 function UserHomePage() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (location.pathname === "/userHome") {
+      navigate("/userHome", { replace: true });
+    }
+  }, [location.pathname, navigate]);
   return (
     <div>
       <NavBarUserHome />

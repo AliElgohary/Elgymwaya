@@ -60,7 +60,10 @@ const Register = () => {
           "string.pattern.base": "Please enter a valid Egyptian phone number.",
         })
         .label("phone_number"),
-      password: Joi.string().required().label("password"),
+      password: Joi.string()
+        .required()
+        .pattern(/^(?=.[a-z])(?=.[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/)
+        .label("password"),
       Cpassword: Joi.string().required().label("Cpassword"),
     }),
     []

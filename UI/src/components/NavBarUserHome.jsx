@@ -15,12 +15,12 @@ import { logout } from "../store/action/authActions";
 function NavBarUserHome(freePlane) {
   const currentUser = useSelector((state) => state.me.currentUser);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
-          <Navbar.Brand href="/src">
+          <Navbar.Brand>
             <span>ELGYMAWEYA</span>
             <img src={logo} style={{ width: "40px" }} />
           </Navbar.Brand>
@@ -60,11 +60,14 @@ function NavBarUserHome(freePlane) {
                 </NavDropdown.Item>
                 <Dropdown.Divider />
                 <NavDropdown.Item style={{ backgroundColor: "#e3d8ee" }}>
-                  <span onClick={() => {
-                    localStorage.removeItem("token")
-                    dispatch(logout())
-                    navigate("/")
-                  }} className="text-dark text-decoration-none">
+                  <span
+                    onClick={() => {
+                      localStorage.removeItem("token");
+                      dispatch(logout());
+                      navigate("/");
+                    }}
+                    className="text-dark text-decoration-none"
+                  >
                     Log Out
                   </span>
                 </NavDropdown.Item>
