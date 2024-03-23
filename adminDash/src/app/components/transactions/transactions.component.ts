@@ -24,12 +24,14 @@ export class TransactionsComponent implements OnInit {
   }
 
   deleteTransaction(id: string) {
-    this.transactionsService.deleteTransactions(id).subscribe((response) => {
-      if (response.message === 'Transaction Deleted') {
-        this.getTransactions();
-      } else {
-        console.error('Unexpected deletion response:', response);
-      }
-    });
+    if (confirm("Are you sure you want to delete this transaction?")) {
+      this.transactionsService.deleteTransactions(id).subscribe((response: any) => {
+        if (response.message === 'Transaction Deleted') {
+          this.getTransactions();
+        } else {
+          console.error('Unexpected deletion response:', response);
+        }
+      });
+    }
   }
 }

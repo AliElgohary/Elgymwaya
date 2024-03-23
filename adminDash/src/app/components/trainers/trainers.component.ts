@@ -34,14 +34,15 @@ export class TrainersComponent implements OnInit {
   }
 
   deleteTrainer(id: string) {
-    this.trainersSer.deleteTrainer(id).subscribe((response: any) => {
-      if (response.message === 'Coach Deleted') {
-        // Fetch trainers for the current page after deletion
-        this.fetchTrainers(this.currentPage);
-      } else {
-        console.error('Unexpected deletion response:', response);
-      }
-    });
+    if (confirm("Are you sure you want to delete this trainer?")) {
+      this.trainersSer.deleteTrainer(id).subscribe((response: any) => {
+        if (response.message === 'Coach Deleted') {
+          this.fetchTrainers(this.currentPage);
+        } else {
+          console.error('Unexpected deletion response:', response);
+        }
+      });
+    }
   }
 
   changePage(newPage: number) {
