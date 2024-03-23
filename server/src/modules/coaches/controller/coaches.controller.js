@@ -199,13 +199,17 @@ export const getAllcoaches = async (req, res) => {
 
     const skip = (page - 1) * limit; 
 
+    const coachesCount = await coachModel.countDocuments();
+    const totalPages = Math.ceil(coachesCount / limit);
+
     const coaches = await coachModel.find().limit(limit).skip(skip);
 
-    res.json({ message: "Get all coaches", coaches });
+    res.json({ message: "Get all coaches", coaches, totalPages, currentPage: page });
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 
 
 export const getcoachById = async (req, res) => {

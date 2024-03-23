@@ -33,14 +33,17 @@ export class TraineesComponent implements OnInit {
     this.router.navigate(['trainees/details', traineeID]);
   }
 
-  deleteTrainees(id: string) {
-    this.traineesSer.deleteTrainee(id).subscribe((response: any) => {
-      if (response.message === 'user Deleted') {
-        this.fetchTrainees(this.currentPage);
-      } else {
-        console.error('Unexpected deletion response:', response);
-      }
-    });
+  deleteTrainee(id: string) {
+    if (confirm("Are you sure you want to delete this trainee?")) {
+      this.traineesSer.deleteTrainee(id).subscribe((response: any) => {
+        if (response.message === 'user Deleted') {
+          // Fetch trainees for the current page after deletion
+          this.fetchTrainees(this.currentPage);
+        } else {
+          console.error('Unexpected deletion response:', response);
+        }
+      });
+    }
   }
 
   changePage(newPage: number) {
