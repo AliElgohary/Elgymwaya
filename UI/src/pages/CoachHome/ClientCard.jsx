@@ -34,7 +34,6 @@ const ClientCard = ({ client }) => {
           <strong>Role:</strong>{" "}
           <Badge variant="secondary">{client.role}</Badge>
           <br />
-          {/* Add more client information as needed */}
         </Card.Text>
       </Card.Body>
     </Card>

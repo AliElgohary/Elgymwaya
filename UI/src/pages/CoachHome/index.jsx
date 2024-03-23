@@ -16,6 +16,7 @@ import WorkoutForm from "./WorkoutForm";
 import ClientCard from "./ClientCard";
 import CoachReservations from "./CoachReservations";
 import WithCurrentUserRedirect from "../../components/common/WithCurrentUserRedirect";
+import CoachFeedback from "./CoachFeedback";
 
 function CoachHomepage() {
   const [showInfoMode, setShowInfoMode] = useState(false);
@@ -123,6 +124,7 @@ function CoachHomepage() {
         </div>
 
         <CoachReservations />
+        <CoachFeedback />
       </Row>
 
       <Modal
@@ -154,4 +156,7 @@ function CoachHomepage() {
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
-export default WithCurrentUserRedirect(CoachHomepage, (currentUser) => currentUser.role == "coach");
+export default WithCurrentUserRedirect(
+  CoachHomepage,
+  (currentUser) => currentUser.role == "coach"
+);
