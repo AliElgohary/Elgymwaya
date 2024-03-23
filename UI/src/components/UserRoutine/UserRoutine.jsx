@@ -108,9 +108,19 @@ function UserRoutine() {
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>
-        User Workout Plans
+      <Typography
+        variant="h4"
+        gutterBottom
+        style={{
+          fontWeight: "bold",
+          color: "rgb(71, 68, 68)",
+          fontSize: "25px",
+          fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+        }}
+      >
+        Your Customized Workout Plans
       </Typography>
+
       {workoutPlans.length > 0 &&
         workoutPlans.map((plan) => (
           <Accordion key={plan._id}>

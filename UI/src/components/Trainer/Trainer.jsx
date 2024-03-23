@@ -12,16 +12,27 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import { makeReservation } from "../../thunks/reservationThunks";
-
+import {
+  Modal,
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Rating,
+} from "@mui/material";
+import { makeFeedback } from "../../thunks/feedbackThunks";
 function Trainer() {
   const [reservation, setReservation] = useState({
     date: "",
     start_time: "",
     end_time: "",
   });
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const [feedback, setFeedback] = useState({ rating: 2, comment: "" });
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.me.currentUser);
   const coachInfo = currentUser && currentUser.coach_id;
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "start_time") {
@@ -44,6 +55,18 @@ function Trainer() {
   const handleReservationSubmit = (e) => {
     e.preventDefault();
     dispatch(makeReservation(reservation));
+  };
+
+  const handleFeedbackChange = (e) => {
+    const { name, value } = e.target;
+    setFeedback((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFeedbackSubmit = (e) => {
+    e.preventDefault();
+    // Dispatch action to send feedback
+    dispatch(makeFeedback(feedback));
+    setFeedbackOpen(false); // Close modal after submission
   };
   return (
     <>
@@ -88,6 +111,73 @@ function Trainer() {
                 <p className={style.infoSpan}>No working days set.</p>
               )}
             </div>
+            {/* Feedback button */}
+            <h5 className={style.infoHead}>Give Your Coach Feedback</h5>
+            {coachInfo && (
+              <div>
+                <Button
+                  variant="outlined"
+                  onClick={() => setFeedbackOpen(true)}
+                >
+                  Give Feedback
+                </Button>
+              </div>
+            )}
+
+            {/* Feedback Modal */}
+            <Modal
+              open={feedbackOpen}
+              onClose={() => setFeedbackOpen(false)}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: 400,
+                  bgcolor: "background.paper",
+                  boxShadow: 24,
+                  p: 4,
+                  outline: "none",
+                }}
+              >
+                <Typography
+                  id="modal-modal-title"
+                  variant="h6"
+                  component="div"
+                  sx={{ mb: 2 }}
+                >
+                  Give Feedback
+                </Typography>
+                <form onSubmit={handleFeedbackSubmit}>
+                  <Rating
+                    name="rating"
+                    value={feedback.rating}
+                    onChange={(event, newValue) => {
+                      setFeedback((prev) => ({ ...prev, rating: newValue }));
+                    }}
+                  />
+                  <TextField
+                    id="feedback-comment"
+                    label="Comment"
+                    name="comment"
+                    multiline
+                    rows={4}
+                    value={feedback.comment}
+                    onChange={handleFeedbackChange}
+                    variant="outlined"
+                    fullWidth
+                    sx={{ mt: 2, mb: 2 }}
+                  />
+                  <Button type="submit" variant="contained">
+                    Submit Feedback
+                  </Button>
+                </form>
+              </Box>
+            </Modal>
           </div>
           {/* Reservation form column */}
           <div className={`${style.reservationForm} col-md-5`}>
