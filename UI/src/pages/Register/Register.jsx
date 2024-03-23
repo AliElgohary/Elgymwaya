@@ -62,7 +62,7 @@ const Register = () => {
         .label("phone_number"),
       password: Joi.string()
         .required()
-        .pattern(/^(?=.[a-z])(?=.[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/)
+        .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/)
         .label("password"),
       Cpassword: Joi.string().required().label("Cpassword"),
     }),

@@ -8,6 +8,7 @@ import { Table } from "react-bootstrap";
 import { faPlay, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import WithCurrentUserRedirect from "../../components/common/WithCurrentUserRedirect";
+import { MDBContainer } from "mdbreact";
 function FreeUserHomePage() {
   const currentUser = useSelector((state) => state.me.currentUser);
   console.log(currentUser);
