@@ -2,50 +2,87 @@ import React, { useState, useEffect } from "react";
 import {
   Container,
   Grid,
-  Card,
-  CardActionArea,
-  CardContent,
   Typography,
   Modal,
   Box,
   Paper,
   Stack,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@mui/material";
-
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Button } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+const CustomButton = styled(Button)(({ theme }) => ({
+  margin: theme.spacing(1),
+  [theme.breakpoints.down("sm")]: {
+    margin: theme.spacing(0.5),
+    padding: theme.spacing(0.5),
+  },
+}));
 function UserRoutine() {
   const [workoutPlans, setWorkoutPlans] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [selectedWorkout, setSelectedWorkout] = useState(null);
   const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    const fetchWorkoutPlans = async () => {
-      if (!token) {
-        console.log("No token found");
-        return;
-      }
+  const fetchWorkoutPlans = async () => {
+    if (!token) {
+      console.log("No token found");
+      return;
+    }
 
-      try {
-        const response = await fetch(
-          "http://localhost:5000/clientt/workout-plans",
-          {
-            headers: { token },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch workout plans");
+    try {
+      const response = await fetch(
+        "http://localhost:5000/clientt/workout-plans",
+        {
+          headers: { token },
         }
+      );
 
-        const data = await response.json();
-        setWorkoutPlans(data);
-      } catch (error) {
-        console.error(error.message);
+      if (!response.ok) {
+        throw new Error("Failed to fetch workout plans");
       }
-    };
 
+      const data = await response.json();
+      setWorkoutPlans(data);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
     fetchWorkoutPlans();
   }, [token]);
+
+  const updateWorkoutPlanStatus = async (planId, newStatus) => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = await fetch(
+        `http://localhost:5000/workout-plans/${planId}`,
+        {
+          method: "PATCH",
+          headers: {
+            token,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ status: newStatus }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to update workout plan status");
+      }
+
+      console.log("Status updated successfully", await response.json());
+      fetchWorkoutPlans();
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   const handleOpenModal = (workout) => {
     setSelectedWorkout(workout);
@@ -74,25 +111,70 @@ function UserRoutine() {
       <Typography variant="h4" gutterBottom>
         User Workout Plans
       </Typography>
-      <Grid container spacing={2}>
-        {workoutPlans.length > 0 &&
-          workoutPlans.map((plan) =>
-            plan.workouts.map((workout, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                <Card>
-                  <CardActionArea onClick={() => handleOpenModal(workout)}>
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {workout.name}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
+      {workoutPlans.length > 0 &&
+        workoutPlans.map((plan) => (
+          <Accordion key={plan._id}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography>
+                From {new Date(plan.start_date).toLocaleDateString("en-GB")} To{" "}
+                {new Date(plan.end_date).toLocaleDateString("en-GB")}, Goal:{" "}
+                {plan.goals}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Grid
+                container
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{ marginBottom: 2 }}
+              >
+                <Grid item>
+                  <Typography>Status: {plan.status}</Typography>
+                </Grid>
+                <Grid item>
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    onClick={() => updateWorkoutPlanStatus(plan._id, "Active")}
+                    sx={{ marginRight: 1 }}
+                  >
+                    Activate
+                  </Button>
+                  <CustomButton
+                    variant="outlined"
+                    startIcon={<PauseCircleOutlineIcon />}
+                    onClick={() => updateWorkoutPlanStatus(plan._id, "Paused")}
+                  >
+                    Pause
+                  </CustomButton>
+                  <CustomButton
+                    variant="contained"
+                    startIcon={<CheckCircleOutlineIcon />}
+                    onClick={() =>
+                      updateWorkoutPlanStatus(plan._id, "Completed")
+                    }
+                  >
+                    Completed
+                  </CustomButton>
+                </Grid>
               </Grid>
-            ))
-          )}
-      </Grid>
-
+              <Grid container spacing={2}>
+                {plan.workouts.map((workout, index) => (
+                  <Grid item xs={6} sm={4} md={3} key={index}>
+                    {" "}
+                    <Paper
+                      elevation={2}
+                      sx={{ p: 2, cursor: "pointer" }}
+                      onClick={() => handleOpenModal(workout)}
+                    >
+                      <Typography variant="h6">{workout.name}</Typography>
+                    </Paper>
+                  </Grid>
+                ))}
+              </Grid>
+            </AccordionDetails>
+          </Accordion>
+        ))}
       <Modal
         open={openModal}
         onClose={handleCloseModal}

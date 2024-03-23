@@ -7,8 +7,8 @@ const workoutPlanSchema = new mongoose.Schema({
   end_date: Date,
   status: {
     type: String,
-    default: "active",
-    enum: ["active", "completed", "paused"],
+    default: "Active",
+    enum: ["Active", "Completed", "Paused"],
   },
   workouts: [
     {

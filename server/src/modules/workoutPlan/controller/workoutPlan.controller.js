@@ -31,7 +31,7 @@ export const createWorkoutPlan = async (req, res) => {
       .findOne({
         client_id: client_id,
       })
-      .sort({ end_date: -1 }); 
+      .sort({ end_date: -1 });
 
     if (
       existingPlan &&
@@ -83,7 +83,9 @@ export const getAllWorkoutPlans = async (req, res) => {
 // Get Curent Client Plans
 export const getClientWorkoutPlans = async (req, res) => {
   try {
-    const workoutPlans = await workoutPlanModel.find({ client_id: req.userID });
+    const workoutPlans = await workoutPlanModel
+      .find({ client_id: req.userID })
+      .sort("-start_date");
 
     if (workoutPlans.length === 0) {
       return res.status(404).send("No workout plans found for this client.");
