@@ -475,11 +475,10 @@ export const giveCoachFeedback = async (req, res) => {
 //     res.status(500).send("Error fetching clients");
 //   }
 // };
-
 export const getAllClients = async (req, res) => {
   try {
-    const limit = parseInt(req.query.limit) || 8; 
-    const page = parseInt(req.query.page) || 1; 
+    const limit = parseInt(req.query.limit) || 8;
+    const page = parseInt(req.query.page) || 1;
     const user = await userModel.findById(req.userID);
 
     if (!user) {
@@ -493,6 +492,8 @@ export const getAllClients = async (req, res) => {
         .send("Unauthorized: Only managers and owners can access all clients.");
     }
 
+    const totalClientsCount = await userModel.countDocuments({});
+    const totalPages = Math.ceil(totalClientsCount / limit);
     const skip = (page - 1) * limit;
 
     // Fetch clients with pagination
@@ -502,7 +503,11 @@ export const getAllClients = async (req, res) => {
       .limit(limit)
       .skip(skip);
 
-    res.json(clients);
+    res.json({
+      clients: clients,
+      totalPages: totalPages,
+      currentPage: page,
+    });
   } catch (error) {
     console.error("Error fetching clients:", error);
     res.status(500).send("Error fetching clients");

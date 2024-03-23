@@ -45,3 +45,33 @@
   object-fit: cover;
   margin-right: 10px;
 }
+
+
+/* Add this CSS to your component's CSS file or styles.scss */
+
+.page-item {
+  display: inline-block; /* Display buttons in a row */
+  margin-right: 5px; /* Adjust margin between buttons */
+}
+
+.page-link {
+  color: #333; /* Text color */
+  background-color: #fff; /* Background color */
+  border: 1px solid #ccc; /* Border color */
+  padding: 6px 12px; /* Padding */
+  border-radius: 4px; /* Border radius */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.page-link:hover {
+  background-color: #f0f0f0; /* Hover background color */
+}
+
+.page-item.disabled .page-link {
+  color: #999; /* Disabled text color */
+  pointer-events: none; /* Disable pointer events */
+}
+
+.page-item.disabled .page-link:hover {
+  background-color: #fff; /* Disabled hover background color */
+}
