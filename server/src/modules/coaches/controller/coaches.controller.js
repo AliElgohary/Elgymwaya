@@ -152,6 +152,30 @@ export const updateCoach = async (req, res) => {
   }
 };
 
+// export const getAllcoaches = async (req, res) => {
+//   try {
+//     const user = await userModel.findById(req.userID);
+//     if (!user) {
+//       return res.status(404).send("User not found.");
+//     }
+//     const isAuthorized =
+//       user.role === "manager" ||
+//       user.role === "owner" ||
+//       user.role === "client";
+//     if (!isAuthorized) {
+//       return res
+//         .status(403)
+//         .send(
+//           "Unauthorized: Only managers, owners and clients can get all Coaches."
+//         );
+//     }
+//     const coaches = await coachModel.find();
+//     res.json({ message: "Get all coaches", coaches });
+//   } catch (error) {
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// };
+
 export const getAllcoaches = async (req, res) => {
   try {
     const user = await userModel.findById(req.userID);
@@ -166,15 +190,23 @@ export const getAllcoaches = async (req, res) => {
       return res
         .status(403)
         .send(
-          "Unauthorized: Only managers, owners and clients can get all Coaches."
+          "Unauthorized: Only managers, owners, and clients can get all Coaches."
         );
     }
-    const coaches = await coachModel.find();
+    
+    const limit = parseInt(req.query.limit) || 8; 
+    const page = parseInt(req.query.page) || 1; 
+
+    const skip = (page - 1) * limit; 
+
+    const coaches = await coachModel.find().limit(limit).skip(skip);
+
     res.json({ message: "Get all coaches", coaches });
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 
 export const getcoachById = async (req, res) => {
   const user = await userModel.findById(req.userID);
@@ -198,6 +230,8 @@ export const getcoachById = async (req, res) => {
     res.json({ message: "coach not found" });
   }
 };
+
+
 
 export const getcoachFeedbackById = async (req, res) => {
   try {
