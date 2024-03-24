@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 import { Card, Badge } from "react-bootstrap";
+import userPhoto from "../../assets/user.png";
 
 const ClientCard = ({ client }) => {
   return (
     <Card>
-      <Card.Img variant="top" src={client.profile_picture} />
+      <Card.Img variant="top" src={client.profile_picture || userPhoto} />
       <Card.Body>
         <Card.Title>{client.full_name}</Card.Title>
         <Card.Text>

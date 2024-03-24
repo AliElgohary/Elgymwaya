@@ -4,6 +4,7 @@ import styles from "./TraineeRotine.module.css";
 import { longNumber } from "../../utils/longNumber";
 import { Image } from "react-bootstrap";
 import moment from "moment";
+import userPhoto from "../../assets/user.png";
 
 const CoachFeedback = () => {
   const currentCoach = useSelector((state) => state.me.currentUser);
@@ -27,7 +28,7 @@ const CoachFeedback = () => {
           <div key={feedback._id} className={styles.card}>
             <div className={styles.imageContainer}>
               <Image
-                src={feedback.client_id?.profile_picture}
+                src={feedback.client_id?.profile_picture || userPhoto}
                 roundedCircle
                 width={30}
                 height={30}
