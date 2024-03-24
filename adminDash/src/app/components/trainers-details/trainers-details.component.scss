@@ -38,7 +38,9 @@
   color: #28a745;
 }
 
-.feedback-item:hover {
+.feedback-item:hover,
+.trainee-item:hover
+{
   background-color: #e9ecef;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
@@ -50,7 +52,15 @@
   align-items: center;
 }
 
-.fa-comments {
+.fa-comments,
+.fa-user {
   font-size: 1.2rem;
   color: #1976d2; 
+}
+
+.feedback-content2 {
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  width: 100%; 
 }

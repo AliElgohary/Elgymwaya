@@ -21,11 +21,14 @@
         </div>
         <div class="card mt-3 align-items-center w-100">
           <ul class="list-group list-group-flush w-100">
-            <li class="list-group-item flex-column align-items-center text-center">Clients</li>
+            <li class="list-group-item flex-column align-items-center text-center">Clients  &nbsp;
+              <i class="fa-solid fa-user"></i>
+            </li>
             @for (client of trainer.client_ids; track $index) {
             <li
-              class="list-group-item trainee-item d-flex justify-content-between align-items-center border-bottom-0 py-3 px-4"
+            class="list-group-item feedback-item"
             >
+            <div class="feedback-content2">
               <div class="media">
                 <img
                   src="{{ client.profile_picture }}"
@@ -34,14 +37,15 @@
                   style="max-width: 70px"
                 />
                 <div class="media-body">
-                  <h5 class="mt-0 mb-1">{{ client.full_name }}</h5>
+                  <h5 class="mt-0 mb-1 client-name">{{ client.full_name }}</h5>
                   <span class="text-muted">{{ client.email }}</span>
-                  <p class="text-muted ml-2">{{ client.phone_number }}</p>
+                  <p class="ml-2 rating">{{ client.phone_number }}</p>
                 </div>
               </div>
               <span class="badge badge-primary badge-pill">{{
                 client.status
               }}</span>
+              </div>
             </li>
 
             }
