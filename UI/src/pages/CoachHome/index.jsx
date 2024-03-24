@@ -133,9 +133,9 @@ function CoachHomepage() {
         dialogClassName="mw-100"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add Routine</Modal.Title>
+          <Modal.Title className="fw-bold">ADD ROUTINE</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className={styles.modal_bg}>
           <WorkoutForm
             clientId={selectedClient?._id}
             handleCloseModal={handleCloseRoutineModal}
