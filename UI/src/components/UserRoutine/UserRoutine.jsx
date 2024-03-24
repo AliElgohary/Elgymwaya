@@ -179,7 +179,12 @@ function UserRoutine() {
                       sx={{ p: 2, cursor: "pointer" }}
                       onClick={() => handleOpenModal(workout)}
                     >
-                      <Typography variant="h6">{workout.name}</Typography>
+                      <Typography
+                        variant="h6"
+                        className="text-center fw-bold fs-3 text-primary"
+                      >
+                        {workout.name}
+                      </Typography>
                     </Paper>
                   </Grid>
                 ))}
