@@ -20,7 +20,7 @@ export class AuthService {
   login(user : any): Observable<any> {
     return this.http.post(this.apiUrl, user).pipe(
       tap((response: any) => {
-        if (response && response.token && response.role === 'manager') {
+        if (response && response.token && (response.role === 'manager' || response.role === 'owner')) {
           localStorage.setItem('userToken', response.token);
           this.user.next(true);
         }

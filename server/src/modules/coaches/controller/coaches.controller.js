@@ -193,24 +193,32 @@ export const getAllcoaches = async (req, res) => {
           "Unauthorized: Only managers, owners, and clients can get all Coaches."
         );
     }
-    
-    const limit = parseInt(req.query.limit) || 5; 
-    const page = parseInt(req.query.page) || 1; 
 
-    const skip = (page - 1) * limit; 
+    const limit = parseInt(req.query.limit) || 5;
+    const page = parseInt(req.query.page) || 1;
+
+    const skip = (page - 1) * limit;
 
     const coachesCount = await coachModel.countDocuments();
     const totalPages = Math.ceil(coachesCount / limit);
 
-    const coaches = await coachModel.find().limit(limit).skip(skip);
+    const coaches = await coachModel
+      .find()
+      .limit(limit)
+      .skip(skip)
+      .populate("client_ids")
+      .populate("feedbacks.client_id", "full_name email");
 
-    res.json({ message: "Get all coaches", coaches, totalPages, currentPage: page });
+    res.json({
+      message: "Get all coaches",
+      coaches,
+      totalPages,
+      currentPage: page,
+    });
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
-
 
 export const getcoachById = async (req, res) => {
   const user = await userModel.findById(req.userID);
@@ -227,15 +235,16 @@ export const getcoachById = async (req, res) => {
       );
   }
 
-  let coach = await coachModel.findById(req.params.id);
+  let coach = await coachModel
+    .findById(req.params.id)
+    .populate("client_ids")
+    .populate("feedbacks.client_id");
   if (coach) {
     res.json({ message: "coach is:", coach });
   } else {
     res.json({ message: "coach not found" });
   }
 };
-
-
 
 export const getcoachFeedbackById = async (req, res) => {
   try {
@@ -316,7 +325,7 @@ function calculateAge(birthDate) {
 // update coach to admin
 export const updateCoachWithId = async (req, res) => {
   try {
-    const { coachId } = req.params; 
+    const { coachId } = req.params;
 
     const coachToUpdate = await coachModel.findById(coachId);
 
@@ -327,13 +336,12 @@ export const updateCoachWithId = async (req, res) => {
     if (req.body.email && req.body.email !== coachToUpdate.email) {
       const emailExists = await coachModel.findOne({
         email: req.body.email,
-        _id: { $ne: coachId }, 
+        _id: { $ne: coachId },
       });
 
       if (emailExists) {
         return res.status(400).send("Email is already in use.");
       }
-
     }
 
     if (req.body.birth_date) {
@@ -352,7 +360,4 @@ export const updateCoachWithId = async (req, res) => {
     console.error("Error in updating Coach:", error);
     res.status(500).send("Error in updating Coach");
   }
-
 };
-
-
