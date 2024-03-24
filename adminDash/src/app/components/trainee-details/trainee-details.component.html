@@ -1,5 +1,5 @@
 @if(trainee){
-<div class="container ">
+<div class="container">
   <div class="main-body">
     <div class="row gutters-sm">
       <div class="col-md-4 mb-3">
@@ -24,37 +24,36 @@
             <li
               class="list-group-item flex-column align-items-center text-center bold"
             >
-              Coach  &nbsp;
+              Coach &nbsp;
               <i class="fa-solid fa-dumbbell"></i>
             </li>
 
-        
-            <li 
-            class="list-group-item trainee-item content2"
-            >
-            @if(trainee.coach_id){
-              
-              <div class="coach-content">
-              <div class="media">
-                <img
-                  src="{{ trainee.coach_id.profile_picture }}"
-                  alt="Profile Picture"
-                  class="mr-3 rounded-circle"
-                  style="max-width: 70px"
-                />
-                <div class="media-body">
-                  <h5 class="mt-0 mb-1 coach-name">{{ trainee.coach_id.full_name }}</h5>
-                  <span class="text-muted">{{ trainee.coach_id.email }}
+            <li class="list-group-item trainee-item content2">
+              @if(trainee.coach_id){
+              <div class=" d-flex flex-column align-items-center text-center">
+                <div class="media">
+                  <img
+                    src="{{ trainee.coach_id.profile_picture }}"
+                    alt="Profile Picture"
+                    class="mr-3 rounded-circle"
+                    style="max-width: 70px"
+                  />
+                  <div class="media-body">
+                    <h5 class="mt-0 mb-1 coach-name">
+                      {{ trainee.coach_id.full_name }}
+                    </h5>
                     <i class="fa-solid fa-envelope-circle-check"></i>
-                  </span>
-                  <p class="ml-2 tel">
-                    {{ trainee.coach_id.phone_number }}
-                    <i class="fa-solid fa-phone"></i>
-                  </p>
+                    <span class="text-muted"
+                      > {{ trainee.coach_id.email }}
+                    </span>
+                    <p class="ml-2 tel">
+                      <i class="fa-solid fa-phone"></i>
+                      {{ trainee.coach_id.phone_number }}
+                    </p>
+                  </div>
                 </div>
               </div>
-              </div>
-            }
+              }
             </li>
           </ul>
         </div>
@@ -66,13 +65,10 @@
               Plan &nbsp;
               <i class="fa-regular fa-clipboard"></i>
             </li>
-            <li 
-            class="list-group-item trainee-item content2"
-            >
-            <div class="Plan-content">
-
-              <div class="media">
-                @if(trainee.plan_id){
+            <li class="list-group-item trainee-item content2">
+              <div class="d-flex flex-column align-items-center text-center">
+                <div class="media">
+                  @if(trainee.plan_id){
                   <img
                     src="{{ trainee.plan_id.profile_picture }}"
                     alt="Profile Picture"
@@ -80,11 +76,12 @@
                     style="max-width: 70px"
                   />
                   <div class="media-body">
-                    <h5 class="mt-0 mb-1 Plan-name">{{ trainee.plan_id.description }}</h5>
-
+                    <h5 class="mt-0 mb-1 Plan-name">
+                      {{ trainee.plan_id.description }}
+                    </h5>
                   </div>
-                }
-              </div>
+                  }
+                </div>
               </div>
             </li>
           </ul>
@@ -212,6 +209,3 @@
   </div>
 </div>
 }
-
-
-

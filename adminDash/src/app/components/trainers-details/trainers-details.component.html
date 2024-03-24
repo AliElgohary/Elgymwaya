@@ -28,8 +28,8 @@
             <li
             class="list-group-item feedback-item"
             >
-            <div class="feedback-content2">
-              <div class="media">
+            <div class="d-flex flex-column align-items-center text-center">
+              <div class="media ">
                 <img
                   src="{{ client.profile_picture }}"
                   alt="Profile Picture"
@@ -59,10 +59,10 @@
           <div class="card-body">
             <ul class="list-group list-group-flush">
               @for (feedback of trainer.feedbacks; track $index) {
-              <li 
+              <li
               class="list-group-item feedback-item"
               >
-                <div class="feedback-content">
+                <div class="d-flex flex-column align-items-center text-center">
                   <h4 class="client-name">{{ feedback.client_id.full_name }}</h4>
                 <div>
                   <p class="comment">{{ feedback.comment }}</p>
@@ -74,7 +74,7 @@
             </ul>
           </div>
         </div>
-        
+
       </div>
       <div class="col-md-8">
         <div class="card mb-3">
