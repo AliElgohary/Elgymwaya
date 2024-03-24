@@ -48,7 +48,7 @@
           </ul>
         </div>
 
-        <div class="card mt-3">
+        <!-- <div class="card mt-3">
           <ul class="list-group list-group-flush">
             <li
               class="list-group-item flex-column align-items-center text-center"
@@ -69,7 +69,38 @@
             </li>
             }
           </ul>
+        </div> -->
+
+
+
+        <div class="card mt-3 feedback-card">
+          <div class="card-header">
+            <h5 class="card-title">Feedbacks &nbsp; <i class="fa-solid fa-comments"></i></h5>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              @for (feedback of trainer.feedbacks; track $index) {
+              <li 
+              class="list-group-item feedback-item"
+              >
+                <div class="feedback-content">
+                  <h4 class="client-name">{{ feedback.client_id.full_name }}</h4>
+                <div>
+                  <p class="comment">{{ feedback.comment }}</p>
+                  <p class="rating">{{ feedback.rating }} / 5 <i class="fa-regular fa-star"></i></p>
+                </div>
+              </div>
+            </li>
+              }
+            </ul>
+          </div>
         </div>
+        
+
+
+
+
+
       </div>
       <div class="col-md-8">
         <div class="card mb-3">
