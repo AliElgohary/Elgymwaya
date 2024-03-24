@@ -21,7 +21,7 @@
 }
 .inputGroup .inputWrapper input[type="date"] {
   text-align: end;
-  padding: 6px 2.5rem;
+  padding: 6px 2rem;
 }
 .placeholderLabel {
   position: absolute;
@@ -44,7 +44,6 @@
 } */
 .inputGroup .input {
   padding-left: 30px;
-
 }
 
 .input {

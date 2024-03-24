@@ -5,10 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { crateRoutineInit } from "../../thunks/users";
 import { useDispatch } from "react-redux";
+import Input from "./../../components/common/Input";
 
 // eslint-disable-next-line react/prop-types
-const WorkoutForm = ({clientId, handleCloseModal}) => {
-  const dispatch = useDispatch()
+const WorkoutForm = ({ clientId, handleCloseModal }) => {
+  const dispatch = useDispatch();
   // State variables to hold form data
   const [formData, setFormData] = useState({
     startDate: "",
@@ -73,15 +74,16 @@ const WorkoutForm = ({clientId, handleCloseModal}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     formData["client_id"] = clientId;
-    dispatch(crateRoutineInit(formData))
-    handleCloseModal()
+    dispatch(crateRoutineInit(formData));
+    handleCloseModal();
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className={styles.modal_bg}>
       <Form.Group controlId="startDate">
-        <Form.Label>Start Date</Form.Label>
-        <Form.Control
+        <Form.Label className="pt-1 mb-1">Start Date</Form.Label>
+        <Input
+          className={styles.input_modal}
           type="date"
           name="startDate"
           value={formData.startDate}
@@ -92,8 +94,9 @@ const WorkoutForm = ({clientId, handleCloseModal}) => {
       </Form.Group>
 
       <Form.Group controlId="endDate">
-        <Form.Label>End Date</Form.Label>
-        <Form.Control
+        <Form.Label className="pt-4 mb-1">End Date</Form.Label>
+        <Input
+          className={styles.input_modal}
           type="date"
           name="endDate"
           value={formData.endDate}
@@ -104,7 +107,7 @@ const WorkoutForm = ({clientId, handleCloseModal}) => {
       </Form.Group>
 
       <Form.Group controlId="status">
-        <Form.Label>Status</Form.Label>
+        <Form.Label className="pt-4 mb-1">Status</Form.Label>
         <Form.Control
           as="select"
           name="status"
@@ -125,8 +128,9 @@ const WorkoutForm = ({clientId, handleCloseModal}) => {
           <Row>
             <Col>
               <Form.Group controlId={`workoutName-${index}`}>
-                <Form.Label>Name</Form.Label>
-                <Form.Control
+                <Form.Label className="pt-4 mb-1">Name</Form.Label>
+                <Input
+                  className={styles.input_modal}
                   type="text"
                   name="name"
                   value={workout.name}
@@ -136,8 +140,9 @@ const WorkoutForm = ({clientId, handleCloseModal}) => {
             </Col>
             <Col>
               <Form.Group controlId={`workoutDescription-${index}`}>
-                <Form.Label>Description</Form.Label>
-                <Form.Control
+                <Form.Label className="pt-4 mb-1">Description</Form.Label>
+                <Input
+                  className={styles.input_modal}
                   type="text"
                   name="description"
                   value={workout.description}
@@ -149,8 +154,9 @@ const WorkoutForm = ({clientId, handleCloseModal}) => {
           <Row>
             <Col>
               <Form.Group controlId={`workoutFrequency-${index}`}>
-                <Form.Label>Frequency</Form.Label>
-                <Form.Control
+                <Form.Label className="pt-4 mb-1">Frequency</Form.Label>
+                <Input
+                  className={styles.input_modal}
                   type="text"
                   name="frequency"
                   value={workout.frequency}
@@ -160,8 +166,11 @@ const WorkoutForm = ({clientId, handleCloseModal}) => {
             </Col>
             <Col>
               <Form.Group controlId={`workoutDuration-${index}`}>
-                <Form.Label>Duration (minutes)</Form.Label>
-                <Form.Control
+                <Form.Label className="pt-4 mb-1">
+                  Duration (minutes)
+                </Form.Label>
+                <Input
+                  className={styles.input_modal}
                   type="number"
                   name="duration"
                   value={workout.duration}
@@ -173,8 +182,9 @@ const WorkoutForm = ({clientId, handleCloseModal}) => {
           <Row>
             <Col>
               <Form.Group controlId={`workoutType-${index}`}>
-                <Form.Label>Type</Form.Label>
-                <Form.Control
+                <Form.Label className="pt-4 mb-1">Type</Form.Label>
+                <Input
+                  className={styles.input_modal}
                   type="text"
                   name="type"
                   value={workout.type}
@@ -184,8 +194,9 @@ const WorkoutForm = ({clientId, handleCloseModal}) => {
             </Col>
             <Col>
               <Form.Group controlId={`workoutSets-${index}`}>
-                <Form.Label>Sets</Form.Label>
-                <Form.Control
+                <Form.Label className="pt-4 mb-1">Sets</Form.Label>
+                <Input
+                  className={styles.input_modal}
                   type="number"
                   name="sets"
                   value={workout.sets}
@@ -197,8 +208,9 @@ const WorkoutForm = ({clientId, handleCloseModal}) => {
           <Row>
             <Col>
               <Form.Group controlId={`workoutReps-${index}`}>
-                <Form.Label>Reps</Form.Label>
-                <Form.Control
+                <Form.Label className="pt-4 mb-1">Reps</Form.Label>
+                <Input
+                  className={styles.input_modal}
                   type="number"
                   name="reps"
                   value={workout.reps}
@@ -208,8 +220,11 @@ const WorkoutForm = ({clientId, handleCloseModal}) => {
             </Col>
             <Col>
               <Form.Group controlId={`workoutRestPeriod-${index}`}>
-                <Form.Label>Rest Period (seconds)</Form.Label>
-                <Form.Control
+                <Form.Label className="pt-4 mb-1">
+                  Rest Period (seconds)
+                </Form.Label>
+                <Input
+                  className={styles.input_modal}
                   type="number"
                   name="rest_period"
                   value={workout.rest_period}
@@ -219,8 +234,9 @@ const WorkoutForm = ({clientId, handleCloseModal}) => {
             </Col>
           </Row>
           <Form.Group controlId={`workoutEquipment-${index}`}>
-            <Form.Label>Equipment Needed</Form.Label>
-            <Form.Control
+            <Form.Label className="pt-4 mb-1">Equipment Needed</Form.Label>
+            <Input
+              className={styles.input_modal}
               type="text"
               name="equipment_needed"
               value={workout.equipment_needed}
@@ -228,27 +244,37 @@ const WorkoutForm = ({clientId, handleCloseModal}) => {
             />
           </Form.Group>
           <Form.Group controlId={`workoutVideoLink-${index}`}>
-            <Form.Label>Video Link</Form.Label>
-            <Form.Control
+            <Form.Label className="pt-4 mb-1">Video Link</Form.Label>
+            <Input
+              className={styles.input_modal}
               type="text"
               name="video_link"
               value={workout.video_link}
               onChange={(e) => handleWorkoutChange(index, e)}
             />
           </Form.Group>
-          <Button className={styles.removeWorkout} variant="danger" onClick={() => removeWorkout(index)}>
+          <Button
+            className={styles.removeWorkout}
+            variant="danger"
+            onClick={() => removeWorkout(index)}
+          >
             Remove Workout
           </Button>
         </div>
       ))}
-      <Button variant="primary" className={styles.addWorkout} onClick={addWorkout}>
+      <Button
+        variant="primary"
+        className={styles.addWorkout}
+        onClick={addWorkout}
+      >
         <FontAwesomeIcon icon={faPlus} />
         Add
       </Button>
 
       <Form.Group controlId="goals">
-        <Form.Label>Goals</Form.Label>
-        <Form.Control
+        <Form.Label className="pt-4 mb-1">Goals</Form.Label>
+        <Input
+          className={styles.input_modal}
           as="textarea"
           rows={3}
           name="goals"
@@ -258,8 +284,9 @@ const WorkoutForm = ({clientId, handleCloseModal}) => {
       </Form.Group>
 
       <Form.Group controlId="notes">
-        <Form.Label>Notes</Form.Label>
-        <Form.Control
+        <Form.Label className="pt-4 mb-1">Notes</Form.Label>
+        <Input
+          className={styles.input_modal}
           as="textarea"
           rows={3}
           name="notes"
