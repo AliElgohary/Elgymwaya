@@ -158,18 +158,17 @@
           id="height"
           name="height"
           [(ngModel)]="user.height"
+          [ngModel]="0"
           placeholder="Enter height"
           #heightInput="ngModel"
           required
           min="0"
         />
-        <span class="invalid-feedback">
-          @if(heightInput.errors?.['required']){
-          <span style="color: #8119db">height is required</span>
-          } @if(heightInput.errors?.['min']){
+        @if(heightInput.errors?.['min']){
           <span style="color: #8119db">Height must be a positive number</span>
-          }
-        </span>
+        } @if(heightInput.errors?.['required']){
+            <span style="color: #8119db">Height is required</span>
+            } 
       </div>
 
       <div class="col col-12 col-md-5 form-group">
@@ -180,19 +179,19 @@
           id="weight"
           name="weight"
           [(ngModel)]="user.weight"
+          [ngModel]="0"
           placeholder="Enter weight"
           #weightInput="ngModel"
           required
           min="0"
+          value="0"
         />
-        <span class="invalid-feedback">
-          @if(weightInput.errors?.['required']){
-          <span style="color: #8119db">Weight is required</span>
-          } @if(weightInput.errors?.['min']){
-          <span style="color: #8119db">Weight must be a positive number</span>
-          }
-        </span>
 
+        @if(weightInput.errors?.['min']){
+          <span style="color: #8119db">Weight must be a positive number</span>
+        } @if(weightInput.errors?.['required']){
+            <span style="color: #8119db">Weight is required</span>
+            } 
       </div>
 
       <div>
