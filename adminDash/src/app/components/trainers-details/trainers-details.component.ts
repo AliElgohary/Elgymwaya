@@ -20,7 +20,7 @@ export class TrainersDetailsComponent implements OnInit {
     private router: Router
   ) {}
   trainerId!: string;
-  trainer!: Itrainers;
+  trainer!: any;
   trainIDChangedSubscription!: Subscription;
 
   ngOnInit(): void {
