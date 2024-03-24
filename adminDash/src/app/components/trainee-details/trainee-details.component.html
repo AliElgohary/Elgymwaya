@@ -19,6 +19,7 @@
             </div>
           </div>
         </div>
+        @if(trainee.coach_id){
         <div class="card mt-3">
           <ul class="list-group list-group-flush w-100">
             <li
@@ -29,7 +30,6 @@
             </li>
 
             <li class="list-group-item trainee-item content2">
-              @if(trainee.coach_id){
               <div class=" d-flex flex-column align-items-center text-center">
                 <div class="media">
                   <img
@@ -53,10 +53,10 @@
                   </div>
                 </div>
               </div>
-              }
             </li>
           </ul>
         </div>
+      }
         <div class="card mt-3">
           <ul class="list-group list-group-flush w-100">
             <li
@@ -78,6 +78,18 @@
                   <div class="media-body">
                     <h5 class="mt-0 mb-1 Plan-name">
                       {{ trainee.plan_id.description }}
+                    </h5>
+                  </div>
+                  } @else{
+                    <img
+                    src="{{ freePlan.profile_picture }}"
+                    alt="Profile Picture"
+                    class="mr-3 rounded-circle"
+                    style="max-width: 70px"
+                  />
+                  <div class="media-body">
+                    <h5 class="mt-0 mb-1 Plan-name">
+                      {{ freePlan.description }}
                     </h5>
                   </div>
                   }

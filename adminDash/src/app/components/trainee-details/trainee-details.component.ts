@@ -5,6 +5,7 @@ import { TraineesService } from '../../services/trainees/trainees.service';
 import { Subscription } from 'rxjs';
 import { Itrainee } from '../../models/Itrainee';
 import { EditTraineeComponent } from './edit-trainee/edit-trainee.component';
+import { PlansService } from '../../services/plans/plans.service';
 
 @Component({
   selector: 'app-trainee-details',
@@ -17,24 +18,34 @@ export class TraineeDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private traineeServ: TraineesService,
-    private router: Router
+    private router: Router,
+    private planSer: PlansService
   ) {}
   traineeID!: string;
   trainee!: any;
+  freePlan: any;
   trainIDChangedSubscription!: Subscription;
   ngOnInit(): void {
     this.trainIDChangedSubscription = this.route.paramMap.subscribe(
       (params) => {
         this.traineeID = params.get('id') as string;
         this.loadTrainee();
+        this.loadFreePlan()
       }
     );
+
   }
 
   loadTrainee(): void {
     this.traineeServ.getTrainee(this.traineeID).subscribe((data) => {
       this.trainee = data;
       console.log(this.trainee);
+    });
+  }
+
+  loadFreePlan(){
+    this.planSer.getPlans().subscribe((data) => {
+      this.freePlan = data[0];
     });
   }
 
