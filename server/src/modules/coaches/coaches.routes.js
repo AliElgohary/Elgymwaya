@@ -8,6 +8,7 @@ import {
   deleteCoach,
   getAllcoaches,
   getcoachById,
+  getCoaches,
   getcoachFeedbackById,
   getcoachRatingById,
   updateCoach,
@@ -39,46 +40,21 @@ coachRoutes.patch(
 );
 
 //get all coaches
-coachRoutes.get(
-  "/coach",
-   auth, 
-   getAllcoaches
-   );
+coachRoutes.get("/coach", auth, getAllcoaches);
 
-  coachRoutes.get(
-    "/coaches",
-     auth, 
-     getAllcoaches
-     );
+coachRoutes.get("/coaches", auth, getCoaches);
 
-// get coach by id 
-coachRoutes.get(
-  "/coach/:id", 
-  auth, 
-  getcoachById
-  );
+// get coach by id
+coachRoutes.get("/coach/:id", auth, getcoachById);
 
-// get coach average rating 
-coachRoutes.get(
-  "/coach/:id/average-rating", 
-  auth, 
-  getcoachRatingById
-  );
-  
+// get coach average rating
+coachRoutes.get("/coach/:id/average-rating", auth, getcoachRatingById);
+
 // get coaches feadback
-coachRoutes.get("/coach/:id/feedbacks", 
-auth, 
-getcoachFeedbackById
-);
+coachRoutes.get("/coach/:id/feedbacks", auth, getcoachFeedbackById);
 // delete coaches
-coachRoutes.delete("/coach/:id", 
-auth, 
-deleteCoach
-);
+coachRoutes.delete("/coach/:id", auth, deleteCoach);
 //update coach to admin
-coachRoutes.put(
-  "/coach/update/:coachId",
-  updateCoachWithId
-);
+coachRoutes.put("/coach/update/:coachId", updateCoachWithId);
 
 export default coachRoutes;
