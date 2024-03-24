@@ -164,14 +164,21 @@
         #SalaryInput="ngModel"
         required
         min="0"
+        [ngClass]="{
+          'is-invalid': (SalaryInput.touched || SalaryInput.dirty) && !SalaryInput.valid
+        }"
       />
-      <span class="invalid-feedback">
-        @if(SalaryInput.errors?.['required']){
+      <div
+        *ngIf="SalaryInput.invalid && (SalaryInput.touched || SalaryInput.dirty)"
+        class="invalid-feedback"
+      >
+        Please provide a valid fee.
+      </div>
+      @if(SalaryInput.errors?.['min']){
+      <span style="color: #8119db">Salary must be a positive number</span>
+      } @if(SalaryInput.errors?.['required']){
         <span style="color: #8119db">salary is required</span>
-        } @if(SalaryInput.errors?.['min']){
-        <span style="color: #8119db">salary must be a positive number</span>
-        }
-      </span>
+        } 
     </div>
     <div class="container">
       <div class="row">
