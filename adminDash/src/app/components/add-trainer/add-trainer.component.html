@@ -3,7 +3,7 @@
 <form #addPlanForm="ngForm" (ngSubmit)="addTrainer()" class="m-2">
   <div class="row box">
     <div class="col col-12 col-md-6 form-group">
-      <label for="full_name col-form-label">Full Name</label>
+      <label for="full_name" class="col-form-label">Full Name</label>
       <input
         type="text"
         class="form-control"
@@ -109,8 +109,8 @@
         <span style="color: #8119db">Passwords and confirmed password do not match</span>
       </span>
     </div>
-    
-    
+
+
 
     <div class="col col-12 col-md-6 form-group">
       <label for="phone_number"> Phone Number</label>
@@ -151,27 +151,6 @@
         required
       />
     </div>
-
-    <!-- <div class="col col-12 col-md-6 form-group">
-      <label for="age">Age</label>
-      <input
-        type="number"
-        class="form-control"
-        id="age"
-        name="age"
-        [(ngModel)]="trainer.age"
-        placeholder="Enter Age"
-        #AgeInput="ngModel"
-        required
-      />
-      <span class="invalid-feedback">
-        @if(AgeInput.errors?.['required']){
-        <span style="color: #8119db">Age is required</span>
-        } @if(AgeInput.errors?.['min']){
-        <span style="color: #8119db">Age must be a positive number</span>
-        }
-      </span>
-    </div> -->
 
     <div class="col col-12 col-md-6 form-group">
       <label for="salary">Salary (EGP)</label>
@@ -227,5 +206,4 @@
     Submit
   </button>
 
-  <!-- <p> errors: {{PhoneInput.errors | json}}</p> -->
 </form>
