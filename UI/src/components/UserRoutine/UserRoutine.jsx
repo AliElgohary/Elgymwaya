@@ -11,6 +11,8 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
+import ReactPlayer from "react-player";
+
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -199,40 +201,41 @@ function UserRoutine() {
                   id="workout-details-title"
                   variant="h6"
                   component="h2"
+                  className="text-primary text-center fs-1"
                 >
                   {selectedWorkout.name}
                 </Typography>
                 <Typography variant="body1">
+                  <span className="fw-bolder fs-5">Description: </span>
                   {selectedWorkout.description}
                 </Typography>
                 <Typography variant="body1">
-                  Frequency: {selectedWorkout.frequency}
+                  <span className="fw-bolder fs-5"> Frequency:</span>{" "}
+                  {selectedWorkout.frequency}
                 </Typography>
                 <Typography variant="body1">
-                  Duration: {selectedWorkout.duration} minutes
+                  <span className="fw-bolder fs-5"> Duration: </span>
+                  {selectedWorkout.duration} minutes
                 </Typography>
                 <Typography variant="body1">
-                  Sets: {selectedWorkout.sets}, Reps: {selectedWorkout.reps}
+                  <span className="fw-bolder fs-5"> Sets: </span>
+                  {selectedWorkout.sets}, Reps: {selectedWorkout.reps}
                 </Typography>
                 <Typography variant="body1">
-                  Rest period: {selectedWorkout.rest_period} seconds
+                  <span className="fw-bolder fs-5"> Rest period: </span>
+                  {selectedWorkout.rest_period} seconds
                 </Typography>
                 <Typography variant="body1">
-                  Equipment Needed:{" "}
+                  <span className="fw-bolder fs-5"> Equipment Needed: </span>
                   {selectedWorkout.equipment_needed.join(", ") || "None"}
                 </Typography>
                 {selectedWorkout.video_link && (
-                  <Box
-                    component="iframe"
-                    src={selectedWorkout.video_link}
-                    alt="Workout Video"
-                    title="YouTube video player"
+                  <ReactPlayer
+                    url={selectedWorkout.video_link}
+                    className="react-player"
                     width="100%"
-                    height="315"
-                    frameBorder="0"
-                    allowFullScreen
-                    sx={{ my: 2, borderRadius: "4px", overflow: "hidden" }}
-                  ></Box>
+                    height="100%"
+                  />
                 )}
               </>
             )}
