@@ -3,6 +3,48 @@
   transition: background-color 0.2s ease; /* Smooth hover effect */
 }
 
-.trainee-item:hover {
-  background-color: #e9ecef; /* Slightly darker on hover */
+.trainee-item:hover
+{
+  background-color: #e9ecef;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.fa-clipboard,
+.fa-dumbbell
+{
+  font-size: 1.2rem;
+  color: #1976d2;
+}
+
+.bold{   
+  font-weight: bold;
+  font-size: 1rem;
+}
+.coach-name,
+.Plan-name{
+  color: #1976d2;
+  margin-bottom: 5px;
+}
+
+.tel {
+  font-weight: bold;
+  color: #28a745;
+}
+
+.content2 {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.coach-content,
+.Plan-content {
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  width: 100%; 
 }

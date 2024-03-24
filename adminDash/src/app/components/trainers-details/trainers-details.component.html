@@ -21,7 +21,7 @@
         </div>
         <div class="card mt-3 align-items-center w-100">
           <ul class="list-group list-group-flush w-100">
-            <li class="list-group-item flex-column align-items-center text-center">Clients  &nbsp;
+            <li class="list-group-item flex-column align-items-center text-center bold">Clients  &nbsp;
               <i class="fa-solid fa-user"></i>
             </li>
             @for (client of trainer.client_ids; track $index) {
@@ -38,8 +38,8 @@
                 />
                 <div class="media-body">
                   <h5 class="mt-0 mb-1 client-name">{{ client.full_name }}</h5>
-                  <span class="text-muted">{{ client.email }}</span>
-                  <p class="ml-2 rating">{{ client.phone_number }}</p>
+                  <span class="text-muted">{{ client.email }} <i class="fa-solid fa-envelope-circle-check"></i></span>
+                  <p class="ml-2 rating">{{ client.phone_number }} <i class="fa-solid fa-phone"></i></p>
                 </div>
               </div>
               <span class="badge badge-primary badge-pill">{{
