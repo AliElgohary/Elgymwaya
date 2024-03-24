@@ -1,29 +1,3 @@
-// import { api } from "./../api/http";
-// import { GetAllCoachesAction } from "./../store/action/couchsActions";
-
-// export const getCurrentUser = () => (dispatch, getState) => {
-//     const token = localStorage.getItem("token");
-//     if (!token) return;
-//     // TODO: check token expiration
-//     dispatch(loginSuccess(token));
-//   };
-
-// export const getAllcoaches = () => async (dispatch, getState) => {
-//   const response = await api.get("/coach");
-//   if (typeof response.data.token !== "undefined") {
-//     console.log("Welcome To El Gymaweya", response.data);
-//     const token = response.data.token;
-//     localStorage.getItem("token", token);
-//     dispatch(loginSuccess(response.data.token));
-//   } else {
-//     dispatch(loginFailure("Invalid credentials"));
-//   }
-//   const coaches = response.data.coaches;
-//   dispatch({
-//     type: GetAllCoachesAction.type,
-//     payload: coaches,
-//   });
-// };
 import { loginFailure } from "../store/action/authActions";
 import { api } from "./../api/http";
 import { GetAllCoachesAction } from "./../store/action/couchsActions";
@@ -45,7 +19,7 @@ export const getAllcoaches = () => async (dispatch, getState) => {
       // Handle the absence of token, such as redirecting to the login page
       return;
     }
-    const response = await api.get("/coach", {
+    const response = await api.get("/coaches", {
       headers: {
         token,
       },
