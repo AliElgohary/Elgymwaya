@@ -35,18 +35,23 @@ function MembershipTracker() {
           <div className={style.membershipDetails}>
             <h5 className={style.infoHead}>Membership Plan</h5>
             <div className={style.detailItem}>
-              <FontAwesomeIcon icon={faCircleNotch} className="me-2" />
-              <span className={style.infoSpan}>Title: {planTitle}</span>
+              <span className={style.infoSpan}>
+                {" "}
+                <FontAwesomeIcon
+                  icon={faCircleNotch}
+                  className="me-2"
+                /> Title: {planTitle}
+              </span>
             </div>
             <div className={style.detailItem}>
-              <FontAwesomeIcon icon={faClock} className="me-2" />
               <span className={style.infoSpan}>
+                <FontAwesomeIcon icon={faClock} className="me-2" />
                 Duration: {currentUser?.subscription_months || "..."} MONTHS
               </span>
             </div>
             <div className={style.detailItem}>
-              <FontAwesomeIcon icon={faCalendarAlt} className="me-2" />
               <span className={style.infoSpan}>
+                <FontAwesomeIcon icon={faCalendarAlt} className="me-2" />
                 Subscription Date: {subscriptionDate}
               </span>
             </div>
