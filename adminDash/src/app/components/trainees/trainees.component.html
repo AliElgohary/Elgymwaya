@@ -19,8 +19,21 @@
       @for (trainee of trainees; track trainee._id) {
       <tr class="text-start">
         <td>
-          <img
-            src="{{ trainee.profile_picture }}"
+          @if(trainee.profile_picture){
+            <img
+              src="{{ trainee.profile_picture }}"
+              alt="Profile Picture"
+              style="
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-right: 10px;
+              "
+            />
+          } @else {
+            <img
+            src="https://res.cloudinary.com/dlljqtquk/image/upload/v1710958384/ElGymaweya/profile_picture-1710958516940.png"
             alt="Profile Picture"
             style="
               width: 50px;
@@ -30,6 +43,7 @@
               margin-right: 10px;
             "
           />
+          }
           {{ trainee.full_name }}
         </td>
         <td>{{ trainee.age }}</td>
