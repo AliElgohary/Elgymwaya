@@ -20,7 +20,7 @@ export class TraineeDetailsComponent implements OnInit {
     private router: Router
   ) {}
   traineeID!: string;
-  trainee!: Itrainee;
+  trainee!: any;
   trainIDChangedSubscription!: Subscription;
   ngOnInit(): void {
     this.trainIDChangedSubscription = this.route.paramMap.subscribe(
@@ -34,6 +34,7 @@ export class TraineeDetailsComponent implements OnInit {
   loadTrainee(): void {
     this.traineeServ.getTrainee(this.traineeID).subscribe((data) => {
       this.trainee = data;
+      console.log(this.trainee);
     });
   }
 
