@@ -9,64 +9,54 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './add-user.component.html',
-  styleUrl: './add-user.component.scss'
+  styleUrl: './add-user.component.scss',
 })
 export class AddUserComponent {
-  user : any ={
-    full_name: '',
-    email: '',
-    phone_number: '',
-    birth_date: '',
-    age: 0,
-    height: 0,
-    weight: 0,
-    plan_id: '',
-    subscription_date: '',
-    subscription_end_date: '',
-    subscription_months: 0,
-    newPlanProfilePicture: null,
-  }
+  user: any = {};
 
-  constructor(private traineeService: TraineesService, private router:Router) {}
+  constructor(
+    private traineeService: TraineesService,
+    private router: Router
+  ) {}
 
   addTrainee() {
     const formData = new FormData();
     formData.append('full_name', this.user.full_name);
-    formData.append('email', this.user.email); 
+    formData.append('email', this.user.email);
     formData.append('password', this.user.password);
-    formData.append('Cpassword', this.user.Cpassword); 
+    formData.append('Cpassword', this.user.Cpassword);
     formData.append('phone_number', this.user.phone_number);
     formData.append('birth_date', this.user.birth_date);
     formData.append('height', this.user.height);
     formData.append('weight', this.user.weight);
-    if (this.user.newPlanProfilePicture) {
+    if (this.user.profilePicture) {
       formData.append(
         'profile_picture',
-        this.user.newPlanProfilePicture,
-        this.user.newPlanProfilePicture.name
+        this.user.profilePicture,
+        this.user.profilePicture.name
       );
     }
 
     this.traineeService.addTrainee(formData).subscribe(
       (data) => {
         console.log('User added successfully:', data);
-        this.resetPlanForm();
-        this.router.navigate(['/trainees'])
+        this.resetForm();
+        this.router.navigate(['/trainees']);
       },
       (error) => {
-        console.error('Error adding User:', error);
+        console.error('Error adding user:', error);
       }
     );
   }
 
-  onFileSelected(event: Event) {
-    const target = event.target as HTMLInputElement;
-    if (target && target.files && target.files.length) {
-      this.user.newPlanProfilePicture = target.files[0];
-    }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    console.log(file);
+    this.user.profilePicture = file;
   }
 
-  resetPlanForm() {
+  resetForm() {
     this.user = {
       full_name: '',
       email: '',
@@ -76,10 +66,7 @@ export class AddUserComponent {
       birth_date: '',
       height: 0,
       weight: 0,
-      newPlanProfilePicture: null,
+      profilePicture: null,
     };
   }
-
-
-
 }

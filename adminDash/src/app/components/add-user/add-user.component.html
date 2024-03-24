@@ -31,8 +31,8 @@
           }
         </span>
       </div>
-      <div class="col col-12 col-md-5 form-group mb-2">
-        <label for="coachemail" class="col-form-label">E-mail</label>
+      <div class="col col-12 col-md-5 form-group my-2">
+        <label for="coachemail" >E-mail</label>
         <input
           type="text"
           name="coachemail"
@@ -195,37 +195,17 @@
 
       </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-12 col-md-5 mb-3">
-            <div class="mb-3">
-              <label for="profilePicture" class="form-label"
-                >Profile Picture</label
-              >
-              <input
-                type="file"
-                class="form-control form-control-lg"
-                id="profilePicture"
-                name="profilePicture"
-                accept="image/*"
-                (change)="onFileSelected($event)"
-              />
-              <div id="profilePictureHelp" class="form-text">
-                Choose a profile picture to upload.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div>
 
-      <button
-        type="submit"
-        class="btn btn-primary"
-        [disabled]="addPlanForm.invalid"
-        style="background-color: #8119db; width: 100px"
-      >
-        Submit
-      </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="addPlanForm.invalid"
+          style="background-color: #8119db; width: 100px"
+        >
+          Submit
+        </button>
+      </div>
     </div>
     <!-- <p> errors: {{NameInput.errors | json}}</p> -->
   </form>
