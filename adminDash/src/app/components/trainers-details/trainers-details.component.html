@@ -18,6 +18,7 @@
             </div>
           </div>
         </div>
+        @if(trainer.client_ids.length > 0){
         <div class="card mt-3 align-items-center w-100">
           <ul class="list-group list-group-flush w-100">
             <div class="card-header">
@@ -29,23 +30,32 @@
             <li class="list-group-item feedback-item">
               <div class="d-flex flex-column align-items-center text-center">
                 <div class="media">
-                  <img
-                    src="{{ client.profile_picture }}"
+                  @if(client.profile_picture){
+                    <img
+                      src="{{ client.profile_picture }}"
+                      alt="Profile Picture"
+                      class="mr-3 rounded-circle"
+                      style="max-width: 70px"
+                    />
+                  } @else {
+                    <img
+                    src="https://res.cloudinary.com/dlljqtquk/image/upload/v1710958384/ElGymaweya/profile_picture-1710958516940.png"
                     alt="Profile Picture"
                     class="mr-3 rounded-circle"
                     style="max-width: 70px"
                   />
+                  }
                   <div class="media-body">
                     <h5 class="mt-0 mb-1 client-name">
                       {{ client.full_name }}
                     </h5>
                     <span class="text-muted"
-                      >{{ client.email }}
-                      <i class="fa-solid fa-envelope-circle-check"></i
-                    ></span>
+                      ><i class="fa-solid fa-envelope-circle-check"></i>  {{ client.email }}
+
+                    </span>
                     <p class="ml-2 rating">
-                      {{ client.phone_number }}
                       <i class="fa-solid fa-phone"></i>
+                      {{ client.phone_number }}
                     </p>
                   </div>
                 </div>
@@ -58,7 +68,7 @@
             }
           </ul>
         </div>
-
+        }
         <div class="card mt-3 feedback-card">
           <div class="card-header">
             <h5 class="card-title">
