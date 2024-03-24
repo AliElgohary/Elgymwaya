@@ -30,6 +30,7 @@
             <li
               class="list-group-item trainee-item d-flex justify-content-between align-items-center border-bottom-0 py-3 px-4"
             >
+            @if(trainee.coach_id){
               <div class="media">
                 <img
                   src="{{ trainee.coach_id.profile_picture }}"
@@ -45,6 +46,7 @@
                   </p>
                 </div>
               </div>
+            }
             </li>
           </ul>
         </div>
@@ -60,16 +62,18 @@
               class="list-group-item trainee-item d-flex justify-content-between align-items-center border-bottom-0 py-3 px-4"
             >
               <div class="media">
-                <img
-                  src="{{ trainee.plan_id.profile_picture }}"
-                  alt="Profile Picture"
-                  class="mr-3 rounded-circle"
-                  style="max-width: 70px"
-                />
-                <div class="media-body">
-                  <h5 class="mt-0 mb-1">{{ trainee.plan_id.description }}</h5>
+                @if(trainee.plan_id){
+                  <img
+                    src="{{ trainee.plan_id.profile_picture }}"
+                    alt="Profile Picture"
+                    class="mr-3 rounded-circle"
+                    style="max-width: 70px"
+                  />
+                  <div class="media-body">
+                    <h5 class="mt-0 mb-1">{{ trainee.plan_id.description }}</h5>
 
-                </div>
+                  </div>
+                }
               </div>
             </li>
           </ul>
