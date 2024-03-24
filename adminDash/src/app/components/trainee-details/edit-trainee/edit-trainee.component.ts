@@ -30,22 +30,15 @@ export class EditTraineeComponent implements OnInit {
   }
 
   editTrainee() {
-    const formData = new FormData();
+    const traineeData = {
+      full_name: this.trainee.full_name,
+      email: this.trainee.email,
+      phone_number: this.trainee.phone_number,
+      height: this.trainee.height.toString(),
+      weight: this.trainee.weight.toString()
+    };
 
-    formData.append('full_name', this.trainee.full_name);
-    formData.append('email', this.trainee.email);
-    formData.append('phone_number', this.trainee.phone_number);
-    formData.append('height', this.trainee.height.toString());
-    formData.append('weight', this.trainee.weight.toString());
-    if (this.trainee.newPlanProfilePicture) {
-      formData.append(
-        'profile_picture',
-        this.trainee.newPlanProfilePicture,
-        this.trainee.newPlanProfilePicture.name
-      );
-    }
-
-    this.traineeServ.editTrainee(this.traineeId, this.trainee).subscribe(
+    this.traineeServ.editTrainee(this.traineeId, traineeData).subscribe(
       (data) => {
         console.log('Trainee edited successfully:', data);
         this.router.navigate(['/trainees']);
@@ -56,10 +49,5 @@ export class EditTraineeComponent implements OnInit {
     );
   }
 
-  onFileSelected(event: Event) {
-    const target = event.target as HTMLInputElement;
-    if (target && target.files && target.files.length) {
-      this.trainee.newPlanProfilePicture = target.files[0];
-    }
-  }
+
 }
