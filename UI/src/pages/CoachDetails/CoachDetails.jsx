@@ -33,7 +33,7 @@ const CoachDetails = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#101010" }}>
+    <div style={{ backgroundColor: "#2b2b2b" }} className="vh-100">
       {/**coach && (
         <div className="card mt-4">
           <div className="card-body">
