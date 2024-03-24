@@ -14,37 +14,44 @@
               />
               <div class="mt-3">
                 <h4>{{ trainer.full_name }}</h4>
-
               </div>
             </div>
           </div>
         </div>
         <div class="card mt-3 align-items-center w-100">
           <ul class="list-group list-group-flush w-100">
-            <li class="list-group-item flex-column align-items-center text-center bold">Clients  &nbsp;
-              <i class="fa-solid fa-user"></i>
-            </li>
+            <div class="card-header">
+              <h5 class="card-title">
+                Clients &nbsp; <i class="fa-solid fa-user"></i>
+              </h5>
+            </div>
             @for (client of trainer.client_ids; track $index) {
-            <li
-            class="list-group-item feedback-item"
-            >
-            <div class="d-flex flex-column align-items-center text-center">
-              <div class="media ">
-                <img
-                  src="{{ client.profile_picture }}"
-                  alt="Profile Picture"
-                  class="mr-3 rounded-circle"
-                  style="max-width: 70px"
-                />
-                <div class="media-body">
-                  <h5 class="mt-0 mb-1 client-name">{{ client.full_name }}</h5>
-                  <span class="text-muted">{{ client.email }} <i class="fa-solid fa-envelope-circle-check"></i></span>
-                  <p class="ml-2 rating">{{ client.phone_number }} <i class="fa-solid fa-phone"></i></p>
+            <li class="list-group-item feedback-item">
+              <div class="d-flex flex-column align-items-center text-center">
+                <div class="media">
+                  <img
+                    src="{{ client.profile_picture }}"
+                    alt="Profile Picture"
+                    class="mr-3 rounded-circle"
+                    style="max-width: 70px"
+                  />
+                  <div class="media-body">
+                    <h5 class="mt-0 mb-1 client-name">
+                      {{ client.full_name }}
+                    </h5>
+                    <span class="text-muted"
+                      >{{ client.email }}
+                      <i class="fa-solid fa-envelope-circle-check"></i
+                    ></span>
+                    <p class="ml-2 rating">
+                      {{ client.phone_number }}
+                      <i class="fa-solid fa-phone"></i>
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <span class="badge badge-primary badge-pill">{{
-                client.status
-              }}</span>
+                <span class="badge badge-primary badge-pill">{{
+                  client.status
+                }}</span>
               </div>
             </li>
 
@@ -54,27 +61,31 @@
 
         <div class="card mt-3 feedback-card">
           <div class="card-header">
-            <h5 class="card-title">Feedbacks &nbsp; <i class="fa-solid fa-comments"></i></h5>
+            <h5 class="card-title">
+              Feedbacks &nbsp; <i class="fa-solid fa-comments"></i>
+            </h5>
           </div>
           <div class="card-body">
             <ul class="list-group list-group-flush">
               @for (feedback of trainer.feedbacks; track $index) {
-              <li
-              class="list-group-item feedback-item"
-              >
+              <li class="list-group-item feedback-item">
                 <div class="d-flex flex-column align-items-center text-center">
-                  <h4 class="client-name">{{ feedback.client_id.full_name }}</h4>
-                <div>
-                  <p class="comment">{{ feedback.comment }}</p>
-                  <p class="rating">{{ feedback.rating }} / 5 <i class="fa-regular fa-star"></i></p>
+                  <h4 class="client-name">
+                    {{ feedback.client_id.full_name }}
+                  </h4>
+                  <div>
+                    <p class="comment">{{ feedback.comment }}</p>
+                    <p class="rating">
+                      {{ feedback.rating }} / 5
+                      <i class="fa-regular fa-star"></i>
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
               }
             </ul>
           </div>
         </div>
-
       </div>
       <div class="col-md-8">
         <div class="card mb-3">
