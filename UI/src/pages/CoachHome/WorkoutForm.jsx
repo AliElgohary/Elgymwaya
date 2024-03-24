@@ -13,8 +13,8 @@
 
 //   // Joi schema for form validation
 //   const schema = Joi.object({
-//     startDate: Joi.date().required(),
-//     endDate: Joi.date().required(),
+//     start_date: Joi.date().required(),
+//     end_date: Joi.date().required(),
 //     status: Joi.string().valid("Active", "Completed", "Paused").required(),
 //     goals: Joi.string().required(),
 //     notes: Joi.string().required(),
@@ -37,8 +37,8 @@
 //   });
 
 //   const [formData, setFormData] = useState({
-//     startDate: "",
-//     endDate: "",
+//     start_date: "",
+//     end_date: "",
 //     status: "Active",
 //     goals: "",
 //     notes: "",
@@ -127,35 +127,35 @@
 
 //   return (
 //     <Form onSubmit={handleSubmit} className={styles.modal_bg}>
-//       <Form.Group controlId="startDate">
+//       <Form.Group controlId="start_date">
 //         <Form.Label className="pt-1 mb-1">Start Date</Form.Label>
 //         <Input
 //           className={styles.input_modal}
 //           type="date"
-//           name="startDate"
-//           value={formData.startDate}
+//           name="start_date"
+//           value={formData.start_date}
 //           onChange={(e) =>
-//             setFormData({ ...formData, startDate: e.target.value })
+//             setFormData({ ...formData, start_date: e.target.value })
 //           }
 //         />
-//         {errors.startDate && (
-//           <span className="text-danger">{errors.startDate}</span>
+//         {errors.start_date && (
+//           <span className="text-danger">{errors.start_date}</span>
 //         )}
 //       </Form.Group>
 
-//       <Form.Group controlId="endDate">
+//       <Form.Group controlId="end_date">
 //         <Form.Label className="pt-4 mb-1">End Date</Form.Label>
 //         <Input
 //           className={styles.input_modal}
 //           type="date"
-//           name="endDate"
-//           value={formData.endDate}
+//           name="end_date"
+//           value={formData.end_date}
 //           onChange={(e) =>
-//             setFormData({ ...formData, endDate: e.target.value })
+//             setFormData({ ...formData, end_date: e.target.value })
 //           }
 //         />
-//         {errors.endDate && (
-//           <span className="text-danger">{errors.endDate}</span>
+//         {errors.end_date && (
+//           <span className="text-danger">{errors.end_date}</span>
 //         )}
 //       </Form.Group>
 
@@ -442,8 +442,8 @@ const WorkoutForm = ({ clientId, handleCloseModal }) => {
   const dispatch = useDispatch();
   // State variables to hold form data
   const [formData, setFormData] = useState({
-    startDate: "",
-    endDate: "",
+    start_date: "",
+    end_date: "",
     status: "Active",
     goals: "",
     notes: "",
@@ -510,28 +510,28 @@ const WorkoutForm = ({ clientId, handleCloseModal }) => {
 
   return (
     <Form onSubmit={handleSubmit} className={styles.modal_bg}>
-      <Form.Group controlId="startDate">
+      <Form.Group controlId="start_date">
         <Form.Label className="pt-1 mb-1">Start Date</Form.Label>
         <Input
           className={styles.input_modal}
           type="date"
-          name="startDate"
-          value={formData.startDate}
+          name="start_date"
+          value={formData.start_date}
           onChange={(e) =>
-            setFormData({ ...formData, startDate: e.target.value })
+            setFormData({ ...formData, start_date: e.target.value })
           }
         />
       </Form.Group>
 
-      <Form.Group controlId="endDate">
+      <Form.Group controlId="end_date">
         <Form.Label className="pt-4 mb-1">End Date</Form.Label>
         <Input
           className={styles.input_modal}
           type="date"
-          name="endDate"
-          value={formData.endDate}
+          name="end_date"
+          value={formData.end_date}
           onChange={(e) =>
-            setFormData({ ...formData, endDate: e.target.value })
+            setFormData({ ...formData, end_date: e.target.value })
           }
         />
       </Form.Group>
