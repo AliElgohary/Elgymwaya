@@ -75,12 +75,24 @@ const Register = () => {
     e.preventDefault();
     const validatedKeys = Object.keys(validationRules);
     let valid = true;
+    let confirmPasswordError = "";
     for (const key of validatedKeys) {
-      const errors = validate(key, data[key]);
-      if (errors.length) {
-        valid = false;
-        setErrors((prev) => ({ ...prev, [key]: errors }));
+      if (key !== "Cpassword") {
+        const errors = validate(key, data[key]);
+        if (errors.length) {
+          valid = false;
+          setErrors((prev) => ({ ...prev, [key]: errors }));
+        }
       }
+    }
+
+    // Validate confirmPassword
+    if (data.password !== data.Cpassword) {
+      valid = false;
+      confirmPasswordError = "Passwords do not match";
+      setErrors((prev) => ({ ...prev, Cpassword: [confirmPasswordError] }));
+    } else {
+      setErrors((prev) => ({ ...prev, Cpassword: [] }));
     }
     if (valid) {
       setLoading(true);
