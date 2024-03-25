@@ -15,6 +15,7 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 import styles from "./CoachDetails.module.css";
+import userPhoto from "../../assets/user.png";
 
 const CoachDetails = () => {
   const { coachId } = useParams();
@@ -34,77 +35,6 @@ const CoachDetails = () => {
 
   return (
     <div style={{ backgroundColor: "#2b2b2b" }} className="vh-100">
-      {/**coach && (
-        <div className="card mt-4">
-          <div className="card-body">
-            <h2 className="card-title">{coach.full_name}</h2>
-            <div className="row">
-              <div className="col-md-6">
-                <img
-                  src={coach.profile_picture}
-                  alt={coach.full_name}
-                  className="img-fluid rounded mb-3 h-50 w-50"
-                />
-                <p>
-                  Email: {coach.email}
-                </p>
-                <p>
-                  Phone Number: {coach.phone_number}
-                </p>
-                <p>
-                  Age: {coach.age}
-                </p>
-                <p>
-                  Birth Date:{" "}
-                  {new Date(coach.birth_date).toLocaleDateString()}
-                </p>
-                <h3 className="my-3 fw-bold">Working Days</h3>
-                <ul className="list-unstyled">
-                  {coach.working_days.map((day, index) => (
-                    <li key={index}>
-                      <p>
-                        {day.day}: {day.start_time} -{" "}
-                        {day.end_time}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="col-md-6 mt-5">
-                <h3>Feedbacks:</h3>
-                {coach.feedbacks.length > 0 ? (
-                  <ul className="list-unstyled">
-                    {coach.feedbacks.map((feedback, index) => (
-                      <li key={index}>
-                        <p>
-                          Rating: {feedback.rating}
-                        </p>
-                        <p>
-                          Comment: {feedback.comment}
-                        </p>
-                        <p>
-                          Date:{" "}
-                          {new Date(feedback.date).toLocaleDateString()}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>No feedback available</p>
-                )}
-              </div>
-            </div>
-          </div>
-          <div className="text-center mb-3">
-            <button
-              className="btn btn-primary btn-lg"
-              onClick={handleSelectedCoach}
-            >
-              select
-            </button>
-          </div>
-        </div>
-                )**/}
       {coach && (
         <section style={{ backgroundColor: "#2b2b2b" }}>
           <MDBContainer
@@ -124,7 +54,7 @@ const CoachDetails = () => {
                       }}
                     >
                       <MDBCardImage
-                        src={coach.profile_picture}
+                        src={coach.profile_picture || userPhoto}
                         alt="Avatar"
                         className="my-5"
                         style={{ width: "80px" }}
@@ -200,9 +130,6 @@ const CoachDetails = () => {
                             ) : (
                               <p>No feedback available</p>
                             )}
-                            <MDBCardText className="text-muted">
-                              123 456 789
-                            </MDBCardText>
                           </MDBCol>
                         </MDBRow>
 

@@ -17,7 +17,7 @@ import ClientCard from "./ClientCard";
 import CoachReservations from "./CoachReservations";
 import WithCurrentUserRedirect from "../../components/common/WithCurrentUserRedirect";
 import CoachFeedback from "./CoachFeedback";
-
+import userPhoto from "../../assets/user.png";
 function CoachHomepage() {
   const [showInfoMode, setShowInfoMode] = useState(false);
   const [AddRoutineMode, setAddRoutineMode] = useState(false);
@@ -60,7 +60,7 @@ function CoachHomepage() {
               <div key={client._id} className={styles.card}>
                 <div className={styles.imageContainer}>
                   <Image
-                    src={client.profile_picture}
+                    src={client.profile_picture || userPhoto}
                     roundedCircle
                     width={30}
                     height={30}
@@ -98,7 +98,7 @@ function CoachHomepage() {
               <div key={client._id} className={styles.card}>
                 <div className={styles.imageContainer}>
                   <Image
-                    src={client.profile_picture}
+                    src={client.profile_picture || userPhoto}
                     roundedCircle
                     width={30}
                     height={30}

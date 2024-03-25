@@ -33,14 +33,12 @@ function MembershipTracker() {
       <Grid container spacing={2}>
         <Grid item md={12} lg={8}>
           <div className={style.membershipDetails}>
-            <h5 className={style.infoHead}>Membership Plan</h5>
+            <h5 className={`${style.infoHead}`}>Membership Plan</h5>
             <div className={style.detailItem}>
               <span className={style.infoSpan}>
                 {" "}
-                <FontAwesomeIcon
-                  icon={faCircleNotch}
-                  className="me-2"
-                /> Title: {planTitle}
+                <FontAwesomeIcon icon={faCircleNotch} className="me-2" />
+                Plan Membership: {planTitle}
               </span>
             </div>
             <div className={style.detailItem}>

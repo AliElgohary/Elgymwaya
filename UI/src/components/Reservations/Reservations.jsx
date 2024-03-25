@@ -5,6 +5,7 @@ import { fetchReservations } from "../../thunks/reservationThunks";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import userPhoto from "../../assets/user.png";
 
 function Reservations() {
   const dispatch = useDispatch();
@@ -27,12 +28,12 @@ function Reservations() {
       <h2>Your Reservations</h2>
       {reservations.length > 0 ? (
         <ul className={style.reservationList}>
-        <Slider {...settings}>
-          {reservations.map((reservation) => (
+          <Slider {...settings}>
+            {reservations.map((reservation) => (
               <li key={reservation._id} className={style.reservationItem}>
                 <div className={style.reservationDetail}>
                   <img
-                    src={reservation.coach_id.profile_picture}
+                    src={reservation.coach_id.profile_picture || userPhoto}
                     alt="Coach"
                     className={style.coachImage}
                   />
@@ -48,8 +49,8 @@ function Reservations() {
                   </div>
                 </div>
               </li>
-              ))}
-              </Slider>
+            ))}
+          </Slider>
         </ul>
       ) : (
         <p>No reservations found.</p>

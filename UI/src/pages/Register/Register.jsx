@@ -50,8 +50,8 @@ const Register = () => {
         .email({ tlds: { allow: false } })
         .required()
         .label("email"),
-      weight: Joi.number().required().label("weight"),
-      height: Joi.number().required().label("height"),
+      weight: Joi.number().required().max(400).label("weight"),
+      height: Joi.number().required().max(400).label("height"),
       birth_date: Joi.date().required().label("birth_date"),
       phone_number: Joi.string()
         .required()
@@ -63,7 +63,9 @@ const Register = () => {
       password: Joi.string()
         .required()
         .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/)
-        .label("password"),
+        .message(
+          "invalid password :Password must be(one digit-one uppercase letter-one lowercase letter"
+        ),
       Cpassword: Joi.string().required().label("Cpassword"),
     }),
     []

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchCoachById } from "./../../thunks/coach";
 import { useNavigate } from "react-router-dom";
-
+import userPhoto from "../../assets/user.png";
 function SelectTrainer() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,7 +28,10 @@ function SelectTrainer() {
           {coaches.map((coach) => (
             <Col key={coach._id} sm={12} md={6} lg={4}>
               <div className={`${style.imgCard}`}>
-                <img src={coach.profile_picture} alt={coach.full_name} />
+                <img
+                  src={coach.profile_picture || userPhoto}
+                  alt={coach.full_name}
+                />
                 <div className={style.Coauchinfo}>
                   <h4>{coach.full_name}</h4>
                   {coach.feedbacks.length > 0 ? (
