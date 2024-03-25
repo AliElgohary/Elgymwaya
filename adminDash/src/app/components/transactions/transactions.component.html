@@ -17,15 +17,15 @@
         @for (trans of transactions; track trans.id) {
         <tr>
           @if (trans.client_id){
-            <td>{{ trans.client_id.full_name }}</td>
+            <td class="align-middle">{{ trans.client_id.full_name }}</td>
           } @else {
-            <td>Deleted Client</td>
+            <td class="align-middle">Deleted Client</td>
           }
-          <td>{{ trans.order_id }}</td>
-          <td>{{ trans.amount }}</td>
-          <td>{{ trans.subscriptionMonths }}</td>
-          <td>{{ trans.payment_status }}</td>
-          <th scope="col">
+          <td class="align-middle">{{ trans.order_id }}</td>
+          <td class="align-middle">{{ trans.amount }}</td>
+          <td class="align-middle">{{ trans.subscriptionMonths }}</td>
+          <td class="align-middle">{{ trans.payment_status }}</td>
+          <th class="align-middle" scope="col">
             <button
               class="btn btn-danger"
               (click)="deleteTransaction(trans._id)"
