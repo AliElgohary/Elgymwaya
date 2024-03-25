@@ -20,7 +20,7 @@ function UserInfo() {
   return (
     <>
       {/** for user select free plan */}
-      <Col className={style.UserInfoBox}>
+      <div className={style.UserInfoBox}>
         <h2>User Information</h2>
         {currentUser && (
           <div>
@@ -68,7 +68,7 @@ function UserInfo() {
             </div>
           </div>
         )}
-      </Col>
+      </div>
     </>
   );
 }
