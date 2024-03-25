@@ -24,42 +24,5 @@ i{
   bottom: 0;
 }
 
-/* Adjustments for small screens */
-@media (max-width: 768px) {
-  .slideDashboard {
-    width: 100%;
-  }
-  .min-vh-100 {
-    min-height: 100vh;
-  }
-  .fixed-left {
-    position: relative;
-    transform: translateX(0%);
-    transition: transform 0.3s ease-in-out;
-  }
-}
-
-@media (min-width: 768px) {
-  .slideDashboard {
-    width: auto;
-  }
-  .fixed-left {
-    position: fixed;
-    transform: translateX(0%);
-    transition: transform 0.3s ease-in-out;
-  }
-}
-
-/* Adjustments for small screens */
-@media (max-width: 768px) {
-  .nav-pills .text-decoration-none span {
-    display: none;
-  }
-}
 
 
-/* Style adjustments */
-.dropdown-menu {
-  position: static !important;
-  z-index: 1;
-}
