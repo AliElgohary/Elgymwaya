@@ -21,20 +21,22 @@ function UserHomePage() {
     <div>
       <NavBarUserHome />
       <Container className="mt-4" style={{ maxWidth: "97%" }}>
-        <Row className="justify-content-between mb-3 gap-3">
-          <UserInfo />
-          <Col xs={12} md={6} className={style.TrainerInfoBox}>
+        <Row className="justify-content-between gy-3 mb-3">
+          <Col lg={3} md={12} className={style.TrainerInfoBox}>
+            <UserInfo />
+          </Col>
+          <Col lg={4} md={12} className={style.TrainerInfoBox}>
             <Trainer />
           </Col>
-          <Col xs={3} md={3} className={style.TrainerInfoBox}>
+          <Col lg={4} md={12} className={style.TrainerInfoBox}>
             <MembershipTracker />
           </Col>
         </Row>
-        <Row className="justify-content-between mb-3 gap-3">
-          <Col xs={6} md={6} className={style.TrainerInfoBox}>
+        <Row className="justify-content-start gap-2 mb-3 mt-5">
+          <Col lg={6} md={12} className={style.TrainerInfoBox}>
             <UserRoutine />
           </Col>
-          <Col xs={6} md={6} className={style.TrainerInfoBox}>
+          <Col lg={5} md={12} className={style.TrainerInfoBox}>
             <Reservations />
           </Col>
         </Row>

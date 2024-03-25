@@ -31,7 +31,7 @@ function MembershipTracker() {
     <div className={style.MembershipTrackerBox}>
       <h2>Membership Tracker</h2>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={8}>
+        <Grid item md={12} lg={8}>
           <div className={style.membershipDetails}>
             <h5 className={style.infoHead}>Membership Plan</h5>
             <div className={style.detailItem}>
@@ -65,7 +65,7 @@ function MembershipTracker() {
             </div>
           </div>
         </Grid>
-        <Grid item xs={12} md={4} className={style.qrCodeContainer}>
+        <Grid item md={12} lg={4} className={style.qrCodeContainer}>
           <QRCode
             value={userToken}
             size={118}

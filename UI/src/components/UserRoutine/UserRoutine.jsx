@@ -170,24 +170,30 @@ function UserRoutine() {
                   </CustomButton>
                 </Grid>
               </Grid>
-              <Grid container spacing={2}>
+              <Grid container className="d-flex align-items-center justify-content-center">
                 {plan.workouts.map((workout, index) => (
-                  <Grid item xs={6} sm={4} md={3} key={index}>
+                  <Grid item xs={12} md={3} lg={5} className="p-0 w-100 mr-1 d-flex align-items-center justify-content-between " style={{ height: "100px", overflow: "hidden" }} key={index}>
                     {" "}
                     <Paper
                       elevation={2}
+
                       sx={{ p: 2, cursor: "pointer" }}
                       onClick={() => handleOpenModal(workout)}
+                      className=" h-75 w-75 d-flex align-items-center justify-content-center  overflow-hidden"
                     >
                       <Typography
-                        variant="h6"
-                        className="text-center fw-bold fs-3 text-primary"
+                        variant="p"
+                        fontSize={"18px"}
+                        className="text-center"
+                        color={"#8269f2"}
                       >
                         {workout.name}
                       </Typography>
                     </Paper>
                   </Grid>
+
                 ))}
+
               </Grid>
             </AccordionDetails>
           </Accordion>
