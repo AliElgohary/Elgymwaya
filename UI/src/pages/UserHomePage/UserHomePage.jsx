@@ -36,7 +36,7 @@ function UserHomePage() {
           <Col lg={6} md={12} className={style.TrainerInfoBox}>
             <UserRoutine />
           </Col>
-          <Col lg={5} md={12} className={style.TrainerInfoBox}>
+          <Col lg={5} md={12} style={{maxHeight:"500px"}} className={style.TrainerInfoBox}>
             <Reservations />
           </Col>
         </Row>
